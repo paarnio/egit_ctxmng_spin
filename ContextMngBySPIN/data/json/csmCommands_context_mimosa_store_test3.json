@@ -1,0 +1,638 @@
+{
+  "CSMHeader": {
+    "filename": "data/json/csmCommands_context_mimosa_store_test3.json",
+    "created": "2016-02-24",
+    "updated": "2016-02-26",
+    "validated": "http://www.jsoneditoronline.org/",
+    "application": "CommandFileSpinMng.java",
+    "history": "",
+    "workflow": {
+      "name": "Workflow command store for context_mimosa model",
+      "processlog1": " By test1 (start)-->| LOAD_KB(0) |-->| INF_MODEL(1) |-->| INFER(2) |-->| SELECT(3) |-->| USER_CHECK(4) |-->| LIST(5) |-->| USER_CHECK(4) |-->| CALL_TEMPLATE(6) |-->| SELECT(3) |-->(end)",
+	  "processlog2": " By test1 (start)-->| LOAD_KB(0) |-->| INF_MODEL(1) |-->| INFER(2) |-->| CALL_TEMPLATE(6) |-->| DESCRIBE(7) |-->| USER_CHECK(4) |-->| CALL_TEMPLATE(8) |-->| DESCRIBE(9) |-->(end)",
+	  "processlog3": " By test1 (start)-->| LOAD_KB(0) |-->| INF_MODEL(1) |-->| INFER(2) |-->| CALL_TEMPLATE(6) |-->| CALL_TEMPLATE(8) |-->| DESCRIBE(9) |-->| SPIN_CONSTRUCTOR(10) |-->| WRITE(11) |-->| DESCRIBE(9) |-->(end)",
+	  "processlog4": " By test2 (start)-->| LOAD_KB(0) |-->| INF_MODEL(1) |-->| INFER(2) |-->| CALL_TEMPLATE(6) |-->| CALL_TEMPLATE(8) |-->| DESCRIBE(9) |-->| SPIN_CONSTRUCTOR(10) |-->| WRITE(11) |-->| DESCRIBE(9) |-->| DESCRIBE(12) |-->| DESCRIBE(13) |-->(end)",
+	  "processlog5": " By test2 (start)-->| LOAD_KB(0) |-->| INF_MODEL(1) |-->| INFER(2) |-->| CALL_TEMPLATE(6) |-->| CALL_TEMPLATE(8) |-->| DESCRIBE(9) |-->| SPIN_CONSTRUCTOR(10) |-->| WRITE(11) |-->| DESCRIBE(9) |-->| DESCRIBE(12) |-->| DESCRIBE(15) |-->| DESCRIBE(16) |-->(end)",
+	  "processlog6": " By test3 (start)-->| LOAD_KB(0) |-->| INF_MODEL(1) |-->| INFER(2) |-->| CALL_TEMPLATE(6) |-->| CALL_TEMPLATE(8) |-->| SPIN_CONSTRUCTOR(10) |-->| DESCRIBE(15) |-->| DESCRIBE(16) |-->| CONSTRUCT_QUERY(17) |-->| CONSTRUCT_QUERY(18) |-->| DESCRIBE(19) |-->| WRITE(11) |-->(end)",
+      "comment": "Workflow  commands can be run in 'indexed' mode (type='indexed') or in 'all' mode (type='all').",
+      "type": "indexed",
+      "indexes": [
+        0,
+        1,
+        2,
+		6,
+		8,
+		10,
+		15,
+		16,
+		17,
+		18,
+		19,
+		11
+      ]
+    }
+  },
+  "CSMCommands": [
+    {
+      "index": 0,
+      "commandType": "loadKnowledgeBase",
+      "stepnote": "LOAD_KB",
+      "comment": "REQUIRED: ALLWAYS RUN THIS AS THE FIRST COMMAND! (Types: 'predefined' | 'file&uri')",
+      "knowledgeBase": {
+        "name": "context_mimosa",
+        "type": "predefined",
+        "ontology": null,
+        "imports": null
+      }
+    },
+    {
+      "index": 1,
+      "commandType": "createInferenceModel",
+      "stepnote": "INF_MODEL",
+      "comment": "NOTE:OFTEN REQUIRED: This command creates the inference model and registers spin.",
+      "create": {
+        "name": "create inference model and spin registering",
+        "type": "create_and_register"
+      }
+    },
+    {
+      "index": 2,
+      "commandType": "runInferences",
+      "stepnote": "INFER",
+      "comment": "NOTE:OFTEN REQUIRED: This command runs all spin inferences: type options: 'singlepass' | 'iterative' (creates the inference model, if not yet created) .",
+      "inference": {
+        "name": "pre_inference",
+        "type": "iterative"
+      }
+    },
+     {
+        "index": 3,
+        "commandType": "sparqlQuery",
+        "stepnote": "SELECT",
+        "query": {
+          "name": "Query WorkOrders",
+          "type": "select",
+		  "reasoner": false,
+          "preprefixes": "yes",
+          "select": "*",
+          "where": "?s rdf:type workcoreplus:WorkOrder . ?s workcoreplus:work_order_id ?woid .",
+          "limit": "100",
+          "queryVars": [
+            "?s",
+            "?woid"
+          ]
+        }
+      },
+      {
+        "index": 4,
+        "commandType": "userinput",
+        "stepnote": "USER_CHECK",
+        "comment": "NOTE: Pause execution for user checks .",
+        "userprompt": {
+          "name": "user prompt",
+          "type": "check",
+          "prompt": "continue",
+          "default": "Y"
+        }
+      },
+   {
+        "index": 5,
+        "commandType": "listTemplates",
+        "stepnote": "LIST",
+        "comment": "Lists all templates and detailed info about templates in 'list.info' list",
+        "listing": {
+          "name": "All plus detailed info about some of them",
+          "type": "all&info",
+          "info": [
+            {
+              "localname": "CreateWorkOrderTemplate",
+              "uri": null
+            },
+            {
+              "localname": "CreateSituationContextTemplate",
+              "uri": null
+            }
+          ]
+        }
+      },
+     {
+        "index": 6,
+        "commandType": "templateCall",
+        "stepnote": "CALL_TEMPLATE",
+        "template": {
+          "name": "CreateWorkOrderTemplate",
+          "type": "construct",
+          "args": [
+            {
+              "name": "woid",
+              "type": "integer",
+              "value": "201"
+            },
+            {
+              "name": "agentid",
+              "type": "integer",
+              "value": "1"
+            },
+            {
+              "name": "segtag",
+              "type": "string",
+              "value": "SEG-101"
+            }
+          ]
+        }
+      },
+   {
+        "index": 7,
+        "commandType": "sparqlQuery",
+        "stepnote": "DESCRIBE",
+        "query": {
+          "name": "DESCRIBE workcoreplus:WorkOrder",
+          "type": "describe",
+		  "reasoner": false,
+          "preprefixes": "yes",
+          "describe": " ?work ",
+          "where": "?work a workcoreplus:WorkOrder . FILTER EXISTS { ?work workcoreplus:work_order_id 201 .} ",
+          "bind": null,
+          "filter": null
+        }
+      },
+      {
+        "index": 8,
+        "commandType": "templateCall",
+        "stepnote": "CALL_TEMPLATE",
+        "template": {
+          "name": "CreateSituationContextTemplate",
+          "type": "construct",
+          "args": [
+            {
+              "name": "workorderid",
+              "type": "integer",
+              "value": "201"
+            }
+          ]
+        }
+      },
+   {
+        "index": 9,
+        "commandType": "sparqlQuery",
+        "stepnote": "DESCRIBE",
+        "query": {
+          "name": "DESCRIBE mctxcore:SituationContext",
+          "type": "describe",
+		  "reasoner": false,
+          "preprefixes": "yes",
+          "describe": " ?ctx ",
+          "where": "?ctx a mctxcore:SituationContext . ",
+          "bind": null,
+          "filter": null
+        }
+      },
+    {
+        "index": 10,
+        "commandType": "runSpinConstructors",
+        "stepnote": "SPIN_CONSTRUCTOR",
+        "comment": "run all Spin Constructors",
+        "constructors": {
+          "name": "Run Spin Constructors",
+          "type": "all"
+        }
+      },
+    {
+        "index": 11,
+        "commandType": "writeModel",
+        "stepnote": "WRITE",
+        "comment": "Write type can be 'file' or 'console'. Modelcat can be 'merged', 'inferred' or 'main'. Format options: TTL, RDF/JSON, JSON-LD, etc. (https://jena.apache.org/documentation/io/rdf-output.html)",
+        "write": {
+          "name": "Write Inferred Triples to Console",
+          "type": "console",
+          "filePath": "data/inferences/temp.ttl",
+          "modelcat": "inferred",
+		  "format": "RDF/JSON"
+        }
+	},
+	  {
+        "index": 12,
+        "commandType": "sparqlQuery",
+        "stepnote": "DESCRIBE",
+        "query": {
+          "name": "DESCRIBE mctxsimple:EWorkOrder",
+          "type": "describe",
+		  "reasoner": false,
+          "preprefixes": "yes",
+          "describe": " ?ctx ",
+          "where": "?ctx a mctxsimple:EWorkOrder . ",
+          "bind": null,
+          "filter": null
+        }
+      },
+	  {
+        "index": 13,
+        "commandType": "sparqlQuery",
+        "stepnote": "DESCRIBE",
+        "query": {
+          "name": "DESCRIBE mctxcore:CElement",
+          "type": "describe",
+		  "reasoner": true,
+          "preprefixes": "yes",
+          "describe": " ?ctx ",
+          "where": "?ctx a mctxcore:CElement . ",
+          "bind": null,
+          "filter": null
+        }
+      },
+	  	{
+        "index": 14,
+        "commandType": "sparqlQuery",
+        "stepnote": "DESCRIBE",
+        "query": {
+          "name": "TRIPLE DESCRIBE V1: DESCRIBE mctxsimple:EMaintTarget mctxsimple:EAsset and mctxsimple:ESegment)",
+          "type": "describe",
+		  "reasoner": false,
+          "preprefixes": "yes",
+          "describe": " ?etarget ?easset ?esegment ",
+          "where": "?etarget a mctxsimple:EMaintTarget . ?easset a mctxsimple:EAsset . ?esegment a mctxsimple:ESegment . ?etarget mctxcore:ref_tag_code ?tag . ?easset mctxcore:ref_tag_code ?tag . ?esegment mctxcore:ref_tag_code ?tag . ",
+          "bind": null,
+          "filter": null
+        }
+      },
+	  	  	{
+        "index": 15,
+        "commandType": "sparqlQuery",
+        "stepnote": "DESCRIBE",
+        "query": {
+          "name": "TRIPLE DESCRIBE V2: DESCRIBE mctxsimple:EMaintTarget mctxsimple:EAsset and mctxsimple:ESegment)",
+          "type": "describe",
+		  "reasoner": false,
+          "preprefixes": "yes",
+          "describe": " ?etarget ?easset ?esegment ",
+          "where": "?etarget a mctxsimple:EMaintTarget . ?easset a mctxsimple:EAsset . ?esegment a mctxsimple:ESegment . ?etarget mctxcore:hasElement ?easset . ?etarget mctxcore:hasElement  ?esegment . ",
+          "bind": null,
+          "filter": null
+        }
+      },
+	   {
+        "index": 16,
+        "commandType": "sparqlQuery",
+        "stepnote": "DESCRIBE",
+        "query": {
+          "name": "DOUBLE DESCRIBE: DESCRIBE mctxsimple:EMaintPerson and mctxsimple:EPersonProfile",
+          "type": "describe",
+		  "reasoner": false,
+          "preprefixes": "yes",
+          "describe": " ?person ?profile ",
+          "where": "?person a mctxsimple:EMaintPerson . ?profile a mctxsimple:EPersonProfile . ?person mctxcore:hasElement ?profile . ",
+          "bind": null,
+          "filter": null
+        }
+      },
+	   {
+        "index": 17,
+        "commandType": "sparqlQuery",
+        "stepnote": "CONSTRUCT_QUERY",
+        "query": {
+          "name": "Construct External ISA-95 Class and Property",
+          "type": "construct",
+          "resultTriples": "add",
+          "preprefixes": "yes",
+          "construct": "?specclass a owl:Class . ?docclass a owl:Class . ?modelprop a owl:DatatypeProperty . ?docprop a owl:ObjectProperty . ?uriprop a owl:DatatypeProperty . ",
+          "where": "BIND (IRI(fn:concat('http://external.net/isa95/prosegmodel#','EquipSegSpec')) AS ?specclass) . BIND (IRI(fn:concat('http://external.net/isa95/prosegmodel#','EquipDocumentation')) AS ?docclass) . BIND (IRI(fn:concat('http://external.net/isa95/prosegmodel#','model_id')) AS ?modelprop) . BIND (IRI(fn:concat('http://external.net/isa95/prosegmodel#','hasDocumentation')) AS ?docprop) . BIND (IRI(fn:concat('http://external.net/isa95/prosegmodel#','docUri')) AS ?uriprop) ."
+        }
+      },
+	  	{
+        "index": 18,
+        "commandType": "sparqlQuery",
+        "stepnote": "CONSTRUCT_QUERY",
+        "query": {
+          "name": "NOTE: APPLY AFTER CONSTRUCTION OF ISA-95 Class and Property. Constructs External ISA-95 Class instance with Property value",
+          "type": "construct",
+          "resultTriples": "add",
+          "preprefixes": "yes",
+          "construct": "?spec a <http://external.net/isa95/prosegmodel#EquipSegSpec> . ?spec <http://external.net/isa95/prosegmodel#model_id> 101 . ?doc a <http://external.net/isa95/prosegmodel#EquipDocumentation> . ?spec <http://external.net/isa95/prosegmodel#hasDocumentation> ?doc . ?doc <http://external.net/isa95/prosegmodel#docUri> 'MaintenanceGuide_101_uri' .",
+          "where": "BIND (IRI(fn:concat('http://external.net/isa95/prosegmodel#','EquipSegSpec_101')) AS ?spec) . BIND (IRI(fn:concat('http://external.net/isa95/prosegmodel#','EquipDocumentation_101')) AS ?doc) ."
+        }
+      },
+	 {
+        "index": 19,
+        "commandType": "sparqlQuery",
+        "stepnote": "DESCRIBE",
+        "query": {
+          "name": "DESCRIBE extproseg:EquipSegSpec and related extproseg:EquipDocumentation instances (extproseg=http://external.net/isa95/prosegmodel#)",
+          "type": "describe",
+		  "reasoner": false,
+          "preprefixes": "yes",
+          "describe": " ?spec ?doc ",
+          "where": "?spec a extproseg:EquipSegSpec . ?spec extproseg:hasDocumentation ?doc. ",
+          "bind": null,
+          "filter": null
+        }
+      }
+  ],
+  "CSM_STORE===========================": {
+    "comment": "----NOTE: This is a predefined command store (Copy & paste commands to the command list) -----",
+    "KB_COMMANDS": [
+      {
+        "index": 0,
+        "commandType": "loadKnowledgeBase",
+        "stepnote": "LOAD_KB",
+        "comment": "REQUIRED: ALLWAYS RUN THIS AS THE FIRST COMMAND! (Types: 'predefined' | 'file&uri')",
+        "knowledgeBase": {
+          "name": "context_mimosa",
+          "type": "predefined",
+          "ontology": null,
+          "imports": null
+        }
+      }
+    ],
+    "INFERENCE_COMMANDS": [
+      {
+        "index": null,
+        "commandType": "createInferenceModel",
+        "stepnote": "INF_MODEL",
+        "comment": "NOTE:OFTEN REQUIRED: This command creates the inference model and registers spin.",
+        "create": {
+          "name": "create inference model and spin registering",
+          "type": "create_and_register"
+        }
+      },
+      {
+        "index": null,
+        "commandType": "runInferences",
+        "stepnote": "INFER",
+        "comment": "NOTE:OFTEN REQUIRED: This command runs all spin inferences: type options: 'singlepass' | 'iterative' (creates the inference model, if not yet created) .",
+        "inference": {
+          "name": "pre_inference",
+          "type": "iterative"
+        }
+      }
+    ],
+    "SPIN_CONSTRAINT_CHECK_COMMANDS": [
+      {
+        "index": null,
+        "commandType": "checkConstraints",
+        "stepnote": "CONSTRAINTS",
+        "comment": "run 'all' (type 'all') Spin Constraints or only for one 'resource'",
+        "constraints": {
+          "name": "Run Spin Constraints",
+          "type": "all",
+          "uri": "http://siima.net/ont/bicycle#Bicycle_4"
+        }
+      }
+    ],
+    "SPIN_CONSTRUCTOR_COMMANDS": [
+      {
+        "index": null,
+        "commandType": "runSpinConstructors",
+        "stepnote": "SPIN_CONSTRUCTOR",
+        "comment": "run all Spin Constructors",
+        "constructors": {
+          "name": "Run Spin Constructors",
+          "type": "all"
+        }
+      }
+    ],
+    "TEMPLATE_CREATE_COMMANDS": [
+		{
+        "index": null,
+        "commandType": "createNewTemplate",
+        "stepnote": "CREATE_TEMPLATE",
+        "comment": "NOTE:This is an example for BICYCLE model",
+        "template": {
+          "name": "BicycleNameSWGTemplate1",
+          "ns": "http://siima.net/ont/bicycle#",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": " ?bic ?wcount ?name ",
+          "where": "?bic rdf:type bicycle:Bicycle .  ?bic bicycle:wheelcount ?wcount .  ?bic bicycle:name ?name .",
+          "limit": null,
+          "args": [
+            {
+              "name": "wcount",
+              "type": "XSD.integer",
+              "argComment": "The number of the wheels in the bicycle queried."
+            }
+          ]
+        }
+		}
+	],
+    "TEMPLATE_CALL_COMMANDS": [
+      {
+        "index": null,
+        "commandType": "templateCall",
+        "stepnote": "CALL_TEMPLATE",
+        "template": {
+          "name": "CreateWorkOrderTemplate",
+          "type": "construct",
+          "args": [
+            {
+              "name": "woid",
+              "type": "integer",
+              "value": "201"
+            },
+            {
+              "name": "agentid",
+              "type": "integer",
+              "value": "1"
+            },
+            {
+              "name": "segtag",
+              "type": "string",
+              "value": "SEG-101"
+            }
+          ]
+        }
+      },
+      {
+        "index": null,
+        "commandType": "templateCall",
+        "stepnote": "CALL_TEMPLATE",
+        "template": {
+          "name": "CreateSituationContextTemplate",
+          "type": "construct",
+          "args": [
+            {
+              "name": "workorderid",
+              "type": "integer",
+              "value": "201"
+            }
+          ]
+        }
+      }
+    ],
+	"CLASS_ATTACHED_QUERY_COMMANDS": [
+	{
+      "index": null,
+      "commandType": "execAttachedQuery",
+      "stepnote": "ATTACHED_QUERY",
+      "comment": "TODO: This is only an example for bicycle.ttl model",
+      "query": {
+        "name": "Class Attached Query",
+        "type": "classquery",
+		"preprefixes": null,
+		"classuri": "http://siima.net/ont/bicycle#Bicycle",
+		"queryVars": [
+            "?name", "?bic"
+          ]
+      }
+	 }	
+	],
+    "QUERY_WITH_EVAL_COMMANDS": [
+	 {
+        "index": null,
+        "commandType": "sparqlQuery",
+        "stepnote": "SELECT_EVAL",
+        "query": {
+          "name": "NOTE: This is only an example for bicycle.ttl model. SELECT Query Bicycle using EVAL(Template)",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": "?result",
+          "where": "bicycle:BicycleByNameSWGTemplate spin:body ?body . ?body rdf:type sp:Select . BIND (spin:eval(?body, arg:name, 'Jukan_fillari') AS ?result)",
+          "limit": "10",
+          "queryVars": [
+            "?result"
+          ]
+        }
+      }	
+	],
+    "SELECT_COMMANDS": [
+      {
+        "index": null,
+        "commandType": "sparqlQuery",
+        "stepnote": "SELECT",
+        "query": {
+          "name": "Query WorkOrders",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": "*",
+          "where": "?s rdf:type workcoreplus:WorkOrder . ?s workcoreplus:work_order_id ?woid .",
+          "limit": "100",
+          "queryVars": [
+            "?s",
+            "?woid"
+          ]
+        }
+      }
+    ],
+    "DESCRIBE_COMMANDS": [
+     {
+        "index": null,
+        "commandType": "sparqlQuery",
+        "stepnote": "DESCRIBE",
+        "query": {
+          "name": "DESCRIBE mctxcore:SituationContext",
+          "type": "describe",
+          "preprefixes": "yes",
+          "describe": " ?ctx ",
+          "where": "?ctx a mctxcore:SituationContext . FILTER EXISTS { ?ctx mctxcore:active true .} ",
+          "bind": null,
+          "filter": null
+        }
+      }
+	],
+    "UPDATE_COMMANDS": [
+      {
+        "index": null,
+        "commandType": "sparqlQuery",
+        "stepnote": "UPDATE",
+        "query": {
+          "name": "Update WorkOrder_666 ID",
+          "type": "update",
+          "preprefixes": "yes",
+          "delete": "?wouri workcoreplus:work_order_id 2 .",
+          "insert": "?wouri workcoreplus:work_order_id 222 .",
+          "where": "?wouri rdf:type workcoreplus:WorkOrder . ?wouri workcoreplus:work_order_id 2 .",
+          "bind": null,
+          "filter": null
+        }
+      }
+    ],
+    "SPARQL_CONSTRUCT_QUERY_COMMANDS": [
+      {
+        "index": null,
+        "commandType": "sparqlQuery",
+        "stepnote": "CONSTRUCT_QUERY",
+        "query": {
+          "name": "Construct WorkOrder_666",
+          "type": "construct",
+          "resultTriples": "add",
+          "preprefixes": "yes",
+          "construct": "?wouri a workcoreplus:WorkOrder . ?wouri workcoreplus:work_order_id 666 .",
+          "where": "BIND (IRI(fn:concat('http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_',str(666))) AS ?wouri) ."
+        }
+      }
+    ],
+    "LIST_TEMPLATES_COMMANDS": [
+   {
+        "index": null,
+        "commandType": "listTemplates",
+        "stepnote": "LIST",
+        "comment": "Lists all templates and detailed info about templates in 'list.info' list",
+        "listing": {
+          "name": "All plus detailed info about some of them",
+          "type": "all&info",
+          "info": [
+            {
+              "localname": "CreateWorkOrderTemplate",
+              "uri": null
+            },
+            {
+              "localname": "CreateSituationContextTemplate",
+              "uri": null
+            }
+          ]
+        }
+      }	
+	],
+    "LIST_FUNCTION_COMMANDS": [
+      {
+        "index": null,
+        "commandType": "listFunctions",
+        "stepnote": "LIST",
+        "comment": "Lists all SPIN Functions",
+        "listing": {
+          "name": "All SPIN Functions",
+          "type": "all"
+        }
+      }
+    ],
+    "WRITE_MODEL_COMMANDS": [
+      {
+        "index": null,
+        "commandType": "writeModel",
+        "stepnote": "WRITE",
+        "comment": "Write type can be 'file' or 'console'. Modelcat can be 'merged', 'inferred' or 'main'.",
+        "write": {
+          "name": "Write Inferred Triples to Console",
+          "type": "console",
+          "filePath": "data/inferences/temp.ttl",
+          "modelcat": "inferred"
+        }
+      },
+      {
+        "index": null,
+        "commandType": "writeModel",
+        "stepnote": "WRITE",
+        "comment": "Write type can be 'file' or 'console'. Modelcat can be one of 'inferred'/'main'/'mainall'?=?'merged'.",
+        "write": {
+          "name": "Write merged model to file",
+          "type": "file",
+          "filePath": "data/models/generated_models/temp.ttl",
+          "modelcat": "inferred"
+        }
+      }
+    ],
+    "USER_INPUT_COMMANDS": [
+      {
+        "index": null,
+        "commandType": "userinput",
+        "stepnote": "USER_INPUT",
+        "comment": "NOTE: Pause execution for user checks .",
+        "userprompt": {
+          "name": "user prompt",
+          "type": "check",
+          "prompt": "continue",
+          "default": "Y"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,1062 @@
+# baseURI: http://ssp4t5.net/context/mctxsimple
+# imports: http://spinrdf.org/spl
+# imports: http://ssp4t5.net/context/mctxcore
+
+@prefix : <http://ssp4t5.net/context/mctxsimple#> .
+@prefix afn: <http://jena.hpl.hp.com/ARQ/function#> .
+@prefix arg: <http://spinrdf.org/arg#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+@prefix mctxcore: <http://ssp4t5.net/context/mctxcore#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spif: <http://spinrdf.org/spif#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+mctxcore:SituationContext
+  spin:constructor [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "datetime"^^xsd:string ;
+              ] ;
+            sp:predicate mctxcore:created ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object "true"^^xsd:boolean ;
+            sp:predicate mctxcore:active ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "olddate"^^xsd:string ;
+                    ] ;
+                  sp:predicate mctxcore:created ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:not ;
+                sp:arg1 [
+                    rdf:type sp:bound ;
+                    sp:arg1 [
+                        sp:varName "olddate"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type afn:now ;
+              ] ;
+            sp:variable [
+                sp:varName "datetime"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Modify ;
+      sp:deletePattern (
+          [
+            sp:object [
+                sp:varName "asit"^^xsd:string ;
+              ] ;
+            sp:predicate mctxcore:currentSituation ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:insertPattern (
+          [
+            sp:object mctxcore:CAbstractSituation ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "newasit"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "newasit"^^xsd:string ;
+              ] ;
+            sp:predicate mctxcore:currentSituation ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object "WORK_MAY_START" ;
+            sp:predicate mctxcore:hasCharacterValue ;
+            sp:subject [
+                sp:varName "newasit"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "now"^^xsd:string ;
+              ] ;
+            sp:predicate mctxcore:created ;
+            sp:subject [
+                sp:varName "newasit"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "now"^^xsd:string ;
+              ] ;
+            sp:predicate mctxcore:endTime ;
+            sp:subject [
+                sp:varName "asit"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "asit"^^xsd:string ;
+              ] ;
+            sp:predicate mctxcore:currentSituation ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "asval"^^xsd:string ;
+              ] ;
+            sp:predicate mctxcore:hasCharacterValue ;
+            sp:subject [
+                sp:varName "asit"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "rel"^^xsd:string ;
+              ] ;
+            sp:predicate mctxcore:hasRelation ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "elem"^^xsd:string ;
+              ] ;
+            sp:predicate mctxcore:hasElement ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object :RelativeLocation ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "rel"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "val"^^xsd:string ;
+              ] ;
+            sp:predicate :relativeLocation ;
+            sp:subject [
+                sp:varName "rel"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object :MaintWork ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "elem"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "next"^^xsd:string ;
+              ] ;
+            sp:predicate :nextWorkPhase ;
+            sp:subject [
+                sp:varName "elem"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "per"^^xsd:string ;
+              ] ;
+            sp:predicate :permission ;
+            sp:subject [
+                sp:varName "next"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "end"^^xsd:string ;
+                    ] ;
+                  sp:predicate mctxcore:endTime ;
+                  sp:subject [
+                      sp:varName "asit"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:and ;
+                sp:arg1 [
+                    rdf:type sp:and ;
+                    sp:arg1 [
+                        rdf:type sp:not ;
+                        sp:arg1 [
+                            rdf:type sp:bound ;
+                            sp:arg1 [
+                                sp:varName "end"^^xsd:string ;
+                              ] ;
+                          ] ;
+                      ] ;
+                    sp:arg2 [
+                        rdf:type sp:and ;
+                        sp:arg1 [
+                            rdf:type sp:regex ;
+                            sp:arg1 [
+                                rdf:type sp:str ;
+                                sp:arg1 [
+                                    sp:varName "val"^^xsd:string ;
+                                  ] ;
+                              ] ;
+                            sp:arg2 "NEAR_BY_TARGET" ;
+                          ] ;
+                        sp:arg2 [
+                            rdf:type sp:regex ;
+                            sp:arg1 [
+                                rdf:type sp:str ;
+                                sp:arg1 [
+                                    sp:varName "per"^^xsd:string ;
+                                  ] ;
+                              ] ;
+                            sp:arg2 "GRANTED" ;
+                          ] ;
+                      ] ;
+                  ] ;
+                sp:arg2 [
+                    rdf:type sp:regex ;
+                    sp:arg1 [
+                        rdf:type sp:str ;
+                        sp:arg1 [
+                            sp:varName "asval"^^xsd:string ;
+                          ] ;
+                      ] ;
+                    sp:arg2 "EN_ROUTE" ;
+                  ] ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type afn:now ;
+              ] ;
+            sp:variable [
+                sp:varName "now"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:iri ;
+                sp:arg1 [
+                    rdf:type fn:concat ;
+                    sp:arg1 "http://ssp4t5.net/context/mctxsimple#AbstractSituation_" ;
+                    sp:arg2 [
+                        rdf:type sp:str ;
+                        sp:arg1 [
+                            sp:varName "now"^^xsd:string ;
+                          ] ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "newasit"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Modify ;
+      sp:deletePattern (
+          [
+            sp:object [
+                sp:varName "oldval"^^xsd:string ;
+              ] ;
+            sp:predicate [
+                sp:varName "prop"^^xsd:string ;
+              ] ;
+            sp:subject [
+                sp:varName "subj"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:insertPattern (
+          [
+            sp:object [
+                sp:varName "val"^^xsd:string ;
+              ] ;
+            sp:predicate [
+                sp:varName "prop"^^xsd:string ;
+              ] ;
+            sp:subject [
+                sp:varName "subj"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object "true"^^xsd:boolean ;
+            sp:predicate :acknowledged ;
+            sp:subject [
+                sp:varName "event"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object :Event ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "event"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "prop"^^xsd:string ;
+              ] ;
+            sp:predicate :ctxProperty ;
+            sp:subject [
+                sp:varName "event"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "subj"^^xsd:string ;
+              ] ;
+            sp:predicate :ctxPropertySubject ;
+            sp:subject [
+                sp:varName "event"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "val"^^xsd:string ;
+              ] ;
+            sp:predicate :ctxPropertyValue ;
+            sp:subject [
+                sp:varName "event"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object spin:_this ;
+            sp:predicate mctxcore:assignedTo ;
+            sp:subject [
+                sp:varName "event"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "oldval"^^xsd:string ;
+                    ] ;
+                  sp:predicate [
+                      sp:varName "prop"^^xsd:string ;
+                    ] ;
+                  sp:subject [
+                      sp:varName "subj"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "ack"^^xsd:string ;
+                    ] ;
+                  sp:predicate :acknowledged ;
+                  sp:subject [
+                      sp:varName "event"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:or ;
+                sp:arg1 [
+                    rdf:type sp:not ;
+                    sp:arg1 [
+                        rdf:type sp:bound ;
+                        sp:arg1 [
+                            sp:varName "ack"^^xsd:string ;
+                          ] ;
+                      ] ;
+                  ] ;
+                sp:arg2 [
+                    rdf:type sp:eq ;
+                    sp:arg1 [
+                        sp:varName "ack"^^xsd:string ;
+                      ] ;
+                    sp:arg2 "false"^^xsd:boolean ;
+                  ] ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+.
+<http://ssp4t5.net/context/mctxsimple>
+  rdf:type owl:Ontology ;
+  spin:imports <http://topbraid.org/spin/owlrl-all> ;
+  spin:imports <http://topbraid.org/spin/rdfsplus> ;
+  spin:imports <http://topbraid.org/spin/spinowl> ;
+  owl:imports <http://spinrdf.org/spl> ;
+  owl:imports <http://ssp4t5.net/context/mctxcore> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+:AbstractSituation_1
+  rdf:type mctxcore:CAbstractSituation ;
+  mctxcore:endTime "2015-03-09T16:54:19.471+02:00"^^xsd:dateTime ;
+  mctxcore:hasCharacterValue "EN_ROUTE"^^xsd:string ;
+  rdfs:label "Abstract situation 1"^^xsd:string ;
+.
+<http://ssp4t5.net/context/mctxsimple#AbstractSituation_uuid_09c09681-2aca-11b2-8092-a2abbbb82996_2015-03-09T16:54:19.471+02:00>
+  rdf:type mctxcore:CAbstractSituation ;
+  mctxcore:created "2015-03-09T16:54:19.471+02:00"^^xsd:dateTime ;
+  mctxcore:hasCharacterValue "WORK_MAY_START"^^xsd:string ;
+.
+:AmbientCondition
+  rdf:type owl:Class ;
+  rdfs:label "Ambient condition"^^xsd:string ;
+  rdfs:subClassOf mctxcore:CProperty ;
+.
+:Asset
+  rdf:type owl:Class ;
+  rdfs:label "Asset"^^xsd:string ;
+  rdfs:subClassOf mctxcore:CElement ;
+.
+:AssetModel
+  rdf:type owl:Class ;
+  rdfs:comment "Element of MTarget Context. Model of an Asset. Corresponds to Model in Mimosa OSA-EAI"^^xsd:string ;
+  rdfs:label "Asset model"^^xsd:string ;
+  rdfs:subClassOf mctxcore:CElement ;
+.
+:CCombinedType
+  rdf:type owl:Class ;
+  rdfs:comment "Attribute values for an Element of this generation type are read from different models in knowledge base. For example, Assets attributes can be a combination of property values read from Mimosa and ISA-95 databases."^^xsd:string ;
+  rdfs:label "CCombined type"^^xsd:string ;
+  rdfs:subClassOf :CElementGenerationType ;
+.
+:CDefinedType
+  rdf:type owl:Class ;
+  rdfs:comment "Attribute values for an Element of this generation type are defined by user agent. For example, user agent can define that a new WorkStep has been started."^^xsd:string ;
+  rdfs:label "CDefined type"^^xsd:string ;
+  rdfs:subClassOf :CElementGenerationType ;
+.
+:CDerivedType
+  rdf:type owl:Class ;
+  rdfs:comment "Elements of this type are called higher level elements. Attribute values for an Element of this generation type are inferred by context rules using values of other Element attributes as rule premises. For example,"^^xsd:string ;
+  rdfs:label "CDerived type"^^xsd:string ;
+  rdfs:subClassOf :CElementGenerationType ;
+.
+:CElementGenerationType
+  rdf:type owl:Class ;
+  rdfs:label "CElement generation type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:CSensorType
+  rdf:type owl:Class ;
+  rdfs:comment "Attribute values for an Element of this generation type are sensor readings provided by some digital agent e.g. smart phone. For example,"^^xsd:string ;
+  rdfs:label "CSensor type"^^xsd:string ;
+  rdfs:subClassOf :CElementGenerationType ;
+.
+:ContextFramework
+  rdf:type owl:Class ;
+  spin:constructor [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "datetime"^^xsd:string ;
+              ] ;
+            sp:predicate mctxcore:created ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object "true"^^xsd:boolean ;
+            sp:predicate mctxcore:active ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "olddate"^^xsd:string ;
+                    ] ;
+                  sp:predicate mctxcore:created ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:not ;
+                sp:arg1 [
+                    rdf:type sp:bound ;
+                    sp:arg1 [
+                        sp:varName "olddate"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type afn:now ;
+              ] ;
+            sp:variable [
+                sp:varName "datetime"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "ctx"^^xsd:string ;
+              ] ;
+            sp:predicate mctxcore:assignedTo ;
+            sp:subject [
+                sp:varName "event"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object spin:_this ;
+            sp:predicate mctxcore:notice ;
+            sp:subject [
+                sp:varName "event"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object mctxcore:Context ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ctx"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object "true"^^xsd:boolean ;
+            sp:predicate mctxcore:active ;
+            sp:subject [
+                sp:varName "ctx"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "exctx"^^xsd:string ;
+                    ] ;
+                  sp:predicate mctxcore:assignedTo ;
+                  sp:subject [
+                      sp:varName "event"^^xsd:string ;
+                    ] ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:not ;
+                sp:arg1 [
+                    rdf:type sp:bound ;
+                    sp:arg1 [
+                        sp:varName "exctx"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  rdfs:comment "Singleton class. Manages Events and Contexts."^^xsd:string ;
+  rdfs:label "Context framework"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:ContextFramework_1
+  rdf:type :ContextFramework ;
+  mctxcore:active "true"^^xsd:boolean ;
+  mctxcore:created "2015-03-02T17:43:56.680+02:00"^^xsd:dateTime ;
+  rdfs:label "Context framework 1"^^xsd:string ;
+.
+:Event
+  rdf:type owl:Class ;
+  spin:constructor [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "datetime"^^xsd:string ;
+              ] ;
+            sp:predicate mctxcore:created ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object [
+                sp:varName "ctxfrm"^^xsd:string ;
+              ] ;
+            sp:predicate mctxcore:notice ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object :ContextFramework ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "ctxfrm"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object "true"^^xsd:boolean ;
+            sp:predicate mctxcore:active ;
+            sp:subject [
+                sp:varName "ctxfrm"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "olddate"^^xsd:string ;
+                    ] ;
+                  sp:predicate mctxcore:created ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:not ;
+                sp:arg1 [
+                    rdf:type sp:bound ;
+                    sp:arg1 [
+                        sp:varName "olddate"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type afn:now ;
+              ] ;
+            sp:variable [
+                sp:varName "datetime"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  rdfs:label "Event"^^xsd:string ;
+  rdfs:subClassOf mctxcore:CElement ;
+.
+:Event_1
+  rdf:type :Event ;
+  mctxcore:assignedTo :SituationContext_1 ;
+  mctxcore:created "2015-03-02T17:44:32.920+02:00"^^xsd:dateTime ;
+  :acknowledged "true"^^xsd:boolean ;
+  rdfs:label "Event 1"^^xsd:string ;
+.
+:Event_2
+  rdf:type :Event ;
+  mctxcore:created "2015-03-04T18:54:22.856+02:00"^^xsd:dateTime ;
+  mctxcore:notice :ContextFramework_1 ;
+  :acknowledged "true"^^xsd:boolean ;
+  rdfs:label "Event 2"^^xsd:string ;
+.
+:Event_3
+  rdf:type :Event ;
+  mctxcore:created "2015-03-17T16:17:21.688+02:00"^^xsd:dateTime ;
+  mctxcore:notice :ContextFramework_1 ;
+  :acknowledged "true"^^xsd:boolean ;
+  :ctxProperty :relativeLocation ;
+  :ctxPropertySubject :RelativeLocation_1 ;
+  :ctxPropertyValue "CLOSE_TO_TARGET"^^xsd:string ;
+  rdfs:label "Event 3"^^xsd:string ;
+.
+:IsolationState
+  rdf:type owl:Class ;
+  rdfs:label "Isolation state"^^xsd:string ;
+  rdfs:subClassOf :State ;
+.
+:Location
+  rdf:type owl:Class ;
+  rdfs:label "Location"^^xsd:string ;
+  rdfs:subClassOf mctxcore:CElement ;
+.
+:MPerson_1
+  rdf:type :MaintPerson ;
+  rdfs:label "MPerson 1"^^xsd:string ;
+.
+:MaintActivity
+  rdf:type owl:Class ;
+  rdfs:label "Maint activity"^^xsd:string ;
+  rdfs:subClassOf mctxcore:CElement ;
+.
+:MaintPerson
+  rdf:type owl:Class ;
+  rdfs:label "MPerson"^^xsd:string ;
+  rdfs:subClassOf mctxcore:CElement ;
+.
+:MaintTarget
+  rdf:type owl:Class ;
+  rdfs:label "Target"^^xsd:string ;
+  rdfs:subClassOf mctxcore:CElement ;
+.
+:MaintType
+  rdf:type owl:Class ;
+  rdfs:label "Maint type"^^xsd:string ;
+  rdfs:subClassOf mctxcore:CElement ;
+.
+:MaintWork
+  rdf:type owl:Class ;
+  spin:constructor [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "datetime"^^xsd:string ;
+              ] ;
+            sp:predicate mctxcore:created ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "olddate"^^xsd:string ;
+                    ] ;
+                  sp:predicate mctxcore:created ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:not ;
+                sp:arg1 [
+                    rdf:type sp:bound ;
+                    sp:arg1 [
+                        sp:varName "olddate"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type afn:now ;
+              ] ;
+            sp:variable [
+                sp:varName "datetime"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  rdfs:label "Work task"^^xsd:string ;
+  rdfs:subClassOf mctxcore:CElement ;
+.
+:OperationState
+  rdf:type owl:Class ;
+  rdfs:label "Operation state"^^xsd:string ;
+  rdfs:subClassOf :State ;
+.
+:PersonProfile
+  rdf:type owl:Class ;
+  rdfs:label "Person profile"^^xsd:string ;
+  rdfs:subClassOf mctxcore:CElement ;
+.
+:PersonRole
+  rdf:type owl:Class ;
+  rdfs:label "Person role"^^xsd:string ;
+  rdfs:subClassOf mctxcore:CElement ;
+.
+:Personnel
+  rdf:type owl:Class ;
+  rdfs:label "Personnel"^^xsd:string ;
+  rdfs:subClassOf mctxcore:CElement ;
+.
+:RelativeLocation
+  rdf:type owl:Class ;
+  rdfs:label "Relative location"^^xsd:string ;
+  rdfs:subClassOf mctxcore:CRelation ;
+.
+:RelativeLocation_1
+  rdf:type :RelativeLocation ;
+  mctxcore:firstNode :MPerson_1 ;
+  mctxcore:secondNode :Target_1 ;
+  :relativeLocation "CLOSE_TO_TARGET"^^xsd:string ;
+  rdfs:label "Relative location 1"^^xsd:string ;
+.
+:Safety
+  rdf:type owl:Class ;
+  rdfs:label "Safety"^^xsd:string ;
+  rdfs:subClassOf mctxcore:CElement ;
+.
+:Segment
+  rdf:type owl:Class ;
+  rdfs:comment "Element of MTarget Context. Segment of an Asset. Asset implements Segment function. Corresponds to Segment in Mimosa OSA-EAI"^^xsd:string ;
+  rdfs:label "Segment"^^xsd:string ;
+  rdfs:subClassOf mctxcore:CElement ;
+.
+:SituationContext_1
+  rdf:type mctxcore:SituationContext ;
+  mctxcore:contains :RelativeLocation_1 ;
+  mctxcore:created "2015-03-02T17:46:51.372+02:00"^^xsd:dateTime ;
+  rdfs:label "Situation context 1"^^xsd:string ;
+.
+:SituationContext_2
+  rdf:type mctxcore:SituationContext ;
+  mctxcore:active "true"^^xsd:boolean ;
+  mctxcore:created "2015-03-09T16:32:21.026+02:00"^^xsd:dateTime ;
+  mctxcore:currentSituation <http://ssp4t5.net/context/mctxsimple#AbstractSituation_uuid_09c09681-2aca-11b2-8092-a2abbbb82996_2015-03-09T16:54:19.471+02:00> ;
+  mctxcore:hasElement :WorkTask_1 ;
+  mctxcore:hasRelation :RelativeLocation_1 ;
+  rdfs:label "Situation context 2"^^xsd:string ;
+.
+:State
+  rdf:type owl:Class ;
+  rdfs:label "State"^^xsd:string ;
+  rdfs:subClassOf mctxcore:CElement ;
+.
+:Target_1
+  rdf:type :MaintTarget ;
+  rdfs:label "Target 1"^^xsd:string ;
+.
+:Target_101
+  rdf:type :MaintTarget ;
+  mctxcore:ref_tag_code "SEG-101"^^xsd:string ;
+  rdfs:label "Target 101"^^xsd:string ;
+.
+:Target_2
+  rdf:type :MaintTarget ;
+  mctxcore:name "machineS2"^^xsd:string ;
+  :location "AreaS2"^^xsd:string ;
+  :tag "MS-200"^^xsd:string ;
+  rdfs:label "Target 2"^^xsd:string ;
+.
+:Tools
+  rdf:type owl:Class ;
+  rdfs:label "Tools"^^xsd:string ;
+  rdfs:subClassOf mctxcore:CElement ;
+.
+:WorkOrder
+  rdf:type owl:Class ;
+  spin:constructor [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "datetime"^^xsd:string ;
+              ] ;
+            sp:predicate mctxcore:created ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "olddate"^^xsd:string ;
+                    ] ;
+                  sp:predicate mctxcore:created ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:not ;
+                sp:arg1 [
+                    rdf:type sp:bound ;
+                    sp:arg1 [
+                        sp:varName "olddate"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type afn:now ;
+              ] ;
+            sp:variable [
+                sp:varName "datetime"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  rdfs:label "Work order"^^xsd:string ;
+  rdfs:subClassOf mctxcore:CElement ;
+.
+:WorkPhase_1
+  rdf:type :WorkStep ;
+  mctxcore:created "2015-03-09T16:05:02.542+02:00"^^xsd:dateTime ;
+  :estimatedDuration "PT10M00.000S"^^xsd:duration ;
+  :permission "GRANTED"^^xsd:string ;
+  rdfs:label "Work phase 1"^^xsd:string ;
+.
+:WorkPhase_2
+  rdf:type :WorkStep ;
+  mctxcore:created "2015-03-09T16:06:58.728+02:00"^^xsd:dateTime ;
+  :estimatedDuration "PT10M00.000S"^^xsd:duration ;
+  :permission "GRANTED"^^xsd:string ;
+  rdfs:label "Work phase 2"^^xsd:string ;
+.
+:WorkStep
+  rdf:type owl:Class ;
+  spin:constructor [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "datetime"^^xsd:string ;
+              ] ;
+            sp:predicate mctxcore:created ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:Optional ;
+            sp:elements (
+                [
+                  sp:object [
+                      sp:varName "olddate"^^xsd:string ;
+                    ] ;
+                  sp:predicate mctxcore:created ;
+                  sp:subject spin:_this ;
+                ]
+              ) ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:not ;
+                sp:arg1 [
+                    rdf:type sp:bound ;
+                    sp:arg1 [
+                        sp:varName "olddate"^^xsd:string ;
+                      ] ;
+                  ] ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type afn:now ;
+              ] ;
+            sp:variable [
+                sp:varName "datetime"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  rdfs:label "Work phase"^^xsd:string ;
+  rdfs:subClassOf mctxcore:CElement ;
+.
+:WorkTask_1
+  rdf:type :MaintWork ;
+  mctxcore:created "2015-03-09T16:08:06.625+02:00"^^xsd:dateTime ;
+  :currentWorkPhase :WorkPhase_1 ;
+  :nextWorkPhase :WorkPhase_2 ;
+  rdfs:label "Work task 1"^^xsd:string ;
+.
+:WorkTask_2
+  rdf:type :MaintWork ;
+  mctxcore:created "2015-05-15T11:53:08.227+03:00"^^xsd:dateTime ;
+  rdfs:label "Work task 2"^^xsd:string ;
+.
+:acknowledged
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "acknowledged"^^xsd:string ;
+  rdfs:range xsd:boolean ;
+.
+:ctxEventSource
+  rdf:type owl:AnnotationProperty ;
+  rdfs:label "ctx event source"^^xsd:string ;
+.
+:ctxProperty
+  rdf:type owl:AnnotationProperty ;
+  rdfs:label "ctx property"^^xsd:string ;
+.
+:ctxPropertySubject
+  rdf:type owl:AnnotationProperty ;
+  rdfs:label "ctx property subject"^^xsd:string ;
+.
+:ctxPropertyValue
+  rdf:type owl:AnnotationProperty ;
+  rdfs:label "ctx property value"^^xsd:string ;
+.
+:currentWorkPhase
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "current work phase"^^xsd:string ;
+.
+:estimatedDuration
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "estimated duration"^^xsd:string ;
+  rdfs:range xsd:duration ;
+.
+:location
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "location"^^xsd:string ;
+.
+:nextWorkPhase
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "next work phase"^^xsd:string ;
+.
+:permission
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "permission"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+:relativeLocation
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "relative location"^^xsd:string ;
+.
+:tag
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "tag"^^xsd:string ;
+.

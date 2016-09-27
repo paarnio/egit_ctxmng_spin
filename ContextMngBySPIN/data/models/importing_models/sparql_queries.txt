@@ -1,0 +1,330 @@
+TEST RUNS
+2015-12-31
+bicycle.ttl
+
+Vertaillen TBC-operaatioita softan operaatioihin
+
+-------------
+A) 2. Run queries
+==================
+
+SELECT ?s WHERE { ?s rdf:type <http://siima.net/ont/bicycle#Bicycle> . }
+SELECT ?s WHERE { ?s rdf:type bicycle:Bicycle . }
+
+---sparqlQuery()
+Query variable result: http://siima.net/ont/bicycle#Bicycle_4
+Query variable result: http://siima.net/ont/bicycle#Bicycle_3
+Query variable result: http://siima.net/ont/bicycle#Bicycle_2
+Query variable result: http://siima.net/ont/bicycle#Bicycle_1
+sparqlQuery: result rows #4
+
+---- --------- ----
+
+SELECT * WHERE { ?s rdf:type bicycle:Bicycle . ?s bicycle:modelYear ?y .}
+
+---sparqlQuery()
+sparqlQuery: result rows #0
+
+---- --------- ----
+
+SELECT ?s WHERE { ?s rdf:type bicycle:Bicycle . ?s bicycle:wheelcount ?c .}
+
+---sparqlQuery()
+Query variable result: http://siima.net/ont/bicycle#Bicycle_1
+sparqlQuery: result rows #1
+
+---- --------- ----
+
+
+B)3. Run inferences
+=========================
+C)7. Print inferred triples
+=========================
+---- OPERATION: Print Inferred Triples ----
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://siima.net/ont/bicycle#" > 
+  <rdf:Description rdf:about="http://siima.net/ont/bicycle#Bicycle_4">
+    <j.0:wheelcount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</j.0:wheelcount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://siima.net/ont/bicycle#Bicycle_3">
+    <j.0:wheelcount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</j.0:wheelcount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://siima.net/ont/bicycle#Bicycle_2">
+    <j.0:wheelcount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</j.0:wheelcount>
+  </rdf:Description>
+</rdf:RDF>
+
+---- --------- ----
+D)2. Run queries
+=====================
+
+SELECT ?c WHERE { ?s rdf:type bicycle:Bicycle . ?s bicycle:wheelcount ?c .}
+
+---sparqlQuery()
+Query variable result: 0^^http://www.w3.org/2001/XMLSchema#integer
+Query variable result: 2^^http://www.w3.org/2001/XMLSchema#integer
+Query variable result: 2^^http://www.w3.org/2001/XMLSchema#integer
+Query variable result: 1^^http://www.w3.org/2001/XMLSchema#integer
+sparqlQuery: result rows #4
+
+---- --------- ----
+
+SELECT ?s WHERE { ?s rdf:type bicycle:Handlebar . }
+
+---sparqlQuery()
+Query variable result: http://siima.net/ont/bicycle#Handlebar_2
+Query variable result: http://siima.net/ont/bicycle#Handlebar_1
+sparqlQuery: result rows #2
+
+---- --------- ----
+
+
+SELECT ?b WHERE { ?s rdf:type bicycle:Handlebar . ?s bicycle:hasBell ?b . }
+
+(ennen OP: Run constructors
+---sparqlQuery()
+sparqlQuery: result rows #0
+
+---- --------- ----)
+
+E)6. Run constructors
+============================
+F)7. Print inferred triples
+============================
+
+
+---- OPERATION: Print Inferred Triples ----
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://siima.net/ont/bicycle#"
+    xmlns:j.1="http://siima.net/ont/accessories#" > 
+  <rdf:Description rdf:about="http://siima.net/ont/bicycle#Bicycle_1">
+    <j.0:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-12-31T11:33:37.399+02:00</j.0:created>
+    <j.0:modelYear>M2015</j.0:modelYear>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://siima.net/ont/accessories#Bell_2015-12-31T11:33:37.209+02:00">
+    <j.0:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-12-31T11:33:37.414+02:00</j.0:created>
+    <rdf:type rdf:resource="http://siima.net/ont/accessories#Bell"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://siima.net/ont/bicycle#Handlebar_1">
+    <j.0:hasBell rdf:resource="http://siima.net/ont/accessories#Bell_2015-12-31T11:33:37.209+02:00"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://siima.net/ont/bicycle#Bicycle_4">
+    <j.0:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-12-31T11:33:37.393+02:00</j.0:created>
+    <j.0:modelYear>M2015</j.0:modelYear>
+    <j.0:wheelcount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</j.0:wheelcount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://siima.net/ont/bicycle#Bicycle_3">
+    <j.0:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-12-31T11:33:37.379+02:00</j.0:created>
+    <j.0:modelYear>M2015</j.0:modelYear>
+    <j.0:wheelcount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</j.0:wheelcount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://siima.net/ont/bicycle#Bicycle_2">
+    <j.0:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-12-31T11:33:37.409+02:00</j.0:created>
+    <j.0:modelYear>M2015</j.0:modelYear>
+    <j.0:wheelcount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</j.0:wheelcount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://siima.net/ont/accessories#Bell_2015-12-31T11:33:37.351+02:00">
+    <j.0:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-12-31T11:33:37.416+02:00</j.0:created>
+    <rdf:type rdf:resource="http://siima.net/ont/accessories#Bell"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://siima.net/ont/bicycle#Handlebar_2">
+    <j.0:hasBell rdf:resource="http://siima.net/ont/accessories#Bell_2015-12-31T11:33:37.351+02:00"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://siima.net/ont/accessories#Bell_1">
+    <j.0:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-12-31T11:33:37.387+02:00</j.0:created>
+  </rdf:Description>
+</rdf:RDF>
+
+---- --------- ----
+
+G)2. Run queries
+======================
+
+SELECT ?b WHERE { ?s rdf:type bicycle:Handlebar . ?s bicycle:hasBell ?b . }
+---sparqlQuery()
+Query variable result: http://siima.net/ont/accessories#Bell_2015-12-31T11:33:37.351+02:00
+Query variable result: http://siima.net/ont/accessories#Bell_2015-12-31T11:33:37.209+02:00
+sparqlQuery: result rows #2
+
+---- --------- ----
+
+SELECT ?y WHERE { ?s rdf:type bicycle:Bicycle . ?s bicycle:modelYear ?y .}
+---sparqlQuery()
+Query variable result: M2015
+Query variable result: M2015
+Query variable result: M2015
+Query variable result: M2015
+sparqlQuery: result rows #4
+
+---- --------- ----
+===================================================
+2015-01-05
+===================================================
+
+
+A)2. Run update queries
+======================
+
+SELECT * WHERE { ?bic rdf:type bicycle:Bicycle . ?bic bicycle:wheelcount ?count . }
+Query variable result: http://siima.net/ont/bicycle#Bicycle_1
+sparqlQuery: result rows #1
+
+SELECT * WHERE { bicycle:Bicycle_1 bicycle:wheelcount ?count . }
+---sparqlQuery()
+Query variable result: 1^^http://www.w3.org/2001/XMLSchema#integer
+sparqlQuery: result rows #1
+------
+DELETE DATA {bicycle:Bicycle_1 bicycle:wheelcount ?count . }
+com.hp.hpl.jena.query.QueryParseException: Variables not permitted in data quad
+
+DELETE DATA {bicycle:Bicycle_1 bicycle:wheelcount 1^^http://www.w3.org/2001/XMLSchema#integer . }
+ERROR: Literal Pitää olla lainausmerkeissä
+DELETE DATA {bicycle:Bicycle_1 bicycle:wheelcount "1^^http://www.w3.org/2001/XMLSchema#integer" . }
+---UPDATE QUERY:
+ PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sp: <http://spinrdf.org/sp#> PREFIX spif: <http://spinrdf.org/spif#> PREFIX spin: <http://spinrdf.org/spin#> PREFIX spl: <http://spinrdf.org/spl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> PREFIX arg: <http://spinrdf.org/arg#> PREFIX combined: <http://ssp4t5.net/mimosa/combined#> PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> PREFIX fn: <http://www.w3.org/2005/xpath-functions#> PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> PREFIX access: <http://siima.net/ont/accessories#> PREFIX bicycle: <http://siima.net/ont/bicycle#> 
+ DELETE DATA {bicycle:Bicycle_1 bicycle:wheelcount "1^^http://www.w3.org/2001/XMLSchema#integer" . }
+ HUOM: TÄMÄ EI TOIMINUT
+-----
+CHECK DELETE OPERATION: Ei toiminut???
+SELECT * WHERE { bicycle:Bicycle_1 bicycle:wheelcount ?count . }
+---sparqlQuery()
+Query variable result: 1^^http://www.w3.org/2001/XMLSchema#integer
+sparqlQuery: result rows #1
+------------------
+TOIMIVA DELETE:!!!!!!!!
+
+DELETE DATA {bicycle:Bicycle_1 bicycle:wheelcount 1 . } 
+----
+CHECK DELETE OPERATION:
+SELECT * WHERE { bicycle:Bicycle_1 bicycle:wheelcount ?count . }
+---sparqlQuery()
+sparqlQuery: result rows #0
+
+--------------------
+INSERT:
+INSERT DATA { bicycle:Handlebar_NEW rdf:type bicycle:Handlebar .  }
+Checking...
+SELECT * { ?han rdf:type bicycle:Handlebar .  }
+
+---sparqlQuery()
+Query variable result: http://siima.net/ont/bicycle#Handlebar_NEW
+Query variable result: http://siima.net/ont/bicycle#Handlebar_2
+Query variable result: http://siima.net/ont/bicycle#Handlebar_1
+sparqlQuery: result rows #3
+----------------
+
+B)6. Run constructors
+====================
+C)7. Print inferred triples
+=========================
+....
+ <rdf:Description rdf:about="http://siima.net/ont/bicycle#Handlebar_NEW">
+    <j.0:hasBell rdf:resource="http://siima.net/ont/accessories#Bell_2016-01-05T13:52:09.515+02:00"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://siima.net/ont/accessories#Bell_2016-01-05T13:52:09.515+02:00">
+    <j.0:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-01-05T13:52:09.650+02:00</j.0:created>
+    <rdf:type rdf:resource="http://siima.net/ont/accessories#Bell"/>
+  </rdf:Description>
+...
+
+
+
+
+===================
+NEW construct TEMPLATE: BicycleModelToNameTemplate2
+
+SELECT *
+WHERE {
+    ?bic rdf:type bicycle:Bicycle .
+ ?bic bicycle:hasModel ?model .
+}
+
+CONSTRUCT {?bic bicycle:name ?model . }
+WHERE {
+    ?bic rdf:type bicycle:Bicycle .
+ ?bic bicycle:hasModel ?model .
+}
+====================
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+1
+A:1
+---
+---P1: Template localname?>
+ (Default:BicycleNameTemplate2)
+BicycleModelToNameTemplate2
+A:BicycleModelToNameTemplate2
+---
+---P2: Template query type?>
+ (Default:select)
+construct
+A:construct
+---
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+2
+A:2
+---
+16:48:00 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: printTemplateInfo()
+16:48:00 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+Template is BicycleModelToNameTemplate2------- with URI:http://siima.net/ont/bicycle#BicycleModelToNameTemplate2
+-------- with comment:null
+Template body CONSTRUCT {
+    ?bic :name ?model .
+}
+WHERE {
+    ?bic a :Bicycle .
+    ?bic :hasModel ?model .
+}
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+4
+A:4
+---
+---- Calling construct type template ----
+
+16:51:26 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callTemplateByName()
+16:51:26 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+16:51:26 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callConstructTemplate()
+=================CONSTRUCT TEMPLATE RESULTS===============
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://siima.net/ont/bicycle#" > 
+  <rdf:Description rdf:about="http://siima.net/ont/bicycle#Bicycle_1">
+    <j.0:name rdf:resource="http://siima.net/ont/bicycle#Jupiter_1"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://siima.net/ont/bicycle#Bicycle_3">
+    <j.0:name rdf:resource="http://siima.net/ont/bicycle#Helkama_2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://siima.net/ont/bicycle#Bicycle_2">
+    <j.0:name rdf:resource="http://siima.net/ont/bicycle#Tunturi_3"/>
+  </rdf:Description>
+</rdf:RDF>
+==================================================

@@ -1,0 +1,995 @@
+CSM CONSOLE LOG '2016-03-02' 16:00
+('2016-02-26' 17:00)
+Test3/Run6
+========== WORKFLOW STEPS LOG ==========
+
+ (start)-->| LOAD_KB(0) |-->| INF_MODEL(1) |-->| INFER(2) |-->| CALL_TEMPLATE(6) |-->| CALL_TEMPLATE(8) |-->| SPIN_CONSTRUCTOR(10) |-->| DESCRIBE(15) |-->| DESCRIBE(16) |-->| CONSTRUCT_QUERY(17) |-->| CONSTRUCT_QUERY(18) |-->| DESCRIBE(19) |-->| WRITE(11) |-->(end)
+
+================ CommandFileSpinMng running... ===============
+
+
+------------ Command Workflow file?  -----------
+>>>> Give Workflow filepath ?> (Default:data/json/csmCommands.json)
+data/json/csmCommands_context_mimosa_store_test3.json
+A:data/json/csmCommands_context_mimosa_store_test3.json
+---
+
+--------------------------------------------------
++'CSMHeader':
++----+'filename': 'data/json/csmCommands_context_mimosa_store_test3.json'
++----+'created': '2016-02-24'
++----+'updated': '2016-02-26'
++----+'history': ''
+--------------------------------------------------
+
+--Reading commands from csm command file (json) ... 
+
+
+
+
+========== Next Command Index:(0): LOAD_KB========== 
+----+ Command: loadKnowledgeBaseCommand
+----+----+ KB name:context_mimosa
+15:55:04 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: loadModelWithImports()
+---loadModelWithImports()
+loadModelWithImports: loaded basemodel + imports = #9
+15:55:06 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: createReasonerModel()
+
+----------- Knowledge Base Ready  ----------
+
+
+========== Next Command Index:(1): INF_MODEL========== 
+----+ Command: createInferenceModelCommand
+----+----+ name:create inference model and spin registering
+15:55:06 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: createInferredModelAndRegister()
+---Creating inferred sub-model and registering locally defined functions
+
+
+========== Next Command Index:(2): INFER========== 
+----+ Command: runInferencesCommand
+----+----+ name:pre_inference
+
+---- OPERATION: Run Inferences ----
+
+15:55:06 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: createInferredModelAndRegister()
+---SPIN REGISTRING ONLY (this.inferredTriples already created)
+15:55:06 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: runAllSpinInferences()
+---Inferred triples: 0
+
+---- --------- ----
+
+
+
+========== Next Command Index:(6): CALL_TEMPLATE========== 
+----+ Command: templateCallCommand
+----+----+Template name:CreateWorkOrderTemplate and type:construct
+0:----+----+----+Argument name:woid
+0:----+----+----+Argument type:integer
+0:----+----+----+Argument value:201
+15:55:06 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+1:----+----+----+Argument name:agentid
+1:----+----+----+Argument type:integer
+1:----+----+----+Argument value:1
+15:55:06 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+2:----+----+----+Argument name:segtag
+2:----+----+----+Argument type:string
+2:----+----+----+Argument value:SEG-101
+15:55:06 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+15:55:06 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callTemplateByName()
+15:55:06 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+15:55:06 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callConstructTemplate()
+=================CONSTRUCT TEMPLATE RESULTS===============
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://ssp4t5.net/mimosa/combined#"
+    xmlns:j.1="http://ssp4t5.net/mimosa/workcoreplus#" > 
+  <rdf:Description rdf:about="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_201">
+    <j.0:targetAsset_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">101</j.0:targetAsset_id>
+    <j.0:targetSegment_tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SEG-101</j.0:targetSegment_tag>
+    <j.1:toAgent rdf:resource="http://ssp4t5.net/mimosa/combined#Agent_1"/>
+    <j.1:work_order_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">201</j.1:work_order_id>
+    <rdf:type rdf:resource="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder"/>
+  </rdf:Description>
+</rdf:RDF>
+==================================================
+
+
+
+========== Next Command Index:(8): CALL_TEMPLATE========== 
+----+ Command: templateCallCommand
+----+----+Template name:CreateSituationContextTemplate and type:construct
+0:----+----+----+Argument name:workorderid
+0:----+----+----+Argument type:integer
+0:----+----+----+Argument value:201
+15:55:07 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+15:55:07 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callTemplateByName()
+15:55:07 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+15:55:07 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callConstructTemplate()
+=================CONSTRUCT TEMPLATE RESULTS===============
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://ssp4t5.net/context/mctxcore#"
+    xmlns:j.1="http://ssp4t5.net/mimosa/combined#"
+    xmlns:j.2="http://ssp4t5.net/context/mctxsimple#"
+    xmlns:j.3="http://ssp4t5.net/mimosa/workcoreplus#" > 
+  <rdf:Description rdf:about="http://ssp4t5.net/context/mctxsimple#EMaintPerson_2016-03-02T15:55:07.078+02:00">
+    <j.0:cris_agent_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</j.0:cris_agent_id>
+    <rdf:type rdf:resource="http://ssp4t5.net/context/mctxsimple#EMaintPerson"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_201">
+    <j.1:targetAsset_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">101</j.1:targetAsset_id>
+    <j.1:targetSegment_tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SEG-101</j.1:targetSegment_tag>
+    <j.3:toAgent rdf:resource="http://ssp4t5.net/mimosa/combined#Agent_1"/>
+    <j.3:work_order_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">201</j.3:work_order_id>
+    <rdf:type rdf:resource="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ssp4t5.net/context/mctxcore#SituationContext_2016-03-02T15:55:07.078+02:00">
+    <j.0:hasElement rdf:resource="http://ssp4t5.net/context/mctxsimple#EMaintPerson_2016-03-02T15:55:07.078+02:00"/>
+    <j.0:hasElement rdf:resource="http://ssp4t5.net/context/mctxsimple#EMaintTarget_2016-03-02T15:55:07.078+02:00"/>
+    <j.0:hasElement rdf:resource="http://ssp4t5.net/context/mctxsimple#EMaintWork_2016-03-02T15:55:07.078+02:00"/>
+    <rdf:type rdf:resource="http://ssp4t5.net/context/mctxcore#SituationContext"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ssp4t5.net/context/mctxsimple#EMaintTarget_2016-03-02T15:55:07.078+02:00">
+    <j.0:ref_tag_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SEG-101</j.0:ref_tag_code>
+    <rdf:type rdf:resource="http://ssp4t5.net/context/mctxsimple#EMaintTarget"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ssp4t5.net/context/mctxsimple#EMaintWork_2016-03-02T15:55:07.078+02:00">
+    <j.0:cris_work_order_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">201</j.0:cris_work_order_id>
+    <rdf:type rdf:resource="http://ssp4t5.net/context/mctxsimple#EMaintWork"/>
+  </rdf:Description>
+</rdf:RDF>
+==================================================
+
+
+
+========== Next Command Index:(10): SPIN_CONSTRUCTOR========== 
+----+ Command: runSpinConstructorsCommand
+----+----+runSpinConstructorsCommand name:Run Spin Constructors and type:all
+
+---- OPERATION: Run Constructors ----
+
+15:55:07 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: runConstructors()
+
+---- --------- ----
+
+
+
+========== Next Command Index:(15): DESCRIBE========== 
+----+ Command: sparqlQueryCommand
+----+----+ name:TRIPLE DESCRIBE V2: DESCRIBE mctxsimple:EMaintTarget mctxsimple:EAsset and mctxsimple:ESegment)
+----+----+ reasoner:false
+----QueryString: PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sp: <http://spinrdf.org/sp#> PREFIX spif: <http://spinrdf.org/spif#> PREFIX spin: <http://spinrdf.org/spin#> PREFIX spl: <http://spinrdf.org/spl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> PREFIX arg: <http://spinrdf.org/arg#> PREFIX combined: <http://ssp4t5.net/mimosa/combined#> PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> PREFIX fn: <http://www.w3.org/2005/xpath-functions#> PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> PREFIX workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> PREFIX cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> PREFIX regasset: <http://ssp4t5.net/mimosa/regasset#> PREFIX regcore: <http://ssp4t5.net/mimosa/regcore#> PREFIX access: <http://siima.net/ont/accessories#> PREFIX bicycle: <http://siima.net/ont/bicycle#> PREFIX extproseg: <http://external.net/isa95/prosegmodel#> PREFIX proxyproseg: <http://ssp4t5.net/isa95/proxy/prosegmodel#>  DESCRIBE  ?etarget ?easset ?esegment  WHERE { ?etarget a mctxsimple:EMaintTarget . ?easset a mctxsimple:EAsset . ?esegment a mctxsimple:ESegment . ?etarget mctxcore:hasElement ?easset . ?etarget mctxcore:hasElement  ?esegment .  }
+15:55:07 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlDescribeQuery()
+---DESCRIBE QUERY:
+ PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sp: <http://spinrdf.org/sp#> PREFIX spif: <http://spinrdf.org/spif#> PREFIX spin: <http://spinrdf.org/spin#> PREFIX spl: <http://spinrdf.org/spl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> PREFIX arg: <http://spinrdf.org/arg#> PREFIX combined: <http://ssp4t5.net/mimosa/combined#> PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> PREFIX fn: <http://www.w3.org/2005/xpath-functions#> PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> PREFIX workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> PREFIX cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> PREFIX regasset: <http://ssp4t5.net/mimosa/regasset#> PREFIX regcore: <http://ssp4t5.net/mimosa/regcore#> PREFIX access: <http://siima.net/ont/accessories#> PREFIX bicycle: <http://siima.net/ont/bicycle#> PREFIX extproseg: <http://external.net/isa95/prosegmodel#> PREFIX proxyproseg: <http://ssp4t5.net/isa95/proxy/prosegmodel#>  DESCRIBE  ?etarget ?easset ?esegment  WHERE { ?etarget a mctxsimple:EMaintTarget . ?easset a mctxsimple:EAsset . ?esegment a mctxsimple:ESegment . ?etarget mctxcore:hasElement ?easset . ?etarget mctxcore:hasElement  ?esegment .  }
+@prefix :      <http://ssp4t5.net/test/context_mimosa#> .
+@prefix afn:   <http://jena.hpl.hp.com/ARQ/function#> .
+@prefix mctxsimple: <http://ssp4t5.net/context/mctxsimple#> .
+@prefix proxyproseg: <http://ssp4t5.net/isa95/proxy/prosegmodel#> .
+@prefix bicycle: <http://siima.net/ont/bicycle#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix arg:   <http://spinrdf.org/arg#> .
+@prefix extproseg: <http://external.net/isa95/prosegmodel#> .
+@prefix spl:   <http://spinrdf.org/spl#> .
+@prefix cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> .
+@prefix regasset: <http://ssp4t5.net/mimosa/regasset#> .
+@prefix spin:  <http://spinrdf.org/spin#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> .
+@prefix fn:    <http://www.w3.org/2005/xpath-functions#> .
+@prefix regcore: <http://ssp4t5.net/mimosa/regcore#> .
+@prefix sp:    <http://spinrdf.org/sp#> .
+@prefix spif:  <http://spinrdf.org/spif#> .
+@prefix access: <http://siima.net/ont/accessories#> .
+@prefix combined: <http://ssp4t5.net/mimosa/combined#> .
+@prefix mctxcore: <http://ssp4t5.net/context/mctxcore#> .
+@prefix ctxtop: <http://ssp4t5.net/test/context_mimosa#> .
+@prefix diagplus: <http://ssp4t5.net/mimosa/diagplus#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+
+<http://ssp4t5.net/context/mctxsimple#EMaintTarget_2016-03-02T15:55:07.078+02:00>
+        a                      mctxsimple:EMaintTarget ;
+        mctxcore:created       "2016-03-02T15:55:07.467+02:00"^^xsd:dateTime ;
+        mctxcore:hasElement    <http://ssp4t5.net/context/mctxsimple#EAsset_2016-03-02T15:55:07.467+02:00> , <http://ssp4t5.net/context/mctxsimple#ESegment_2016-03-02T15:55:07.467+02:00> ;
+        mctxcore:ref_tag_code  "SEG-101"^^xsd:string .
+
+mctxsimple:Target_1  a       mctxsimple:EMaintTarget ;
+        rdfs:label           "Target 1"^^xsd:string ;
+        mctxcore:created     "2016-03-02T15:55:07.127+02:00"^^xsd:dateTime ;
+        mctxcore:hasElement  <http://ssp4t5.net/context/mctxsimple#EAsset_2016-03-02T15:55:07.127+02:00> , <http://ssp4t5.net/context/mctxsimple#ESegment_2016-03-02T15:55:07.127+02:00> .
+
+<http://ssp4t5.net/context/mctxsimple#ESegment_2016-03-02T15:55:07.127+02:00>
+        a                 mctxsimple:ESegment ;
+        mctxcore:created  "2016-03-02T15:55:07.525+02:00"^^xsd:dateTime .
+
+<http://ssp4t5.net/context/mctxsimple#ESegment_2016-03-02T15:55:07.516+02:00>
+        a                 mctxsimple:ESegment ;
+        mctxcore:created  "2016-03-02T15:55:07.537+02:00"^^xsd:dateTime .
+
+<http://ssp4t5.net/context/mctxsimple#EAsset_2016-03-02T15:55:07.127+02:00>
+        a                 mctxsimple:EAsset ;
+        mctxcore:created  "2016-03-02T15:55:07.524+02:00"^^xsd:dateTime .
+
+<http://ssp4t5.net/context/mctxsimple#EAsset_2016-03-02T15:55:07.467+02:00>
+        a                      mctxsimple:EAsset ;
+        mctxcore:created       "2016-03-02T15:55:07.533+02:00"^^xsd:dateTime ;
+        mctxcore:ref_tag_code  "SEG-101"^^xsd:string .
+
+<http://ssp4t5.net/context/mctxsimple#ESegment_2016-03-02T15:55:07.442+02:00>
+        a                      mctxsimple:ESegment ;
+        mctxcore:created       "2016-03-02T15:55:07.532+02:00"^^xsd:dateTime ;
+        mctxcore:ref_tag_code  "SEG-101"^^xsd:string .
+
+<http://ssp4t5.net/context/mctxsimple#EAsset_2016-03-02T15:55:07.516+02:00>
+        a                 mctxsimple:EAsset ;
+        mctxcore:created  "2016-03-02T15:55:07.536+02:00"^^xsd:dateTime .
+
+mctxsimple:Target_101
+        a                      mctxsimple:EMaintTarget ;
+        rdfs:label             "Target 101"^^xsd:string ;
+        mctxcore:created       "2016-03-02T15:55:07.442+02:00"^^xsd:dateTime ;
+        mctxcore:hasElement    <http://ssp4t5.net/context/mctxsimple#EAsset_2016-03-02T15:55:07.442+02:00> , <http://ssp4t5.net/context/mctxsimple#ESegment_2016-03-02T15:55:07.442+02:00> ;
+        mctxcore:ref_tag_code  "SEG-101"^^xsd:string .
+
+mctxsimple:Target_2  a       mctxsimple:EMaintTarget ;
+        rdfs:label           "Target 2"^^xsd:string ;
+        mctxcore:created     "2016-03-02T15:55:07.516+02:00"^^xsd:dateTime ;
+        mctxcore:hasElement  <http://ssp4t5.net/context/mctxsimple#EAsset_2016-03-02T15:55:07.516+02:00> , <http://ssp4t5.net/context/mctxsimple#ESegment_2016-03-02T15:55:07.516+02:00> ;
+        mctxcore:name        "machineS2"^^xsd:string ;
+        mctxsimple:location  "AreaS2"^^xsd:string ;
+        mctxsimple:tag       "MS-200"^^xsd:string .
+
+<http://ssp4t5.net/context/mctxsimple#EAsset_2016-03-02T15:55:07.442+02:00>
+        a                      mctxsimple:EAsset ;
+        mctxcore:created       "2016-03-02T15:55:07.531+02:00"^^xsd:dateTime ;
+        mctxcore:ref_tag_code  "SEG-101"^^xsd:string .
+
+<http://ssp4t5.net/context/mctxsimple#ESegment_2016-03-02T15:55:07.467+02:00>
+        a                      mctxsimple:ESegment ;
+        mctxcore:created       "2016-03-02T15:55:07.535+02:00"^^xsd:dateTime ;
+        mctxcore:ref_tag_code  "SEG-101"^^xsd:string .
+
+
+========== Next Command Index:(16): DESCRIBE========== 
+----+ Command: sparqlQueryCommand
+----+----+ name:DOUBLE DESCRIBE: DESCRIBE mctxsimple:EMaintPerson and mctxsimple:EPersonProfile
+----+----+ reasoner:false
+----QueryString: PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sp: <http://spinrdf.org/sp#> PREFIX spif: <http://spinrdf.org/spif#> PREFIX spin: <http://spinrdf.org/spin#> PREFIX spl: <http://spinrdf.org/spl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> PREFIX arg: <http://spinrdf.org/arg#> PREFIX combined: <http://ssp4t5.net/mimosa/combined#> PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> PREFIX fn: <http://www.w3.org/2005/xpath-functions#> PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> PREFIX workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> PREFIX cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> PREFIX regasset: <http://ssp4t5.net/mimosa/regasset#> PREFIX regcore: <http://ssp4t5.net/mimosa/regcore#> PREFIX access: <http://siima.net/ont/accessories#> PREFIX bicycle: <http://siima.net/ont/bicycle#> PREFIX extproseg: <http://external.net/isa95/prosegmodel#> PREFIX proxyproseg: <http://ssp4t5.net/isa95/proxy/prosegmodel#>  DESCRIBE  ?person ?profile  WHERE { ?person a mctxsimple:EMaintPerson . ?profile a mctxsimple:EPersonProfile . ?person mctxcore:hasElement ?profile .  }
+15:55:07 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlDescribeQuery()
+---DESCRIBE QUERY:
+ PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sp: <http://spinrdf.org/sp#> PREFIX spif: <http://spinrdf.org/spif#> PREFIX spin: <http://spinrdf.org/spin#> PREFIX spl: <http://spinrdf.org/spl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> PREFIX arg: <http://spinrdf.org/arg#> PREFIX combined: <http://ssp4t5.net/mimosa/combined#> PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> PREFIX fn: <http://www.w3.org/2005/xpath-functions#> PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> PREFIX workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> PREFIX cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> PREFIX regasset: <http://ssp4t5.net/mimosa/regasset#> PREFIX regcore: <http://ssp4t5.net/mimosa/regcore#> PREFIX access: <http://siima.net/ont/accessories#> PREFIX bicycle: <http://siima.net/ont/bicycle#> PREFIX extproseg: <http://external.net/isa95/prosegmodel#> PREFIX proxyproseg: <http://ssp4t5.net/isa95/proxy/prosegmodel#>  DESCRIBE  ?person ?profile  WHERE { ?person a mctxsimple:EMaintPerson . ?profile a mctxsimple:EPersonProfile . ?person mctxcore:hasElement ?profile .  }
+@prefix :      <http://ssp4t5.net/test/context_mimosa#> .
+@prefix afn:   <http://jena.hpl.hp.com/ARQ/function#> .
+@prefix mctxsimple: <http://ssp4t5.net/context/mctxsimple#> .
+@prefix proxyproseg: <http://ssp4t5.net/isa95/proxy/prosegmodel#> .
+@prefix bicycle: <http://siima.net/ont/bicycle#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix arg:   <http://spinrdf.org/arg#> .
+@prefix extproseg: <http://external.net/isa95/prosegmodel#> .
+@prefix spl:   <http://spinrdf.org/spl#> .
+@prefix cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> .
+@prefix regasset: <http://ssp4t5.net/mimosa/regasset#> .
+@prefix spin:  <http://spinrdf.org/spin#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> .
+@prefix fn:    <http://www.w3.org/2005/xpath-functions#> .
+@prefix regcore: <http://ssp4t5.net/mimosa/regcore#> .
+@prefix sp:    <http://spinrdf.org/sp#> .
+@prefix spif:  <http://spinrdf.org/spif#> .
+@prefix access: <http://siima.net/ont/accessories#> .
+@prefix combined: <http://ssp4t5.net/mimosa/combined#> .
+@prefix mctxcore: <http://ssp4t5.net/context/mctxcore#> .
+@prefix ctxtop: <http://ssp4t5.net/test/context_mimosa#> .
+@prefix diagplus: <http://ssp4t5.net/mimosa/diagplus#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+
+<http://ssp4t5.net/context/mctxsimple#EPersonProfile_2016-03-02T15:55:07.422+02:00>
+        a                       mctxsimple:EPersonProfile ;
+        mctxcore:created        "2016-03-02T15:55:07.530+02:00"^^xsd:dateTime ;
+        mctxcore:cris_agent_id  1 .
+
+<http://ssp4t5.net/context/mctxsimple#EPersonProfile_2016-03-02T15:55:07.279+02:00>
+        a                 mctxsimple:EPersonProfile ;
+        mctxcore:created  "2016-03-02T15:55:07.528+02:00"^^xsd:dateTime .
+
+mctxsimple:MPerson_1  a      mctxsimple:EMaintPerson ;
+        rdfs:label           "MPerson 1"^^xsd:string ;
+        mctxcore:created     "2016-03-02T15:55:07.279+02:00"^^xsd:dateTime ;
+        mctxcore:hasElement  <http://ssp4t5.net/context/mctxsimple#EPersonProfile_2016-03-02T15:55:07.279+02:00> .
+
+<http://ssp4t5.net/context/mctxsimple#EMaintPerson_2016-03-02T15:55:07.078+02:00>
+        a                       mctxsimple:EMaintPerson ;
+        mctxcore:created        "2016-03-02T15:55:07.422+02:00"^^xsd:dateTime ;
+        mctxcore:cris_agent_id  1 ;
+        mctxcore:hasElement     <http://ssp4t5.net/context/mctxsimple#EPersonProfile_2016-03-02T15:55:07.422+02:00> .
+
+
+========== Next Command Index:(17): CONSTRUCT_QUERY========== 
+----+ Command: sparqlQueryCommand
+----+----+ name:Construct External ISA-95 Class and Property
+----+----+ reasoner:null
+----QueryString: PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sp: <http://spinrdf.org/sp#> PREFIX spif: <http://spinrdf.org/spif#> PREFIX spin: <http://spinrdf.org/spin#> PREFIX spl: <http://spinrdf.org/spl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> PREFIX arg: <http://spinrdf.org/arg#> PREFIX combined: <http://ssp4t5.net/mimosa/combined#> PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> PREFIX fn: <http://www.w3.org/2005/xpath-functions#> PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> PREFIX workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> PREFIX cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> PREFIX regasset: <http://ssp4t5.net/mimosa/regasset#> PREFIX regcore: <http://ssp4t5.net/mimosa/regcore#> PREFIX access: <http://siima.net/ont/accessories#> PREFIX bicycle: <http://siima.net/ont/bicycle#> PREFIX extproseg: <http://external.net/isa95/prosegmodel#> PREFIX proxyproseg: <http://ssp4t5.net/isa95/proxy/prosegmodel#>  CONSTRUCT {?specclass a owl:Class . ?docclass a owl:Class . ?modelprop a owl:DatatypeProperty . ?docprop a owl:ObjectProperty . ?uriprop a owl:DatatypeProperty .  } WHERE { BIND (IRI(fn:concat('http://external.net/isa95/prosegmodel#','EquipSegSpec')) AS ?specclass) . BIND (IRI(fn:concat('http://external.net/isa95/prosegmodel#','EquipDocumentation')) AS ?docclass) . BIND (IRI(fn:concat('http://external.net/isa95/prosegmodel#','model_id')) AS ?modelprop) . BIND (IRI(fn:concat('http://external.net/isa95/prosegmodel#','hasDocumentation')) AS ?docprop) . BIND (IRI(fn:concat('http://external.net/isa95/prosegmodel#','docUri')) AS ?uriprop) . }
+15:55:07 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlConstructQuery()
+---CONSTRUCT QUERY:
+ PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sp: <http://spinrdf.org/sp#> PREFIX spif: <http://spinrdf.org/spif#> PREFIX spin: <http://spinrdf.org/spin#> PREFIX spl: <http://spinrdf.org/spl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> PREFIX arg: <http://spinrdf.org/arg#> PREFIX combined: <http://ssp4t5.net/mimosa/combined#> PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> PREFIX fn: <http://www.w3.org/2005/xpath-functions#> PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> PREFIX workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> PREFIX cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> PREFIX regasset: <http://ssp4t5.net/mimosa/regasset#> PREFIX regcore: <http://ssp4t5.net/mimosa/regcore#> PREFIX access: <http://siima.net/ont/accessories#> PREFIX bicycle: <http://siima.net/ont/bicycle#> PREFIX extproseg: <http://external.net/isa95/prosegmodel#> PREFIX proxyproseg: <http://ssp4t5.net/isa95/proxy/prosegmodel#>  CONSTRUCT {?specclass a owl:Class . ?docclass a owl:Class . ?modelprop a owl:DatatypeProperty . ?docprop a owl:ObjectProperty . ?uriprop a owl:DatatypeProperty .  } WHERE { BIND (IRI(fn:concat('http://external.net/isa95/prosegmodel#','EquipSegSpec')) AS ?specclass) . BIND (IRI(fn:concat('http://external.net/isa95/prosegmodel#','EquipDocumentation')) AS ?docclass) . BIND (IRI(fn:concat('http://external.net/isa95/prosegmodel#','model_id')) AS ?modelprop) . BIND (IRI(fn:concat('http://external.net/isa95/prosegmodel#','hasDocumentation')) AS ?docprop) . BIND (IRI(fn:concat('http://external.net/isa95/prosegmodel#','docUri')) AS ?uriprop) . }
+@prefix :      <http://ssp4t5.net/test/context_mimosa#> .
+@prefix afn:   <http://jena.hpl.hp.com/ARQ/function#> .
+@prefix mctxsimple: <http://ssp4t5.net/context/mctxsimple#> .
+@prefix proxyproseg: <http://ssp4t5.net/isa95/proxy/prosegmodel#> .
+@prefix bicycle: <http://siima.net/ont/bicycle#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix arg:   <http://spinrdf.org/arg#> .
+@prefix extproseg: <http://external.net/isa95/prosegmodel#> .
+@prefix spl:   <http://spinrdf.org/spl#> .
+@prefix cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> .
+@prefix regasset: <http://ssp4t5.net/mimosa/regasset#> .
+@prefix spin:  <http://spinrdf.org/spin#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> .
+@prefix fn:    <http://www.w3.org/2005/xpath-functions#> .
+@prefix regcore: <http://ssp4t5.net/mimosa/regcore#> .
+@prefix sp:    <http://spinrdf.org/sp#> .
+@prefix spif:  <http://spinrdf.org/spif#> .
+@prefix access: <http://siima.net/ont/accessories#> .
+@prefix combined: <http://ssp4t5.net/mimosa/combined#> .
+@prefix mctxcore: <http://ssp4t5.net/context/mctxcore#> .
+@prefix ctxtop: <http://ssp4t5.net/test/context_mimosa#> .
+@prefix diagplus: <http://ssp4t5.net/mimosa/diagplus#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+
+extproseg:EquipSegSpec
+        a       owl:Class .
+
+extproseg:EquipDocumentation
+        a       owl:Class .
+
+extproseg:docUri  a  owl:DatatypeProperty .
+
+extproseg:hasDocumentation
+        a       owl:ObjectProperty .
+
+extproseg:model_id  a  owl:DatatypeProperty .
+
+
+========== Next Command Index:(18): CONSTRUCT_QUERY========== 
+----+ Command: sparqlQueryCommand
+----+----+ name:NOTE: APPLY AFTER CONSTRUCTION OF ISA-95 Class and Property. Constructs External ISA-95 Class instance with Property value
+----+----+ reasoner:null
+----QueryString: PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sp: <http://spinrdf.org/sp#> PREFIX spif: <http://spinrdf.org/spif#> PREFIX spin: <http://spinrdf.org/spin#> PREFIX spl: <http://spinrdf.org/spl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> PREFIX arg: <http://spinrdf.org/arg#> PREFIX combined: <http://ssp4t5.net/mimosa/combined#> PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> PREFIX fn: <http://www.w3.org/2005/xpath-functions#> PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> PREFIX workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> PREFIX cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> PREFIX regasset: <http://ssp4t5.net/mimosa/regasset#> PREFIX regcore: <http://ssp4t5.net/mimosa/regcore#> PREFIX access: <http://siima.net/ont/accessories#> PREFIX bicycle: <http://siima.net/ont/bicycle#> PREFIX extproseg: <http://external.net/isa95/prosegmodel#> PREFIX proxyproseg: <http://ssp4t5.net/isa95/proxy/prosegmodel#>  CONSTRUCT {?spec a <http://external.net/isa95/prosegmodel#EquipSegSpec> . ?spec <http://external.net/isa95/prosegmodel#model_id> 101 . ?doc a <http://external.net/isa95/prosegmodel#EquipDocumentation> . ?spec <http://external.net/isa95/prosegmodel#hasDocumentation> ?doc . ?doc <http://external.net/isa95/prosegmodel#docUri> 'MaintenanceGuide_101_uri' . } WHERE { BIND (IRI(fn:concat('http://external.net/isa95/prosegmodel#','EquipSegSpec_101')) AS ?spec) . BIND (IRI(fn:concat('http://external.net/isa95/prosegmodel#','EquipDocumentation_101')) AS ?doc) . }
+15:55:07 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlConstructQuery()
+---CONSTRUCT QUERY:
+ PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sp: <http://spinrdf.org/sp#> PREFIX spif: <http://spinrdf.org/spif#> PREFIX spin: <http://spinrdf.org/spin#> PREFIX spl: <http://spinrdf.org/spl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> PREFIX arg: <http://spinrdf.org/arg#> PREFIX combined: <http://ssp4t5.net/mimosa/combined#> PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> PREFIX fn: <http://www.w3.org/2005/xpath-functions#> PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> PREFIX workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> PREFIX cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> PREFIX regasset: <http://ssp4t5.net/mimosa/regasset#> PREFIX regcore: <http://ssp4t5.net/mimosa/regcore#> PREFIX access: <http://siima.net/ont/accessories#> PREFIX bicycle: <http://siima.net/ont/bicycle#> PREFIX extproseg: <http://external.net/isa95/prosegmodel#> PREFIX proxyproseg: <http://ssp4t5.net/isa95/proxy/prosegmodel#>  CONSTRUCT {?spec a <http://external.net/isa95/prosegmodel#EquipSegSpec> . ?spec <http://external.net/isa95/prosegmodel#model_id> 101 . ?doc a <http://external.net/isa95/prosegmodel#EquipDocumentation> . ?spec <http://external.net/isa95/prosegmodel#hasDocumentation> ?doc . ?doc <http://external.net/isa95/prosegmodel#docUri> 'MaintenanceGuide_101_uri' . } WHERE { BIND (IRI(fn:concat('http://external.net/isa95/prosegmodel#','EquipSegSpec_101')) AS ?spec) . BIND (IRI(fn:concat('http://external.net/isa95/prosegmodel#','EquipDocumentation_101')) AS ?doc) . }
+@prefix :      <http://ssp4t5.net/test/context_mimosa#> .
+@prefix afn:   <http://jena.hpl.hp.com/ARQ/function#> .
+@prefix mctxsimple: <http://ssp4t5.net/context/mctxsimple#> .
+@prefix proxyproseg: <http://ssp4t5.net/isa95/proxy/prosegmodel#> .
+@prefix bicycle: <http://siima.net/ont/bicycle#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix arg:   <http://spinrdf.org/arg#> .
+@prefix extproseg: <http://external.net/isa95/prosegmodel#> .
+@prefix spl:   <http://spinrdf.org/spl#> .
+@prefix cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> .
+@prefix regasset: <http://ssp4t5.net/mimosa/regasset#> .
+@prefix spin:  <http://spinrdf.org/spin#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> .
+@prefix fn:    <http://www.w3.org/2005/xpath-functions#> .
+@prefix regcore: <http://ssp4t5.net/mimosa/regcore#> .
+@prefix sp:    <http://spinrdf.org/sp#> .
+@prefix spif:  <http://spinrdf.org/spif#> .
+@prefix access: <http://siima.net/ont/accessories#> .
+@prefix combined: <http://ssp4t5.net/mimosa/combined#> .
+@prefix mctxcore: <http://ssp4t5.net/context/mctxcore#> .
+@prefix ctxtop: <http://ssp4t5.net/test/context_mimosa#> .
+@prefix diagplus: <http://ssp4t5.net/mimosa/diagplus#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+
+extproseg:EquipSegSpec_101
+        a                           extproseg:EquipSegSpec ;
+        extproseg:hasDocumentation  extproseg:EquipDocumentation_101 ;
+        extproseg:model_id          101 .
+
+extproseg:EquipDocumentation_101
+        a                 extproseg:EquipDocumentation ;
+        extproseg:docUri  "MaintenanceGuide_101_uri" .
+
+
+========== Next Command Index:(19): DESCRIBE========== 
+----+ Command: sparqlQueryCommand
+----+----+ name:DESCRIBE extproseg:EquipSegSpec and related extproseg:EquipDocumentation instances (extproseg=http://external.net/isa95/prosegmodel#)
+----+----+ reasoner:false
+----QueryString: PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sp: <http://spinrdf.org/sp#> PREFIX spif: <http://spinrdf.org/spif#> PREFIX spin: <http://spinrdf.org/spin#> PREFIX spl: <http://spinrdf.org/spl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> PREFIX arg: <http://spinrdf.org/arg#> PREFIX combined: <http://ssp4t5.net/mimosa/combined#> PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> PREFIX fn: <http://www.w3.org/2005/xpath-functions#> PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> PREFIX workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> PREFIX cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> PREFIX regasset: <http://ssp4t5.net/mimosa/regasset#> PREFIX regcore: <http://ssp4t5.net/mimosa/regcore#> PREFIX access: <http://siima.net/ont/accessories#> PREFIX bicycle: <http://siima.net/ont/bicycle#> PREFIX extproseg: <http://external.net/isa95/prosegmodel#> PREFIX proxyproseg: <http://ssp4t5.net/isa95/proxy/prosegmodel#>  DESCRIBE  ?spec ?doc  WHERE { ?spec a extproseg:EquipSegSpec . ?spec extproseg:hasDocumentation ?doc.  }
+15:55:07 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlDescribeQuery()
+---DESCRIBE QUERY:
+ PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sp: <http://spinrdf.org/sp#> PREFIX spif: <http://spinrdf.org/spif#> PREFIX spin: <http://spinrdf.org/spin#> PREFIX spl: <http://spinrdf.org/spl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> PREFIX arg: <http://spinrdf.org/arg#> PREFIX combined: <http://ssp4t5.net/mimosa/combined#> PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> PREFIX fn: <http://www.w3.org/2005/xpath-functions#> PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> PREFIX workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> PREFIX cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> PREFIX regasset: <http://ssp4t5.net/mimosa/regasset#> PREFIX regcore: <http://ssp4t5.net/mimosa/regcore#> PREFIX access: <http://siima.net/ont/accessories#> PREFIX bicycle: <http://siima.net/ont/bicycle#> PREFIX extproseg: <http://external.net/isa95/prosegmodel#> PREFIX proxyproseg: <http://ssp4t5.net/isa95/proxy/prosegmodel#>  DESCRIBE  ?spec ?doc  WHERE { ?spec a extproseg:EquipSegSpec . ?spec extproseg:hasDocumentation ?doc.  }
+@prefix :      <http://ssp4t5.net/test/context_mimosa#> .
+@prefix afn:   <http://jena.hpl.hp.com/ARQ/function#> .
+@prefix mctxsimple: <http://ssp4t5.net/context/mctxsimple#> .
+@prefix proxyproseg: <http://ssp4t5.net/isa95/proxy/prosegmodel#> .
+@prefix bicycle: <http://siima.net/ont/bicycle#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix arg:   <http://spinrdf.org/arg#> .
+@prefix extproseg: <http://external.net/isa95/prosegmodel#> .
+@prefix spl:   <http://spinrdf.org/spl#> .
+@prefix cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> .
+@prefix regasset: <http://ssp4t5.net/mimosa/regasset#> .
+@prefix spin:  <http://spinrdf.org/spin#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> .
+@prefix fn:    <http://www.w3.org/2005/xpath-functions#> .
+@prefix regcore: <http://ssp4t5.net/mimosa/regcore#> .
+@prefix sp:    <http://spinrdf.org/sp#> .
+@prefix spif:  <http://spinrdf.org/spif#> .
+@prefix access: <http://siima.net/ont/accessories#> .
+@prefix combined: <http://ssp4t5.net/mimosa/combined#> .
+@prefix mctxcore: <http://ssp4t5.net/context/mctxcore#> .
+@prefix ctxtop: <http://ssp4t5.net/test/context_mimosa#> .
+@prefix diagplus: <http://ssp4t5.net/mimosa/diagplus#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+
+extproseg:EquipSegSpec_101
+        a                           extproseg:EquipSegSpec ;
+        extproseg:hasDocumentation  extproseg:EquipDocumentation_101 ;
+        extproseg:model_id          101 .
+
+extproseg:EquipDocumentation_101
+        a                 extproseg:EquipDocumentation ;
+        extproseg:docUri  "MaintenanceGuide_101_uri" .
+
+
+========== Next Command Index:(11): WRITE========== 
+----+ Command: writeModelCommand
+----+----+ KB name:Write Inferred Triples to Console
+
+---- Printing Inferred Triples or models to Console ----
+------------------------------------------------
+{ 
+  "http://ssp4t5.net/context/mctxsimple#EAsset_2016-03-02T15:55:07.442+02:00" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EAsset"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.531+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#ref_tag_code" : [ { 
+      "type" : "literal" ,
+      "value" : "SEG-101" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#string"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/context/mctxsimple#ESegment_2016-03-02T15:55:07.442+02:00" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#ESegment"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.532+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#ref_tag_code" : [ { 
+      "type" : "literal" ,
+      "value" : "SEG-101" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#string"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/context/mctxsimple#EPersonProfile_2016-03-02T15:55:07.422+02:00" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EPersonProfile"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.530+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#cris_agent_id" : [ { 
+      "type" : "literal" ,
+      "value" : "1" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#integer"
+    }
+     ]
+  }
+   ,
+  "http://external.net/isa95/prosegmodel#EquipDocumentation" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.w3.org/2002/07/owl#Class"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/context/mctxsimple#Target_1" : { 
+    "http://ssp4t5.net/context/mctxcore#hasElement" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#ESegment_2016-03-02T15:55:07.127+02:00"
+    }
+    , { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EAsset_2016-03-02T15:55:07.127+02:00"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.127+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/context/mctxsimple#EAsset_2016-03-02T15:55:07.127+02:00" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EAsset"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.524+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/mimosa/combined#SegmentRecommendation_1" : { 
+    "http://www.w3.org/2000/01/rdf-schema#comment" : [ { 
+      "type" : "literal" ,
+      "value" : "This is a SegmentRecommendation comment line: ?" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#string"
+    }
+     ] ,
+    "http://ssp4t5.net/mimosa/diagplus#utcRecommendation" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.318+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ]
+  }
+   ,
+  "http://external.net/isa95/prosegmodel#EquipDocumentation_101" : { 
+    "http://external.net/isa95/prosegmodel#docUri" : [ { 
+      "type" : "literal" ,
+      "value" : "MaintenanceGuide_101_uri"
+    }
+     ] ,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://external.net/isa95/prosegmodel#EquipDocumentation"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/context/mctxsimple#ESegment_2016-03-02T15:55:07.127+02:00" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#ESegment"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.525+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ]
+  }
+   ,
+  "http://external.net/isa95/prosegmodel#hasDocumentation" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.w3.org/2002/07/owl#ObjectProperty"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/context/mctxsimple#EMaintPerson_2016-03-02T15:55:07.078+02:00" : { 
+    "http://ssp4t5.net/context/mctxcore#hasElement" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EPersonProfile_2016-03-02T15:55:07.422+02:00"
+    }
+     ] ,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EMaintPerson"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.422+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#cris_agent_id" : [ { 
+      "type" : "literal" ,
+      "value" : "1" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#integer"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/context/mctxsimple#EAsset_2016-03-02T15:55:07.467+02:00" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EAsset"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.533+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#ref_tag_code" : [ { 
+      "type" : "literal" ,
+      "value" : "SEG-101" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#string"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/context/mctxsimple#ESegment_2016-03-02T15:55:07.467+02:00" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#ESegment"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.535+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#ref_tag_code" : [ { 
+      "type" : "literal" ,
+      "value" : "SEG-101" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#string"
+    }
+     ]
+  }
+   ,
+  "http://external.net/isa95/prosegmodel#EquipSegSpec_101" : { 
+    "http://external.net/isa95/prosegmodel#hasDocumentation" : [ { 
+      "type" : "uri" ,
+      "value" : "http://external.net/isa95/prosegmodel#EquipDocumentation_101"
+    }
+     ] ,
+    "http://external.net/isa95/prosegmodel#model_id" : [ { 
+      "type" : "literal" ,
+      "value" : "101" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#integer"
+    }
+     ] ,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://external.net/isa95/prosegmodel#EquipSegSpec"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/context/mctxsimple#EMaintTarget_2016-03-02T15:55:07.078+02:00" : { 
+    "http://ssp4t5.net/context/mctxcore#hasElement" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EAsset_2016-03-02T15:55:07.467+02:00"
+    }
+    , { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#ESegment_2016-03-02T15:55:07.467+02:00"
+    }
+     ] ,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EMaintTarget"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.467+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#ref_tag_code" : [ { 
+      "type" : "literal" ,
+      "value" : "SEG-101" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#string"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/context/mctxsimple#ESegment_2016-03-02T15:55:07.516+02:00" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#ESegment"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.537+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/context/mctxsimple#EPersonProfile_2016-03-02T15:55:07.279+02:00" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EPersonProfile"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.528+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ]
+  }
+   ,
+  "http://external.net/isa95/prosegmodel#docUri" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/context/mctxsimple#EWorkOrder_2016-03-02T15:55:07.162+02:00" : { 
+    "http://ssp4t5.net/context/mctxcore#cris_work_order_id" : [ { 
+      "type" : "literal" ,
+      "value" : "777" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#integer"
+    }
+     ] ,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EWorkOrder"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.526+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/context/mctxsimple#MPerson_1" : { 
+    "http://ssp4t5.net/context/mctxcore#hasElement" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EPersonProfile_2016-03-02T15:55:07.279+02:00"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.279+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_201" : { 
+    "http://ssp4t5.net/mimosa/workcoreplus#toAgent" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/mimosa/combined#Agent_1"
+    }
+     ] ,
+    "http://ssp4t5.net/mimosa/workcoreplus#work_order_id" : [ { 
+      "type" : "literal" ,
+      "value" : "201" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#integer"
+    }
+     ] ,
+    "http://ssp4t5.net/mimosa/combined#targetSegment_tag" : [ { 
+      "type" : "literal" ,
+      "value" : "SEG-101" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#string"
+    }
+     ] ,
+    "http://ssp4t5.net/mimosa/combined#targetAsset_id" : [ { 
+      "type" : "literal" ,
+      "value" : "101" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#integer"
+    }
+     ] ,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/mimosa/workcoreplus#WorkOrder"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/mimosa/combined#AssetRecommendation_1" : { 
+    "http://www.w3.org/2000/01/rdf-schema#comment" : [ { 
+      "type" : "literal" ,
+      "value" : "This is an AssetRecommendation comment line: ?" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#string"
+    }
+     ] ,
+    "http://ssp4t5.net/mimosa/diagplus#utcRecommendation" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.392+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ]
+  }
+   ,
+  "http://external.net/isa95/prosegmodel#model_id" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.w3.org/2002/07/owl#DatatypeProperty"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/context/mctxsimple#EMaintWork_777" : { 
+    "http://ssp4t5.net/context/mctxcore#hasElement" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EWorkOrder_2016-03-02T15:55:07.162+02:00"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.162+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/context/mctxsimple#EWorkOrder_2016-03-02T15:55:07.340+02:00" : { 
+    "http://ssp4t5.net/context/mctxcore#cris_work_order_id" : [ { 
+      "type" : "literal" ,
+      "value" : "201" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#integer"
+    }
+     ] ,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EWorkOrder"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.529+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/context/mctxsimple#EMaintWork_2016-03-02T15:55:07.078+02:00" : { 
+    "http://ssp4t5.net/context/mctxcore#hasElement" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EWorkOrder_2016-03-02T15:55:07.340+02:00"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#cris_work_order_id" : [ { 
+      "type" : "literal" ,
+      "value" : "201" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#integer"
+    }
+     ] ,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EMaintWork"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.340+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/context/mctxsimple#EAsset_2016-03-02T15:55:07.516+02:00" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EAsset"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.536+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/context/mctxsimple#Target_101" : { 
+    "http://ssp4t5.net/context/mctxcore#hasElement" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EAsset_2016-03-02T15:55:07.442+02:00"
+    }
+    , { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#ESegment_2016-03-02T15:55:07.442+02:00"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.442+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/context/mctxcore#SituationContext_2016-03-02T15:55:07.078+02:00" : { 
+    "http://ssp4t5.net/context/mctxcore#active" : [ { 
+      "type" : "literal" ,
+      "value" : "true" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#boolean"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#hasElement" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EMaintPerson_2016-03-02T15:55:07.078+02:00"
+    }
+    , { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EMaintTarget_2016-03-02T15:55:07.078+02:00"
+    }
+    , { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EMaintWork_2016-03-02T15:55:07.078+02:00"
+    }
+     ] ,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxcore#SituationContext"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.175+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ]
+  }
+   ,
+  "http://ssp4t5.net/context/mctxsimple#Target_2" : { 
+    "http://ssp4t5.net/context/mctxcore#hasElement" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#ESegment_2016-03-02T15:55:07.516+02:00"
+    }
+    , { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#EAsset_2016-03-02T15:55:07.516+02:00"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T15:55:07.516+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ]
+  }
+   ,
+  "http://external.net/isa95/prosegmodel#EquipSegSpec" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.w3.org/2002/07/owl#Class"
+    }
+     ]
+  }
+}
+
+
+========== WORKFLOW STEPS LOG ==========
+
+ (start)-->| LOAD_KB(0) |-->| INF_MODEL(1) |-->| INFER(2) |-->| CALL_TEMPLATE(6) |-->| CALL_TEMPLATE(8) |-->| SPIN_CONSTRUCTOR(10) |-->| DESCRIBE(15) |-->| DESCRIBE(16) |-->| CONSTRUCT_QUERY(17) |-->| CONSTRUCT_QUERY(18) |-->| DESCRIBE(19) |-->| WRITE(11) |-->(end)

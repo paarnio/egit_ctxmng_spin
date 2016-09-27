@@ -1,0 +1,13 @@
+InteractiveSpinMng (Ism)
+
+1. Writing maintContext model (ssp4t5.net) into TBC project SWgeneratedContext:
+C:/Special_Programs/TBC_projects/2016_sw-generated/SWgeneratedContext/SWGMaintContext.ttl
+
+2. Opening the model in TBC for viewing
+
+
+3. Editing the source model MaintContext in TBC workspace 2016a (file:context_mimosa.ttl)
+
+	3.1 new property http://ssp4t5.net/mimosa/combined#targetSegment_tag for WorkOrder objects and new property http://ssp4t5.net/mimosa/combined#targetAsset_id for WorkOrder objects(file:combined.ttl)
+	
+TODO:	3.2 New constructor template CreateWorkOrderTemplate (file:context_mimosa.ttl)

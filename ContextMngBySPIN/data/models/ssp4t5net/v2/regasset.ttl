@@ -1,0 +1,172 @@
+# baseURI: http://ssp4t5.net/mimosa/regasset
+
+@prefix : <http://ssp4t5.net/mimosa/regasset#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://ssp4t5.net/mimosa/regasset>
+  rdf:type owl:Ontology ;
+  rdfs:comment "Object models from RegAsset RegSegment RegModel and RegNetworkInfo in Mimosa OSA-EAI CCOM 3.2.2 2009"^^xsd:string ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+:AssetBlobData
+  rdf:type owl:Class ;
+  rdfs:label "Asset blob data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:AssetBlobDataType
+  rdf:type owl:Class ;
+  rdfs:label "Asset blob data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:AssetCharacterData
+  rdf:type owl:Class ;
+  rdfs:label "Asset character data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:AssetCharacterDataType
+  rdf:type owl:Class ;
+  rdfs:label "Asset character data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:AssetNumericData
+  rdf:type owl:Class ;
+  rdfs:label "Asset numeric data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:AssetNumericDataType
+  rdf:type owl:Class ;
+  rdfs:label "Asset numeric data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:AssetOwner
+  rdf:type owl:Class ;
+  rdfs:label "Asset owner"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:AssetReadinessType
+  rdf:type owl:Class ;
+  rdfs:label "Asset readiness type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:BlobContentType
+  rdf:type owl:Class ;
+  rdfs:label "Blob content type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:BlobDataType
+  rdf:type owl:Class ;
+  rdfs:label "Blob data type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:CriticalityScaleType
+  rdf:type owl:Class ;
+  rdfs:label "Criticality scale type from RegSegment"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:EngineeringUnitType
+  rdf:type owl:Class ;
+  rdfs:label "Engineering unit type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:ModelBlobData
+  rdf:type owl:Class ;
+  rdfs:label "Model blob data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:ModelCharacterData
+  rdf:type owl:Class ;
+  rdfs:label "Model character data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:ModelNumericData
+  rdf:type owl:Class ;
+  rdfs:label "Model numeric data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:NetworkBlobData
+  rdf:type owl:Class ;
+  rdfs:label "Network blob data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:NetworkCharacterData
+  rdf:type owl:Class ;
+  rdfs:label "Network character data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:NetworkCharacterDataType
+  rdf:type owl:Class ;
+  rdfs:label "Network character data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:NetworkNumericData
+  rdf:type owl:Class ;
+  rdfs:label "Network numeric data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:NetworkNumericDataType
+  rdf:type owl:Class ;
+  rdfs:label "Network numeric data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:PurchaseCondType
+  rdf:type owl:Class ;
+  rdfs:label "Purchase cond type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:ReferenceUnitType
+  rdf:type owl:Class ;
+  rdfs:label "Reference unit type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:SegmentBlobData
+  rdf:type owl:Class ;
+  rdfs:label "Segment blob data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:SegmentCharacterData
+  rdf:type owl:Class ;
+  rdfs:label "Segment character data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:SegmentCharacterDataType
+  rdf:type owl:Class ;
+  rdfs:label "Segment character data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:SegmentNumericData
+  rdf:type owl:Class ;
+  rdfs:label "Segment numeric data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:SegmentNumericDataType
+  rdf:type owl:Class ;
+  rdfs:label "Segment numeric data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:currentReadiness
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "current readiness"^^xsd:string ;
+.
+:isTopicOf
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "is topic of"^^xsd:string ;
+.
+:ownedBy
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "owned by"^^xsd:string ;
+.
+:references
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "references"^^xsd:string ;
+.
+:withCondition
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "with condition"^^xsd:string ;
+.
+:withUnitsOf
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "with units of"^^xsd:string ;
+.

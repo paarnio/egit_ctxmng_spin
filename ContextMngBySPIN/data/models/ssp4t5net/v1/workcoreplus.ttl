@@ -1,0 +1,171 @@
+# baseURI: http://ssp4t5.net/mimosa/workcoreplus
+
+@prefix : <http://ssp4t5.net/mimosa/workcoreplus#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://ssp4t5.net/mimosa/workcoreplus>
+  rdf:type owl:Ontology ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+:AssetRequestForWork
+  rdf:type owl:Class ;
+  rdfs:comment "belongs to RequestCore in CCOM"^^xsd:string ;
+  rdfs:label "Work item category type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:OrderedList
+  rdf:type owl:Class ;
+  rdfs:comment "belongs to RequestCore in CCOM"^^xsd:string ;
+  rdfs:label "Work item category type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:OrderedListRecommendation
+  rdf:type owl:Class ;
+  rdfs:comment "belongs to RequestCore in CCOM"^^xsd:string ;
+  rdfs:label "Work item category type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:OrderedListRequestForWork
+  rdf:type owl:Class ;
+  rdfs:comment "belongs to RequestCore in CCOM"^^xsd:string ;
+  rdfs:label "Work item category type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:PriorityLevelType
+  rdf:type owl:Class ;
+  rdfs:comment "belongs to RequestCore in CCOM"^^xsd:string ;
+  rdfs:label "Work item category type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:Request
+  rdf:type owl:Class ;
+  rdfs:comment "belongs to RequestCore in CCOM"^^xsd:string ;
+  rdfs:label "Work item category type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:SegmentRequestForWork
+  rdf:type owl:Class ;
+  rdfs:comment "belongs to RequestCore in CCOM"^^xsd:string ;
+  rdfs:label "Work item category type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:SolutionPackage
+  rdf:type owl:Class ;
+  rdfs:label "Solution package"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:SolutionPackageStep
+  rdf:type owl:Class ;
+  rdfs:label "Solution package"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:WorkAuditType
+  rdf:type owl:Class ;
+  rdfs:label "Work step audit"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:WorkItemCategoryType
+  rdf:type owl:Class ;
+  rdfs:comment "belongs to RequestCore in CCOM"^^xsd:string ;
+  rdfs:label "Work item category type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:WorkManagementType
+  rdf:type owl:Class ;
+  rdfs:comment "belongs to RequestCore in CCOM"^^xsd:string ;
+  rdfs:label "Work item category type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:WorkOrder
+  rdf:type owl:Class ;
+  rdfs:label "Work order"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:WorkOrderAudit
+  rdf:type owl:Class ;
+  rdfs:label "Work order audit"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:WorkRequest
+  rdf:type owl:Class ;
+  rdfs:label "Work request"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:WorkRequestAudit
+  rdf:type owl:Class ;
+  rdfs:label "Work request"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:WorkStep
+  rdf:type owl:Class ;
+  rdfs:label "Work step"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:WorkStepAudit
+  rdf:type owl:Class ;
+  rdfs:label "Work step audit"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:WorkTaskType
+  rdf:type owl:Class ;
+  rdfs:comment "belongs to RequestCore in CCOM"^^xsd:string ;
+  rdfs:label "Work item category type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:byAgent
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "by agent"^^xsd:string ;
+.
+:followupFrom
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "followup from"^^xsd:string ;
+.
+:fromAgent
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "from agent"^^xsd:string ;
+.
+:hasChild
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has child"^^xsd:string ;
+.
+:hasStatusHistory
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has status history"^^xsd:string ;
+.
+:isAssigned
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "is assigned"^^xsd:string ;
+.
+:mayContain
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "may contain"^^xsd:string ;
+.
+:originallyFrom
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "originally from"^^xsd:string ;
+.
+:toAgent
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "to agent"^^xsd:string ;
+.
+:usePreplan
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "use preplan"^^xsd:string ;
+.
+:waudit_type_code
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "waudit type code"^^xsd:string ;
+  rdfs:range xsd:integer ;
+.
+:work_order_id
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "work order id"^^xsd:string ;
+  rdfs:range xsd:integer ;
+.
+:work_step_id
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "work step id"^^xsd:string ;
+.

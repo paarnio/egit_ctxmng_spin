@@ -1,0 +1,25 @@
+SPIN:EVAL() funktio voi suorittaa mm. Templaten Select queryn!!!
+-------------------------------------------------------------
+2016-02-21
+KS. http://spinrdf.org/spin.html#spin-functions-eval
+HUOM: palauttaa vain ensimmäisen matchin ja vain ensimmäiselle select variablelle!!!
+
+TOIMII in MyApp:
+SELECT ?result
+WHERE {
+bicycle:BicycleByNameSWGTemplate spin:body ?body . 
+?body rdf:type sp:Select . 
+BIND (spin:eval(?body, arg:name, 'Miran_fillari') AS ?result)
+}
+
+
+TOIMII TBC:ssä
+SELECT ?result
+WHERE {
+	:BicycleNameTemplate1 spin:body ?body .
+    ?body rdf:type sp:Select .
+  BIND (spin:eval(?body, arg:wcount, 2) AS ?result)
+}
+
+
+

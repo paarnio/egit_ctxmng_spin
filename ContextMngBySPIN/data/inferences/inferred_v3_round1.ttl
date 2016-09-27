@@ -1,0 +1,30 @@
+<http://ssp4t5.net/context/mctxsimple#EWorkOrder_2016-02-08T17:40:59.043+02:00>
+        a       <http://ssp4t5.net/context/mctxsimple#EWorkOrder> ;
+        <http://ssp4t5.net/context/mctxcore#hasWorkOrder>
+                <http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_201> .
+
+<http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_201>
+        a       <http://ssp4t5.net/mimosa/workcoreplus#WorkOrder> ;
+        <http://ssp4t5.net/mimosa/combined#targetAsset_id>
+                101 ;
+        <http://ssp4t5.net/mimosa/combined#targetSegment_tag>
+                "SEG-101"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://ssp4t5.net/mimosa/workcoreplus#toAgent>
+                <http://ssp4t5.net/mimosa/combined#Agent_1> ;
+        <http://ssp4t5.net/mimosa/workcoreplus#work_order_id>
+                201 .
+
+<http://ssp4t5.net/context/mctxcore#SituationContext_2016-02-08T17:40:59.043+02:00>
+        a       <http://ssp4t5.net/context/mctxcore#SituationContext> ;
+        <http://ssp4t5.net/context/mctxcore#hasElement>
+                <http://ssp4t5.net/context/mctxsimple#EMaintPerson_2016-02-08T17:40:59.043+02:00> , <http://ssp4t5.net/context/mctxsimple#EMaintTarget_2016-02-08T17:40:59.043+02:00> , <http://ssp4t5.net/context/mctxsimple#EWorkOrder_2016-02-08T17:40:59.043+02:00> .
+
+<http://ssp4t5.net/context/mctxsimple#EMaintPerson_2016-02-08T17:40:59.043+02:00>
+        a       <http://ssp4t5.net/context/mctxsimple#EMaintPerson> ;
+        <http://ssp4t5.net/context/mctxcore#cris_agent_id>
+                1 .
+
+<http://ssp4t5.net/context/mctxsimple#EMaintTarget_2016-02-08T17:40:59.043+02:00>
+        a       <http://ssp4t5.net/context/mctxsimple#EMaintTarget> ;
+        <http://ssp4t5.net/context/mctxcore#ref_tag_code>
+                "SEG-101"^^<http://www.w3.org/2001/XMLSchema#string> .

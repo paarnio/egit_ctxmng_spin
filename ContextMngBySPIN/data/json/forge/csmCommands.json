@@ -1,0 +1,143 @@
+{	"CSMHeader": {
+		"filename": "data/json/csmCommands.json",
+		"created": "2016-02-11",
+		"validated": "http://www.jsoneditoronline.org/",
+		"application": "CommandFileSpinMng.java",
+		"history": "Single Flow: [0,1,2,5,6,5,8]", 
+		"workflow": {
+		"name": "Testin workflow in different modes",
+		"comment": "Workflow  commands can be run in 'indexed' mode (type='indexed') or in 'all' mode (type='all').",
+		"type": "indexed",
+		"indexes": [0,1,2,5,6,5,8]
+		}
+	},
+	"CSMCommands":[
+		{ "index": 0,
+		  "commandType": "loadKnowledgeBase",
+		  "comment": "REQUIRED: ALLWAYS RUN THIS AS THE FIRST COMMAND! (Types: 'predefined' | 'file&uri')",
+		  "knowledgeBase": {
+			"name": "context_mimosa",
+			"type": "predefined",
+			"ontology": { "name": null, "folder": null, "file": null, "uri": null },
+			"imports": null
+		  }
+		},
+		{ "index": 1,
+		  "commandType": "createInferenceModel",
+		  "comment": "NOTE:OFTEN REQUIRED: This command creates the inference model and registers spin.",
+		  "create": {
+			"name": "create inference model and spin registering",
+			"type": "create_and_register"
+		  }
+		},		
+		{ "index": 2,
+		  "commandType": "runInferences",
+		  "comment": "NOTE:OFTEN REQUIRED: This command runs all spin inferences (creates the inference model, if not yet created) .",
+		  "inference": {
+			"name": "pre_inference",
+			"type": "iterative"
+		  }
+		},			
+		{ "index": 3,
+		  "commandType": "templateCall",
+		  "template": {
+			"name": "CreateWorkOrderTemplate",
+			"type": "construct",
+			"args": [
+				{ "name": "woid", "type": "integer", "value": "201" },
+				{ "name": "agentid", "type": "integer", "value": "1" },
+				{ "name": "segtag", "type": "string", "value": "SEG-101" }						
+			]
+		  }
+		},
+		{ "index": 4,
+		  "commandType": "templateCall",
+		  "template": {
+			"name": "CreateWorkOrderTemplate",
+			"type": "construct",
+			"args": [
+				{ "name": "woid", "type": "integer", "value": "202" },
+				{ "name": "agentid", "type": "integer", "value": "1" },
+				{ "name": "segtag", "type": "string", "value": "SEG-101" }						
+			]
+		  }
+		},
+		{ "index": 5,
+		  "commandType": "sparqlQuery",
+		  "query": {
+			"name": "Query WorkOrders",
+			"type": "select",
+			"preprefixes": "yes",
+			"select": "*",
+			"where": "?s rdf:type workcoreplus:WorkOrder . ?s workcoreplus:work_order_id ?woid .",
+			"limit": "100",
+			"queryVars": [ "?s","?woid"					
+			]
+		  }
+		},			
+		{ "index": 6,
+		  "commandType": "sparqlQuery",
+		  "query": {
+			"name": "Update WorkOrder_666 ID",
+			"type": "update",
+			"preprefixes": "yes",
+			"delete": "?wouri workcoreplus:work_order_id 2 .",
+			"insert": "?wouri workcoreplus:work_order_id 222 .",
+			"where": "?wouri rdf:type workcoreplus:WorkOrder . ?wouri workcoreplus:work_order_id 2 .",
+			"bind": null,
+			"filter": null
+		  }
+		},			
+		{ "index": 7,
+		  "commandType": "sparqlQuery",
+		  "query": {
+			"name": "Construct WorkOrder_666",
+			"type": "construct",
+			"resultTriples": "add",
+			"preprefixes": "yes",
+			"construct": "?wouri a workcoreplus:WorkOrder . ?wouri workcoreplus:work_order_id 666 .",
+			"where": "BIND (IRI(fn:concat('http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_',str(666))) AS ?wouri) ."
+		  }
+		},
+		{ "index": 8,
+		  "commandType": "writeModel",
+		  "comment": "Write type can be 'file' or 'console'. Modelcat can be 'merged', 'inferred' or 'main'.",
+		  "write": {
+			"name": "Write Inferred Triples to Console",
+			"type": "console",
+			"filePath": "data/inferences/tmp.ttl",
+			"modelcat": "inferred"
+		  }
+		},
+		{ "index": 9,
+		  "commandType": "writeModel",
+		  "comment": "Write type can be 'file' or 'console'. Modelcat can be 'merged', 'inferred' or 'main'.",
+		  "write": {
+			"name": "Write merged model to file",
+			"type": "file",
+			"filePath": "data/inferences/merged_Friday2.ttl",
+			"modelcat": "merged"
+		  }
+		}					
+		],
+		"CSMStore": {
+		  "comment": "--------- NOTE: This is a backup (Not part of the command list) -----",
+		  "commandBackup": [
+			{ "index": null,
+			"commandType": "sparqlQuery",
+			"comment": "PROBLEM: Not working?",
+			"query": {
+				"name": "Update WorkOrder_666 ID",
+				"type": "update",
+				"preprefixes": "yes",
+				"delete": "workcoreplus:WorkOrder_666 workcoreplus:work_order_id 666 .",
+				"insert": "?wouri workcoreplus:work_order_id 777 .",
+				"where": "?wouri rdf:type workcoreplus:WorkOrder . ?wouri workcoreplus:work_order_id 666 .",
+				"bind": null,
+				"filter": null
+		  }
+		}
+		]
+		}
+}
+

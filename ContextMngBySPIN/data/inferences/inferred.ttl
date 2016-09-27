@@ -1,0 +1,26 @@
+<http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_201>
+        a       <http://ssp4t5.net/mimosa/workcoreplus#WorkOrder> ;
+        <http://ssp4t5.net/mimosa/combined#targetAsset_id>
+                101 ;
+        <http://ssp4t5.net/mimosa/combined#targetSegment_tag>
+                "SEG-101"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://ssp4t5.net/mimosa/workcoreplus#toAgent>
+                <http://ssp4t5.net/mimosa/combined#Agent_1> ;
+        <http://ssp4t5.net/mimosa/workcoreplus#work_order_id>
+                201 .
+
+<http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_666>
+        a       <http://ssp4t5.net/mimosa/workcoreplus#WorkOrder> ;
+        <http://ssp4t5.net/mimosa/workcoreplus#work_order_id>
+                666 .
+
+<http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_202>
+        a       <http://ssp4t5.net/mimosa/workcoreplus#WorkOrder> ;
+        <http://ssp4t5.net/mimosa/combined#targetAsset_id>
+                101 ;
+        <http://ssp4t5.net/mimosa/combined#targetSegment_tag>
+                "SEG-101"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://ssp4t5.net/mimosa/workcoreplus#toAgent>
+                <http://ssp4t5.net/mimosa/combined#Agent_1> ;
+        <http://ssp4t5.net/mimosa/workcoreplus#work_order_id>
+                202 .

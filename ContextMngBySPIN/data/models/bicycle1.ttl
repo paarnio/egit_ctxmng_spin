@@ -1,0 +1,202 @@
+# baseURI: http://siima.net/ont/bicycle
+# imports: http://spinrdf.org/spl
+
+@prefix : <http://siima.net/ont/bicycle#> .
+@prefix arg: <http://spinrdf.org/arg#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://siima.net/ont/bicycle>
+  rdf:type owl:Ontology ;
+  owl:imports <http://spinrdf.org/spl> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+:Bicycle
+  rdf:type owl:Class ;
+  rdfs:label "Bicycle"^^xsd:string ;
+  rdfs:subClassOf :Vehicle ;
+.
+:BicycleModel
+  rdf:type owl:Class ;
+  rdfs:label "Bicycle model"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:BicycleNameTemplate1
+  rdf:type spin:SelectTemplate ;
+  spin:body [
+      rdf:type sp:Select ;
+      sp:resultVariables (
+          [
+            sp:varName "bic"^^xsd:string ;
+          ]
+          [
+            sp:varName "wcount"^^xsd:string ;
+          ]
+          [
+            sp:varName "name"^^xsd:string ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object :Bicycle ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "bic"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "wcount"^^xsd:string ;
+              ] ;
+            sp:predicate :wheelcount ;
+            sp:subject [
+                sp:varName "bic"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "name"^^xsd:string ;
+              ] ;
+            sp:predicate :name ;
+            sp:subject [
+                sp:varName "bic"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:wcount ;
+      spl:valueType xsd:integer ;
+      rdfs:comment "Number of bicycle wheels"^^xsd:string ;
+    ] ;
+  rdfs:label "Bicycle name template1"^^xsd:string ;
+  rdfs:subClassOf spin:SelectTemplates ;
+.
+:Bicycle_1
+  rdf:type :Bicycle ;
+  :hasModel :Jupiter_1 ;
+  :hasWheel :Wheel_1 ;
+  :hasWheel :Wheel_2 ;
+  :name "Jukan_fillari"^^xsd:string ;
+  rdfs:label "Bicycle 1"^^xsd:string ;
+.
+:Bicycle_2
+  rdf:type :Bicycle ;
+  :hasModel :Tunturi_3 ;
+  :hasWheel :Wheel_3 ;
+  :hasWheel :Wheel_4 ;
+  :name "Tuulan_fillari"^^xsd:string ;
+  :wheelcount 2 ;
+  rdfs:label "Bicycle 2"^^xsd:string ;
+.
+:Bicycle_3
+  rdf:type :Bicycle ;
+  :hasModel :Helkama_2 ;
+  :hasWheel :Wheel_5 ;
+  :hasWheel :Wheel_6 ;
+  :name "Miran_fillari"^^xsd:string ;
+  :wheelcount 1 ;
+  rdfs:label "Bicycle 3"^^xsd:string ;
+.
+:Handlebar
+  rdf:type owl:Class ;
+  rdfs:label "Handlebar"^^xsd:string ;
+  rdfs:subClassOf :VehiclePart ;
+.
+:Handlebar_1
+  rdf:type :Handlebar ;
+  rdfs:label "Handlebar 1"^^xsd:string ;
+.
+:Handlebar_2
+  rdf:type :Handlebar ;
+  rdfs:label "Handlebar 2"^^xsd:string ;
+.
+:Helkama_2
+  rdf:type :BicycleModel ;
+  rdfs:label "Helkama 2"^^xsd:string ;
+.
+:Jupiter_1
+  rdf:type :BicycleModel ;
+  rdfs:label "Jupiter 1"^^xsd:string ;
+.
+:Nishiki_4
+  rdf:type :BicycleModel ;
+  rdfs:label "Nishiki 4"^^xsd:string ;
+.
+:Tunturi_3
+  rdf:type :BicycleModel ;
+  rdfs:label "Tunturi 3"^^xsd:string ;
+.
+:Vehicle
+  rdf:type owl:Class ;
+  rdfs:label "Vehicle"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:VehiclePart
+  rdf:type owl:Class ;
+  rdfs:label "Vehicle part"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:Wheel
+  rdf:type owl:Class ;
+  rdfs:label "Wheel"^^xsd:string ;
+  rdfs:subClassOf :VehiclePart ;
+.
+:Wheel_1
+  rdf:type :Wheel ;
+  rdfs:label "Wheel 1"^^xsd:string ;
+.
+:Wheel_2
+  rdf:type :Wheel ;
+  rdfs:label "Wheel 2"^^xsd:string ;
+.
+:Wheel_3
+  rdf:type :Wheel ;
+  rdfs:label "Wheel 3"^^xsd:string ;
+.
+:Wheel_4
+  rdf:type :Wheel ;
+  rdfs:label "Wheel 4"^^xsd:string ;
+.
+:Wheel_5
+  rdf:type :Wheel ;
+  rdfs:label "Wheel 5"^^xsd:string ;
+.
+:Wheel_6
+  rdf:type :Wheel ;
+  rdfs:label "Wheel 6"^^xsd:string ;
+.
+:hasModel
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has model"^^xsd:string ;
+.
+:hasSteer
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has steer"^^xsd:string ;
+.
+:hasWheel
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :Vehicle ;
+  rdfs:label "has wheel"^^xsd:string ;
+  rdfs:range :Wheel ;
+.
+:name
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "name"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+:wheelcount
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "wheelcount"^^xsd:string ;
+  rdfs:range xsd:integer ;
+.
+arg:wcount
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.

@@ -1,0 +1,109 @@
+First CommandFileSpinMng.java test runs
+2016-02-10
+CONSOLE PRINT:
+================ CommandFileSpinMng running... ===============
+
+--Reading commands from csm command file (json) ... 
+
+
+----+Command type:loadKnowledgeBase
+============Command: loadKnowledgeBase==========
+============Command: loadKnowledgeBaseCommand==========
+----+----+KB name:context_mimosa
+16:54:02 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: loadModelWithImports()
+---loadModelWithImports()
+loadModelWithImports: loaded basemodel + imports = #9
+16:54:04 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: createReasonerModel()
+
+----------- Knowledge Base Ready  ----------
+----+Command type:runInferences
+============Command: runInferences==========
+============Command: runInferencesCommand==========
+----+----+ name:pre_inference
+
+---- OPERATION: Run Inferences ----
+
+16:54:04 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: createInferredModelAndRegister()
+---Creating inferred sub-model and registering locally defined functions
+16:54:04 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: runAllSpinInferences()
+---Inferred triples: 0
+
+---- --------- ----
+
+----+Command type:templateCall
+============Command: templateCall==========
+============Command: templateCall==========
+----+----+Template name:CreateWorkOrderTemplate and type:construct
+0:----+----+----+Argument name:woid
+0:----+----+----+Argument type:integer
+0:----+----+----+Argument value:201
+16:54:04 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+1:----+----+----+Argument name:agentid
+1:----+----+----+Argument type:integer
+1:----+----+----+Argument value:1
+16:54:04 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+2:----+----+----+Argument name:segtag
+2:----+----+----+Argument type:string
+2:----+----+----+Argument value:SEG-101
+16:54:04 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+16:54:04 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callTemplateByName()
+16:54:04 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+16:54:05 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callConstructTemplate()
+=================CONSTRUCT TEMPLATE RESULTS===============
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://ssp4t5.net/mimosa/combined#"
+    xmlns:j.1="http://ssp4t5.net/mimosa/workcoreplus#" > 
+  <rdf:Description rdf:about="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_201">
+    <j.0:targetAsset_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">101</j.0:targetAsset_id>
+    <j.0:targetSegment_tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SEG-101</j.0:targetSegment_tag>
+    <j.1:toAgent rdf:resource="http://ssp4t5.net/mimosa/combined#Agent_1"/>
+    <j.1:work_order_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">201</j.1:work_order_id>
+    <rdf:type rdf:resource="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder"/>
+  </rdf:Description>
+</rdf:RDF>
+==================================================
+
+----+Command type:templateCall
+============Command: templateCall==========
+============Command: templateCall==========
+----+----+Template name:CreateWorkOrderTemplate and type:construct
+0:----+----+----+Argument name:woid
+0:----+----+----+Argument type:integer
+0:----+----+----+Argument value:202
+16:54:05 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+1:----+----+----+Argument name:agentid
+1:----+----+----+Argument type:integer
+1:----+----+----+Argument value:1
+16:54:05 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+2:----+----+----+Argument name:segtag
+2:----+----+----+Argument type:string
+2:----+----+----+Argument value:SEG-101
+16:54:05 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+16:54:05 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callTemplateByName()
+16:54:05 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+16:54:05 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callConstructTemplate()
+=================CONSTRUCT TEMPLATE RESULTS===============
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://ssp4t5.net/mimosa/combined#"
+    xmlns:j.1="http://ssp4t5.net/mimosa/workcoreplus#" > 
+  <rdf:Description rdf:about="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_201">
+    <j.0:targetAsset_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">101</j.0:targetAsset_id>
+    <j.0:targetSegment_tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SEG-101</j.0:targetSegment_tag>
+    <j.1:toAgent rdf:resource="http://ssp4t5.net/mimosa/combined#Agent_1"/>
+    <j.1:work_order_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">201</j.1:work_order_id>
+    <rdf:type rdf:resource="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_202">
+    <j.0:targetAsset_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">101</j.0:targetAsset_id>
+    <j.0:targetSegment_tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SEG-101</j.0:targetSegment_tag>
+    <j.1:toAgent rdf:resource="http://ssp4t5.net/mimosa/combined#Agent_1"/>
+    <j.1:work_order_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">202</j.1:work_order_id>
+    <rdf:type rdf:resource="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder"/>
+  </rdf:Description>
+</rdf:RDF>
+==================================================
+

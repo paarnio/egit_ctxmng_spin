@@ -1,0 +1,50 @@
+TODO: Spin Constructor testing
+2016-01-15
+HUOM: SituationContext contains a spin rule which uses spif:functions not available in function library:
+spif:buildURI (ei ole)
+spif:generateUUID (epävarma onko tätä)
+JOTEN: nuo kohdat luokan SituationContext säännöissä tulee muuttaa (ei po. muissa luokissa)
+------------
+RULE2:
+DELETE {
+    ?this mctxcore:currentSituation ?asit .
+}
+INSERT {
+    ?newasit a mctxcore:CAbstractSituation .
+    ?this mctxcore:currentSituation ?newasit .
+    ?newasit mctxcore:hasCharacterValue "WORK_MAY_START" .
+    ?newasit mctxcore:created ?now .
+    ?asit mctxcore:endTime ?now .
+}
+WHERE {
+    ?this mctxcore:currentSituation ?asit .
+    ?asit mctxcore:hasCharacterValue ?asval .
+    ?this mctxcore:hasRelation ?rel .
+    ?this mctxcore:hasElement ?elem .
+    ?rel a mctxsimple:RelativeLocation .
+    ?rel mctxsimple:relativeLocation ?val .
+    ?elem a mctxsimple:MaintWork .
+    ?elem mctxsimple:nextWorkPhase ?next .
+    ?next mctxsimple:permission ?per .
+    OPTIONAL {
+        ?asit mctxcore:endTime ?end .
+    } .
+    FILTER (((!bound(?end)) && (regex(str(?val), "NEAR_BY_TARGET") && regex(str(?per), "GRANTED"))) && regex(str(?asval), "EN_ROUTE")) .
+    BIND (afn:now() AS ?now) .
+    BIND (spif:buildURI("uuid_{?1}", spif:generateUUID()) AS ?uuid) .
+    BIND (IRI(fn:concat("http://ssp4t5.net/context/mctxsimple#AbstractSituation_", str(?uuid), "_", str(?now))) AS ?newasit) .
+}
+
+======
+ANSWER TO PROBLEM: FROM: https://groups.google.com/forum/#!topic/topbraid-users/v1ciAHNrJ2c
+> When I use the SPINInferences.run() method, I get warnings such as the
+> following:
+>
+> "URI <http://topbraid.org/sparqlmotionfunctions#buildURI> has no
+> registered function factory"
+
+I regret to say that the functions from the smf: namespace such as smf:buildURI 
+are not part of the SPIN API but only available commercially. 
+smf:buildURI can often be replaced by IRI(fn:concat(...))
+
+================================================== 

@@ -1,0 +1,17 @@
+TODAY
+
+myös: http://stackoverflow.com/questions/27122607/sparql-delete-not-possible-in-jena-pellet
+
+
+2016-02-13
+
+Päivän Tärkeät linkit: 
+
+https://groups.google.com/forum/#!topic/topbraid-users/1aDefUKlPnw
+=> yritä tämän mallin mukaan toteuttaa delete sparql komento
+
+Sekä katso oma koodi: ModelSpinManager.java - method callConstructTemplate()
+
+=> yritä näiden mallien mukaan toteuttaa callUpdateTemplate()
+					====================
+

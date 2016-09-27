@@ -1,0 +1,396 @@
+# baseURI: http://ssp4t5.net/context/mctxcore
+
+@prefix : <http://ssp4t5.net/context/mctxcore#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://ssp4t5.net/context/mctxcore>
+  rdf:type owl:Ontology ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+:CAbstractSituation
+  rdf:type owl:Class ;
+  rdfs:comment "High level situation inferred from element property values"^^xsd:string ;
+  rdfs:label "Abstract situation"^^xsd:string ;
+  rdfs:subClassOf :CElement ;
+.
+:CElement
+  rdf:type owl:Class ;
+  rdfs:label "Context element"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:CEvent
+  rdf:type owl:Class ;
+  rdfs:label "EEvent"^^xsd:string ;
+  rdfs:subClassOf :CElement ;
+.
+:CProperty
+  rdf:type owl:Class ;
+  rdfs:label "Element property"^^xsd:string ;
+  rdfs:subClassOf :CElement ;
+.
+:CRelation
+  rdf:type owl:Class ;
+  rdfs:label "Element relation"^^xsd:string ;
+  rdfs:subClassOf :CElement ;
+.
+:CScenario
+  rdf:type owl:Class ;
+  rdfs:label "CScenario"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:CSolutionPackage
+  rdf:type owl:Class ;
+  rdfs:label "CSolution package"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:Context
+  rdf:type owl:Class ;
+  rdfs:label "MContext"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:DigitalEnvironmentContext
+  rdf:type owl:Class ;
+  rdfs:label "Digital environment context"^^xsd:string ;
+  rdfs:subClassOf :ObserverEnvironmentContext ;
+.
+:InternalMPersonContext
+  rdf:type owl:Class ;
+  rdfs:label "MAgent ctx"^^xsd:string ;
+  rdfs:subClassOf :InternalObserverContext ;
+.
+:InternalObserverContext
+  rdf:type owl:Class ;
+  rdfs:label "Internal observer context"^^xsd:string ;
+  rdfs:subClassOf :Context ;
+.
+:MEnvironmentContext
+  rdf:type owl:Class ;
+  rdfs:label "MEnvironment ctx"^^xsd:string ;
+  rdfs:subClassOf :SituationEnvironmentContext ;
+.
+:MHistoryContext
+  rdf:type owl:Class ;
+  rdfs:label "MHistory ctx"^^xsd:string ;
+  rdfs:subClassOf :SituationEnvironmentContext ;
+.
+:MPersonContext
+  rdf:type owl:Class ;
+  rdfs:label "MPerson ctx"^^xsd:string ;
+  rdfs:subClassOf :ObserverContext ;
+.
+:MPersonEnvironmentContext
+  rdf:type owl:Class ;
+  rdfs:label "MPerson environment ctx"^^xsd:string ;
+  rdfs:subClassOf :ObserverEnvironmentContext ;
+.
+:MProcessSegmentContext
+  rdf:type owl:Class ;
+  rdfs:label "MProcess segment ctx"^^xsd:string ;
+  rdfs:subClassOf :SituationEnvironmentContext ;
+.
+:MTargetContext
+  rdf:type owl:Class ;
+  rdfs:label "MTarget ctx"^^xsd:string ;
+  rdfs:subClassOf :SituationContext ;
+.
+:MWorkContext
+  rdf:type owl:Class ;
+  rdfs:label "MWork ctx"^^xsd:string ;
+  rdfs:subClassOf :SituationContext ;
+.
+:ObserverContext
+  rdf:type owl:Class ;
+  rdfs:label "External observer context"^^xsd:string ;
+  rdfs:subClassOf :Context ;
+.
+:ObserverEnvironmentContext
+  rdf:type owl:Class ;
+  rdfs:label "Observer environment context"^^xsd:string ;
+  rdfs:subClassOf :Context ;
+.
+:OrganizationalContext
+  rdf:type owl:Class ;
+  rdfs:label "Organization ctx"^^xsd:string ;
+  rdfs:subClassOf :ObserverEnvironmentContext ;
+.
+:SituationContext
+  rdf:type owl:Class ;
+  rdfs:label "Situation context"^^xsd:string ;
+  rdfs:subClassOf :Context ;
+.
+:SituationEnvironmentContext
+  rdf:type owl:Class ;
+  rdfs:label "Situation environment context"^^xsd:string ;
+  rdfs:subClassOf :Context ;
+.
+:active
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "active"^^xsd:string ;
+  rdfs:range xsd:boolean ;
+.
+:assignedTo
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "assigned to"^^xsd:string ;
+.
+:contains
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "ctxContains is a super property of hasElement, hasElementProperty and hasRelation properties"^^xsd:string ;
+  rdfs:label "ctx contains"^^xsd:string ;
+.
+:created
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "created"^^xsd:string ;
+  rdfs:range xsd:dateTime ;
+.
+:cris_agent_id
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "cris agent id"^^xsd:string ;
+  rdfs:range xsd:integer ;
+  rdfs:subPropertyOf :cris_int_id ;
+.
+:cris_as_type_id
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "cris as type id"^^xsd:string ;
+  rdfs:range xsd:integer ;
+  rdfs:subPropertyOf :cris_int_id ;
+.
+:cris_asset_id
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "Reference to mimosa database asset_id"^^xsd:string ;
+  rdfs:label "cris asset id"^^xsd:string ;
+  rdfs:range xsd:integer ;
+  rdfs:subPropertyOf :cris_int_id ;
+.
+:cris_int_id
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "References to mimosa's cris database integer ids (type LONG in CRIS)"^^xsd:string ;
+  rdfs:label "cris int id"^^xsd:string ;
+  rdfs:range xsd:integer ;
+.
+:cris_manuf_id
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "cris manuf id"^^xsd:string ;
+  rdfs:range xsd:integer ;
+  rdfs:subPropertyOf :cris_int_id ;
+.
+:cris_model_id
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "cris model id"^^xsd:string ;
+  rdfs:range xsd:integer ;
+  rdfs:subPropertyOf :cris_int_id ;
+.
+:cris_string_id
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "References to mimosa's cris database string ids (type STRING in CRIS)"^^xsd:string ;
+  rdfs:label "cris string id"^^xsd:string ;
+.
+:cris_user_id
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "cris user id"^^xsd:string ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf :cris_string_id ;
+.
+:cris_work_order_id
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "cris_work_order_id"^^xsd:string ;
+  rdfs:range xsd:integer ;
+  rdfs:subPropertyOf :cris_int_id ;
+.
+:currentSituation
+  rdf:type owl:FunctionalProperty ;
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :Context ;
+  rdfs:label "current situation"^^xsd:string ;
+  rdfs:range :CAbstractSituation ;
+.
+:description
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "description"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+:designation
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "designation"^^xsd:string ;
+.
+:deviceLocation
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "device location"^^xsd:string ;
+.
+:dueDate
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "due date"^^xsd:string ;
+  rdfs:range xsd:dateTime ;
+.
+:endTime
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "end time"^^xsd:string ;
+  rdfs:range xsd:dateTime ;
+.
+:firstNode
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :CRelation ;
+  rdfs:label "first node"^^xsd:string ;
+  rdfs:range :CElement ;
+.
+:hasCharacterValue
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "has character value"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+:hasDateTimeValue
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "has date time value"^^xsd:string ;
+  rdfs:range xsd:dateTime ;
+.
+:hasElement
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :Context ;
+  rdfs:label "has element"^^xsd:string ;
+  rdfs:range :CElement ;
+  rdfs:subPropertyOf :contains ;
+.
+:hasEvent
+  rdf:type rdf:Property ;
+  rdfs:label "has event"^^xsd:string ;
+  rdfs:subPropertyOf :hasElement ;
+.
+:hasFloatValue
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "has float value"^^xsd:string ;
+  rdfs:range xsd:float ;
+.
+:hasIntegerValue
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "has integer value"^^xsd:string ;
+  rdfs:range xsd:integer ;
+.
+:hasLocation
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has location"^^xsd:string ;
+.
+:hasMaintActivity
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has maint activity"^^xsd:string ;
+.
+:hasMaintType
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has maint type"^^xsd:string ;
+.
+:hasPersonnel
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has personel"^^xsd:string ;
+.
+:hasProperty
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :CElement ;
+  rdfs:domain :Context ;
+  rdfs:label "has element property"^^xsd:string ;
+  rdfs:range :CProperty ;
+  rdfs:subPropertyOf :hasElement ;
+.
+:hasRelation
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :Context ;
+  rdfs:label "has relation"^^xsd:string ;
+  rdfs:range :CRelation ;
+  rdfs:subPropertyOf :hasElement ;
+.
+:hasScenario
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has scenario"^^xsd:string ;
+  rdfs:subPropertyOf :contains ;
+.
+:hasSituation
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :Context ;
+  rdfs:label "has situation"^^xsd:string ;
+  rdfs:range :CAbstractSituation ;
+  rdfs:subPropertyOf :contains ;
+.
+:hasSolutionPackage
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has solution package"^^xsd:string ;
+.
+:hasState
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has state"^^xsd:string ;
+.
+:hasTools
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has tools"^^xsd:string ;
+.
+:hasUnit
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain :CProperty ;
+  rdfs:label "has unit"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+:hasUnitType
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has unit type"^^xsd:string ;
+.
+:hasWorkOrder
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has work order"^^xsd:string ;
+.
+:isElementOf
+  rdf:type owl:ObjectProperty ;
+  owl:inverseOf :hasElement ;
+.
+:mimosaRef
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "mimosa ref"^^xsd:string ;
+  rdfs:subPropertyOf :references ;
+.
+:modified
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "modified"^^xsd:string ;
+  rdfs:range xsd:dateTime ;
+.
+:name
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "name"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+:notice
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "notice"^^xsd:string ;
+.
+:operationState
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "operation state"^^xsd:string ;
+.
+:ref_tag_code
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "Value of this property is the same as target asset's combined:segment_tag"^^xsd:string ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf :cris_string_id ;
+.
+:references
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "references"^^xsd:string ;
+.
+:secondNode
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :CRelation ;
+  rdfs:label "first node"^^xsd:string ;
+  rdfs:range :CElement ;
+.
+:settled
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "settled"^^xsd:string ;
+  rdfs:range xsd:dateTime ;
+.
+:startTime
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "start time"^^xsd:string ;
+  rdfs:range xsd:dateTime ;
+.
+:uriReference
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "uri reference"^^xsd:string ;
+  rdfs:range xsd:string ;
+.

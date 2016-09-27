@@ -1,0 +1,106 @@
+MODIFY_SPARQL_TEST RUNS: Ongelma importatun mallin suhteen:
+------------------------
+Näyttää siltä että DELETE-INSERT-WHERE sparql query TOIMII base-mallin suhteen (bicycle.ttl)
+MUTTA DELETE osa EI TOIMI importatun accessories.ttl mallin suhteen???
+
+JOHTUUKO SIITÄ, että importattu model ei ole OntModel?????
+(Muokkaa? metodia public OntModel loadModelWithImports(List<String> urls, List<String> altlocs)
+
+KATSO Seuraavat testiajot:
+Index 6: UPDATE bicycle name (TOIMII!!!)
+MUTTA
+Index 8: name:UPDATE Bell rdfs:label (TOIMIIKO?) 
+DELETE osa EI TOIMI??
+
+================ CommandFileSpinMng running... ===============
+
+
+----------- Command Workflow file?  ----------
+>>>> Give Workflow filepath ?> (Default:data/json/csmCommands.json)
+data/json/csmCommands_bicycle.json
+A:data/json/csmCommands_bicycle.json
+---
+--Reading commands from csm command file (json) ... 
+
+
+
+
+========== Next Command Index:(0) =========== 
+----+ Command: loadKnowledgeBaseCommand
+----+----+ KB name:bicycle
+19:13:15 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: loadModelWithImports()
+---loadModelWithImports()
+loadModelWithImports: loaded basemodel + imports = #2
+19:13:18 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: createReasonerModel()
+
+----------- Knowledge Base Ready  ----------
+
+
+========== Next Command Index:(1) =========== 
+----+ Command: createInferenceModelCommand
+----+----+ name:create inference model and spin registering
+19:13:18 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: createInferredModelAndRegister()
+---Creating inferred sub-model and registering locally defined functions
+
+
+========== Next Command Index:(7) =========== 
+----+ Command: sparqlQueryCommand
+----+----+ name:SELECT Query Bicycle name
+======= Query Results for : ?name ========
+19:13:18 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlQuery()
+---sparqlQuery()
+Query variable result: Miran_fillari^^http://www.w3.org/2001/XMLSchema#string
+Query variable result: Tuulan_fillari^^http://www.w3.org/2001/XMLSchema#string
+Query variable result: Jukan_fillari^^http://www.w3.org/2001/XMLSchema#string
+sparqlQuery: result rows #3
+
+
+========== Next Command Index:(6) =========== 
+----+ Command: sparqlQueryCommand
+----+----+ name:UPDATE bicycle name (TOIMII!!!)
+----QueryString: PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sp: <http://spinrdf.org/sp#> PREFIX spif: <http://spinrdf.org/spif#> PREFIX spin: <http://spinrdf.org/spin#> PREFIX spl: <http://spinrdf.org/spl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> PREFIX arg: <http://spinrdf.org/arg#> PREFIX combined: <http://ssp4t5.net/mimosa/combined#> PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> PREFIX fn: <http://www.w3.org/2005/xpath-functions#> PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> PREFIX workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> PREFIX cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> PREFIX regasset: <http://ssp4t5.net/mimosa/regasset#> PREFIX regcore: <http://ssp4t5.net/mimosa/regcore#> PREFIX access: <http://siima.net/ont/accessories#> PREFIX bicycle: <http://siima.net/ont/bicycle#>  DELETE { ?bic bicycle:name ?oldname . }  INSERT { ?bic bicycle:name 'UUSI_NIMI' . }  WHERE { ?bic rdf:type bicycle:Bicycle . ?bic bicycle:name ?oldname . }
+19:13:18 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlUpdateQuery()
+---UPDATE QUERY:
+ PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sp: <http://spinrdf.org/sp#> PREFIX spif: <http://spinrdf.org/spif#> PREFIX spin: <http://spinrdf.org/spin#> PREFIX spl: <http://spinrdf.org/spl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> PREFIX arg: <http://spinrdf.org/arg#> PREFIX combined: <http://ssp4t5.net/mimosa/combined#> PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> PREFIX fn: <http://www.w3.org/2005/xpath-functions#> PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> PREFIX workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> PREFIX cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> PREFIX regasset: <http://ssp4t5.net/mimosa/regasset#> PREFIX regcore: <http://ssp4t5.net/mimosa/regcore#> PREFIX access: <http://siima.net/ont/accessories#> PREFIX bicycle: <http://siima.net/ont/bicycle#>  DELETE { ?bic bicycle:name ?oldname . }  INSERT { ?bic bicycle:name 'UUSI_NIMI' . }  WHERE { ?bic rdf:type bicycle:Bicycle . ?bic bicycle:name ?oldname . }
+
+
+========== Next Command Index:(7) =========== 
+----+ Command: sparqlQueryCommand
+----+----+ name:SELECT Query Bicycle name
+======= Query Results for : ?name ========
+19:13:18 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlQuery()
+---sparqlQuery()
+Query variable result: UUSI_NIMI
+Query variable result: UUSI_NIMI
+Query variable result: UUSI_NIMI
+sparqlQuery: result rows #3
+
+
+========== Next Command Index:(4) =========== 
+----+ Command: sparqlQueryCommand
+----+----+ name:SELECT Query Bell label
+======= Query Results for : ?label ========
+19:13:18 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlQuery()
+---sparqlQuery()
+Query variable result: Original Label Bell_1 (by TBC)^^http://www.w3.org/2001/XMLSchema#string
+sparqlQuery: result rows #1
+
+
+========== Next Command Index:(8) =========== 
+----+ Command: sparqlQueryCommand
+----+----+ name:UPDATE Bell rdfs:label (TOIMIIKO?)
+----QueryString: PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sp: <http://spinrdf.org/sp#> PREFIX spif: <http://spinrdf.org/spif#> PREFIX spin: <http://spinrdf.org/spin#> PREFIX spl: <http://spinrdf.org/spl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> PREFIX arg: <http://spinrdf.org/arg#> PREFIX combined: <http://ssp4t5.net/mimosa/combined#> PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> PREFIX fn: <http://www.w3.org/2005/xpath-functions#> PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> PREFIX workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> PREFIX cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> PREFIX regasset: <http://ssp4t5.net/mimosa/regasset#> PREFIX regcore: <http://ssp4t5.net/mimosa/regcore#> PREFIX access: <http://siima.net/ont/accessories#> PREFIX bicycle: <http://siima.net/ont/bicycle#>  DELETE {  ?bell rdfs:label ?oldlabel . }  INSERT { ?bell rdfs:label 'MODIFIED_BELL_label' . }  WHERE { ?bell a access:Bell . ?bell rdfs:label ?oldlabel . }
+19:13:18 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlUpdateQuery()
+---UPDATE QUERY:
+ PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sp: <http://spinrdf.org/sp#> PREFIX spif: <http://spinrdf.org/spif#> PREFIX spin: <http://spinrdf.org/spin#> PREFIX spl: <http://spinrdf.org/spl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> PREFIX arg: <http://spinrdf.org/arg#> PREFIX combined: <http://ssp4t5.net/mimosa/combined#> PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> PREFIX fn: <http://www.w3.org/2005/xpath-functions#> PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> PREFIX workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> PREFIX cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> PREFIX regasset: <http://ssp4t5.net/mimosa/regasset#> PREFIX regcore: <http://ssp4t5.net/mimosa/regcore#> PREFIX access: <http://siima.net/ont/accessories#> PREFIX bicycle: <http://siima.net/ont/bicycle#>  DELETE {  ?bell rdfs:label ?oldlabel . }  INSERT { ?bell rdfs:label 'MODIFIED_BELL_label' . }  WHERE { ?bell a access:Bell . ?bell rdfs:label ?oldlabel . }
+
+
+========== Next Command Index:(4) =========== 
+----+ Command: sparqlQueryCommand
+----+----+ name:SELECT Query Bell label
+======= Query Results for : ?label ========
+19:13:18 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlQuery()
+---sparqlQuery()
+Query variable result: MODIFIED_BELL_label
+Query variable result: Original Label Bell_1 (by TBC)^^http://www.w3.org/2001/XMLSchema#string
+sparqlQuery: result rows #2

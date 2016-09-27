@@ -1,0 +1,355 @@
+# baseURI: null
+
+@prefix composite: <http://www.topbraid.org/2007/05/composite.owl#> .
+@prefix forms: <http://www.topbraid.org/2007/01/forms.owl#> .
+@prefix inference: <http://www.topbraid.org/2007/06/inference.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix visual: <http://topbraid.org/visual#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/context/mctxsimple#ctxEventSource> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 2 ;
+          forms:predicate <http://ssp4t5.net/context/mctxsimple#ctxProperty> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 3 ;
+          forms:predicate <http://ssp4t5.net/context/mctxsimple#ctxPropertySubject> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 4 ;
+          forms:predicate <http://ssp4t5.net/context/mctxsimple#ctxPropertyValue> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/context/mctxsimple#Event> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:autoExpand "true"^^xsd:string ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/context/mctxcore#name> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/context/mctxsimple#EMaintPerson> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/context/mctxcore#currentSituation> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 2 ;
+          forms:predicate <http://ssp4t5.net/context/mctxcore#active> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 3 ;
+          forms:predicate <http://ssp4t5.net/context/mctxcore#hasElement> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 4 ;
+          forms:predicate <http://ssp4t5.net/context/mctxcore#hasRelation> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 5 ;
+          forms:predicate <http://ssp4t5.net/context/mctxcore#hasSituation> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/context/mctxcore#SituationContext> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/context/mctxcore#hasCharacterValue> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/context/mctxcore#AbstractSituation> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/context/mctxcore#name> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 2 ;
+          forms:predicate <http://ssp4t5.net/context/mctxsimple#location> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 3 ;
+          forms:predicate <http://ssp4t5.net/context/mctxcore#ref_tag_code> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/context/mctxsimple#EMaintTarget> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/context/mctxsimple#currentWorkPhase> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 2 ;
+          forms:predicate <http://ssp4t5.net/context/mctxsimple#nextWorkPhase> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/context/mctxsimple#EMaintWork> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/context/mctxsimple#estimatedDuration> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 2 ;
+          forms:predicate <http://ssp4t5.net/context/mctxsimple#permission> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/context/mctxsimple#EWorkStep> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type inference:Configuration ;
+  composite:child [
+      rdf:type <http://spinrdf.org/spin#TopSPIN> ;
+      <http://spinrdf.org/spin#topSPINOptions> "incremental" ;
+      composite:index "0"^^xsd:int ;
+    ] ;
+].

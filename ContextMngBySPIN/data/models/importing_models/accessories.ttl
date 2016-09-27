@@ -1,0 +1,35 @@
+# baseURI: http://siima.net/ont/accessories
+
+@prefix : <http://siima.net/ont/accessories#> .
+@prefix accessories: <http://siima.net/ont/accessories#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://siima.net/ont/accessories>
+  rdf:type owl:Ontology ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+accessories:Accessory
+  rdf:type owl:Class ;
+  rdfs:subClassOf owl:Thing ;
+.
+accessories:Bell
+  rdf:type owl:Class ;
+  rdfs:subClassOf accessories:Accessory ;
+.
+accessories:Bell_1
+  rdf:type accessories:Bell ;
+  rdfs:label "Original Label Bell_1 (by TBC)"^^xsd:string ;
+.
+accessories:CatEye
+  rdf:type owl:Class ;
+  rdfs:subClassOf accessories:Accessory ;
+.
+accessories:CatEye_1
+  rdf:type accessories:CatEye ;
+.
+accessories:hasAccessory
+  rdf:type owl:ObjectProperty ;
+.

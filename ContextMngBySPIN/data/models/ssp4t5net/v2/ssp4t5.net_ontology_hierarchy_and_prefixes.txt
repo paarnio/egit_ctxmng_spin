@@ -1,0 +1,42 @@
+ssp4t5.net ontology hierarchy
+
+
+# baseURI: http://ssp4t5.net/test/context_mimosa
+# imports: http://spinrdf.org/spl
+# imports: http://ssp4t5.net/context/mctxsimple
+# imports: http://ssp4t5.net/mimosa/combined
+
+--------------------
+# baseURI: http://ssp4t5.net/context/mctxsimple
+# imports: http://spinrdf.org/spl
+# imports: http://ssp4t5.net/context/mctxcore
+ 
+--------------------
+# baseURI: http://ssp4t5.net/mimosa/combined
+# imports: http://ssp4t5.net/mimosa/cmcoreplus
+# imports: http://ssp4t5.net/mimosa/diagplus
+# imports: http://ssp4t5.net/mimosa/regasset
+# imports: http://ssp4t5.net/mimosa/regcore
+# imports: http://ssp4t5.net/mimosa/workcoreplus
+
+
+
+==========================================
+PREFIXES
+
+ this.prefixlines.add("PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> ");
+ this.prefixlines.add("PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> ");
+ this.prefixlines.add("PREFIX arg: <http://spinrdf.org/arg#> ");
+ this.prefixlines.add("PREFIX combined: <http://ssp4t5.net/mimosa/combined#> ");
+ this.prefixlines.add("PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> ");
+ this.prefixlines.add("PREFIX fn: <http://www.w3.org/2005/xpath-functions#> ");
+ this.prefixlines.add("PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> ");
+ this.prefixlines.add("PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> ");
+ this.prefixlines.add("PREFIX owl: <http://www.w3.org/2002/07/owl#> ");
+ this.prefixlines.add("PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ");
+ this.prefixlines.add("PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> ");
+ this.prefixlines.add("PREFIX sp: <http://spinrdf.org/sp#> ");
+ this.prefixlines.add("PREFIX spif: <http://spinrdf.org/spif#> ");
+ this.prefixlines.add("PREFIX spin: <http://spinrdf.org/spin#> ");
+ this.prefixlines.add("PREFIX spl: <http://spinrdf.org/spl#> ");
+ this.prefixlines.add("PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> ");

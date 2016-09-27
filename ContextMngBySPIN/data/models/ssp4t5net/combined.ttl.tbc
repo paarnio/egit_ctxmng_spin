@@ -1,0 +1,771 @@
+# baseURI: null
+
+@prefix composite: <http://www.topbraid.org/2007/05/composite.owl#> .
+@prefix forms: <http://www.topbraid.org/2007/01/forms.owl#> .
+@prefix inference: <http://www.topbraid.org/2007/06/inference.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix visual: <http://topbraid.org/visual#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#hasEventType> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/mimosa/combined#SgAsEventTypeTable> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#hasRegisterTable> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/mimosa/regcore#Site> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#hasType> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/mimosa/workcoreplus#WorkOrderAudit> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#has_event_type_code> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 2 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#has_name> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/mimosa/cmcoreplus#EventType> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#has_event_type_code> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/mimosa/combined#EventTypeCodeTable> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/mimosa/regcore#agent_id> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 2 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#description> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 3 ;
+          forms:predicate <http://ssp4t5.net/mimosa/regcore#asset_id> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/mimosa/diagplus#AssetRecommendation> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/mimosa/regcore#agent_id> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 2 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#hasRole> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 3 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#hasType> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 4 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#has_name> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/mimosa/regcore#Agent> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/mimosa/regcore#agent_id> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 2 ;
+          forms:predicate <http://ssp4t5.net/mimosa/regcore#segment_id> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 3 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#description> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/mimosa/diagplus#SegmentRecommendation> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/mimosa/regcore#agent_type_id> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 2 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#has_name> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/mimosa/regcore#AgentType> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/mimosa/regcore#as_type_id> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/mimosa/regcore#AssetType> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/mimosa/regcore#classifiedAs> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 2 ;
+          forms:predicate <http://ssp4t5.net/mimosa/regcore#asset_id> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 3 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#asset_tag> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 4 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#hasModel> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 5 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#hasAssetEvent> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 6 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#hasSegment> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/mimosa/regcore#Asset> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/mimosa/regcore#model_id> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 2 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#hasEventTypeCodeTable> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/mimosa/regcore#Model> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/mimosa/regcore#registers> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/mimosa/combined#AgentRegisterTable> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/mimosa/regcore#segment_id> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 2 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#segment_tag> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/mimosa/regcore#Segment> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/mimosa/workcoreplus#hasStatusHistory> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 2 ;
+          forms:predicate <http://ssp4t5.net/mimosa/workcoreplus#work_order_id> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 3 ;
+          forms:predicate <http://ssp4t5.net/mimosa/workcoreplus#toAgent> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 4 ;
+          forms:predicate <http://ssp4t5.net/mimosa/workcoreplus#fromAgent> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 5 ;
+          forms:predicate <http://ssp4t5.net/mimosa/workcoreplus#byAgent> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 6 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#hasWorkStep> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 7 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#targetAsset_id> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 8 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#targetSegment_tag> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/mimosa/workcoreplus#WorkOrder> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].
+[
+  rdf:type forms:Form ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "0" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType owl:AnnotationProperty ;
+        ] ;
+      rdfs:label "Annotations" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "1" ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 1 ;
+          forms:predicate <http://ssp4t5.net/mimosa/workcoreplus#waudit_type_code> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidget ;
+          forms:childIndex 2 ;
+          forms:predicate <http://ssp4t5.net/mimosa/combined#user_tag_ident> ;
+        ] ;
+      forms:parentOf [
+          rdf:type forms:PropertyWidgetGroup ;
+          forms:childIndex "0" ;
+          forms:predicateType rdf:Property ;
+        ] ;
+      rdfs:label "Other Properties" ;
+    ] ;
+  forms:parentOf [
+      rdf:type forms:Section ;
+      forms:childIndex "2" ;
+      forms:parentOf [
+          rdf:type forms:ReferencesWidgetGroup ;
+          forms:childIndex "1" ;
+        ] ;
+      rdfs:label "Incoming References" ;
+    ] ;
+  forms:subjectType <http://ssp4t5.net/mimosa/workcoreplus#WorkAuditType> ;
+  forms:useDomain "true" ;
+  rdfs:label "Resource Form" ;
+].

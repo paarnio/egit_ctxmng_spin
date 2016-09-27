@@ -1,0 +1,340 @@
+CSM CONSOLE LOG '2016-02-22' 15:00
+Test1/Run3
+========== WORKFLOW STEPS LOG ==========
+
+ (start)-->| LOAD_KB(0) |-->| INF_MODEL(1) |-->| INFER(2) |-->| CALL_TEMPLATE(6) |-->| CALL_TEMPLATE(8) |-->| DESCRIBE(9) |-->| SPIN_CONSTRUCTOR(10) |-->| WRITE(11) |-->| DESCRIBE(9) |-->(end)
+
+================ CommandFileSpinMng running... ===============
+
+
+------------ Command Workflow file?  -----------
+>>>> Give Workflow filepath ?> (Default:data/json/csmCommands.json)
+data/json/csmCommands_context_mimosa_store_test1.json
+A:data/json/csmCommands_context_mimosa_store_test1.json
+---
+
+--------------------------------------------------
++'CSMHeader':
++----+'filename': 'data/json/csmCommands_context_mimosa_store_test1.json'
++----+'created': '2016-02-21'
++----+'updated': '2016-02-22'
++----+'history': ''
+--------------------------------------------------
+
+--Reading commands from csm command file (json) ... 
+
+
+
+
+========== Next Command Index:(0): LOAD_KB========== 
+----+ Command: loadKnowledgeBaseCommand
+----+----+ KB name:context_mimosa
+14:55:31 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: loadModelWithImports()
+---loadModelWithImports()
+loadModelWithImports: loaded basemodel + imports = #9
+14:55:33 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: createReasonerModel()
+
+----------- Knowledge Base Ready  ----------
+
+
+========== Next Command Index:(1): INF_MODEL========== 
+----+ Command: createInferenceModelCommand
+----+----+ name:create inference model and spin registering
+14:55:34 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: createInferredModelAndRegister()
+---Creating inferred sub-model and registering locally defined functions
+
+
+========== Next Command Index:(2): INFER========== 
+----+ Command: runInferencesCommand
+----+----+ name:pre_inference
+
+---- OPERATION: Run Inferences ----
+
+14:55:34 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: createInferredModelAndRegister()
+---SPIN REGISTRING ONLY (this.inferredTriples already created)
+14:55:34 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: runAllSpinInferences()
+---Inferred triples: 0
+
+---- --------- ----
+
+
+
+========== Next Command Index:(6): CALL_TEMPLATE========== 
+----+ Command: templateCallCommand
+----+----+Template name:CreateWorkOrderTemplate and type:construct
+0:----+----+----+Argument name:woid
+0:----+----+----+Argument type:integer
+0:----+----+----+Argument value:201
+14:55:34 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+1:----+----+----+Argument name:agentid
+1:----+----+----+Argument type:integer
+1:----+----+----+Argument value:1
+14:55:34 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+2:----+----+----+Argument name:segtag
+2:----+----+----+Argument type:string
+2:----+----+----+Argument value:SEG-101
+14:55:34 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+14:55:34 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callTemplateByName()
+14:55:34 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+14:55:34 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callConstructTemplate()
+=================CONSTRUCT TEMPLATE RESULTS===============
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://ssp4t5.net/mimosa/combined#"
+    xmlns:j.1="http://ssp4t5.net/mimosa/workcoreplus#" > 
+  <rdf:Description rdf:about="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_201">
+    <j.0:targetAsset_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">101</j.0:targetAsset_id>
+    <j.0:targetSegment_tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SEG-101</j.0:targetSegment_tag>
+    <j.1:toAgent rdf:resource="http://ssp4t5.net/mimosa/combined#Agent_1"/>
+    <j.1:work_order_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">201</j.1:work_order_id>
+    <rdf:type rdf:resource="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder"/>
+  </rdf:Description>
+</rdf:RDF>
+==================================================
+
+
+
+========== Next Command Index:(8): CALL_TEMPLATE========== 
+----+ Command: templateCallCommand
+----+----+Template name:CreateSituationContextTemplate and type:construct
+0:----+----+----+Argument name:workorderid
+0:----+----+----+Argument type:integer
+0:----+----+----+Argument value:201
+14:55:34 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+14:55:34 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callTemplateByName()
+14:55:34 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+14:55:34 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callConstructTemplate()
+=================CONSTRUCT TEMPLATE RESULTS===============
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://ssp4t5.net/context/mctxcore#"
+    xmlns:j.1="http://ssp4t5.net/mimosa/combined#"
+    xmlns:j.2="http://ssp4t5.net/context/mctxsimple#"
+    xmlns:j.3="http://ssp4t5.net/mimosa/workcoreplus#" > 
+  <rdf:Description rdf:about="http://ssp4t5.net/context/mctxcore#SituationContext_2016-02-22T14:55:34.973+02:00">
+    <j.0:hasElement rdf:resource="http://ssp4t5.net/context/mctxsimple#EMaintPerson_2016-02-22T14:55:34.973+02:00"/>
+    <j.0:hasElement rdf:resource="http://ssp4t5.net/context/mctxsimple#EMaintTarget_2016-02-22T14:55:34.973+02:00"/>
+    <j.0:hasElement rdf:resource="http://ssp4t5.net/context/mctxsimple#EWorkOrder_2016-02-22T14:55:34.973+02:00"/>
+    <rdf:type rdf:resource="http://ssp4t5.net/context/mctxcore#SituationContext"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_201">
+    <j.1:targetAsset_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">101</j.1:targetAsset_id>
+    <j.1:targetSegment_tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SEG-101</j.1:targetSegment_tag>
+    <j.3:toAgent rdf:resource="http://ssp4t5.net/mimosa/combined#Agent_1"/>
+    <j.3:work_order_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">201</j.3:work_order_id>
+    <rdf:type rdf:resource="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ssp4t5.net/context/mctxsimple#EMaintTarget_2016-02-22T14:55:34.973+02:00">
+    <j.0:ref_tag_code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SEG-101</j.0:ref_tag_code>
+    <rdf:type rdf:resource="http://ssp4t5.net/context/mctxsimple#EMaintTarget"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ssp4t5.net/context/mctxsimple#EWorkOrder_2016-02-22T14:55:34.973+02:00">
+    <j.0:hasWorkOrder rdf:resource="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_201"/>
+    <rdf:type rdf:resource="http://ssp4t5.net/context/mctxsimple#EWorkOrder"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ssp4t5.net/context/mctxsimple#EMaintPerson_2016-02-22T14:55:34.973+02:00">
+    <j.0:cris_agent_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</j.0:cris_agent_id>
+    <rdf:type rdf:resource="http://ssp4t5.net/context/mctxsimple#EMaintPerson"/>
+  </rdf:Description>
+</rdf:RDF>
+==================================================
+
+
+
+========== Next Command Index:(9): DESCRIBE========== 
+----+ Command: sparqlQueryCommand
+----+----+ name:DESCRIBE mctxcore:SituationContext
+----QueryString: PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sp: <http://spinrdf.org/sp#> PREFIX spif: <http://spinrdf.org/spif#> PREFIX spin: <http://spinrdf.org/spin#> PREFIX spl: <http://spinrdf.org/spl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> PREFIX arg: <http://spinrdf.org/arg#> PREFIX combined: <http://ssp4t5.net/mimosa/combined#> PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> PREFIX fn: <http://www.w3.org/2005/xpath-functions#> PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> PREFIX workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> PREFIX cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> PREFIX regasset: <http://ssp4t5.net/mimosa/regasset#> PREFIX regcore: <http://ssp4t5.net/mimosa/regcore#> PREFIX access: <http://siima.net/ont/accessories#> PREFIX bicycle: <http://siima.net/ont/bicycle#>  DESCRIBE  ?ctx  WHERE { ?ctx a mctxcore:SituationContext .  }
+14:55:34 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlDescribeQuery()
+---DESCRIBE QUERY:
+ PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sp: <http://spinrdf.org/sp#> PREFIX spif: <http://spinrdf.org/spif#> PREFIX spin: <http://spinrdf.org/spin#> PREFIX spl: <http://spinrdf.org/spl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> PREFIX arg: <http://spinrdf.org/arg#> PREFIX combined: <http://ssp4t5.net/mimosa/combined#> PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> PREFIX fn: <http://www.w3.org/2005/xpath-functions#> PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> PREFIX workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> PREFIX cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> PREFIX regasset: <http://ssp4t5.net/mimosa/regasset#> PREFIX regcore: <http://ssp4t5.net/mimosa/regcore#> PREFIX access: <http://siima.net/ont/accessories#> PREFIX bicycle: <http://siima.net/ont/bicycle#>  DESCRIBE  ?ctx  WHERE { ?ctx a mctxcore:SituationContext .  }
+@prefix afn:   <http://jena.hpl.hp.com/ARQ/function#> .
+@prefix :      <http://ssp4t5.net/test/context_mimosa#> .
+@prefix sp:    <http://spinrdf.org/sp#> .
+@prefix mctxsimple: <http://ssp4t5.net/context/mctxsimple#> .
+@prefix spif:  <http://spinrdf.org/spif#> .
+@prefix access: <http://siima.net/ont/accessories#> .
+@prefix mctxcore: <http://ssp4t5.net/context/mctxcore#> .
+@prefix combined: <http://ssp4t5.net/mimosa/combined#> .
+@prefix bicycle: <http://siima.net/ont/bicycle#> .
+@prefix arg:   <http://spinrdf.org/arg#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ctxtop: <http://ssp4t5.net/test/context_mimosa#> .
+@prefix cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> .
+@prefix spl:   <http://spinrdf.org/spl#> .
+@prefix regasset: <http://ssp4t5.net/mimosa/regasset#> .
+@prefix diagplus: <http://ssp4t5.net/mimosa/diagplus#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix spin:  <http://spinrdf.org/spin#> .
+@prefix workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> .
+@prefix fn:    <http://www.w3.org/2005/xpath-functions#> .
+@prefix regcore: <http://ssp4t5.net/mimosa/regcore#> .
+
+mctxsimple:SituationContext_2
+        a                          mctxcore:SituationContext ;
+        rdfs:label                 "Situation context 2"^^xsd:string ;
+        mctxcore:active            true ;
+        mctxcore:created           "2015-03-09T16:32:21.026+02:00"^^xsd:dateTime ;
+        mctxcore:currentSituation  <http://ssp4t5.net/context/mctxsimple#AbstractSituation_uuid_09c09681-2aca-11b2-8092-a2abbbb82996_2015-03-09T16:54:19.471+02:00> ;
+        mctxcore:hasElement        mctxsimple:WorkTask_1 ;
+        mctxcore:hasRelation       mctxsimple:RelativeLocation_1 .
+
+mctxsimple:SituationContext_1
+        a                  mctxcore:SituationContext ;
+        rdfs:label         "Situation context 1"^^xsd:string ;
+        mctxcore:contains  mctxsimple:RelativeLocation_1 ;
+        mctxcore:created   "2015-03-02T17:46:51.372+02:00"^^xsd:dateTime .
+
+<http://ssp4t5.net/context/mctxcore#SituationContext_2016-02-22T14:55:34.973+02:00>
+        a                    mctxcore:SituationContext ;
+        mctxcore:hasElement  <http://ssp4t5.net/context/mctxsimple#EWorkOrder_2016-02-22T14:55:34.973+02:00> , <http://ssp4t5.net/context/mctxsimple#EMaintTarget_2016-02-22T14:55:34.973+02:00> , <http://ssp4t5.net/context/mctxsimple#EMaintPerson_2016-02-22T14:55:34.973+02:00> .
+
+
+========== Next Command Index:(10): SPIN_CONSTRUCTOR========== 
+----+ Command: runSpinConstructorsCommand
+----+----+runSpinConstructorsCommand name:Run Spin Constructors and type:all
+
+---- OPERATION: Run Constructors ----
+
+14:55:35 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: runConstructors()
+
+---- --------- ----
+
+
+
+========== Next Command Index:(11): WRITE========== 
+----+ Command: writeModelCommand
+----+----+ KB name:Write Inferred Triples to Console
+
+---- Printing Inferred Triples or models to Console ----
+------------------------------------------------
+<http://ssp4t5.net/context/mctxsimple#MPerson_1>
+        <http://ssp4t5.net/context/mctxcore#created>
+                "2016-02-22T14:55:35.246+02:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
+<http://ssp4t5.net/context/mctxsimple#Target_1>
+        <http://ssp4t5.net/context/mctxcore#created>
+                "2016-02-22T14:55:35.113+02:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
+<http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_201>
+        a       <http://ssp4t5.net/mimosa/workcoreplus#WorkOrder> ;
+        <http://ssp4t5.net/mimosa/combined#targetAsset_id>
+                101 ;
+        <http://ssp4t5.net/mimosa/combined#targetSegment_tag>
+                "SEG-101"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://ssp4t5.net/mimosa/workcoreplus#toAgent>
+                <http://ssp4t5.net/mimosa/combined#Agent_1> ;
+        <http://ssp4t5.net/mimosa/workcoreplus#work_order_id>
+                201 .
+
+<http://ssp4t5.net/mimosa/combined#AssetRecommendation_1>
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "This is an AssetRecommendation comment line: ?"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://ssp4t5.net/mimosa/diagplus#utcRecommendation>
+                "2016-02-22T14:55:35.352+02:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
+<http://ssp4t5.net/context/mctxsimple#EWorkOrder_2016-02-22T14:55:34.973+02:00>
+        a       <http://ssp4t5.net/context/mctxsimple#EWorkOrder> ;
+        <http://ssp4t5.net/context/mctxcore#created>
+                "2016-02-22T14:55:35.224+02:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+        <http://ssp4t5.net/context/mctxcore#hasWorkOrder>
+                <http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_201> .
+
+<http://ssp4t5.net/mimosa/combined#SegmentRecommendation_1>
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "This is a SegmentRecommendation comment line: ?"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://ssp4t5.net/mimosa/diagplus#utcRecommendation>
+                "2016-02-22T14:55:35.267+02:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
+<http://ssp4t5.net/context/mctxsimple#EMaintPerson_2016-02-22T14:55:34.973+02:00>
+        a       <http://ssp4t5.net/context/mctxsimple#EMaintPerson> ;
+        <http://ssp4t5.net/context/mctxcore#created>
+                "2016-02-22T14:55:35.207+02:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+        <http://ssp4t5.net/context/mctxcore#cris_agent_id>
+                1 .
+
+<http://ssp4t5.net/context/mctxsimple#Target_101>
+        <http://ssp4t5.net/context/mctxcore#created>
+                "2016-02-22T14:55:35.408+02:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
+<http://ssp4t5.net/context/mctxsimple#Target_2>
+        <http://ssp4t5.net/context/mctxcore#created>
+                "2016-02-22T14:55:35.496+02:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
+<http://ssp4t5.net/context/mctxsimple#EMaintTarget_2016-02-22T14:55:34.973+02:00>
+        a       <http://ssp4t5.net/context/mctxsimple#EMaintTarget> ;
+        <http://ssp4t5.net/context/mctxcore#created>
+                "2016-02-22T14:55:35.240+02:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+        <http://ssp4t5.net/context/mctxcore#ref_tag_code>
+                "SEG-101"^^<http://www.w3.org/2001/XMLSchema#string> .
+
+<http://ssp4t5.net/context/mctxcore#SituationContext_2016-02-22T14:55:34.973+02:00>
+        a       <http://ssp4t5.net/context/mctxcore#SituationContext> ;
+        <http://ssp4t5.net/context/mctxcore#active>
+                true ;
+        <http://ssp4t5.net/context/mctxcore#created>
+                "2016-02-22T14:55:35.410+02:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+        <http://ssp4t5.net/context/mctxcore#hasElement>
+                <http://ssp4t5.net/context/mctxsimple#EMaintPerson_2016-02-22T14:55:34.973+02:00> , <http://ssp4t5.net/context/mctxsimple#EMaintTarget_2016-02-22T14:55:34.973+02:00> , <http://ssp4t5.net/context/mctxsimple#EWorkOrder_2016-02-22T14:55:34.973+02:00> .
+
+
+========== Next Command Index:(9): DESCRIBE========== 
+----+ Command: sparqlQueryCommand
+----+----+ name:DESCRIBE mctxcore:SituationContext
+----QueryString: PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sp: <http://spinrdf.org/sp#> PREFIX spif: <http://spinrdf.org/spif#> PREFIX spin: <http://spinrdf.org/spin#> PREFIX spl: <http://spinrdf.org/spl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> PREFIX arg: <http://spinrdf.org/arg#> PREFIX combined: <http://ssp4t5.net/mimosa/combined#> PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> PREFIX fn: <http://www.w3.org/2005/xpath-functions#> PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> PREFIX workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> PREFIX cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> PREFIX regasset: <http://ssp4t5.net/mimosa/regasset#> PREFIX regcore: <http://ssp4t5.net/mimosa/regcore#> PREFIX access: <http://siima.net/ont/accessories#> PREFIX bicycle: <http://siima.net/ont/bicycle#>  DESCRIBE  ?ctx  WHERE { ?ctx a mctxcore:SituationContext .  }
+14:55:35 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlDescribeQuery()
+---DESCRIBE QUERY:
+ PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sp: <http://spinrdf.org/sp#> PREFIX spif: <http://spinrdf.org/spif#> PREFIX spin: <http://spinrdf.org/spin#> PREFIX spl: <http://spinrdf.org/spl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> PREFIX arg: <http://spinrdf.org/arg#> PREFIX combined: <http://ssp4t5.net/mimosa/combined#> PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> PREFIX fn: <http://www.w3.org/2005/xpath-functions#> PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> PREFIX workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> PREFIX cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> PREFIX regasset: <http://ssp4t5.net/mimosa/regasset#> PREFIX regcore: <http://ssp4t5.net/mimosa/regcore#> PREFIX access: <http://siima.net/ont/accessories#> PREFIX bicycle: <http://siima.net/ont/bicycle#>  DESCRIBE  ?ctx  WHERE { ?ctx a mctxcore:SituationContext .  }
+@prefix afn:   <http://jena.hpl.hp.com/ARQ/function#> .
+@prefix :      <http://ssp4t5.net/test/context_mimosa#> .
+@prefix sp:    <http://spinrdf.org/sp#> .
+@prefix mctxsimple: <http://ssp4t5.net/context/mctxsimple#> .
+@prefix spif:  <http://spinrdf.org/spif#> .
+@prefix access: <http://siima.net/ont/accessories#> .
+@prefix mctxcore: <http://ssp4t5.net/context/mctxcore#> .
+@prefix combined: <http://ssp4t5.net/mimosa/combined#> .
+@prefix bicycle: <http://siima.net/ont/bicycle#> .
+@prefix arg:   <http://spinrdf.org/arg#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ctxtop: <http://ssp4t5.net/test/context_mimosa#> .
+@prefix cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> .
+@prefix spl:   <http://spinrdf.org/spl#> .
+@prefix regasset: <http://ssp4t5.net/mimosa/regasset#> .
+@prefix diagplus: <http://ssp4t5.net/mimosa/diagplus#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix spin:  <http://spinrdf.org/spin#> .
+@prefix workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> .
+@prefix fn:    <http://www.w3.org/2005/xpath-functions#> .
+@prefix regcore: <http://ssp4t5.net/mimosa/regcore#> .
+
+mctxsimple:SituationContext_2
+        a                          mctxcore:SituationContext ;
+        rdfs:label                 "Situation context 2"^^xsd:string ;
+        mctxcore:active            true ;
+        mctxcore:created           "2015-03-09T16:32:21.026+02:00"^^xsd:dateTime ;
+        mctxcore:currentSituation  <http://ssp4t5.net/context/mctxsimple#AbstractSituation_uuid_09c09681-2aca-11b2-8092-a2abbbb82996_2015-03-09T16:54:19.471+02:00> ;
+        mctxcore:hasElement        mctxsimple:WorkTask_1 ;
+        mctxcore:hasRelation       mctxsimple:RelativeLocation_1 .
+
+mctxsimple:SituationContext_1
+        a                  mctxcore:SituationContext ;
+        rdfs:label         "Situation context 1"^^xsd:string ;
+        mctxcore:contains  mctxsimple:RelativeLocation_1 ;
+        mctxcore:created   "2015-03-02T17:46:51.372+02:00"^^xsd:dateTime .
+
+<http://ssp4t5.net/context/mctxcore#SituationContext_2016-02-22T14:55:34.973+02:00>
+        a                    mctxcore:SituationContext ;
+        mctxcore:active      true ;
+        mctxcore:created     "2016-02-22T14:55:35.410+02:00"^^xsd:dateTime ;
+        mctxcore:hasElement  <http://ssp4t5.net/context/mctxsimple#EWorkOrder_2016-02-22T14:55:34.973+02:00> , <http://ssp4t5.net/context/mctxsimple#EMaintTarget_2016-02-22T14:55:34.973+02:00> , <http://ssp4t5.net/context/mctxsimple#EMaintPerson_2016-02-22T14:55:34.973+02:00> .
+
+
+========== WORKFLOW STEPS LOG ==========
+
+ (start)-->| LOAD_KB(0) |-->| INF_MODEL(1) |-->| INFER(2) |-->| CALL_TEMPLATE(6) |-->| CALL_TEMPLATE(8) |-->| DESCRIBE(9) |-->| SPIN_CONSTRUCTOR(10) |-->| WRITE(11) |-->| DESCRIBE(9) |-->(end)

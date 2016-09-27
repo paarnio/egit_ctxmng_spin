@@ -1,0 +1,307 @@
+# baseURI: http://ssp4t5.net/mimosa/combined
+# imports: http://ssp4t5.net/mimosa/cmcoreplus
+# imports: http://ssp4t5.net/mimosa/diagplus
+# imports: http://ssp4t5.net/mimosa/regasset
+# imports: http://ssp4t5.net/mimosa/regcore
+# imports: http://ssp4t5.net/mimosa/workcoreplus
+
+@prefix : <http://ssp4t5.net/mimosa/combined#> .
+@prefix cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> .
+@prefix diagplus: <http://ssp4t5.net/mimosa/diagplus#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix regasset: <http://ssp4t5.net/mimosa/regasset#> .
+@prefix regcore: <http://ssp4t5.net/mimosa/regcore#> .
+@prefix workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://ssp4t5.net/mimosa/combined>
+  rdf:type owl:Ontology ;
+  owl:imports <http://ssp4t5.net/mimosa/cmcoreplus> ;
+  owl:imports <http://ssp4t5.net/mimosa/diagplus> ;
+  owl:imports <http://ssp4t5.net/mimosa/regasset> ;
+  owl:imports <http://ssp4t5.net/mimosa/regcore> ;
+  owl:imports <http://ssp4t5.net/mimosa/workcoreplus> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+:AgentRegisterTable
+  rdf:type owl:Class ;
+  rdfs:comment "Contains Agents of a Site. (Not found from CCOM). "^^xsd:string ;
+  rdfs:label "Agent Register Table"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:AgentRegisterTable_1
+  rdf:type :AgentRegisterTable ;
+  regcore:registers :Agent_1 ;
+  rdfs:label "Agent register table 1"^^xsd:string ;
+.
+:AgentType_1
+  rdf:type regcore:AgentType ;
+  :has_name "Maintenance technician"^^xsd:string ;
+  regcore:agent_type_id 1 ;
+  rdfs:label "Agent type 1"^^xsd:string ;
+.
+:Agent_1
+  rdf:type regcore:Agent ;
+  :hasType :AgentType_1 ;
+  :has_name "John Smith"^^xsd:string ;
+  regcore:agent_id 1 ;
+  rdfs:label "Agent 1"^^xsd:string ;
+.
+:AssetRecommendation_1
+  rdf:type diagplus:AssetRecommendation ;
+  regcore:agent_id 1 ;
+  regcore:asset_id 101 ;
+  rdfs:label "Asset recommendation 1"^^xsd:string ;
+.
+:AssetType_101
+  rdf:type regcore:AssetType ;
+  regcore:as_type_id 101 ;
+  regcore:belongsToClass :Model_101 ;
+  rdfs:label "Asset type 101"^^xsd:string ;
+.
+:Asset_1
+  rdf:type regcore:Asset ;
+  rdfs:label "Asset 1"^^xsd:string ;
+.
+:Asset_101
+  rdf:type regcore:Asset ;
+  :hasModel :Model_101 ;
+  :hasSegment :Segment_101 ;
+  regcore:asset_id 101 ;
+  regcore:classifiedAs :AssetType_101 ;
+  rdfs:label "Asset 101"^^xsd:string ;
+.
+:EventTypeCodeTable
+  rdf:type owl:Class ;
+  rdfs:comment "Contains event_type_codes of a Model (i.e. AssetType). (Not found from CCOM). These codes refer to SgAsEventTypeTable (sheet in cris ref lib) which contains all EventTypes."^^xsd:string ;
+  rdfs:label "Model event type code table"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:EventTypeCodeTable_101
+  rdf:type :EventTypeCodeTable ;
+  :has_event_type_code 0 ;
+  :has_event_type_code 1 ;
+  :has_event_type_code 2 ;
+  rdfs:label "Event type table 101"^^xsd:string ;
+.
+:EventType_0
+  rdf:type cmcoreplus:EventType ;
+  :has_event_type_code 0 ;
+  :has_name "Undetermined"^^xsd:string ;
+  rdfs:label "Event type 0"^^xsd:string ;
+.
+:EventType_1
+  rdf:type cmcoreplus:EventType ;
+  :has_event_type_code 1 ;
+  :has_name "State/Event Occurrence"^^xsd:string ;
+  rdfs:label "Event type 1"^^xsd:string ;
+.
+:EventType_2
+  rdf:type cmcoreplus:EventType ;
+  :has_event_type_code 2 ;
+  :has_name "Abnormal Condition"^^xsd:string ;
+  rdfs:label "Event type 2"^^xsd:string ;
+.
+:Model_101
+  rdf:type regcore:Model ;
+  :hasEventTypeCodeTable :EventTypeCodeTable_101 ;
+  regcore:model_id 101 ;
+  rdfs:label "Model 101"^^xsd:string ;
+.
+:SegmentRecommendation_1
+  rdf:type diagplus:SegmentRecommendation ;
+  regcore:agent_id 1 ;
+  regcore:segment_id 101 ;
+  rdfs:label "Segment recommendation 1"^^xsd:string ;
+.
+:Segment_101
+  rdf:type regcore:Segment ;
+  :segment_tag "SEG-101"^^xsd:string ;
+  regcore:segment_id 101 ;
+  rdfs:label "Segment 101"^^xsd:string ;
+.
+:SgAsEventTypeTable
+  rdf:type owl:Class ;
+  rdfs:comment "Contains segment and asset event_type objects for all SegmentEvents and AssetEvents. (CMEventCore in CCOM: sheet in cris ref lib) This - hasEventType->EventType."^^xsd:string ;
+  rdfs:label "segment and asset event_type table"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:SgAsEventTypeTable_all_0
+  rdf:type :SgAsEventTypeTable ;
+  :hasEventType :EventType_0 ;
+  :hasEventType :EventType_1 ;
+  :hasEventType :EventType_2 ;
+  rdfs:label "Sg as event type table all 0"^^xsd:string ;
+.
+:Site_1
+  rdf:type regcore:Site ;
+  :hasRegisterTable :AgentRegisterTable_1 ;
+  :hasRegisterTable :SgAsEventTypeTable_all_0 ;
+  rdfs:label "Site 1"^^xsd:string ;
+.
+:WorkAuditType_0
+  rdf:type workcoreplus:WorkAuditType ;
+  :user_tag_ident "Undetermined"^^xsd:string ;
+  workcoreplus:waudit_type_code 0 ;
+  rdfs:label "Work audit type 0"^^xsd:string ;
+.
+:WorkAuditType_1
+  rdf:type workcoreplus:WorkAuditType ;
+  :user_tag_ident "Submitted / Sent"^^xsd:string ;
+  workcoreplus:waudit_type_code 1 ;
+  rdfs:label "Work audit type 1"^^xsd:string ;
+.
+:WorkAuditType_12
+  rdf:type workcoreplus:WorkAuditType ;
+  :user_tag_ident "Completed"^^xsd:string ;
+  workcoreplus:waudit_type_code 12 ;
+  rdfs:label "Work audit type 12"^^xsd:string ;
+.
+:WorkAuditType_13
+  rdf:type workcoreplus:WorkAuditType ;
+  :user_tag_ident "Closed"^^xsd:string ;
+  workcoreplus:waudit_type_code 13 ;
+  rdfs:label "Work audit type 13"^^xsd:string ;
+.
+:WorkOrderAudit_1_0
+  rdf:type workcoreplus:WorkOrderAudit ;
+  :hasType :WorkAuditType_0 ;
+  rdfs:label "Work order audit 1 0"^^xsd:string ;
+.
+:WorkOrderAudit_1_1
+  rdf:type workcoreplus:WorkOrderAudit ;
+  :hasType :WorkAuditType_1 ;
+  rdfs:label "Work order audit 1 1"^^xsd:string ;
+.
+:WorkOrderAudit_2_0
+  rdf:type workcoreplus:WorkOrderAudit ;
+  :hasType :WorkAuditType_0 ;
+  rdfs:label "Work order audit 2 0"^^xsd:string ;
+.
+:WorkOrderAudit_2_12
+  rdf:type workcoreplus:WorkOrderAudit ;
+  :hasType :WorkAuditType_12 ;
+  rdfs:label "Work order audit 2 12"^^xsd:string ;
+.
+:WorkOrder_1
+  rdf:type workcoreplus:WorkOrder ;
+  <http://ssp4t5.net/mimosa/p4t5ext#hasWorkStep> :WorkStep_1_1 ;
+  <http://ssp4t5.net/mimosa/p4t5ext#hasWorkStep> :WorkStep_1_2 ;
+  workcoreplus:hasStatusHistory :WorkOrderAudit_1_0 ;
+  workcoreplus:hasStatusHistory :WorkOrderAudit_1_1 ;
+  workcoreplus:toAgent :Agent_1 ;
+  workcoreplus:work_order_id 1 ;
+  rdfs:label "Work order 1"^^xsd:string ;
+.
+:WorkOrder_2
+  rdf:type workcoreplus:WorkOrder ;
+  workcoreplus:hasStatusHistory :WorkOrderAudit_2_0 ;
+  workcoreplus:hasStatusHistory :WorkOrderAudit_2_12 ;
+  workcoreplus:toAgent :Agent_1 ;
+  workcoreplus:work_order_id 2 ;
+  rdfs:label "Work order 2"^^xsd:string ;
+.
+:WorkStepAudit_1_1_1
+  rdf:type workcoreplus:WorkStepAudit ;
+  rdfs:label "Work step audit 1 1 1"^^xsd:string ;
+.
+:WorkStepAudit_1_2_1
+  rdf:type workcoreplus:WorkStepAudit ;
+  rdfs:label "Work step audit 1 2 1"^^xsd:string ;
+.
+:WorkStep_1_1
+  rdf:type workcoreplus:WorkStep ;
+  workcoreplus:hasStatusHistory :WorkStepAudit_1_1_1 ;
+  rdfs:label "Work step 1 1"^^xsd:string ;
+.
+:WorkStep_1_2
+  rdf:type workcoreplus:WorkStep ;
+  workcoreplus:hasStatusHistory :WorkStepAudit_1_2_1 ;
+  rdfs:label "Work step 1 2"^^xsd:string ;
+.
+:description
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "description"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+:hasAssetEvent
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain regcore:Asset ;
+  rdfs:label "has asset event"^^xsd:string ;
+  rdfs:range cmcoreplus:AssetEvent ;
+.
+:hasEventType
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has event type"^^xsd:string ;
+.
+:hasEventTypeCodeTable
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has event type code table"^^xsd:string ;
+.
+:hasEventTypeTable
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has event type table"^^xsd:string ;
+.
+:hasModel
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Property has_model with domain:Asset. Defined in combined-namespace. It is an inverse property of modelOf-property found from Mimosa CCOM?"^^xsd:string ;
+  rdfs:label "has model"^^xsd:string ;
+  owl:inverseOf regcore:modelOf ;
+.
+:hasRegisterTable
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has register table"^^xsd:string ;
+.
+:hasRole
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has role"^^xsd:string ;
+.
+:hasSegment
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Property hasSegment is defined in combined-namespace.  Domain: Asset Range:Segment  .Not found from Mimosa CCOM?"^^xsd:string ;
+  rdfs:label "has segment"^^xsd:string ;
+  owl:inverseOf regcore:modelOf ;
+.
+:hasType
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has type"^^xsd:string ;
+.
+:has_event_type_code
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "The integer code values and their descriptions are defined in CRIS:REF LIB sheet: sg_as_event_type"^^xsd:string ;
+  rdfs:label "has event type code"^^xsd:string ;
+  rdfs:range xsd:integer ;
+.
+:has_name
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "has name"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+:model_code
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "?Property model_code with string range is defined in combined-namespace, because it was not found from Mimosa CCOM?"^^xsd:string ;
+  rdfs:label "model code"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+:segment_tag
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "?Property segment_tag with string range. The value of this property is the unique identifier of an equipment. It  is defined in combined-namespace, because it was not found from Mimosa CCOM?"^^xsd:string ;
+  rdfs:label "segment tag"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+:user_tag_ident
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "user tag ident"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+<http://ssp4t5.net/mimosa/p4t5ext#hasWorkStep>
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain workcoreplus:WorkOrder ;
+  rdfs:label "has work step"^^xsd:string ;
+  rdfs:range workcoreplus:WorkStep ;
+.
+workcoreplus:byAgent
+  rdf:type owl:ObjectProperty ;
+.

@@ -1,0 +1,90 @@
+ssp4t5net mallin toiminnan testaus omalla-softalla
+2016-01-15
+JATKOA todo_ss4p5torg_template_testi.txt testeille.
+=================================================
+
+TEMPLATE TESTIT:
+================================================
+CONSTRUCT TEMPLATES
+-------------------
+1. http://ssp4t5.net/test/context_mimosa#CreateAssetRecommendationTemplate2 EI TOIMI
+testattu aikaisemmin todo_ss4p5torg_template_testi.txt
+EI ONNISTU KOSKA:
+17:54:11 WARN  exec                 :: URI <http://spinrdf.org/spif#buildURI> has no registered function factory
+
+ANSWER: FROM: https://groups.google.com/forum/#!topic/topbraid-users/v1ciAHNrJ2c
+> When I use the SPINInferences.run() method, I get warnings such as the
+> following:
+>
+> "URI <http://topbraid.org/sparqlmotionfunctions#buildURI> has no
+> registered function factory"
+
+I regret to say that the functions from the smf: namespace such as smf:buildURI 
+are not part of the SPIN API but only available commercially. 
+smf:buildURI can often be replaced by IRI(fn:concat(...))
+
+==================================================
+2. http://ssp4t5.net/test/context_mimosa#CreateRecommendationTemplate TOIMII
+
+	argument this=http://ssp4t5.net/mimosa/combined#AssetRecommendation_1
+	argument arg1=NO COMMENT
+=================CONSTRUCT TEMPLATE RESULTS===============
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:j.0="http://ssp4t5.net/mimosa/diagplus#" > 
+  <rdf:Description rdf:about="http://ssp4t5.net/mimosa/combined#AssetRecommendation_1">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NO COMMENT</rdfs:comment>
+    <j.0:utcRecommendation rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-01-15T18:05:01.018+02:00</j.0:utcRecommendation>
+  </rdf:Description>
+</rdf:RDF>
+==================================================
+	
+	
+	
+	
+===================================================
+SELECT TEMPLATES
+-----------------
+1. http://ssp4t5.net/test/context_mimosa#AssetModelInfo TOIMII
+	argument tag=SEG-101
+	query variable: model
+============ MyTemplate Query Result ==============
+Template Query variable unifies to: http://ssp4t5.net/mimosa/combined#Model_101
+==================================================
+2. http://ssp4t5.net/test/context_mimosa#QueryAgentInfo TOIMII
+	argument agid=1
+	query variable: agname
+============ MyTemplate Query Result ==============
+Template Query variable unifies to: John Smith^^http://www.w3.org/2001/XMLSchema#string
+==================================================
+3. http://ssp4t5.net/test/context_mimosa#QueryModelEventCodes TOIMII
+	argument mid=101
+	query variable: evtcode
+============ MyTemplate Query Result ==============
+Template Query variable unifies to: 2^^http://www.w3.org/2001/XMLSchema#integer
+Template Query variable unifies to: 1^^http://www.w3.org/2001/XMLSchema#integer
+Template Query variable unifies to: 0^^http://www.w3.org/2001/XMLSchema#integer
+==================================================
+	query variable: model
+============ MyTemplate Query Result ==============
+Template Query variable unifies to: http://ssp4t5.net/mimosa/combined#Model_101
+Template Query variable unifies to: http://ssp4t5.net/mimosa/combined#Model_101
+Template Query variable unifies to: http://ssp4t5.net/mimosa/combined#Model_101
+==================================================
+4. http://ssp4t5.net/test/context_mimosa#QueryWorkOrders TOIMII
+	argument agentid=1
+	query variable: agent
+============ MyTemplate Query Result ==============
+Template Query variable unifies to: http://ssp4t5.net/mimosa/combined#Agent_1
+==================================================
+	query variable: worder
+============ MyTemplate Query Result ==============
+Template Query variable unifies to: http://ssp4t5.net/mimosa/combined#WorkOrder_1
+==================================================
+	query variable: worderid
+============ MyTemplate Query Result ==============
+Template Query variable unifies to: 1^^http://www.w3.org/2001/XMLSchema#integer
+==================================================
+	

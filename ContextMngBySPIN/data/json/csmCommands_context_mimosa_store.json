@@ -1,0 +1,441 @@
+{
+  "CSMHeader": {
+    "filename": "data/json/csmCommands_context_mimosa_store.json",
+    "created": "2016-02-21",
+    "updated": "2016-02-21",
+    "validated": "http://www.jsoneditoronline.org/",
+    "application": "CommandFileSpinMng.java",
+    "history": "",
+    "workflow": {
+      "name": "Workflow command store for context_mimosa model",
+      "processlog": "(start)-->| LOAD_KB(0) |-->| INF_MODEL(1) |-->| INFER(2) |-->(end)",
+      "comment": "Workflow  commands can be run in 'indexed' mode (type='indexed') or in 'all' mode (type='all').",
+      "type": "indexed",
+      "indexes": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  "CSMCommands": [
+    {
+      "index": 0,
+      "commandType": "loadKnowledgeBase",
+      "stepnote": "LOAD_KB",
+      "comment": "REQUIRED: ALLWAYS RUN THIS AS THE FIRST COMMAND! (Types: 'predefined' | 'file&uri')",
+      "knowledgeBase": {
+        "name": "context_mimosa",
+        "type": "predefined",
+        "ontology": null,
+        "imports": null
+      }
+    },
+    {
+      "index": 1,
+      "commandType": "createInferenceModel",
+      "stepnote": "INF_MODEL",
+      "comment": "NOTE:OFTEN REQUIRED: This command creates the inference model and registers spin.",
+      "create": {
+        "name": "create inference model and spin registering",
+        "type": "create_and_register"
+      }
+    },
+    {
+      "index": 2,
+      "commandType": "runInferences",
+      "stepnote": "INFER",
+      "comment": "NOTE:OFTEN REQUIRED: This command runs all spin inferences: type options: 'singlepass' | 'iterative' (creates the inference model, if not yet created) .",
+      "inference": {
+        "name": "pre_inference",
+        "type": "iterative"
+      }
+    }
+  ],
+  "CSM_STORE": {
+    "comment": "----NOTE: This is a predefined command store (Copy & paste commands to the command list) -----",
+    "KB_COMMANDS": [
+      {
+        "index": 0,
+        "commandType": "loadKnowledgeBase",
+        "stepnote": "LOAD_KB",
+        "comment": "REQUIRED: ALLWAYS RUN THIS AS THE FIRST COMMAND! (Types: 'predefined' | 'file&uri')",
+        "knowledgeBase": {
+          "name": "context_mimosa",
+          "type": "predefined",
+          "ontology": null,
+          "imports": null
+        }
+      }
+    ],
+    "INFERENCE_COMMANDS": [
+      {
+        "index": null,
+        "commandType": "createInferenceModel",
+        "stepnote": "INF_MODEL",
+        "comment": "NOTE:OFTEN REQUIRED: This command creates the inference model and registers spin.",
+        "create": {
+          "name": "create inference model and spin registering",
+          "type": "create_and_register"
+        }
+      },
+      {
+        "index": null,
+        "commandType": "runInferences",
+        "stepnote": "INFER",
+        "comment": "NOTE:OFTEN REQUIRED: This command runs all spin inferences: type options: 'singlepass' | 'iterative' (creates the inference model, if not yet created) .",
+        "inference": {
+          "name": "pre_inference",
+          "type": "iterative"
+        }
+      }
+    ],
+    "SPIN_CONSTRAINT_CHECK_COMMANDS": [
+ 	  {
+        "index": null,
+        "commandType": "checkConstraints",
+        "stepnote": "CONSTRAINTS",
+        "comment": "run 'all' (type 'all') Spin Constraints or only for one 'resource'. If 'addrdf': true, violations are added to the inferred model. ",
+        "constraints": {
+          "name": "Run Spin Constraints",
+          "type": "all",
+          "uri": "http://siima.net/ont/bicycle#Bicycle_4",
+		  "addrdf": true,
+        }
+      }
+    ],
+    "SPIN_CONSTRUCTOR_COMMANDS": [
+      {
+        "index": null,
+        "commandType": "runSpinConstructors",
+        "stepnote": "SPIN_CONSTRUCTOR",
+        "comment": "run all Spin Constructors",
+        "constructors": {
+          "name": "Run Spin Constructors",
+          "type": "all"
+        }
+      }
+    ],
+    "TEMPLATE_CREATE_COMMANDS": [
+	      {
+        "index": null,
+        "commandType": "createNewTemplate",
+        "stepnote": "CREATE_TEMPLATE",
+        "comment": "NOTE:This is an example for BICYCLE model",
+        "template": {
+          "name": "BicycleNameSWGTemplate1",
+          "ns": "http://siima.net/ont/bicycle#",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": " ?bic ?wcount ?name ",
+          "where": "?bic rdf:type bicycle:Bicycle .  ?bic bicycle:wheelcount ?wcount .  ?bic bicycle:name ?name .",
+          "limit": null,
+          "args": [
+            {
+              "name": "wcount",
+              "type": "XSD.integer",
+              "argComment": "The number of the wheels in the bicycle queried."
+            }
+          ]
+        }
+		}
+	],
+    "TEMPLATE_CALL_COMMANDS": [
+      {
+        "index": null,
+        "commandType": "templateCall",
+        "stepnote": "CALL_TEMPLATE",
+        "template": {
+          "name": "CreateWorkOrderTemplate",
+          "type": "construct",
+          "args": [
+            {
+              "name": "woid",
+              "type": "integer",
+              "value": "201"
+            },
+            {
+              "name": "agentid",
+              "type": "integer",
+              "value": "1"
+            },
+            {
+              "name": "segtag",
+              "type": "string",
+              "value": "SEG-101"
+            }
+          ]
+        }
+      },
+      {
+        "index": null,
+        "commandType": "templateCall",
+        "stepnote": "CALL_TEMPLATE",
+        "template": {
+          "name": "CreateSituationContextTemplate",
+          "type": "construct",
+          "args": [
+            {
+              "name": "workorderid",
+              "type": "integer",
+              "value": "201"
+            }
+          ]
+        }
+      }
+    ],
+	"CLASS_ATTACHED_QUERY_COMMANDS": [
+	{
+      "index": null,
+      "commandType": "execAttachedQuery",
+      "stepnote": "ATTACHED_QUERY",
+      "comment": "NOTE: This is only an example for bicycle.ttl model",
+      "query": {
+        "name": "Class Attached Query",
+        "type": "select",
+		"reasoner": false,
+		"preprefixes": null,
+		"classuri": "http://siima.net/ont/bicycle#Bicycle",
+		"queryVars": [
+            "?name", "?bic"
+          ]
+      }
+	 }	
+	],
+    "QUERY_WITH_EVAL_COMMANDS": [
+	 {
+        "index": null,
+        "commandType": "sparqlQuery",
+        "stepnote": "SELECT_EVAL",
+        "query": {
+          "name": "NOTE: This is only an example for bicycle.ttl model. SELECT Query Bicycle using EVAL(Template)",
+          "type": "select",
+		  "reasoner": false,
+          "preprefixes": "yes",
+          "select": "?result",
+          "where": "bicycle:BicycleByNameSWGTemplate spin:body ?body . ?body rdf:type sp:Select . BIND (spin:eval(?body, arg:name, 'Jukan_fillari') AS ?result)",
+          "limit": "10",
+          "queryVars": [
+            "?result"
+          ]
+        }
+      }
+	],
+	"SERVICE_COMMANDS": [
+	     {
+        "index": null,
+        "commandType": "sparqlQuery",
+        "stepnote": "SELECT_SERVICE",
+        "comment": "Federated query to an external SPARQL endpoint SERVICE example: first start d2rq-0.8.1>d2r-server mapping-iswc_uri_pdf.ttl)",
+        "query": {
+          "name": "FEDERATED SERVICE query example",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": "*",
+          "where": "?bicycle bicycle:name ?name1 . SERVICE <http://localhost:2020/sparql> { ?person rdf:type <http://xmlns.com/foaf/0.1/Person> .  ?person rdfs:label ?name2 . FILTER (str(?name1)=str(?name2)) . }",
+          "limit": "10",
+          "queryVars": [
+            "?bicycle",
+			"?name1",
+			"?person",
+			"?name2"
+          ]
+        }
+      },
+      {
+        "index": null,
+        "commandType": "sparqlQuery",
+        "stepnote": "SELECT_SERVICE",
+        "comment": "Federated query to an external SPARQL endpoint SERVICE example: first start d2rq-0.8.1>d2r-server mapping-iswc_uri_pdf.ttl)",
+        "query": {
+          "name": "SERVICE query example",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": "?paper",
+          "where": " SERVICE <http://localhost:2020/sparql> { ?paper rdf:type <http://xmlns.com/foaf/0.1/Document> . }",
+          "limit": "100",
+          "queryVars": [
+            "?paper"
+          ]
+        }
+      }
+	],
+    "SELECT_COMMANDS": [
+		{
+        "index": null,
+        "commandType": "sparqlQuery",
+        "stepnote": "SELECT_VIOLATIONS",
+        "query": {
+          "name": "SELECT Query Constraint Violations (eq. Bicycle wheel count)",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": "*",
+          "where": "?violation a <http://spinrdf.org/spin#ConstraintViolation> . ?violation <http://www.w3.org/2000/01/rdf-schema#label> ?label . ?violation <http://spinrdf.org/spin#violationRoot> ?root ",
+          "limit": "100",
+          "queryVars": [
+            "?violation",
+            "?label",
+            "?root"
+          ]
+        }
+      },
+      {
+        "index": null,
+        "commandType": "sparqlQuery",
+        "stepnote": "SELECT",
+        "query": {
+          "name": "Query WorkOrders",
+          "type": "select",
+		  "reasoner": false,
+          "preprefixes": "yes",
+          "select": "*",
+          "where": "?s rdf:type workcoreplus:WorkOrder . ?s workcoreplus:work_order_id ?woid .",
+          "limit": "100",
+          "queryVars": [
+            "?s",
+            "?woid"
+          ]
+        }
+      }
+    ],
+    "DESCRIBE_COMMANDS": [
+     {
+        "index": null,
+        "commandType": "sparqlQuery",
+        "stepnote": "DESCRIBE",
+        "query": {
+          "name": "DESCRIBE mctxcore:SituationContext",
+          "type": "describe",
+		  "reasoner": false,
+          "preprefixes": "yes",
+          "describe": " ?ctx ",
+          "where": "?ctx a mctxcore:SituationContext . FILTER EXISTS { ?ctx mctxcore:active true .} ",
+          "bind": null,
+          "filter": null
+        }
+      }
+	],
+    "UPDATE_COMMANDS": [
+      {
+        "index": null,
+        "commandType": "sparqlQuery",
+        "stepnote": "UPDATE",
+        "query": {
+          "name": "Update WorkOrder_666 ID",
+          "type": "update",
+		  "reasoner": false,
+          "preprefixes": "yes",
+          "delete": "?wouri workcoreplus:work_order_id 2 .",
+          "insert": "?wouri workcoreplus:work_order_id 222 .",
+          "where": "?wouri rdf:type workcoreplus:WorkOrder . ?wouri workcoreplus:work_order_id 2 .",
+          "bind": null,
+          "filter": null
+        }
+      }
+    ],
+    "SPARQL_CONSTRUCT_QUERY_COMMANDS": [
+      {
+        "index": null,
+        "commandType": "sparqlQuery",
+        "stepnote": "CONSTRUCT_QUERY",
+        "query": {
+          "name": "Construct WorkOrder_666",
+          "type": "construct",
+          "resultTriples": "add",
+		  "reasoner": false,
+          "preprefixes": "yes",
+          "construct": "?wouri a workcoreplus:WorkOrder . ?wouri workcoreplus:work_order_id 666 .",
+          "where": "BIND (IRI(fn:concat('http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_',str(666))) AS ?wouri) ."
+        }
+      }
+    ],
+    "LIST_TEMPLATES_COMMANDS": [
+   {
+        "index": null,
+        "commandType": "listTemplates",
+        "stepnote": "LIST",
+        "comment": "Lists all templates and detailed info about templates in 'list.info' list",
+        "listing": {
+          "name": "All plus detailed info about some of them",
+          "type": "all&info",
+          "info": [
+            {
+              "localname": "CreateWorkOrderTemplate",
+              "uri": null
+            },
+            {
+              "localname": "CreateSituationContextTemplate",
+              "uri": null
+            }
+          ]
+        }
+      }		
+	],
+    "LIST_FUNCTION_COMMANDS": [
+      {
+        "index": null,
+        "commandType": "listFunctions",
+        "stepnote": "LIST",
+        "comment": "Lists all SPIN Functions",
+        "listing": {
+          "name": "All SPIN Functions",
+          "type": "all"
+        }
+      }
+    ],
+	 "LIST_PREFIXES_COMMANDS": [
+	  {
+      "index": null,
+      "commandType": "listNsPrefixes",
+      "stepnote": "LIST_PREFIXES",
+      "comment": "Listing prefixes with namespaces in the model or in predefined list for sparql queries (type options: 'sparqlprefixes', 'modelprefixes')",
+      "listing": {
+        "name": "Listing prefixes defined for sparql queries",
+        "type": "sparqlprefixes",
+      }
+    }
+	],
+	
+    "WRITE_MODEL_COMMANDS": [
+     {
+        "index": null,
+        "commandType": "writeModel",
+        "stepnote": "WRITE",
+        "comment": "Write type can be 'file' or 'console'. Modelcat can be 'merged', 'inferred' or 'main'. Format options: TTL, RDF/JSON, JSON-LD, etc. (https://jena.apache.org/documentation/io/rdf-output.html)",
+        "write": {
+          "name": "Write Inferred Triples to Console",
+          "type": "console",
+          "filePath": "data/inferences/temp.ttl",
+          "modelcat": "inferred",
+		  "format": "RDF/JSON"
+        }
+	},
+      {
+        "index": null,
+        "commandType": "writeModel",
+        "stepnote": "WRITE",
+        "comment": "Write type can be 'file' or 'console'. Modelcat can be one of 'inferred'/'main'/'mainall'?=?'merged'.",
+        "write": {
+          "name": "Write merged model to file",
+          "type": "file",
+          "filePath": "data/models/generated_models/temp.ttl",
+          "modelcat": "inferred"
+        }
+      }
+    ],
+    "USER_INPUT_COMMANDS": [
+      {
+        "index": null,
+        "commandType": "userinput",
+        "stepnote": "USER_INPUT",
+        "comment": "NOTE: Pause execution for user checks .",
+        "userprompt": {
+          "name": "user prompt",
+          "type": "check",
+          "prompt": "continue",
+          "default": "Y"
+        }
+      }
+    ]
+  }
+}

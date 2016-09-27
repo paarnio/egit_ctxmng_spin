@@ -1,0 +1,113 @@
+# baseURI: http://ssp4t5.net/mimosa/cmcoreplus
+
+@prefix : <http://ssp4t5.net/mimosa/cmcoreplus#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://ssp4t5.net/mimosa/cmcoreplus>
+  rdf:type owl:Ontology ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+:AssetEvent
+  rdf:type owl:Class ;
+  rdfs:comment "belongs to CMEventCore in CCOM"^^xsd:string ;
+  rdfs:label "Asset event"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:AssetEventBlobData
+  rdf:type owl:Class ;
+  rdfs:comment "Belongs to CMAssetEventData in CCOM"^^xsd:string ;
+  rdfs:label "Asset event character data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:AssetEventCharacterData
+  rdf:type owl:Class ;
+  rdfs:comment "Belongs to CMAssetEventData in CCOM"^^xsd:string ;
+  rdfs:label "Asset event character data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:AssetEventNumericData
+  rdf:type owl:Class ;
+  rdfs:comment "Belongs to CMAssetEventData in CCOM"^^xsd:string ;
+  rdfs:label "Asset event character data"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:CalculationType
+  rdf:type owl:Class ;
+  rdfs:label "Calculation type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:DataSource
+  rdf:type owl:Class ;
+  rdfs:label "Data source"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:DataSourceType
+  rdf:type owl:Class ;
+  rdfs:label "Data source"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:EventType
+  rdf:type owl:Class ;
+  rdfs:comment "belongs to CMEventCore in CCOM"^^xsd:string ;
+  rdfs:label "Event type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:MeasurementEvent
+  rdf:type owl:Class ;
+  rdfs:label "Measurement event"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:MeasurementLocation
+  rdf:type owl:Class ;
+  rdfs:label "Measurement location"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:MeasurementLocationType
+  rdf:type owl:Class ;
+  rdfs:label "Measurement location"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:SegmentEvent
+  rdf:type owl:Class ;
+  rdfs:comment "belongs to CMEventCore in CCOM"^^xsd:string ;
+  rdfs:label "Segment event"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:Transducer
+  rdf:type owl:Class ;
+  rdfs:label "Transducer"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:TransducerAxisDirectionType
+  rdf:type owl:Class ;
+  rdfs:label "Transducer"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:TransducerType
+  rdf:type owl:Class ;
+  rdfs:label "Transducer"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:binaryTypeOf
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "binary type of"^^xsd:string ;
+.
+:contentTypeOf
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "content type of"^^xsd:string ;
+.
+:generates
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "generates"^^xsd:string ;
+.
+:names
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "names"^^xsd:string ;
+.
+:withDefaultUnitsOf
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "with default units of"^^xsd:string ;
+.

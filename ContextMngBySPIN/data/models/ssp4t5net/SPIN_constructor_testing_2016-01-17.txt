@@ -1,0 +1,564 @@
+SPIN constructor functionality
+2016-01-17
+Testing SPIN constructor functionality 
+by creating a new instance using a template CreateResourceTemplateSiima
+and runing operation "6. Run constructors"
+-----
+TOIMII: for the class SituationContext
+http://ssp4t5.net/context/mctxcore#SituationContext
+
+-------------------------------------------
+
+
+SELECT ?s WHERE { ?s rdf:type mctxcore:SituationContext . }
+---sparqlQuery()
+Query variable result: http://ssp4t5.net/context/mctxsimple#SituationContext_2
+Query variable result: http://ssp4t5.net/context/mctxsimple#SituationContext_1
+sparqlQuery: result rows #2
+
+CONSTRUCT { ?res a mctxcore:SituationContext . } WHERE { BIND (afn:now() AS ?now) . BIND (IRI(fn:concat("http://ssp4t5.net/context/mctxcore#SituationContext_", str(?now))) AS ?res) . }
+------------------
+
+CONSTRUCT TEMPLATE: CreateResourceTemplateSiima
+CONSTRUCT { ?newres a ?classuri . } WHERE { BIND (afn:now() AS ?now) . BIND (IRI(fn:concat(str(?classuri),"_", str(?now))) AS ?newres) . }
+
+argument = classuri
+argument value=http://ssp4t5.net/context/mctxcore#SituationContext
+------------------
+=================CONSTRUCT TEMPLATE RESULTS===============
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://ssp4t5.net/context/mctxcore#"
+    xmlns:j.1="http://ssp4t5.net/mimosa/mctxcore#" > 
+  <rdf:Description rdf:about="http://ssp4t5.net/context/mctxcore#SituationContext_2016-01-17T10:54:19.650+02:00">
+    <rdf:type rdf:resource="http://ssp4t5.net/context/mctxcore#SituationContext"/>
+  </rdf:Description>
+</rdf:RDF>
+==================================================
+
+
+SELECT * WHERE { ?s rdf:type mctxcore:SituationContext . ?s mctxcore:created ?date . }
+
+---sparqlQuery()
+Query variable result: http://ssp4t5.net/context/mctxsimple#SituationContext_2
+Query variable result: http://ssp4t5.net/context/mctxsimple#SituationContext_1
+sparqlQuery: result rows #2
+
+-----------------
+6. Run constructors
+-----------------
+---sparqlQuery()
+Query variable result: http://ssp4t5.net/context/mctxsimple#SituationContext_2
+Query variable result: http://ssp4t5.net/context/mctxsimple#SituationContext_1
+Query variable result: http://ssp4t5.net/context/mctxcore#SituationContext_2016-01-17T10:54:19.650+02:00
+sparqlQuery: result rows #3
+----?date
+---sparqlQuery()
+Query variable result: 2015-03-09T16:32:21.026+02:00^^http://www.w3.org/2001/XMLSchema#dateTime
+Query variable result: 2015-03-02T17:46:51.372+02:00^^http://www.w3.org/2001/XMLSchema#dateTime
+Query variable result: 2016-01-17T10:55:52.010+02:00^^http://www.w3.org/2001/XMLSchema#dateTime
+sparqlQuery: result rows #3
+
+=============== TESTIN LOG =================================
+
+================ InteractiveSpinMng ===============
+
+
+----- ModelSpinManager READY to start user interaction -----
+
+
+
+
+--------START-MENU---------
+OPERATION OPTIONS:
+1. Build knowledge base interactively
+2. Start predefined KB: bicycle
+3. Start predefined KB: ssp4t5.net
+4. Start predefined KB: 
+5. Exit
+-----SELECT 1-5  (integer assumed) (Default:5)
+3
+A:3
+---
+10:52:08 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: loadModelWithImports()
+---loadModelWithImports()
+loadModelWithImports: loaded basemodel + imports = #9
+10:52:10 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: createReasonerModel()
+
+----------- Knowledge Base Ready  ----------
+
+
+--------MAIN-MENU---------
+OPERATION OPTIONS:
+1. Add Sparql prefix lines
+2. Run queries
+3. Run inferences
+4. Run templates
+5. Check constraints
+6. Run constructors
+7. Print inferred triples
+8. Print template info
+9. Exit
+-----SELECT 1-9  (integer assumed) (Default:9)
+3
+A:3
+---
+
+---- OPERATION: Run Inferences ----
+
+10:52:27 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: createInferredModelAndRegister()
+---Creating inferred sub-model and registering locally defined functions
+10:52:28 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: runAllSpinInferences()
+---Inferred triples: 0
+
+---- --------- ----
+
+
+
+--------MAIN-MENU---------
+OPERATION OPTIONS:
+1. Add Sparql prefix lines
+2. Run queries
+3. Run inferences
+4. Run templates
+5. Check constraints
+6. Run constructors
+7. Print inferred triples
+8. Print template info
+9. Exit
+-----SELECT 1-9  (integer assumed) (Default:9)
+4
+A:4
+---
+
+---- OPERATION: Run Templates ----
+
+10:52:33 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplates()
+
+================ALL MODEL TEMPLATES ================
+
+Template is CountPropertyConstraintTemplates------- with URI:http://spinrdf.org/spl#CountPropertyConstraintTemplates
+------- with comment:Abstract superclass of property constraints that compare the number of values with either min or max count.
+Template is ConstraintTemplates------- with URI:http://spinrdf.org/spl#ConstraintTemplates
+------- with comment:Abstract superclass of templates that can be used as spin:constraints. The subclasses are expected to construct spin:ConstraintViolations and use ?this to talk about the instances of the associated class.
+Template is CreateRecommendationTemplate------- with URI:http://ssp4t5.net/test/context_mimosa#CreateRecommendationTemplate
+------- with comment:null
+Template is PropertyPairConstraintTemplates------- with URI:http://spinrdf.org/spl#PropertyPairConstraintTemplates
+------- with comment:Abstract base class for templates that take two properties as arguments and establish a relationship between them.
+Template is ConstructDefaultValues------- with URI:http://spinrdf.org/spl#ConstructDefaultValues
+------- with comment:This template can be attached as spin:constructor to a root class such as rdfs:Resource to ensure that SPIN processors assign default values to certain properties. Looks for any templates attached as spin:constraints to the types of ?this and then assigns their declared spl:defaultValues.
+Template is Template------- with URI:http://ssp4t5.net/test/context_mimosa#Template
+------- with comment:null
+Template is Attribute------- with URI:http://spinrdf.org/spl#Attribute
+------- with comment:Defines an "attribute" of a class. Attribute definitions bundle common modeling patterns known from object-oriented languages like UML. Each attribute can have min and max cardinality, a value type and a default value. The attribute links a class with one RDF property. This template should be used as spin:constraints on a class to make sure that classes meet the expected cardinalities and valueType constraints.
+If a model wants to use spl:defaultValue, then it should instantiate the spl:ConstructDefaultValues as a spin:constructor at some root class, such as rdfs:Resource.
+Template is ConstructTemplates------- with URI:http://spinrdf.org/spin#ConstructTemplates
+------- with comment:Suggested abstract base class for all ConstructTemplates.
+Template is AllArguments------- with URI:http://spinrdf.org/spl#AllArguments
+------- with comment:Gets a list of all spl:Arguments declared at a given class and its superclasses.
+Template is QueryWorkOrders------- with URI:http://ssp4t5.net/test/context_mimosa#QueryWorkOrders
+------- with comment:null
+Template is Argument------- with URI:http://spinrdf.org/spl#Argument
+------- with comment:Provides metadata about an argument of a SPIN Function or Template. Arguments wrap a given rdf:Property (predicate) and specify its value type and whether the argument is optional. When used as spin:constraint, the body of this template will verify that a non-optional value exists and that it has the specified value type. Arguments that have been declared spl:optional true become optional if the type of ?this is spl:UnionTemplate. 
+Template is AssetModelInfo------- with URI:http://ssp4t5.net/test/context_mimosa#AssetModelInfo
+------- with comment:null
+Template is NonExistencePropertyPairConstraint------- with URI:http://spinrdf.org/spl#NonExistencePropertyPairConstraint
+------- with comment:null
+Template is AskTemplates------- with URI:http://spinrdf.org/spin#AskTemplates
+------- with comment:Suggested abstract base class for all AskTemplates.
+Template is RangePropertyConstraint------- with URI:http://spinrdf.org/spl#RangePropertyConstraint
+------- with comment:Represents a constraint that narrows down a property by a minimum and maximum value compared by <= and >=.
+Template is ExistencePropertyPairConstraint------- with URI:http://spinrdf.org/spl#ExistencePropertyPairConstraint
+------- with comment:null
+Template is UpdateTemplates------- with URI:http://spinrdf.org/spin#UpdateTemplates
+------- with comment:Suggested abstract base class for all UpdateTemplates.
+Template is QueryModelEventTypeNames------- with URI:http://ssp4t5.net/test/context_mimosa#QueryModelEventTypeNames
+------- with comment:null
+Template is UntypedObjectPropertyConstraint------- with URI:http://spinrdf.org/spl#UntypedObjectPropertyConstraint
+------- with comment:A generic SPIN template that can be used to declare a constraint that all values of a given property must have an rdf:type.
+Template is CreateAssetRecommendationTemplate2------- with URI:http://ssp4t5.net/test/context_mimosa#CreateAssetRecommendationTemplate2
+------- with comment:null
+Template is RegexPropertyConstraint------- with URI:http://spinrdf.org/spl#RegexPropertyConstraint
+------- with comment:null
+Template is QueryModelEventCodes------- with URI:http://ssp4t5.net/test/context_mimosa#QueryModelEventCodes
+------- with comment:null
+Template is RunTestCases------- with URI:http://spinrdf.org/spl#RunTestCases
+------- with comment:Runs all spl:TestCases on the current model.
+Template is PropertyConstraintTemplates------- with URI:http://spinrdf.org/spl#PropertyConstraintTemplates
+------- with comment:Abstract superclass of constraint templates that constrain exactly one property.
+Template is QueryAgentInfo------- with URI:http://ssp4t5.net/test/context_mimosa#QueryAgentInfo
+------- with comment:null
+Template is SPINOverview------- with URI:http://spinrdf.org/spl#SPINOverview
+------- with comment:Finds all constraints and rules attached to classes in the current graph, using spin:constraint, spin:constructor, spin:rule or their sub-properties. The result set will contain the associated class, the predicate, and the SPIN rule.
+Template is InferDefaultValue------- with URI:http://spinrdf.org/spl#InferDefaultValue
+------- with comment:Can be used to infer default values for a given subject/predicate combination. This is typically assigned as spin:rule to a class. If ?this does not already have a value for a given property {?predicate}, then this will infer the value {?defaultValue}.
+Template is ObjectCountPropertyConstraint------- with URI:http://spinrdf.org/spl#ObjectCountPropertyConstraint
+------- with comment:Represents a constraint that can be attached to a class to specify that a given property must have between min and max values.
+Template is SelectTemplates------- with URI:http://spinrdf.org/spin#SelectTemplates
+------- with comment:Suggested abstract base class for all SelectTemplates.
+Template is Templates------- with URI:http://spinrdf.org/spin#Templates
+------- with comment:Suggested abstract base class for all Templates.
+Template is CreateResourceTemplateSiima------- with URI:http://ssp4t5.net/test/context_mimosa#CreateResourceTemplateSiima
+------- with comment:null
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+1
+A:1
+---
+---P1: Template localname?>
+ (Default:BicycleNameTemplate2)
+CreateResourceTemplateSiima
+A:CreateResourceTemplateSiima
+---
+---P2: Template query type?>
+ (Default:select)
+construct
+A:construct
+---
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+2
+A:2
+---
+10:53:00 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: printTemplateInfo()
+10:53:00 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+Template is CreateResourceTemplateSiima------- with URI:http://ssp4t5.net/test/context_mimosa#CreateResourceTemplateSiima
+-------- with comment:null
+Template body CONSTRUCT {
+    ?newres a ?classuri .
+}
+WHERE {
+    BIND (afn:now() AS ?now) .
+    BIND (IRI(fn:concat(str(?classuri), "_", str(?now))) AS ?newres) .
+}
+Template argument key: classuri
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+3
+A:3
+---
+---P3: Argument name?>
+ (Default:wcount)
+classuri
+A:classuri
+---
+---P4: Argument type?>
+ (Default:integer)
+resource
+A:resource
+---
+---P5: Literal Argument value?>
+ (Default:1)
+
+A:Default selected.
+---
+---P6: Object Argument uri?>
+ (Default:http://siima.net/dummy/)
+http://ssp4t5.net/context/mctxcore#SituationContext
+A:http://ssp4t5.net/context/mctxcore#SituationContext
+---
+10:54:06 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+4
+A:4
+---
+---- Calling construct type template ----
+
+10:54:19 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callTemplateByName()
+10:54:19 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+10:54:19 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callConstructTemplate()
+=================CONSTRUCT TEMPLATE RESULTS===============
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://ssp4t5.net/context/mctxcore#" > 
+  <rdf:Description rdf:about="http://ssp4t5.net/context/mctxcore#SituationContext_2016-01-17T10:54:19.650+02:00">
+    <rdf:type rdf:resource="http://ssp4t5.net/context/mctxcore#SituationContext"/>
+  </rdf:Description>
+</rdf:RDF>
+==================================================
+
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+
+A:Default selected.
+---
+
+---- --------- ----
+
+
+---- --------- ----
+
+
+
+--------MAIN-MENU---------
+OPERATION OPTIONS:
+1. Add Sparql prefix lines
+2. Run queries
+3. Run inferences
+4. Run templates
+5. Check constraints
+6. Run constructors
+7. Print inferred triples
+8. Print template info
+9. Exit
+-----SELECT 1-9  (integer assumed) (Default:9)
+2
+A:2
+---
+
+---- OPERATION: Run Query ----
+
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Run SELECT query
+---2. Run UPDATE query
+---3. Skip
+--------SELECT 1-3  (integer assumed) (Default:3)
+1
+A:1
+---
+----EXAMPLE: SELECT ?acc WHERE { ?acc rdf:type <http://siima.net/ont/accessories#Bell> . } 
+----EXAMPLE: SELECT ?wheels WHERE { ?bic rdf:type <http://siima.net/ont/bicycle#Bicycle> . ?bic <http://siima.net/ont/bicycle#wheelcount> ?wheels . } 
+----EXAMPLE: Constructor checker query
+	SELECT ?year WHERE { ?bic rdf:type <http://siima.net/ont/bicycle#Bicycle> . ?bic <http://siima.net/ont/bicycle#modelYear> ?year . } 
+----EXAMPLE: Constructor checker query
+	SELECT ?bell WHERE { ?bell rdf:type <http://siima.net/ont/accessories#Bell> . ?bic <http://siima.net/ont/bicycle#hasBell> ?bell . } 
+---------------------------------------------
+
+
+----P1: Write SPARQL SELECT query?> (Default:SELECT * WHERE { ?s rdf:type ?o . } LIMIT 10 )
+SELECT * WHERE { ?s rdf:type mctxcore:SituationContext . ?s mctxcore:created ?date . }
+A:SELECT * WHERE { ?s rdf:type mctxcore:SituationContext . ?s mctxcore:created ?date . }
+---
+----P2: Query variable with ?-mark (e.g. ?acc)> (Default:?s)
+
+A:Default selected.
+---
+10:55:29 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlQuery()
+---sparqlQuery()
+Query variable result: http://ssp4t5.net/context/mctxsimple#SituationContext_2
+Query variable result: http://ssp4t5.net/context/mctxsimple#SituationContext_1
+sparqlQuery: result rows #2
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Run SELECT query
+---2. Run UPDATE query
+---3. Skip
+--------SELECT 1-3  (integer assumed) (Default:3)
+
+A:Default selected.
+---
+
+---- --------- ----
+
+
+
+--------MAIN-MENU---------
+OPERATION OPTIONS:
+1. Add Sparql prefix lines
+2. Run queries
+3. Run inferences
+4. Run templates
+5. Check constraints
+6. Run constructors
+7. Print inferred triples
+8. Print template info
+9. Exit
+-----SELECT 1-9  (integer assumed) (Default:9)
+6
+A:6
+---
+
+---- OPERATION: Run Constructors ----
+
+10:55:51 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: runConstructors()
+
+---- --------- ----
+
+
+
+--------MAIN-MENU---------
+OPERATION OPTIONS:
+1. Add Sparql prefix lines
+2. Run queries
+3. Run inferences
+4. Run templates
+5. Check constraints
+6. Run constructors
+7. Print inferred triples
+8. Print template info
+9. Exit
+-----SELECT 1-9  (integer assumed) (Default:9)
+7
+A:7
+---
+
+---- OPERATION: Print Inferred Triples ----
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://ssp4t5.net/context/mctxcore#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:j.1="http://ssp4t5.net/mimosa/diagplus#" > 
+  <rdf:Description rdf:about="http://ssp4t5.net/context/mctxcore#SituationContext_2016-01-17T10:54:19.650+02:00">
+    <j.0:active rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</j.0:active>
+    <j.0:created rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-01-17T10:55:52.010+02:00</j.0:created>
+    <rdf:type rdf:resource="http://ssp4t5.net/context/mctxcore#SituationContext"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ssp4t5.net/mimosa/combined#AssetRecommendation_1">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is an AssetRecommendation comment line: ?</rdfs:comment>
+    <j.1:utcRecommendation rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-01-17T10:55:51.901+02:00</j.1:utcRecommendation>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ssp4t5.net/mimosa/combined#SegmentRecommendation_1">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a SegmentRecommendation comment line: ?</rdfs:comment>
+    <j.1:utcRecommendation rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-01-17T10:55:51.854+02:00</j.1:utcRecommendation>
+  </rdf:Description>
+</rdf:RDF>
+
+---- --------- ----
+
+
+
+--------MAIN-MENU---------
+OPERATION OPTIONS:
+1. Add Sparql prefix lines
+2. Run queries
+3. Run inferences
+4. Run templates
+5. Check constraints
+6. Run constructors
+7. Print inferred triples
+8. Print template info
+9. Exit
+-----SELECT 1-9  (integer assumed) (Default:9)
+2
+A:2
+---
+
+---- OPERATION: Run Query ----
+
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Run SELECT query
+---2. Run UPDATE query
+---3. Skip
+--------SELECT 1-3  (integer assumed) (Default:3)
+1
+A:1
+---
+----EXAMPLE: SELECT ?acc WHERE { ?acc rdf:type <http://siima.net/ont/accessories#Bell> . } 
+----EXAMPLE: SELECT ?wheels WHERE { ?bic rdf:type <http://siima.net/ont/bicycle#Bicycle> . ?bic <http://siima.net/ont/bicycle#wheelcount> ?wheels . } 
+----EXAMPLE: Constructor checker query
+	SELECT ?year WHERE { ?bic rdf:type <http://siima.net/ont/bicycle#Bicycle> . ?bic <http://siima.net/ont/bicycle#modelYear> ?year . } 
+----EXAMPLE: Constructor checker query
+	SELECT ?bell WHERE { ?bell rdf:type <http://siima.net/ont/accessories#Bell> . ?bic <http://siima.net/ont/bicycle#hasBell> ?bell . } 
+---------------------------------------------
+
+
+----P1: Write SPARQL SELECT query?> (Default:SELECT * WHERE { ?s rdf:type ?o . } LIMIT 10 )
+SELECT * WHERE { ?s rdf:type mctxcore:SituationContext . ?s mctxcore:created ?date . }
+A:SELECT * WHERE { ?s rdf:type mctxcore:SituationContext . ?s mctxcore:created ?date . }
+---
+----P2: Query variable with ?-mark (e.g. ?acc)> (Default:?s)
+
+A:Default selected.
+---
+10:58:25 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlQuery()
+---sparqlQuery()
+Query variable result: http://ssp4t5.net/context/mctxsimple#SituationContext_2
+Query variable result: http://ssp4t5.net/context/mctxsimple#SituationContext_1
+Query variable result: http://ssp4t5.net/context/mctxcore#SituationContext_2016-01-17T10:54:19.650+02:00
+sparqlQuery: result rows #3
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Run SELECT query
+---2. Run UPDATE query
+---3. Skip
+--------SELECT 1-3  (integer assumed) (Default:3)
+1
+A:1
+---
+----EXAMPLE: SELECT ?acc WHERE { ?acc rdf:type <http://siima.net/ont/accessories#Bell> . } 
+----EXAMPLE: SELECT ?wheels WHERE { ?bic rdf:type <http://siima.net/ont/bicycle#Bicycle> . ?bic <http://siima.net/ont/bicycle#wheelcount> ?wheels . } 
+----EXAMPLE: Constructor checker query
+	SELECT ?year WHERE { ?bic rdf:type <http://siima.net/ont/bicycle#Bicycle> . ?bic <http://siima.net/ont/bicycle#modelYear> ?year . } 
+----EXAMPLE: Constructor checker query
+	SELECT ?bell WHERE { ?bell rdf:type <http://siima.net/ont/accessories#Bell> . ?bic <http://siima.net/ont/bicycle#hasBell> ?bell . } 
+---------------------------------------------
+
+
+----P1: Write SPARQL SELECT query?> (Default:SELECT * WHERE { ?s rdf:type ?o . } LIMIT 10 )
+SELECT * WHERE { ?s rdf:type mctxcore:SituationContext . ?s mctxcore:created ?date . }
+A:SELECT * WHERE { ?s rdf:type mctxcore:SituationContext . ?s mctxcore:created ?date . }
+---
+----P2: Query variable with ?-mark (e.g. ?acc)> (Default:?s)
+?date
+A:?date
+---
+11:03:50 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlQuery()
+---sparqlQuery()
+Query variable result: 2015-03-09T16:32:21.026+02:00^^http://www.w3.org/2001/XMLSchema#dateTime
+Query variable result: 2015-03-02T17:46:51.372+02:00^^http://www.w3.org/2001/XMLSchema#dateTime
+Query variable result: 2016-01-17T10:55:52.010+02:00^^http://www.w3.org/2001/XMLSchema#dateTime
+sparqlQuery: result rows #3
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Run SELECT query
+---2. Run UPDATE query
+---3. Skip
+--------SELECT 1-3  (integer assumed) (Default:3)
+
+

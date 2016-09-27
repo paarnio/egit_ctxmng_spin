@@ -1,0 +1,272 @@
+ss4p5t.org malli kokeilu
+2015-01-05
+
+ESIM: http://ssp4t5.net/mimosa/combined#AssetRecommendation_1
+
+CreateAssetRecommendationTemplate2
+EI ONNISTU KOSKA:
+17:54:11 WARN  exec                 :: URI <http://spinrdf.org/spif#buildURI> has no registered function factory
+
+==================================================
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+1
+A:1
+---
+---P1: Template localname?>
+ (Default:BicycleNameTemplate2)
+CreateAssetRecommendationTemplate2
+A:CreateAssetRecommendationTemplate2
+---
+---P2: Template query type?>
+ (Default:select)
+construct
+A:construct
+---
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+2
+A:2
+---
+17:52:46 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: printTemplateInfo()
+17:52:46 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+Template is CreateAssetRecommendationTemplate2------- with URI:http://ssp4t5.net/test/context_mimosa#CreateAssetRecommendationTemplate2
+-------- with comment:null
+Template body CONSTRUCT {
+    ?asrec a diagplus:AssetRecommendation .
+    ?asrec diagplus:utcRecommendation ?now .
+    ?asrec regcore:asset_id ?assetid .
+    ?asrec regcore:agent_id ?agentid .
+    ?asrec combined:description ?recommendation .
+}
+WHERE {
+    BIND (afn:now() AS ?now) .
+    BIND (spif:buildURI("uuid_{?1}", spif:generateUUID()) AS ?uuid) .
+    BIND (IRI(fn:concat("http://ssp4t5.net/mimosa/diagplus#AssetRecommendation_", str(?uuid))) AS ?asrec) .
+}
+Template argument key: recommendation
+Template argument key: assetid
+Template argument key: agentid
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+3
+A:3
+---
+---P3: Argument name?>
+ (Default:wcount)
+recommendation
+A:recommendation
+---
+---P4: Argument type?>
+ (Default:integer)
+string
+A:string
+---
+---P5: Literal Argument value?>
+ (Default:1)
+KONE KORJAUKSEEN
+A:KONE KORJAUKSEEN
+---
+---P6: Object Argument uri?>
+ (Default:http://siima.net/dummy/)
+
+A:Default selected.
+---
+17:53:21 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+3
+A:3
+---
+---P7: Argument name?>
+ (Default:wcount)
+assetid
+A:assetid
+---
+---P8: Argument type?>
+ (Default:integer)
+
+A:Default selected.
+---
+---P9: Literal Argument value?>
+ (Default:1)
+
+A:Default selected.
+---
+---P10: Object Argument uri?>
+ (Default:http://siima.net/dummy/)
+
+A:Default selected.
+---
+17:53:51 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+3
+A:3
+---
+---P11: Argument name?>
+ (Default:wcount)
+agentid
+A:agentid
+---
+---P12: Argument type?>
+ (Default:integer)
+
+A:Default selected.
+---
+---P13: Literal Argument value?>
+ (Default:1)
+
+A:Default selected.
+---
+---P14: Object Argument uri?>
+ (Default:http://siima.net/dummy/)
+
+A:Default selected.
+---
+17:54:06 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+4
+A:4
+---
+---- Calling construct type template ----
+
+17:54:11 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callTemplateByName()
+17:54:11 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+17:54:11 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callConstructTemplate()
+17:54:11 WARN  exec                 :: URI <http://spinrdf.org/spif#buildURI> has no registered function factory
+=================CONSTRUCT TEMPLATE RESULTS===============
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:j.0="http://ssp4t5.net/mimosa/diagplus#" > 
+  <rdf:Description rdf:about="http://ssp4t5.net/mimosa/combined#AssetRecommendation_1">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is an AssetRecommendation comment line: ?</rdfs:comment>
+    <j.0:utcRecommendation rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-01-05T17:42:02.122+02:00</j.0:utcRecommendation>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ssp4t5.net/mimosa/combined#SegmentRecommendation_1">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a SegmentRecommendation comment line: ?</rdfs:comment>
+    <j.0:utcRecommendation rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-01-05T17:42:02.095+02:00</j.0:utcRecommendation>
+  </rdf:Description>
+</rdf:RDF>
+==================================================
+
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+
+A:Default selected.
+---
+
+---- --------- ----
+
+
+---- --------- ----
+
+
+
+--------MAIN-MENU---------
+OPERATION OPTIONS:
+1. Add Sparql prefix lines
+2. Run queries
+3. Run inferences
+4. Run templates
+5. Check constraints
+6. Run constructors
+7. Print inferred triples
+8. Print template info
+9. Exit
+-----SELECT 1-9  (integer assumed) (Default:9)
+7
+A:7
+---
+
+---- OPERATION: Print Inferred Triples ----
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:j.0="http://ssp4t5.net/mimosa/diagplus#" > 
+  <rdf:Description rdf:about="http://ssp4t5.net/mimosa/combined#AssetRecommendation_1">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is an AssetRecommendation comment line: ?</rdfs:comment>
+    <j.0:utcRecommendation rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-01-05T17:42:02.122+02:00</j.0:utcRecommendation>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ssp4t5.net/mimosa/combined#SegmentRecommendation_1">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is a SegmentRecommendation comment line: ?</rdfs:comment>
+    <j.0:utcRecommendation rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-01-05T17:42:02.095+02:00</j.0:utcRecommendation>
+  </rdf:Description>
+</rdf:RDF>
+
+---- --------- ----
+
+
+
+--------MAIN-MENU---------
+OPERATION OPTIONS:
+1. Add Sparql prefix lines
+2. Run queries
+3. Run inferences
+4. Run templates
+5. Check constraints
+6. Run constructors
+7. Print inferred triples
+8. Print template info
+9. Exit
+-----SELECT 1-9  (integer assumed) (Default:9)

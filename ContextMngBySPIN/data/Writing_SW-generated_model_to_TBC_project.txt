@@ -1,0 +1,28 @@
+C:/SpecialPrograms/TBComposer/tbcworkspace/2016a/SWgenerated/swbicycle.ttl
+
+Tulostetaan bicycle-malli päättelyineen TBC projectin SWgenerated tiedostoon swbicycle.ttl
+TBC-editorissa on projekti suljettava ja avattava uudelleen, jotta muutokset tulevat näkyviin.
+TOIMII !!!
+
+-------------
+MAIN MENU
+...
+...
+11.Write the main model into a file
+12.Exit
+-----SELECT 1-12  (integer assumed) (Default:12)
+11
+A:11
+---
+
+---- OPERATION: Write the main model into a file ----
+
+
+----------- File path  ----------
+Q0: File path?> (Default:data/temp/temp.ttl)
+C:/SpecialPrograms/TBComposer/tbcworkspace/2016a/SWgenerated/swbicycle.ttl
+A:C:/SpecialPrograms/TBComposer/tbcworkspace/2016a/SWgenerated/swbicycle.ttl
+---
+12:19:01 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: mergeMainModelAndInferredTriples()
+
+---- --------- ----

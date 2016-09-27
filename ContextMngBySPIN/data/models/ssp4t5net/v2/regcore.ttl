@@ -1,0 +1,179 @@
+# baseURI: http://ssp4t5.net/mimosa/regcore
+
+@prefix : <http://ssp4t5.net/mimosa/regcore#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://ssp4t5.net/mimosa/regcore>
+  rdf:type owl:Ontology ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+:Agent
+  rdf:type owl:Class ;
+  rdfs:label "Agent"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:AgentType
+  rdf:type owl:Class ;
+  rdfs:label "Agent type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:Asset
+  rdf:type owl:Class ;
+  rdfs:label "Asset"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:AssetType
+  rdf:type owl:Class ;
+  rdfs:label "Asset type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:Database
+  rdf:type owl:Class ;
+  rdfs:label "Database"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:Enterprise
+  rdf:type owl:Class ;
+  rdfs:label "Enterprise"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:EnterpriseType
+  rdf:type owl:Class ;
+  rdfs:label "Enterprise type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:Manufacturer
+  rdf:type owl:Class ;
+  rdfs:label "Manufacturer"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:Model
+  rdf:type owl:Class ;
+  rdfs:label "Model"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:Segment
+  rdf:type owl:Class ;
+  rdfs:label "Segment"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:SegmentType
+  rdf:type owl:Class ;
+  rdfs:label "Segment type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:Site
+  rdf:type owl:Class ;
+  rdfs:label "Site"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:SiteType
+  rdf:type owl:Class ;
+  rdfs:label "Site type"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+:agent_id
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "agent id"^^xsd:string ;
+  rdfs:range xsd:integer ;
+.
+:agent_type_id
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "agent type id"^^xsd:string ;
+  rdfs:range xsd:integer ;
+.
+:as_type_id
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "as type id"^^xsd:string ;
+  rdfs:range xsd:integer ;
+.
+:asset_id
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "asset id"^^xsd:string ;
+  rdfs:range xsd:integer ;
+.
+:belongsToClass
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Mimosa CCOM 3.2.2 RegCore: AssetType - belongsToClass - Model (1:1)"^^xsd:string ;
+  rdfs:label "belongs to class"^^xsd:string ;
+.
+:classifiedAs
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "Mimosa CCOM 3.2.2 RegCore: Asset - classifiedAS - AssetType"^^xsd:string ;
+  rdfs:label "classified as"^^xsd:string ;
+.
+:composedOf
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "composed of"^^xsd:string ;
+.
+:controls
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "controls"^^xsd:string ;
+.
+:database_id
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "database id"^^xsd:string ;
+  rdfs:range xsd:integer ;
+.
+:equivalentTo
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "equivalent to"^^xsd:string ;
+.
+:functionallyEquivalentTo
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "functionally equivalent to"^^xsd:string ;
+.
+:hasChildType
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has child type"^^xsd:string ;
+.
+:maintains
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "maintains"^^xsd:string ;
+.
+:manuf_id
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "manuf id"^^xsd:string ;
+  rdfs:range xsd:integer ;
+.
+:manufacturedBy
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "manufactured by"^^xsd:string ;
+.
+:modelOf
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain :Model ;
+  rdfs:label "model of"^^xsd:string ;
+.
+:model_id
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "model id"^^xsd:string ;
+  rdfs:range xsd:integer ;
+.
+:prod_family
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "prod family"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+:registers
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "registers"^^xsd:string ;
+.
+:segment_id
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "segment id"^^xsd:string ;
+  rdfs:range xsd:integer ;
+.
+:sg_type_id
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "sg type id"^^xsd:string ;
+  rdfs:range xsd:integer ;
+.
+:user_id
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "user id"^^xsd:string ;
+  rdfs:range xsd:string ;
+.

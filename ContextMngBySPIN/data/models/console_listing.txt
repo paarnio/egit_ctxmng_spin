@@ -1,0 +1,300 @@
+*************** MyTemplateExample.java CONSOLE PRINT ****************
+
+============ MyTemplate Query Result ==============
+>>name's value is Miran_fillari^^http://www.w3.org/2001/XMLSchema#string
+==================================================
+
+
+================ALL MODEL TEMPLATES ================
+
+Template is CountPropertyConstraintTemplates------- with URI:http://spinrdf.org/spl#CountPropertyConstraintTemplates
+-------- with comment:Abstract superclass of property constraints that compare the number of values with either min or max count.
+Template is ConstraintTemplates------- with URI:http://spinrdf.org/spl#ConstraintTemplates
+-------- with comment:Abstract superclass of templates that can be used as spin:constraints. The subclasses are expected to construct spin:ConstraintViolations and use ?this to talk about the instances of the associated class.
+Template is BicycleNameTemplate2------- with URI:http://siima.net/ont/bicycle#BicycleNameTemplate2
+-------- with comment:null
+Template is UpdateTemplates------- with URI:http://spinrdf.org/spin#UpdateTemplates
+-------- with comment:Suggested abstract base class for all UpdateTemplates.
+Template is PropertyPairConstraintTemplates------- with URI:http://spinrdf.org/spl#PropertyPairConstraintTemplates
+-------- with comment:Abstract base class for templates that take two properties as arguments and establish a relationship between them.
+Template is UntypedObjectPropertyConstraint------- with URI:http://spinrdf.org/spl#UntypedObjectPropertyConstraint
+-------- with comment:A generic SPIN template that can be used to declare a constraint that all values of a given property must have an rdf:type.
+Template is ConstructDefaultValues------- with URI:http://spinrdf.org/spl#ConstructDefaultValues
+-------- with comment:This template can be attached as spin:constructor to a root class such as rdfs:Resource to ensure that SPIN processors assign default values to certain properties. Looks for any templates attached as spin:constraints to the types of ?this and then assigns their declared spl:defaultValues.
+Template is MyTemplate------- with URI:http://siima.net/ont/bicycle#MyTemplate
+-------- with comment:null
+Template is RegexPropertyConstraint------- with URI:http://spinrdf.org/spl#RegexPropertyConstraint
+-------- with comment:null
+Template is ConstructTemplates------- with URI:http://spinrdf.org/spin#ConstructTemplates
+-------- with comment:Suggested abstract base class for all ConstructTemplates.
+Template is Attribute------- with URI:http://spinrdf.org/spl#Attribute
+-------- with comment:Defines an "attribute" of a class. Attribute definitions bundle common modeling patterns known from object-oriented languages like UML. Each attribute can have min and max cardinality, a value type and a default value. The attribute links a class with one RDF property. This template should be used as spin:constraints on a class to make sure that classes meet the expected cardinalities and valueType constraints.
+If a model wants to use spl:defaultValue, then it should instantiate the spl:ConstructDefaultValues as a spin:constructor at some root class, such as rdfs:Resource.
+Template is AllArguments------- with URI:http://spinrdf.org/spl#AllArguments
+-------- with comment:Gets a list of all spl:Arguments declared at a given class and its superclasses.
+Template is RunTestCases------- with URI:http://spinrdf.org/spl#RunTestCases
+-------- with comment:Runs all spl:TestCases on the current model.
+Template is PropertyConstraintTemplates------- with URI:http://spinrdf.org/spl#PropertyConstraintTemplates
+-------- with comment:Abstract superclass of constraint templates that constrain exactly one property.
+Template is Argument------- with URI:http://spinrdf.org/spl#Argument
+-------- with comment:Provides metadata about an argument of a SPIN Function or Template. Arguments wrap a given rdf:Property (predicate) and specify its value type and whether the argument is optional. When used as spin:constraint, the body of this template will verify that a non-optional value exists and that it has the specified value type. Arguments that have been declared spl:optional true become optional if the type of ?this is spl:UnionTemplate. 
+Template is InferDefaultValue------- with URI:http://spinrdf.org/spl#InferDefaultValue
+-------- with comment:Can be used to infer default values for a given subject/predicate combination. This is typically assigned as spin:rule to a class. If ?this does not already have a value for a given property {?predicate}, then this will infer the value {?defaultValue}.
+Template is SPINOverview------- with URI:http://spinrdf.org/spl#SPINOverview
+-------- with comment:Finds all constraints and rules attached to classes in the current graph, using spin:constraint, spin:constructor, spin:rule or their sub-properties. The result set will contain the associated class, the predicate, and the SPIN rule.
+Template is ObjectCountPropertyConstraint------- with URI:http://spinrdf.org/spl#ObjectCountPropertyConstraint
+-------- with comment:Represents a constraint that can be attached to a class to specify that a given property must have between min and max values.
+Template is NonExistencePropertyPairConstraint------- with URI:http://spinrdf.org/spl#NonExistencePropertyPairConstraint
+-------- with comment:null
+Template is SelectTemplates------- with URI:http://spinrdf.org/spin#SelectTemplates
+-------- with comment:Suggested abstract base class for all SelectTemplates.
+Template is Templates------- with URI:http://spinrdf.org/spin#Templates
+-------- with comment:Suggested abstract base class for all Templates.
+Template is AskTemplates------- with URI:http://spinrdf.org/spin#AskTemplates
+-------- with comment:Suggested abstract base class for all AskTemplates.
+Template is ExistencePropertyPairConstraint------- with URI:http://spinrdf.org/spl#ExistencePropertyPairConstraint
+-------- with comment:null
+Template is RangePropertyConstraint------- with URI:http://spinrdf.org/spl#RangePropertyConstraint
+-------- with comment:Represents a constraint that narrows down a property by a minimum and maximum value compared by <= and >=.
+
+====================================================
+
+
+================ALL MODEL FUNCTIONS ================
+
+Function is object------- with URI:http://spinrdf.org/spl#object
+-------- with comment:Gets the object of a given subject (?arg1) / predicate (?arg2) combination. Note that if multiple values are present then the result might be unpredictably random.
+Function is ne------- with URI:http://spinrdf.org/sp#ne
+-------- with comment:Returns true if ?arg1 != ?arg2.
+Function is strends------- with URI:http://spinrdf.org/sp#strends
+-------- with comment:Returns true if the lexical form of ?arg1 ends with the lexical form of ?arg2, otherwise it returns false.
+Function is md5------- with URI:http://spinrdf.org/sp#md5
+-------- with comment:Returns the MD5 checksum, as a hex digit string, calculated on the UTF-8 representation of the simple literal or lexical form of the xsd:string. Hex digits SHOULD be in lower case.
+Function is DateFunctions------- with URI:http://spinrdf.org/spl#DateFunctions
+-------- with comment:A collection of functions that operate on date/time literals.
+Function is objectInGraph------- with URI:http://spinrdf.org/spl#objectInGraph
+-------- with comment:Gets the object of a given subject (?arg1) / predicate (?arg2) combination in a given graph ?arg3. Note that if multiple values are present then the result might be unpredictably random.
+Function is add------- with URI:http://spinrdf.org/sp#add
+-------- with comment:Returns the arithmetic sum of its operands.
+Function is ucase------- with URI:http://spinrdf.org/sp#ucase
+-------- with comment:Converts a string to upper case characters.
+Function is seconds------- with URI:http://spinrdf.org/sp#seconds
+-------- with comment:Extracts the seconds from a date/time literal.
+Function is divide------- with URI:http://spinrdf.org/sp#divide
+-------- with comment:Returns the arithmetic quotient of its operands.
+Function is not------- with URI:http://spinrdf.org/sp#not
+-------- with comment:Returns the boolean negation of the argument.
+Function is hasValue------- with URI:http://spinrdf.org/spl#hasValue
+-------- with comment:Checks whether a given resource (?arg1) has a given value (?arg3) for a given property (?arg2) or one of the sub-properties of it.
+Function is objectSubProp------- with URI:http://spinrdf.org/spl#objectSubProp
+-------- with comment:Gets the object of a given subject (?arg1) / predicate (?arg2) combination, also taking the sub-properties of ?arg2 into account. Note that if multiple values are present then the result might be unpredictably random.
+Function is day------- with URI:http://spinrdf.org/sp#day
+-------- with comment:Extracts the day from a date/time literal.
+Function is now------- with URI:http://spinrdf.org/sp#now
+-------- with comment:Gets the current date and time as an xsd:dateTime literal.
+Function is unaryMinus------- with URI:http://spinrdf.org/sp#unaryMinus
+-------- with comment:Returns the operand ?arg1 with the sign reversed. If ?arg1 is positive, its negative is returned; if it is negative, its positive is returned.
+Function is UUID------- with URI:http://spinrdf.org/sp#UUID
+-------- with comment:Returns a fresh IRI from the UUID URN scheme. Each call of UUID() returns a different UUID. It must not be the "nil" UUID (all zeroes). The variant and version of the UUID is implementation dependent.
+Function is langMatches------- with URI:http://spinrdf.org/sp#langMatches
+-------- with comment:Returns true if language-tag (first argument) matches language-range (second argument) per the basic filtering scheme defined in [RFC4647] section 3.3.1.
+Function is sha256------- with URI:http://spinrdf.org/sp#sha256
+-------- with comment:Returns the SHA256 checksum, as a hex digit string, calculated on the UTF-8 representation of the simple literal or lexical form of the xsd:string. Hex digits SHOULD be in lower case.
+Function is ask------- with URI:http://spinrdf.org/spin#ask
+-------- with comment:Executes a given ASK query and returns its boolean result. The first argument must point to an sp:Ask or a SPIN template call that has an ASK query as its body. All subsequent argument can come in pairs, with the first one being a variable name and the second its binding.
+
+Example:
+
+    BIND (spin:ask(?query, "this", owl:Thing) AS ?result) .
+
+will execute the sp:Ask behind ?query with the variable ?this pre-bound to owl:Thing.
+Function is StringFunctions------- with URI:http://spinrdf.org/spl#StringFunctions
+-------- with comment:A collection of functions that return strings.
+Function is isIRI------- with URI:http://spinrdf.org/sp#isIRI
+-------- with comment:Checks whether a given node is a IRI node.
+Function is isBlank------- with URI:http://spinrdf.org/sp#isBlank
+-------- with comment:Checks whether a given node is a blank node.
+Function is strafter------- with URI:http://spinrdf.org/sp#strafter
+-------- with comment:Returns a literal of the same kind (simple literal, plain literal same language tag, xsd:string) as the first argument arg1. The lexical form of the result is the substring of the value of arg1 that proceeds in arg1 the first occurrence of the lexical form of arg2; otherwise the lexical form of the result is the empty string. If the lexical form of arg2 is the empty string, the lexical form of the result is the emprty string.
+Function is tz------- with URI:http://spinrdf.org/sp#tz
+-------- with comment:Returns the timezone part of ?arg1 as a simple literal. Returns the empty string if there is no timezone.
+Function is eq------- with URI:http://spinrdf.org/sp#eq
+-------- with comment:Returns true if both arguments are equal.
+Function is OntologyFunctions------- with URI:http://spinrdf.org/spl#OntologyFunctions
+-------- with comment:A collection of functions performing ontology-related operations.
+Function is bound------- with URI:http://spinrdf.org/sp#bound
+-------- with comment:Returns true if ?arg1 is bound to a value. Returns false otherwise. Variables with the value NaN or INF are considered bound.
+Function is le------- with URI:http://spinrdf.org/sp#le
+-------- with comment:Returns true if ?arg1 <= ?arg2.
+Function is URIFunctions------- with URI:http://spinrdf.org/spl#URIFunctions
+-------- with comment:A collection of functions that create URI resources.
+Function is concat------- with URI:http://spinrdf.org/sp#concat
+-------- with comment:The CONCAT built-in function. Creates a single string by concatenating all arguments from left to right. Note that if any one of the arguments is unbound (null) then the whole result string will be unbound.
+Function is lcase------- with URI:http://spinrdf.org/sp#lcase
+-------- with comment:Converts a string to lower case characters.
+Function is lt------- with URI:http://spinrdf.org/sp#lt
+-------- with comment:Returns true if ?arg1 < ?arg2.
+Function is minutes------- with URI:http://spinrdf.org/sp#minutes
+-------- with comment:Extracts the minutes from a date/time literal.
+Function is hasValueOfType------- with URI:http://spinrdf.org/spl#hasValueOfType
+-------- with comment:Checks whether a given subject (?arg1) has at least one value of a given type (?arg3) for a given property (?arg2) or one of its sub-properties.
+Function is sha512------- with URI:http://spinrdf.org/sp#sha512
+-------- with comment:Returns the SHA512 checksum, as a hex digit string, calculated on the UTF-8 representation of the simple literal or lexical form of the xsd:string. Hex digits SHOULD be in lower case.
+Function is strlang------- with URI:http://spinrdf.org/sp#strlang
+-------- with comment:Takes a string (?arg1) and a language (?arg2) and constructs a literal with a corresponding language tag.
+Function is strbefore------- with URI:http://spinrdf.org/sp#strbefore
+-------- with comment:Returns a literal of the same kind (simple literal, plain literal same language tag, xsd:string) as the first argument arg1. The lexical form of the result is the substring of the value of arg1 that precedes in arg1 the first occurrence of the lexical form of arg2; otherwise the lexical form of the result is the empty string. If the lexical form of arg2 is the empty string, the lexical form of the result is the emprty string.
+Function is uri------- with URI:http://spinrdf.org/sp#uri
+-------- with comment:Equivalent to IRI.
+Function is lang------- with URI:http://spinrdf.org/sp#lang
+-------- with comment:Returns the language tag of ?arg1, if it has one. It returns "" if the literal has no language tag. Node that the RDF data model does not include literals with an empty language tag.
+Function is subClassOf------- with URI:http://spinrdf.org/spl#subClassOf
+-------- with comment:Checks whether a given class (?arg1) is a (transitive) sub-class of another class (?arg2).
+Function is MathematicalFunctions------- with URI:http://spinrdf.org/spl#MathematicalFunctions
+-------- with comment:A collection of functions operating on numbers.
+Function is coalesce------- with URI:http://spinrdf.org/sp#coalesce
+-------- with comment:Takes any number of arguments, and returns the first bound argument, starting at the left.
+Function is ceil------- with URI:http://spinrdf.org/sp#ceil
+-------- with comment:Returns the smallest (closest to negative infinity) number with no fractional part that is not less than the value of arg. An error is raised if ?arg1 is not a numeric value.
+Function is timezone------- with URI:http://spinrdf.org/sp#timezone
+-------- with comment:Returns the timezone part of ?arg1 as an xsd:dayTimeDuration. Raises an error if there is no timezone.
+Function is instanceOf------- with URI:http://spinrdf.org/spl#instanceOf
+-------- with comment:Checks whether a given resource (?arg1) has a given type (?arg2). In order to fulfill this condition, there must either be a triple ?arg1 rdf:type ?arg2, or ?instance rdf:type ?subClass where ?subClass is a subclass of ?arg2. If the first argument is a literal, then the second argument must be the matching XSD datatype.
+Function is eval------- with URI:http://spinrdf.org/spin#eval
+-------- with comment:Evaluates a given SPIN expression or SELECT or ASK query, and returns its result. The first argument must be the expression in SPIN RDF syntax. All other arguments must come in pairs: first a property name, and then a value. These name/value pairs will be pre-bound variables for the execution of the expression.
+Function is subject------- with URI:http://spinrdf.org/spl#subject
+-------- with comment:Gets the "first" subject of a given predicate (?arg1)/object (?arg2) combination. Note that if multiple values are present then the result might be unpredictably random.
+Function is regex------- with URI:http://spinrdf.org/sp#regex
+-------- with comment:Returns true if a string (?arg1) matches the regular expression supplied as a pattern (?arg2) as influenced by the value of flags (?arg3), otherwise returns false.
+Function is MagicProperties------- with URI:http://spinrdf.org/spin#MagicProperties
+-------- with comment:An abstract superclass that can be used to group all spin:MagicProperty instances under a single parent class.
+Function is hours------- with URI:http://spinrdf.org/sp#hours
+-------- with comment:Extracts the hours from a date/time literal.
+Function is sameTerm------- with URI:http://spinrdf.org/sp#sameTerm
+-------- with comment:Returns TRUE if ?arg1 and ?arg2 are the same RDF term as defined in Resource Description Framework (RDF): Concepts and Abstract Syntax; returns FALSE otherwise.
+Function is construct------- with URI:http://spinrdf.org/spin#construct
+-------- with comment:Evaluates a given sp:Construct or SPIN template call (first argument on the left hand side) and binds the resulting triples to the variables on the right hand side.
+
+Example:
+
+    (?query "this" owl:Thing) spin:construct (?s ?p ?o)
+
+will execute the sp:Construct ?query using the binding of owl:Thing to ?this. The resulting triples will be bound to ?s, ?p and ?o. If any of ?s ?p ?o are bound, it will only return the matching triples.
+Function is strlen------- with URI:http://spinrdf.org/sp#strlen
+-------- with comment:Computes the length of a given input string.
+Function is isUntypedLiteral------- with URI:http://spinrdf.org/spl#isUntypedLiteral
+-------- with comment:Checks whether a given literal is untyped. This function was introduced because the built-in datatype operand in SPARQL casts untyped literals to xsd:string, making it impossible to check it this way. This function here uses a work-around using sameTerm instead.
+Function is iri------- with URI:http://spinrdf.org/sp#iri
+-------- with comment:Creates a IRI resource (node) from a given IRI string (?arg1).
+Function is notExists------- with URI:http://spinrdf.org/sp#notExists
+-------- with comment:The filter function NOT EXISTS. The graph pattern is stored in sp:elements.
+Function is mul------- with URI:http://spinrdf.org/sp#mul
+-------- with comment:Returns the arithmetic product of its operands.
+Function is subPropertyOf------- with URI:http://spinrdf.org/spl#subPropertyOf
+-------- with comment:Checks whether a given property (?arg1) is a (transitive) sub-property of another property (?arg2).
+Function is struuid------- with URI:http://spinrdf.org/sp#struuid
+-------- with comment:Returns a string that is the scheme specific part of UUID. That is, as a simple literal, the result of generating a UUID, converting to a simple literal and removing the initial urn:uuid:.
+Function is Functions------- with URI:http://spinrdf.org/spin#Functions
+-------- with comment:An abstract base class for all defined functions. This class mainly serves as a shared root so that the various instances of the Function metaclass are grouped together.
+Function is encode_for_uri------- with URI:http://spinrdf.org/sp#encode_for_uri
+-------- with comment:null
+Function is if------- with URI:http://spinrdf.org/sp#if
+-------- with comment:The SPARQL 1.1 built-in function IF.
+Function is bnode------- with URI:http://spinrdf.org/sp#bnode
+-------- with comment:Constructs a blank node that is distinct from all blank nodes in the dataset being queried and distinct from all blank nodes created by calls to this constructor for other query solutions. If the no argument form is used, every call results in a distinct blank node. If the form with a simple literal is used, every call results in distinct blank nodes for different simple literals, and the same blank node for calls with the same simple literal within expressions for one solution mapping. This functionality is compatible with the treatment of blank nodes in SPARQL CONSTRUCT templates.
+Function is in------- with URI:http://spinrdf.org/sp#in
+-------- with comment:Checks whether the value on the left (?arg1) is one of the values on the right (?arg2, ?arg3 ...).
+Function is subjectCount------- with URI:http://spinrdf.org/spl#subjectCount
+-------- with comment:Gets the number of values of a given property (?arg1) at a given object (?arg2). The result is the number of matches of (?subject, ?arg1, ?arg2).
+Function is isURI------- with URI:http://spinrdf.org/sp#isURI
+-------- with comment:Checks whether a node is a URI.
+Function is rand------- with URI:http://spinrdf.org/sp#rand
+-------- with comment:Returns a number between 0 (inclusive) and 1.0e0 (exclusive). Different numbers can be produced every time this function is invoked. Numbers should be produced with approximately equal probability.
+Function is year------- with URI:http://spinrdf.org/sp#year
+-------- with comment:Extracts the year from a date/time literal.
+Function is substr------- with URI:http://spinrdf.org/sp#substr
+-------- with comment:Gets the sub-string of a given string. The index of the first character is 1.
+Function is objectCount------- with URI:http://spinrdf.org/spl#objectCount
+-------- with comment:Gets the number of values of a given property (?arg2) at a given subject (?arg1). The result is the number of matches of (?arg1, ?arg2, ?object).
+Function is isNumeric------- with URI:http://spinrdf.org/sp#isNumeric
+-------- with comment:Returns true if arg1 is a numeric value. Returns false otherwise. term is numeric if it has an appropriate datatype (see the section Operand Data Types) and has a valid lexical form, making it a valid argument to functions and operators taking numeric arguments.
+Function is notIn------- with URI:http://spinrdf.org/sp#notIn
+-------- with comment:Checks whether the value on the left (?arg1) is none of the values on the right (?arg2, ?arg3 ...).
+Function is BooleanFunctions------- with URI:http://spinrdf.org/spl#BooleanFunctions
+-------- with comment:A collection of functions that return a boolean value (true or false).
+Function is sha384------- with URI:http://spinrdf.org/sp#sha384
+-------- with comment:Returns the SHA384 checksum, as a hex digit string, calculated on the UTF-8 representation of the simple literal or lexical form of the xsd:string. Hex digits SHOULD be in lower case.
+Function is strstarts------- with URI:http://spinrdf.org/sp#strstarts
+-------- with comment:Returns true if the lexical form of ?arg1 begins with the lexical form of ?arg2, otherwise it returns false.
+Function is strdt------- with URI:http://spinrdf.org/sp#strdt
+-------- with comment:Constructs a literal with lexical form and type as specified by the arguments.
+Function is isLiteral------- with URI:http://spinrdf.org/sp#isLiteral
+-------- with comment:Checks whether a given node is a literal.
+Function is relevantPropertyAtClass------- with URI:http://spinrdf.org/spl#relevantPropertyAtClass
+-------- with comment:A magic property that establishes a relationship between properties (left) and classes (right) to determine which properties are "relevant" for the class. Relevant means that they have the class in their domain and/or restrictions, including superclasses and sub-properties (unless they define their own domain). Domains consisting of an owl:unionOf are also handled.
+
+Note that the performance of the body of this magic property has been optimized for the case in which the class is given, so ideally use this for queries such as  ?property spl:relevantPropertyAtClass skos:Concept .
+Function is month------- with URI:http://spinrdf.org/sp#month
+-------- with comment:Extracts the month from a date/time literal.
+Function is select------- with URI:http://spinrdf.org/spin#select
+-------- with comment:Executes a given SELECT or ASK query (or a corresponding SPIN template call) and binds its result rows to the variables specified on the right hand side. May also pre-bind variables for the query execution, using name-value pairs on the left hand side.
+
+Example:
+
+    (?query "this" owl:Thing) spin:select (?a ?b)
+
+will execute the sp:Select or sp:Ask that ?query points to and pre-bind ?this with the value of owl:Thing for the execution of the query. The first result variable of the query's result set will be bound to ?a, the second to ?b etc. If the nodes on the right are bound (or constants) then it will match with the values from the result set.
+Function is and------- with URI:http://spinrdf.org/sp#and
+-------- with comment:Return the logical AND between two (boolean) operands.
+Function is min------- with URI:http://spinrdf.org/spl#min
+-------- with comment:Takes two arguments and returns the smaller one of them.
+Function is max------- with URI:http://spinrdf.org/spl#max
+-------- with comment:Takes two arguments and returns the larger one of them.
+Function is MiscFunctions------- with URI:http://spinrdf.org/spl#MiscFunctions
+-------- with comment:A collection of functions that are difficult to categorize.
+Function is or------- with URI:http://spinrdf.org/sp#or
+-------- with comment:Returns the logical OR between two (boolean) operands.
+Function is datatype------- with URI:http://spinrdf.org/sp#datatype
+-------- with comment:Returns the datatype IRI of argument ?arg1; returns xsd:string if the parameter is a simple literal.
+Function is unaryPlus------- with URI:http://spinrdf.org/sp#unaryPlus
+-------- with comment:Returns the operand ?arg1 with the sign unchanged. Semantically, this operation performs no operation.
+Function is round------- with URI:http://spinrdf.org/sp#round
+-------- with comment:Returns the number with no fractional part that is closest to the argument. If there are two such numbers, then the one that is closest to positive infinity is returned. An error is raised if ?arg1 is not a numeric value.
+Function is sub------- with URI:http://spinrdf.org/sp#sub
+-------- with comment:Returns the arithmetic difference of its operands.
+Function is abs------- with URI:http://spinrdf.org/sp#abs
+-------- with comment:Returns the absolute value of arg. An error is raised if arg is not a numeric value.
+Function is contains------- with URI:http://spinrdf.org/sp#contains
+-------- with comment:Returns an xsd:boolean indicating whether or not the value of ?arg1 contains (at the beginning, at the end, or anywhere within) at least one sequence of collation units that provides a minimal match to the collation units in the value of ?arg2, according to the collation that is used.
+Function is ge------- with URI:http://spinrdf.org/sp#ge
+-------- with comment:Returns true if ?arg1 >= ?arg2.
+Function is replace------- with URI:http://spinrdf.org/sp#replace
+-------- with comment:Replaces each non-overlapping occurrence of a regular expression pattern with a replacement string. Regular expession matching may involve modifier flags.
+Function is floor------- with URI:http://spinrdf.org/sp#floor
+-------- with comment:Returns the largest (closest to positive infinity) number with no fractional part that is not greater than the value of ?arg1. An error is raised if ?arg1 is not a numeric value.
+Function is sha1------- with URI:http://spinrdf.org/sp#sha1
+-------- with comment:Returns the SHA1 checksum, as a hex digit string, calculated on the UTF-8 representation of the simple literal or lexical form of the xsd:string. Hex digits SHOULD be in lower case.
+Function is str------- with URI:http://spinrdf.org/sp#str
+-------- with comment:Returns the lexical form of ?arg1 (a literal); returns the codepoint representation of ?arg1 (an IRI). This is useful for examining parts of an IRI, for instance, the host-name.
+Function is exists------- with URI:http://spinrdf.org/sp#exists
+-------- with comment:The filter function EXISTS. The graph pattern is stored in sp:elements.
+Function is hasArgument------- with URI:http://spinrdf.org/spl#hasArgument
+-------- with comment:Checks if a given module class (?module) has at least one declared spl:Argument.
+Function is gt------- with URI:http://spinrdf.org/sp#gt
+-------- with comment:Returns true if ?arg1 > arg2.
+
+===================================================
+
+Bicycle Template is BicycleNameTemplate2
+
+Bicycle Template body SELECT ?bic ?wcount ?name
+WHERE {
+    ?bic a bic:Bicycle .
+    ?bic bic:wheelcount ?wcount .
+    ?bic bic:name ?name .
+}
+
+============ BicycleNameTemplate2 Query Result =============
+>>Bicycle name is Miran_fillari^^http://www.w3.org/2001/XMLSchema#string
+============================================================
+

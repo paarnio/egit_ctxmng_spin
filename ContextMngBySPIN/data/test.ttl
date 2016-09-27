@@ -1,0 +1,15 @@
+<http://siima.net/ont/bicycle#Bicycle_1>
+        <http://siima.net/ont/bicycle#wheelcount>
+                2 .
+
+<http://siima.net/ont/bicycle#Bicycle_4>
+        <http://siima.net/ont/bicycle#wheelcount>
+                0 .
+
+<http://siima.net/ont/bicycle#Bicycle_3>
+        <http://siima.net/ont/bicycle#wheelcount>
+                2 .
+
+<http://siima.net/ont/bicycle#Bicycle_2>
+        <http://siima.net/ont/bicycle#wheelcount>
+                2 .

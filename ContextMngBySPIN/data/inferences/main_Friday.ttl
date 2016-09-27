@@ -1,0 +1,699 @@
+@prefix afn:   <http://jena.hpl.hp.com/ARQ/function#> .
+@prefix :      <http://ssp4t5.net/test/context_mimosa#> .
+@prefix sp:    <http://spinrdf.org/sp#> .
+@prefix mctxsimple: <http://ssp4t5.net/context/mctxsimple#> .
+@prefix spif:  <http://spinrdf.org/spif#> .
+@prefix mctxcore: <http://ssp4t5.net/context/mctxcore#> .
+@prefix combined: <http://ssp4t5.net/mimosa/combined#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix arg:   <http://spinrdf.org/arg#> .
+@prefix spl:   <http://spinrdf.org/spl#> .
+@prefix diagplus: <http://ssp4t5.net/mimosa/diagplus#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix spin:  <http://spinrdf.org/spin#> .
+@prefix fn:    <http://www.w3.org/2005/xpath-functions#> .
+
+:crissegmentid  a        spin:Function ;
+        rdfs:comment     "Function that returns segment_id given a segment_tag (unique equipment tag) as an argument."^^xsd:string ;
+        rdfs:label       "crissegmentid"^^xsd:string ;
+        rdfs:subClassOf  spin:Functions ;
+        spin:body        [ a                   sp:Select ;
+                           sp:resultVariables  ( [ sp:varName  "segid"^^xsd:string ] ) ;
+                           sp:where            ( [ sp:object     <http://ssp4t5.net/mimosa/regcore#Segment> ;
+                                                   sp:predicate  rdf:type ;
+                                                   sp:subject    [ sp:varName  "crisseg"^^xsd:string ]
+                                                 ] [ sp:object     [ sp:varName  "tag"^^xsd:string ] ;
+                                                     sp:predicate  combined:segment_tag ;
+                                                     sp:subject    [ sp:varName  "crisseg"^^xsd:string ]
+                                                   ] [ sp:object     [ sp:varName  "segid"^^xsd:string ] ;
+                                                       sp:predicate  <http://ssp4t5.net/mimosa/regcore#segment_id> ;
+                                                       sp:subject    [ sp:varName  "crisseg"^^xsd:string ]
+                                                     ] )
+                         ] ;
+        spin:constraint  [ a              spl:Argument ;
+                           rdfs:comment   "returns the regcore:asset_id value (integer) of the asset identified with a tag string ( combined:asset_tag)."^^xsd:string ;
+                           spl:predicate  arg:tag ;
+                           spl:valueType  xsd:integer
+                         ] .
+
+:CreateAssetRecommendationTemplate2
+        a                   spin:ConstructTemplate ;
+        rdfs:subClassOf     spin:ConstructTemplates ;
+        spin:body           [ a             sp:Construct ;
+                              sp:templates  ( [ sp:object     diagplus:AssetRecommendation ;
+                                                sp:predicate  rdf:type ;
+                                                sp:subject    [ sp:varName  "asrec"^^xsd:string ]
+                                              ] [ sp:object     [ sp:varName  "now"^^xsd:string ] ;
+                                                  sp:predicate  diagplus:utcRecommendation ;
+                                                  sp:subject    [ sp:varName  "asrec"^^xsd:string ]
+                                                ] [ sp:object     [ sp:varName  "assetid"^^xsd:string ] ;
+                                                    sp:predicate  <http://ssp4t5.net/mimosa/regcore#asset_id> ;
+                                                    sp:subject    [ sp:varName  "asrec"^^xsd:string ]
+                                                  ] [ sp:object     [ sp:varName  "agentid"^^xsd:string ] ;
+                                                      sp:predicate  <http://ssp4t5.net/mimosa/regcore#agent_id> ;
+                                                      sp:subject    [ sp:varName  "asrec"^^xsd:string ]
+                                                    ] [ sp:object     [ sp:varName  "recommendation"^^xsd:string ] ;
+                                                        sp:predicate  combined:description ;
+                                                        sp:subject    [ sp:varName  "asrec"^^xsd:string ]
+                                                      ] ) ;
+                              sp:where      ( [ a              sp:Bind ;
+                                                sp:expression  [ a  afn:now ] ;
+                                                sp:variable    [ sp:varName  "now"^^xsd:string ]
+                                              ] [ a              sp:Bind ;
+                                                  sp:expression  [ a        sp:iri ;
+                                                                   sp:arg1  [ a        fn:concat ;
+                                                                              sp:arg1  "http://ssp4t5.net/mimosa/diagplus#AssetRecommendation_" ;
+                                                                              sp:arg2  [ a        sp:str ;
+                                                                                         sp:arg1  [ sp:varName  "now"^^xsd:string ]
+                                                                                       ]
+                                                                            ]
+                                                                 ] ;
+                                                  sp:variable    [ sp:varName  "asrec"^^xsd:string ]
+                                                ] )
+                            ] ;
+        spin:constraint     [ a              spl:Argument ;
+                              rdfs:comment   "Textual asset recommendation description. "^^xsd:string ;
+                              spl:predicate  arg:recommendation ;
+                              spl:valueType  xsd:string
+                            ] ;
+        spin:constraint     [ a              spl:Argument ;
+                              rdfs:comment   "Asset's identification number (integer) in Mimosa DB."^^xsd:string ;
+                              spl:predicate  arg:assetid ;
+                              spl:valueType  xsd:integer
+                            ] ;
+        spin:constraint     [ a              spl:Argument ;
+                              rdfs:comment   "Agent's identification number (integer) in Mimosa DB or site registry. Agent who creates this recommendation."^^xsd:string ;
+                              spl:predicate  arg:agentid ;
+                              spl:valueType  xsd:integer
+                            ] ;
+        spin:labelTemplate  "Construct template for creating AssetRecommendation with a dateTime value automaticly created for diagplus:utcRecommendation-property. Arguments: regcore:asset_id; regcore:agent_id; combined:description. (Version2)."^^xsd:string .
+
+:CreateSituationContextTemplate
+        a                   spin:ConstructTemplate ;
+        rdfs:label          "Create situation context template"^^xsd:string ;
+        rdfs:subClassOf     spin:ConstructTemplates ;
+        spin:body           [ a             sp:Construct ;
+                              sp:templates  ( [ sp:object     mctxcore:SituationContext ;
+                                                sp:predicate  rdf:type ;
+                                                sp:subject    [ sp:varName  "ctx"^^xsd:string ]
+                                              ] [ sp:object     [ sp:varName  "eworkorder"^^xsd:string ] ;
+                                                  sp:predicate  mctxcore:hasElement ;
+                                                  sp:subject    [ sp:varName  "ctx"^^xsd:string ]
+                                                ] [ sp:object     [ sp:varName  "target"^^xsd:string ] ;
+                                                    sp:predicate  mctxcore:hasElement ;
+                                                    sp:subject    [ sp:varName  "ctx"^^xsd:string ]
+                                                  ] [ sp:object     [ sp:varName  "person"^^xsd:string ] ;
+                                                      sp:predicate  mctxcore:hasElement ;
+                                                      sp:subject    [ sp:varName  "ctx"^^xsd:string ]
+                                                    ] [ sp:object     mctxsimple:EWorkOrder ;
+                                                        sp:predicate  rdf:type ;
+                                                        sp:subject    [ sp:varName  "eworkorder"^^xsd:string ]
+                                                      ] [ sp:object     [ sp:varName  "wo"^^xsd:string ] ;
+                                                          sp:predicate  mctxcore:hasWorkOrder ;
+                                                          sp:subject    [ sp:varName  "eworkorder"^^xsd:string ]
+                                                        ] [ sp:object     mctxsimple:EMaintTarget ;
+                                                            sp:predicate  rdf:type ;
+                                                            sp:subject    [ sp:varName  "target"^^xsd:string ]
+                                                          ] [ sp:object     [ sp:varName  "tag"^^xsd:string ] ;
+                                                              sp:predicate  mctxcore:ref_tag_code ;
+                                                              sp:subject    [ sp:varName  "target"^^xsd:string ]
+                                                            ] [ sp:object     mctxsimple:EMaintPerson ;
+                                                                sp:predicate  rdf:type ;
+                                                                sp:subject    [ sp:varName  "person"^^xsd:string ]
+                                                              ] [ sp:object     [ sp:varName  "agentid"^^xsd:string ] ;
+                                                                  sp:predicate  mctxcore:cris_agent_id ;
+                                                                  sp:subject    [ sp:varName  "person"^^xsd:string ]
+                                                                ] ) ;
+                              sp:where      ( [ a              sp:Bind ;
+                                                sp:expression  [ a                :crisworkorder ;
+                                                                 arg:workorderid  [ sp:varName  "workorderid"^^xsd:string ]
+                                                               ] ;
+                                                sp:variable    [ sp:varName  "wo"^^xsd:string ]
+                                              ] [ a            sp:Optional ;
+                                                  sp:elements  ( [ sp:object     [ sp:varName  "tag"^^xsd:string ] ;
+                                                                   sp:predicate  combined:targetSegment_tag ;
+                                                                   sp:subject    [ sp:varName  "wo"^^xsd:string ]
+                                                                 ] )
+                                                ] [ a            sp:Optional ;
+                                                    sp:elements  ( [ sp:object     [ sp:varName  "agent"^^xsd:string ] ;
+                                                                     sp:predicate  <http://ssp4t5.net/mimosa/workcoreplus#toAgent> ;
+                                                                     sp:subject    [ sp:varName  "wo"^^xsd:string ]
+                                                                   ] [ sp:object     [ sp:varName  "agentid"^^xsd:string ] ;
+                                                                       sp:predicate  <http://ssp4t5.net/mimosa/regcore#agent_id> ;
+                                                                       sp:subject    [ sp:varName  "agent"^^xsd:string ]
+                                                                     ] )
+                                                  ] [ a              sp:Bind ;
+                                                      sp:expression  [ a  afn:now ] ;
+                                                      sp:variable    [ sp:varName  "datetime"^^xsd:string ]
+                                                    ] [ a              sp:Bind ;
+                                                        sp:expression  [ a        sp:iri ;
+                                                                         sp:arg1  [ a        fn:concat ;
+                                                                                    sp:arg1  "http://ssp4t5.net/context/mctxcore#SituationContext_" ;
+                                                                                    sp:arg2  [ a        sp:str ;
+                                                                                               sp:arg1  [ sp:varName  "datetime"^^xsd:string ]
+                                                                                             ]
+                                                                                  ]
+                                                                       ] ;
+                                                        sp:variable    [ sp:varName  "ctx"^^xsd:string ]
+                                                      ] [ a              sp:Bind ;
+                                                          sp:expression  [ a        sp:iri ;
+                                                                           sp:arg1  [ a        fn:concat ;
+                                                                                      sp:arg1  "http://ssp4t5.net/context/mctxsimple#EMaintTarget_" ;
+                                                                                      sp:arg2  [ a        sp:str ;
+                                                                                                 sp:arg1  [ sp:varName  "datetime"^^xsd:string ]
+                                                                                               ]
+                                                                                    ]
+                                                                         ] ;
+                                                          sp:variable    [ sp:varName  "target"^^xsd:string ]
+                                                        ] [ a              sp:Bind ;
+                                                            sp:expression  [ a        sp:iri ;
+                                                                             sp:arg1  [ a        fn:concat ;
+                                                                                        sp:arg1  "http://ssp4t5.net/context/mctxsimple#EMaintPerson_" ;
+                                                                                        sp:arg2  [ a        sp:str ;
+                                                                                                   sp:arg1  [ sp:varName  "datetime"^^xsd:string ]
+                                                                                                 ]
+                                                                                      ]
+                                                                           ] ;
+                                                            sp:variable    [ sp:varName  "person"^^xsd:string ]
+                                                          ] [ a              sp:Bind ;
+                                                              sp:expression  [ a        sp:iri ;
+                                                                               sp:arg1  [ a        fn:concat ;
+                                                                                          sp:arg1  "http://ssp4t5.net/context/mctxsimple#EWorkOrder_" ;
+                                                                                          sp:arg2  [ a        sp:str ;
+                                                                                                     sp:arg1  [ sp:varName  "datetime"^^xsd:string ]
+                                                                                                   ]
+                                                                                        ]
+                                                                             ] ;
+                                                              sp:variable    [ sp:varName  "eworkorder"^^xsd:string ]
+                                                            ] )
+                            ] ;
+        spin:constraint     [ a              spl:Argument ;
+                              rdfs:comment   "The id number (integer) of the WorkOrder instance. The data in this workorder is used to populate the property slots of the SituationContext to be created."^^xsd:string ;
+                              spl:predicate  arg:workorderid ;
+                              spl:valueType  xsd:integer
+                            ] ;
+        spin:labelTemplate  "Creates a new SituationContext with new context elements (CElement): MaintTarget and MaintPerson given an id number of a WorkOrder instance. The data in this workorder is used to populate the first property slots of the SituationContext and CElements created."^^xsd:string .
+
+:QueryModelEventCodes
+        a                   spin:SelectTemplate ;
+        rdfs:label          "Query model event codes"^^xsd:string ;
+        rdfs:subClassOf     spin:SelectTemplates ;
+        spin:body           [ a                   sp:Select ;
+                              sp:resultVariables  ( [ sp:varName  "mid"^^xsd:string ] [ sp:varName
+                                                "model"^^xsd:string ] [ sp:varName
+                                                "evtcode"^^xsd:string ] ) ;
+                              sp:where            ( [ sp:object     <http://ssp4t5.net/mimosa/regcore#Model> ;
+                                                      sp:predicate  rdf:type ;
+                                                      sp:subject    [ sp:varName  "model"^^xsd:string ]
+                                                    ] [ sp:object     [ sp:varName  "mid"^^xsd:string ] ;
+                                                        sp:predicate  <http://ssp4t5.net/mimosa/regcore#model_id> ;
+                                                        sp:subject    [ sp:varName  "model"^^xsd:string ]
+                                                      ] [ sp:object     [ sp:varName  "evtypecodetable"^^xsd:string ] ;
+                                                          sp:predicate  combined:hasEventTypeCodeTable ;
+                                                          sp:subject    [ sp:varName  "model"^^xsd:string ]
+                                                        ] [ sp:object     [ sp:varName  "evtcode"^^xsd:string ] ;
+                                                            sp:predicate  combined:has_event_type_code ;
+                                                            sp:subject    [ sp:varName  "evtypecodetable"^^xsd:string ]
+                                                          ] )
+                            ] ;
+        spin:constraint     [ a              spl:Argument ;
+                              rdfs:comment   "Model identifier:integer"^^xsd:string ;
+                              spl:predicate  arg:mid ;
+                              spl:valueType  xsd:integer
+                            ] ;
+        spin:labelTemplate  "Returns all event type codes related to the model identified with {?mid} as argument (row: ?mid ?model ?evtcode)."^^xsd:string .
+
+:QueryAgentInfo  a          spin:SelectTemplate ;
+        rdfs:label          "Query agent info"^^xsd:string ;
+        rdfs:subClassOf     spin:SelectTemplates ;
+        spin:body           [ a                   sp:Select ;
+                              sp:resultVariables  ( [ sp:varName  "agid"^^xsd:string ] [ sp:varName
+                                                "agent"^^xsd:string ] [ sp:varName
+                                                "agname"^^xsd:string ] [ sp:varName
+                                                "agtypename"^^xsd:string ] ) ;
+                              sp:where            ( [ sp:object     combined:AgentRegisterTable ;
+                                                      sp:predicate  rdf:type ;
+                                                      sp:subject    [ sp:varName  "agtable"^^xsd:string ]
+                                                    ] [ sp:object     [ sp:varName  "agent"^^xsd:string ] ;
+                                                        sp:predicate  <http://ssp4t5.net/mimosa/regcore#registers> ;
+                                                        sp:subject    [ sp:varName  "agtable"^^xsd:string ]
+                                                      ] [ sp:object     [ sp:varName  "agid"^^xsd:string ] ;
+                                                          sp:predicate  <http://ssp4t5.net/mimosa/regcore#agent_id> ;
+                                                          sp:subject    [ sp:varName  "agent"^^xsd:string ]
+                                                        ] [ sp:object     [ sp:varName  "agname"^^xsd:string ] ;
+                                                            sp:predicate  combined:has_name ;
+                                                            sp:subject    [ sp:varName  "agent"^^xsd:string ]
+                                                          ] [ sp:object     [ sp:varName  "agtype"^^xsd:string ] ;
+                                                              sp:predicate  combined:hasType ;
+                                                              sp:subject    [ sp:varName  "agent"^^xsd:string ]
+                                                            ] [ sp:object     [ sp:varName  "agtypename"^^xsd:string ] ;
+                                                                sp:predicate  combined:has_name ;
+                                                                sp:subject    [ sp:varName  "agtype"^^xsd:string ]
+                                                              ] )
+                            ] ;
+        spin:constraint     [ a              spl:Argument ;
+                              rdfs:comment   "Agents identifier number:integer"^^xsd:string ;
+                              spl:predicate  arg:agid ;
+                              spl:valueType  xsd:integer
+                            ] ;
+        spin:labelTemplate  "Returns information about an Agent and its type. Agent is  identified with agent_id {?agid} provided as argument for this template (return row: ?agid ?agent ?agname ?agtypename). Assumes that all Agents are registered in combined:AgentRegisterTable."^^xsd:string .
+
+arg:agentid  a              rdf:Property ;
+        rdfs:subPropertyOf  sp:arg .
+
+<http://ssp4t5.net/test/context_mimosa>
+        a                owl:Ontology ;
+        spin:imports     <http://topbraid.org/spin/spinowl> , <http://topbraid.org/spin/rdfsplus> , <http://topbraid.org/spin/owlrl-all> ;
+        owl:imports      <http://ssp4t5.net/mimosa/combined> , <http://ssp4t5.net/context/mctxsimple> , <http://spinrdf.org/spl> ;
+        owl:versionInfo  "Created with TopBraid Composer"^^xsd:string .
+
+:CreateRecommendationTemplate
+        a                   spin:ConstructTemplate ;
+        rdfs:subClassOf     spin:ConstructTemplates ;
+        spin:body           [ a             sp:Construct ;
+                              sp:templates  ( [ sp:object     [ sp:varName  "datetime"^^xsd:string ] ;
+                                                sp:predicate  diagplus:utcRecommendation ;
+                                                sp:subject    spin:_this
+                                              ] [ sp:object     spin:_arg1 ;
+                                                  sp:predicate  rdfs:comment ;
+                                                  sp:subject    spin:_this
+                                                ] ) ;
+                              sp:where      ( [ a            sp:Optional ;
+                                                sp:elements  ( [ sp:object     [ sp:varName  "olddate"^^xsd:string ] ;
+                                                                 sp:predicate  diagplus:utcRecommendation ;
+                                                                 sp:subject    spin:_this
+                                                               ] )
+                                              ] [ a              sp:Filter ;
+                                                  sp:expression  [ a        sp:not ;
+                                                                   sp:arg1  [ a        sp:bound ;
+                                                                              sp:arg1  [ sp:varName  "olddate"^^xsd:string ]
+                                                                            ]
+                                                                 ]
+                                                ] [ a              sp:Bind ;
+                                                    sp:expression  [ a  afn:now ] ;
+                                                    sp:variable    [ sp:varName  "datetime"^^xsd:string ]
+                                                  ] )
+                            ] ;
+        spin:constraint     [ a              spl:Argument ;
+                              rdfs:comment   "Recommendation comment string."^^xsd:string ;
+                              spl:predicate  sp:arg1 ;
+                              spl:valueType  xsd:string
+                            ] ;
+        spin:labelTemplate  "Construct template for creating Recommendation for Segment- or Asset- constructor with a dateTime value for diagplus:utcRecommendation-property. Argument ?arg1 is for comment. "^^xsd:string .
+
+diagplus:SegmentRecommendation
+        spin:constructor  [ a        :CreateRecommendationTemplate ;
+                            sp:arg1  "This is a SegmentRecommendation comment line: ?"^^xsd:string
+                          ] .
+
+arg:woid  a                 rdf:Property ;
+        rdfs:subPropertyOf  sp:arg .
+
+:crisagent  a            spin:Function ;
+        rdfs:comment     "Function that returns an Agent instance resource given the agent_id number (integer) as an argument."^^xsd:string ;
+        rdfs:label       "crisagent"^^xsd:string ;
+        rdfs:subClassOf  spin:Functions ;
+        spin:body        [ a                   sp:Select ;
+                           sp:resultVariables  ( [ sp:varName  "agent"^^xsd:string ] ) ;
+                           sp:where            ( [ sp:object     <http://ssp4t5.net/mimosa/regcore#Agent> ;
+                                                   sp:predicate  rdf:type ;
+                                                   sp:subject    [ sp:varName  "agent"^^xsd:string ]
+                                                 ] [ sp:object     [ sp:varName  "agentid"^^xsd:string ] ;
+                                                     sp:predicate  <http://ssp4t5.net/mimosa/regcore#agent_id> ;
+                                                     sp:subject    [ sp:varName  "agent"^^xsd:string ]
+                                                   ] )
+                         ] ;
+        spin:constraint  [ a              spl:Argument ;
+                           rdfs:comment   "Id number (integer) of the Agent instance to be returned."^^xsd:string ;
+                           spl:predicate  arg:agentid ;
+                           spl:valueType  xsd:integer
+                         ] .
+
+arg:recommendation  a       rdf:Property ;
+        rdfs:subPropertyOf  sp:arg .
+
+arg:agid  a                 rdf:Property ;
+        rdfs:subPropertyOf  sp:arg .
+
+arg:mid  a                  rdf:Property ;
+        rdfs:subPropertyOf  sp:arg .
+
+combined:WorkOrder_2  <http://ssp4t5.net/mimosa/workcoreplus#work_order_id>
+                222 .
+
+diagplus:AssetRecommendation
+        spin:constructor  [ a        :CreateRecommendationTemplate ;
+                            sp:arg1  "This is an AssetRecommendation comment line: ?"^^xsd:string
+                          ] .
+
+arg:classuri  a             rdf:Property ;
+        rdfs:subPropertyOf  sp:arg .
+
+:CreateWorkOrderTemplate
+        a                spin:ConstructTemplate ;
+        rdfs:label       "Create work order template"^^xsd:string ;
+        rdfs:subClassOf  spin:ConstructTemplates ;
+        spin:body        [ a             sp:Construct ;
+                           sp:templates  ( [ sp:object     <http://ssp4t5.net/mimosa/workcoreplus#WorkOrder> ;
+                                             sp:predicate  rdf:type ;
+                                             sp:subject    [ sp:varName  "wouri"^^xsd:string ]
+                                           ] [ sp:object     [ sp:varName  "woid"^^xsd:string ] ;
+                                               sp:predicate  <http://ssp4t5.net/mimosa/workcoreplus#work_order_id> ;
+                                               sp:subject    [ sp:varName  "wouri"^^xsd:string ]
+                                             ] [ sp:object     [ sp:varName  "agent"^^xsd:string ] ;
+                                                 sp:predicate  <http://ssp4t5.net/mimosa/workcoreplus#toAgent> ;
+                                                 sp:subject    [ sp:varName  "wouri"^^xsd:string ]
+                                               ] [ sp:object     [ sp:varName  "segtag"^^xsd:string ] ;
+                                                   sp:predicate  combined:targetSegment_tag ;
+                                                   sp:subject    [ sp:varName  "wouri"^^xsd:string ]
+                                                 ] [ sp:object     [ sp:varName  "assetid"^^xsd:string ] ;
+                                                     sp:predicate  combined:targetAsset_id ;
+                                                     sp:subject    [ sp:varName  "wouri"^^xsd:string ]
+                                                   ] ) ;
+                           sp:where      ( [ a              sp:Bind ;
+                                             sp:expression  [ a        :crisassetid ;
+                                                              arg:tag  [ sp:varName  "segtag"^^xsd:string ]
+                                                            ] ;
+                                             sp:variable    [ sp:varName  "assetid"^^xsd:string ]
+                                           ] [ a              sp:Bind ;
+                                               sp:expression  [ a            :crisagent ;
+                                                                arg:agentid  [ sp:varName  "agentid"^^xsd:string ]
+                                                              ] ;
+                                               sp:variable    [ sp:varName  "agent"^^xsd:string ]
+                                             ] [ a              sp:Bind ;
+                                                 sp:expression  [ a        sp:iri ;
+                                                                  sp:arg1  [ a        fn:concat ;
+                                                                             sp:arg1  "http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_" ;
+                                                                             sp:arg2  [ a        sp:str ;
+                                                                                        sp:arg1  [ sp:varName  "woid"^^xsd:string ]
+                                                                                      ]
+                                                                           ]
+                                                                ] ;
+                                                 sp:variable    [ sp:varName  "wouri"^^xsd:string ]
+                                               ] )
+                         ] ;
+        spin:constraint  [ a              spl:Argument ;
+                           rdfs:comment   "The id number (integer) for the new WorkOrder instance to be created."^^xsd:string ;
+                           spl:predicate  arg:woid ;
+                           spl:valueType  xsd:integer
+                         ] ;
+        spin:constraint  [ a              spl:Argument ;
+                           rdfs:comment   "The Segment tag (string) of the work target Segment of the new WorkOrder instance to be created. This tag often references to the Asset (equipment), which is the target of the maintenance work."^^xsd:string ;
+                           spl:predicate  arg:segtag ;
+                           spl:valueType  xsd:string
+                         ] ;
+        spin:constraint  [ a              spl:Argument ;
+                           rdfs:comment   "The id number (integer) of the Agent to whom the new WorkOrder instance is to be assigned to."^^xsd:string ;
+                           spl:predicate  arg:agentid ;
+                           spl:valueType  xsd:integer
+                         ] .
+
+:QueryModelEventTypeNames
+        a                   spin:SelectTemplate ;
+        rdfs:label          "Query model event type names"^^xsd:string ;
+        rdfs:subClassOf     spin:SelectTemplates ;
+        spin:body           [ a                   sp:Select ;
+                              sp:resultVariables  ( [ sp:varName  "mid"^^xsd:string ] [ sp:varName
+                                                "evtcode"^^xsd:string ] [ sp:varName
+                                                "evtname"^^xsd:string ] ) ;
+                              sp:where            ( [ sp:object     <http://ssp4t5.net/mimosa/regcore#Model> ;
+                                                      sp:predicate  rdf:type ;
+                                                      sp:subject    [ sp:varName  "model"^^xsd:string ]
+                                                    ] [ sp:object     [ sp:varName  "mid"^^xsd:string ] ;
+                                                        sp:predicate  <http://ssp4t5.net/mimosa/regcore#model_id> ;
+                                                        sp:subject    [ sp:varName  "model"^^xsd:string ]
+                                                      ] [ sp:object     [ sp:varName  "evtypecodetable"^^xsd:string ] ;
+                                                          sp:predicate  combined:hasEventTypeCodeTable ;
+                                                          sp:subject    [ sp:varName  "model"^^xsd:string ]
+                                                        ] [ sp:object     [ sp:varName  "evtcode"^^xsd:string ] ;
+                                                            sp:predicate  combined:has_event_type_code ;
+                                                            sp:subject    [ sp:varName  "evtypecodetable"^^xsd:string ]
+                                                          ] [ sp:object     combined:SgAsEventTypeTable ;
+                                                              sp:predicate  rdf:type ;
+                                                              sp:subject    [ sp:varName  "allevtypes"^^xsd:string ]
+                                                            ] [ sp:object     [ sp:varName  "evtype"^^xsd:string ] ;
+                                                                sp:predicate  combined:hasEventType ;
+                                                                sp:subject    [ sp:varName  "allevtypes"^^xsd:string ]
+                                                              ] [ sp:object     [ sp:varName  "evtcode"^^xsd:string ] ;
+                                                                  sp:predicate  combined:has_event_type_code ;
+                                                                  sp:subject    [ sp:varName  "evtype"^^xsd:string ]
+                                                                ] [ sp:object     [ sp:varName  "evtname"^^xsd:string ] ;
+                                                                    sp:predicate  combined:has_name ;
+                                                                    sp:subject    [ sp:varName  "evtype"^^xsd:string ]
+                                                                  ] )
+                            ] ;
+        spin:constraint     [ a              spl:Argument ;
+                              rdfs:comment   "Model identifier:integer"^^xsd:string ;
+                              spl:predicate  arg:mid ;
+                              spl:valueType  xsd:integer
+                            ] ;
+        spin:labelTemplate  "Returns all event type codes and names related to the model identified with {?mid} as argument (row: ?mid ?evtcode ?evtname). Assumes that Model's event type codes are listed in EventTypeCodeTable and that all EventTypes are listed in SgAsEventTypeTable. "^^xsd:string .
+
+:CreateResourceTemplateSiima
+        a                spin:ConstructTemplate ;
+        rdfs:subClassOf  spin:ConstructTemplates ;
+        spin:body        [ a             sp:Construct ;
+                           sp:templates  ( [ sp:object     [ sp:varName  "classuri"^^xsd:string ] ;
+                                             sp:predicate  rdf:type ;
+                                             sp:subject    [ sp:varName  "newres"^^xsd:string ]
+                                           ] ) ;
+                           sp:where      ( [ a              sp:Bind ;
+                                             sp:expression  [ a  afn:now ] ;
+                                             sp:variable    [ sp:varName  "now"^^xsd:string ]
+                                           ] [ a              sp:Bind ;
+                                               sp:expression  [ a        sp:iri ;
+                                                                sp:arg1  [ a        fn:concat ;
+                                                                           sp:arg1  [ a        sp:str ;
+                                                                                      sp:arg1  [ sp:varName  "classuri"^^xsd:string ]
+                                                                                    ] ;
+                                                                           sp:arg2  "_" ;
+                                                                           sp:arg3  [ a        sp:str ;
+                                                                                      sp:arg1  [ sp:varName  "now"^^xsd:string ]
+                                                                                    ]
+                                                                         ]
+                                                              ] ;
+                                               sp:variable    [ sp:varName  "newres"^^xsd:string ]
+                                             ] )
+                         ] ;
+        spin:constraint  [ a              spl:Argument ;
+                           rdfs:comment   "The uri of the class of the new instance to be created"^^xsd:string ;
+                           spl:predicate  arg:classuri ;
+                           spl:valueType  rdfs:Resource
+                         ] .
+
+:crisworkorder  a        spin:Function ;
+        rdfs:label       "crisworkorder"^^xsd:string ;
+        rdfs:subClassOf  spin:Functions ;
+        spin:body        [ a                   sp:Select ;
+                           sp:resultVariables  ( [ sp:varName  "workorder"^^xsd:string ] ) ;
+                           sp:where            ( [ sp:object     <http://ssp4t5.net/mimosa/workcoreplus#WorkOrder> ;
+                                                   sp:predicate  rdf:type ;
+                                                   sp:subject    [ sp:varName  "workorder"^^xsd:string ]
+                                                 ] [ sp:object     [ sp:varName  "workorderid"^^xsd:string ] ;
+                                                     sp:predicate  <http://ssp4t5.net/mimosa/workcoreplus#work_order_id> ;
+                                                     sp:subject    [ sp:varName  "workorder"^^xsd:string ]
+                                                   ] )
+                         ] ;
+        spin:constraint  [ a              spl:Argument ;
+                           rdfs:comment   "Id number (integer) of the WorkOrder instance to be returned."^^xsd:string ;
+                           spl:predicate  arg:workorderid ;
+                           spl:valueType  xsd:integer
+                         ] .
+
+:AssetModelInfo  a          spin:SelectTemplate ;
+        rdfs:label          "Asset model info"^^xsd:string ;
+        rdfs:subClassOf     spin:SelectTemplates ;
+        spin:body           [ a                   sp:Select ;
+                              sp:resultVariables  ( [ sp:varName  "tag"^^xsd:string ] [ sp:varName
+                                                "model"^^xsd:string ] [ sp:varName
+                                                "mid"^^xsd:string ] [ sp:varName
+                                                "evtypecodetable"^^xsd:string ] ) ;
+                              sp:where            ( [ a              sp:Bind ;
+                                                      sp:expression  [ a        :crismodelid ;
+                                                                       arg:tag  [ sp:varName  "tag"^^xsd:string ]
+                                                                     ] ;
+                                                      sp:variable    [ sp:varName  "mid"^^xsd:string ]
+                                                    ] [ sp:object     <http://ssp4t5.net/mimosa/regcore#Model> ;
+                                                        sp:predicate  rdf:type ;
+                                                        sp:subject    [ sp:varName  "model"^^xsd:string ]
+                                                      ] [ sp:object     [ sp:varName  "mid"^^xsd:string ] ;
+                                                          sp:predicate  <http://ssp4t5.net/mimosa/regcore#model_id> ;
+                                                          sp:subject    [ sp:varName  "model"^^xsd:string ]
+                                                        ] [ sp:object     [ sp:varName  "evtypecodetable"^^xsd:string ] ;
+                                                            sp:predicate  combined:hasEventTypeCodeTable ;
+                                                            sp:subject    [ sp:varName  "model"^^xsd:string ]
+                                                          ] )
+                            ] ;
+        spin:constraint     [ a              spl:Argument ;
+                              rdfs:comment   "Equipment/segment location/identifier tag string"^^xsd:string ;
+                              spl:predicate  arg:tag ;
+                              spl:valueType  xsd:string
+                            ] ;
+        spin:labelTemplate  "Returns  Asset's Model information related to the asset identified with segment_tag {?tag} as argument (row: ?tag ?model ?mid ?evtypecodetable)."^^xsd:string .
+
+:crismodelid  a          spin:Function ;
+        rdfs:comment     "Function that returns model_id given a segment_tag (unique equipment tag) as an argument. Applies function :crisassetid(?tag) to specify the asset, whose model_id should be returned (Function chaining)."^^xsd:string ;
+        rdfs:label       "crismodelid"^^xsd:string ;
+        rdfs:subClassOf  spin:Functions ;
+        spin:body        [ a                   sp:Select ;
+                           sp:resultVariables  ( [ sp:varName  "mid"^^xsd:string ] ) ;
+                           sp:where            ( [ a              sp:Bind ;
+                                                   sp:expression  [ a        :crisassetid ;
+                                                                    arg:tag  [ sp:varName  "tag"^^xsd:string ]
+                                                                  ] ;
+                                                   sp:variable    [ sp:varName  "asid"^^xsd:string ]
+                                                 ] [ sp:object     [ sp:varName  "asid"^^xsd:string ] ;
+                                                     sp:predicate  <http://ssp4t5.net/mimosa/regcore#asset_id> ;
+                                                     sp:subject    [ sp:varName  "crisas"^^xsd:string ]
+                                                   ] [ sp:object     [ sp:varName  "mod"^^xsd:string ] ;
+                                                       sp:predicate  combined:hasModel ;
+                                                       sp:subject    [ sp:varName  "crisas"^^xsd:string ]
+                                                     ] [ sp:object     [ sp:varName  "mid"^^xsd:string ] ;
+                                                         sp:predicate  <http://ssp4t5.net/mimosa/regcore#model_id> ;
+                                                         sp:subject    [ sp:varName  "mod"^^xsd:string ]
+                                                       ] )
+                         ] ;
+        spin:constraint  [ a              spl:Argument ;
+                           rdfs:comment   "returns the regcore:model_id value (integer) of the regcore:Model of the Asset identified with a TAG string ( combined:asset_tag)."^^xsd:string ;
+                           spl:predicate  arg:tag ;
+                           spl:valueType  xsd:integer
+                         ] .
+
+arg:tag  a                  rdf:Property ;
+        rdfs:subPropertyOf  sp:arg .
+
+arg:workorderid  a          rdf:Property ;
+        rdfs:subPropertyOf  sp:arg .
+
+:QueryWorkOrders  a         spin:SelectTemplate ;
+        rdfs:label          "Query work orders"^^xsd:string ;
+        rdfs:subClassOf     spin:SelectTemplates ;
+        spin:body           [ a                   sp:Select ;
+                              sp:resultVariables  ( [ sp:varName  "agentid"^^xsd:string ] [ sp:varName
+                                                "agent"^^xsd:string ] [ sp:varName
+                                                "worderid"^^xsd:string ] [ sp:varName
+                                                "worder"^^xsd:string ] ) ;
+                              sp:where            ( [ sp:object     <http://ssp4t5.net/mimosa/workcoreplus#WorkOrder> ;
+                                                      sp:predicate  rdf:type ;
+                                                      sp:subject    [ sp:varName  "worder"^^xsd:string ]
+                                                    ] [ sp:object     [ sp:varName  "worderid"^^xsd:string ] ;
+                                                        sp:predicate  <http://ssp4t5.net/mimosa/workcoreplus#work_order_id> ;
+                                                        sp:subject    [ sp:varName  "worder"^^xsd:string ]
+                                                      ] [ sp:object     [ sp:varName  "agent"^^xsd:string ] ;
+                                                          sp:predicate  <http://ssp4t5.net/mimosa/workcoreplus#toAgent> ;
+                                                          sp:subject    [ sp:varName  "worder"^^xsd:string ]
+                                                        ] [ sp:object     [ sp:varName  "agentid"^^xsd:string ] ;
+                                                            sp:predicate  <http://ssp4t5.net/mimosa/regcore#agent_id> ;
+                                                            sp:subject    [ sp:varName  "agent"^^xsd:string ]
+                                                          ] [ a              sp:Filter ;
+                                                              sp:expression  [ a            sp:notExists ;
+                                                                               sp:elements  ( [ a            sp:Union ;
+                                                                                                sp:elements  ( ( [ sp:object     <http://ssp4t5.net/mimosa/workcoreplus#WorkOrderAudit> ;
+                                                                                                                   sp:predicate  rdf:type ;
+                                                                                                                   sp:subject    [ sp:varName  "waudit"^^xsd:string ]
+                                                                                                                 ] [ sp:object     <http://ssp4t5.net/mimosa/workcoreplus#WorkAuditType> ;
+                                                                                                                     sp:predicate  rdf:type ;
+                                                                                                                     sp:subject    [ sp:varName  "atype"^^xsd:string ]
+                                                                                                                   ] [ sp:object     [ sp:varName  "waudit"^^xsd:string ] ;
+                                                                                                                       sp:predicate  <http://ssp4t5.net/mimosa/workcoreplus#hasStatusHistory> ;
+                                                                                                                       sp:subject    [ sp:varName  "worder"^^xsd:string ]
+                                                                                                                     ] [ sp:object     [ sp:varName  "atype"^^xsd:string ] ;
+                                                                                                                         sp:predicate  combined:hasType ;
+                                                                                                                         sp:subject    [ sp:varName  "waudit"^^xsd:string ]
+                                                                                                                       ] [ sp:object     "Closed"^^xsd:string ;
+                                                                                                                           sp:predicate  combined:user_tag_ident ;
+                                                                                                                           sp:subject    [ sp:varName  "atype"^^xsd:string ]
+                                                                                                                         ] ) ( [ sp:object     <http://ssp4t5.net/mimosa/workcoreplus#WorkOrderAudit> ;
+                                                                                                                                 sp:predicate  rdf:type ;
+                                                                                                                                 sp:subject    [ sp:varName  "waudit"^^xsd:string ]
+                                                                                                                               ] [ sp:object     <http://ssp4t5.net/mimosa/workcoreplus#WorkAuditType> ;
+                                                                                                                                   sp:predicate  rdf:type ;
+                                                                                                                                   sp:subject    [ sp:varName  "atype"^^xsd:string ]
+                                                                                                                                 ] [ sp:object     [ sp:varName  "waudit"^^xsd:string ] ;
+                                                                                                                                     sp:predicate  <http://ssp4t5.net/mimosa/workcoreplus#hasStatusHistory> ;
+                                                                                                                                     sp:subject    [ sp:varName  "worder"^^xsd:string ]
+                                                                                                                                   ] [ sp:object     [ sp:varName  "atype"^^xsd:string ] ;
+                                                                                                                                       sp:predicate  combined:hasType ;
+                                                                                                                                       sp:subject    [ sp:varName  "waudit"^^xsd:string ]
+                                                                                                                                     ] [ sp:object     "Completed"^^xsd:string ;
+                                                                                                                                         sp:predicate  combined:user_tag_ident ;
+                                                                                                                                         sp:subject    [ sp:varName  "atype"^^xsd:string ]
+                                                                                                                                       ] ) )
+                                                                                              ] )
+                                                                             ]
+                                                            ] )
+                            ] ;
+        spin:constraint     [ a              spl:Argument ;
+                              rdfs:comment   "Id number of the Agent to whom the WorkOrders to be listed are assigned to (toAgent)"^^xsd:string ;
+                              spl:predicate  arg:agentid ;
+                              spl:valueType  xsd:integer
+                            ] ;
+        spin:labelTemplate  "Select Template that Queries Work orders asigned to the Agent identified with {?agentid} . Filtered based on their WorkAuditType of WorkOrderAudits related to that WorkOrder (HasStatusHistory). WorkOrders that are already closed/Completed or Cancelled are not wanted. "^^xsd:string .
+
+:Template  a                spin:ConstructTemplate ;
+        rdfs:subClassOf     spin:ConstructTemplates ;
+        spin:body           [ a             sp:Construct ;
+                              sp:templates  ( [ sp:object     [ sp:varName  "datetime"^^xsd:string ] ;
+                                                sp:predicate  mctxcore:created ;
+                                                sp:subject    spin:_this
+                                              ] [ sp:object     [ sp:varName  "datetime"^^xsd:string ] ;
+                                                  sp:predicate  diagplus:utcRecommendation ;
+                                                  sp:subject    spin:_this
+                                                ] ) ;
+                              sp:where      ( [ a            sp:Optional ;
+                                                sp:elements  ( [ sp:object     [ sp:varName  "olddate"^^xsd:string ] ;
+                                                                 sp:predicate  mctxcore:created ;
+                                                                 sp:subject    spin:_this
+                                                               ] )
+                                              ] [ a              sp:Filter ;
+                                                  sp:expression  [ a        sp:not ;
+                                                                   sp:arg1  [ a        sp:bound ;
+                                                                              sp:arg1  [ sp:varName  "olddate"^^xsd:string ]
+                                                                            ]
+                                                                 ]
+                                                ] [ a              sp:Bind ;
+                                                    sp:expression  [ a  afn:now ] ;
+                                                    sp:variable    [ sp:varName  "datetime"^^xsd:string ]
+                                                  ] )
+                            ] ;
+        spin:labelTemplate  "Construct template for creating Recommendation with created-property"^^xsd:string .
+
+arg:segtag  a               rdf:Property ;
+        rdfs:subPropertyOf  sp:arg .
+
+:crisassetid  a          spin:Function ;
+        rdfs:comment     "Function that returns asset_id given a segment_tag (unique equipment tag) as an argument."^^xsd:string ;
+        rdfs:label       "crisassetid"^^xsd:string ;
+        rdfs:subClassOf  spin:Functions ;
+        spin:body        [ a                   sp:Select ;
+                           sp:resultVariables  ( [ sp:varName  "asid"^^xsd:string ] ) ;
+                           sp:where            ( [ sp:object     <http://ssp4t5.net/mimosa/regcore#Segment> ;
+                                                   sp:predicate  rdf:type ;
+                                                   sp:subject    [ sp:varName  "crisseg"^^xsd:string ]
+                                                 ] [ sp:object     <http://ssp4t5.net/mimosa/regcore#Asset> ;
+                                                     sp:predicate  rdf:type ;
+                                                     sp:subject    [ sp:varName  "crisas"^^xsd:string ]
+                                                   ] [ sp:object     [ sp:varName  "tag"^^xsd:string ] ;
+                                                       sp:predicate  combined:segment_tag ;
+                                                       sp:subject    [ sp:varName  "crisseg"^^xsd:string ]
+                                                     ] [ sp:object     [ sp:varName  "crisseg"^^xsd:string ] ;
+                                                         sp:predicate  combined:hasSegment ;
+                                                         sp:subject    [ sp:varName  "crisas"^^xsd:string ]
+                                                       ] [ sp:object     [ sp:varName  "asid"^^xsd:string ] ;
+                                                           sp:predicate  <http://ssp4t5.net/mimosa/regcore#asset_id> ;
+                                                           sp:subject    [ sp:varName  "crisas"^^xsd:string ]
+                                                         ] )
+                         ] ;
+        spin:constraint  [ a              spl:Argument ;
+                           rdfs:comment   "returns the regcore:asset_id value (integer) of the asset identified with a tag string ( combined:asset_tag)."^^xsd:string ;
+                           spl:predicate  arg:tag ;
+                           spl:valueType  xsd:integer
+                         ] .
+
+arg:assetid  a              rdf:Property ;
+        rdfs:subPropertyOf  sp:arg .
+
+arg:astag  a                rdf:Property ;
+        rdfs:subPropertyOf  sp:arg .

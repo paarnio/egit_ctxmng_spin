@@ -1,0 +1,1044 @@
+Eclipse project command line print:
+For ssp4t5net template tests 2
+2016-01-15
+================ InteractiveSpinMng ===============
+
+
+----- ModelSpinManager READY to start user interaction -----
+
+
+
+
+--------START-MENU---------
+OPERATION OPTIONS:
+1. Build knowledge base interactively
+2. Start predefined KB: bicycle
+3. Start predefined KB: ssp4t5.net
+4. Start predefined KB: 
+5. Exit
+-----SELECT 1-5  (integer assumed) (Default:5)
+3
+A:3
+---
+16:51:25 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: loadModelWithImports()
+---loadModelWithImports()
+loadModelWithImports: loaded basemodel + imports = #9
+16:51:28 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: createReasonerModel()
+
+----------- Knowledge Base Ready  ----------
+
+
+--------MAIN-MENU---------
+OPERATION OPTIONS:
+1. Add Sparql prefix lines
+2. Run queries
+3. Run inferences
+4. Run templates
+5. Check constraints
+6. Run constructors
+7. Print inferred triples
+8. Print template info
+9. Exit
+-----SELECT 1-9  (integer assumed) (Default:9)
+4
+A:4
+---
+
+---- OPERATION: Run Templates ----
+
+16:51:52 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplates()
+
+================ALL MODEL TEMPLATES ================
+
+Template is CountPropertyConstraintTemplates------- with URI:http://spinrdf.org/spl#CountPropertyConstraintTemplates
+------- with comment:Abstract superclass of property constraints that compare the number of values with either min or max count.
+Template is ConstraintTemplates------- with URI:http://spinrdf.org/spl#ConstraintTemplates
+------- with comment:Abstract superclass of templates that can be used as spin:constraints. The subclasses are expected to construct spin:ConstraintViolations and use ?this to talk about the instances of the associated class.
+Template is UpdateTemplates------- with URI:http://spinrdf.org/spin#UpdateTemplates
+------- with comment:Suggested abstract base class for all UpdateTemplates.
+Template is PropertyPairConstraintTemplates------- with URI:http://spinrdf.org/spl#PropertyPairConstraintTemplates
+------- with comment:Abstract base class for templates that take two properties as arguments and establish a relationship between them.
+Template is UntypedObjectPropertyConstraint------- with URI:http://spinrdf.org/spl#UntypedObjectPropertyConstraint
+------- with comment:A generic SPIN template that can be used to declare a constraint that all values of a given property must have an rdf:type.
+Template is ConstructDefaultValues------- with URI:http://spinrdf.org/spl#ConstructDefaultValues
+------- with comment:This template can be attached as spin:constructor to a root class such as rdfs:Resource to ensure that SPIN processors assign default values to certain properties. Looks for any templates attached as spin:constraints to the types of ?this and then assigns their declared spl:defaultValues.
+Template is RegexPropertyConstraint------- with URI:http://spinrdf.org/spl#RegexPropertyConstraint
+------- with comment:null
+Template is ConstructTemplates------- with URI:http://spinrdf.org/spin#ConstructTemplates
+------- with comment:Suggested abstract base class for all ConstructTemplates.
+Template is Attribute------- with URI:http://spinrdf.org/spl#Attribute
+------- with comment:Defines an "attribute" of a class. Attribute definitions bundle common modeling patterns known from object-oriented languages like UML. Each attribute can have min and max cardinality, a value type and a default value. The attribute links a class with one RDF property. This template should be used as spin:constraints on a class to make sure that classes meet the expected cardinalities and valueType constraints.
+If a model wants to use spl:defaultValue, then it should instantiate the spl:ConstructDefaultValues as a spin:constructor at some root class, such as rdfs:Resource.
+Template is AllArguments------- with URI:http://spinrdf.org/spl#AllArguments
+------- with comment:Gets a list of all spl:Arguments declared at a given class and its superclasses.
+Template is RunTestCases------- with URI:http://spinrdf.org/spl#RunTestCases
+------- with comment:Runs all spl:TestCases on the current model.
+Template is PropertyConstraintTemplates------- with URI:http://spinrdf.org/spl#PropertyConstraintTemplates
+------- with comment:Abstract superclass of constraint templates that constrain exactly one property.
+Template is Argument------- with URI:http://spinrdf.org/spl#Argument
+------- with comment:Provides metadata about an argument of a SPIN Function or Template. Arguments wrap a given rdf:Property (predicate) and specify its value type and whether the argument is optional. When used as spin:constraint, the body of this template will verify that a non-optional value exists and that it has the specified value type. Arguments that have been declared spl:optional true become optional if the type of ?this is spl:UnionTemplate. 
+Template is InferDefaultValue------- with URI:http://spinrdf.org/spl#InferDefaultValue
+------- with comment:Can be used to infer default values for a given subject/predicate combination. This is typically assigned as spin:rule to a class. If ?this does not already have a value for a given property {?predicate}, then this will infer the value {?defaultValue}.
+Template is SPINOverview------- with URI:http://spinrdf.org/spl#SPINOverview
+------- with comment:Finds all constraints and rules attached to classes in the current graph, using spin:constraint, spin:constructor, spin:rule or their sub-properties. The result set will contain the associated class, the predicate, and the SPIN rule.
+Template is ObjectCountPropertyConstraint------- with URI:http://spinrdf.org/spl#ObjectCountPropertyConstraint
+------- with comment:Represents a constraint that can be attached to a class to specify that a given property must have between min and max values.
+Template is NonExistencePropertyPairConstraint------- with URI:http://spinrdf.org/spl#NonExistencePropertyPairConstraint
+------- with comment:null
+Template is SelectTemplates------- with URI:http://spinrdf.org/spin#SelectTemplates
+------- with comment:Suggested abstract base class for all SelectTemplates.
+Template is Templates------- with URI:http://spinrdf.org/spin#Templates
+------- with comment:Suggested abstract base class for all Templates.
+Template is AskTemplates------- with URI:http://spinrdf.org/spin#AskTemplates
+------- with comment:Suggested abstract base class for all AskTemplates.
+Template is ExistencePropertyPairConstraint------- with URI:http://spinrdf.org/spl#ExistencePropertyPairConstraint
+------- with comment:null
+Template is RangePropertyConstraint------- with URI:http://spinrdf.org/spl#RangePropertyConstraint
+------- with comment:Represents a constraint that narrows down a property by a minimum and maximum value compared by <= and >=.
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+1
+A:1
+---
+---P1: Template localname?>
+ (Default:BicycleNameTemplate2)
+AssetModelInfo
+A:AssetModelInfo
+---
+---P2: Template query type?>
+ (Default:select)
+
+A:Default selected.
+---
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+2
+A:2
+---
+16:58:09 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: printTemplateInfo()
+16:58:09 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+???Template NOT FOUND
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+
+A:Default selected.
+---
+
+---- --------- ----
+
+
+---- --------- ----
+
+
+
+--------MAIN-MENU---------
+OPERATION OPTIONS:
+1. Add Sparql prefix lines
+2. Run queries
+3. Run inferences
+4. Run templates
+5. Check constraints
+6. Run constructors
+7. Print inferred triples
+8. Print template info
+9. Exit
+-----SELECT 1-9  (integer assumed) (Default:9)
+3
+A:3
+---
+
+---- OPERATION: Run Inferences ----
+
+16:58:23 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: createInferredModelAndRegister()
+---Creating inferred sub-model and registering locally defined functions
+16:58:23 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: runAllSpinInferences()
+---Inferred triples: 0
+
+---- --------- ----
+
+
+
+--------MAIN-MENU---------
+OPERATION OPTIONS:
+1. Add Sparql prefix lines
+2. Run queries
+3. Run inferences
+4. Run templates
+5. Check constraints
+6. Run constructors
+7. Print inferred triples
+8. Print template info
+9. Exit
+-----SELECT 1-9  (integer assumed) (Default:9)
+4
+A:4
+---
+
+---- OPERATION: Run Templates ----
+
+16:58:30 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplates()
+
+================ALL MODEL TEMPLATES ================
+
+Template is CountPropertyConstraintTemplates------- with URI:http://spinrdf.org/spl#CountPropertyConstraintTemplates
+------- with comment:Abstract superclass of property constraints that compare the number of values with either min or max count.
+Template is ConstraintTemplates------- with URI:http://spinrdf.org/spl#ConstraintTemplates
+------- with comment:Abstract superclass of templates that can be used as spin:constraints. The subclasses are expected to construct spin:ConstraintViolations and use ?this to talk about the instances of the associated class.
+Template is CreateRecommendationTemplate------- with URI:http://ssp4t5.net/test/context_mimosa#CreateRecommendationTemplate
+------- with comment:null
+Template is PropertyPairConstraintTemplates------- with URI:http://spinrdf.org/spl#PropertyPairConstraintTemplates
+------- with comment:Abstract base class for templates that take two properties as arguments and establish a relationship between them.
+Template is ConstructDefaultValues------- with URI:http://spinrdf.org/spl#ConstructDefaultValues
+------- with comment:This template can be attached as spin:constructor to a root class such as rdfs:Resource to ensure that SPIN processors assign default values to certain properties. Looks for any templates attached as spin:constraints to the types of ?this and then assigns their declared spl:defaultValues.
+Template is Template------- with URI:http://ssp4t5.net/test/context_mimosa#Template
+------- with comment:null
+Template is Attribute------- with URI:http://spinrdf.org/spl#Attribute
+------- with comment:Defines an "attribute" of a class. Attribute definitions bundle common modeling patterns known from object-oriented languages like UML. Each attribute can have min and max cardinality, a value type and a default value. The attribute links a class with one RDF property. This template should be used as spin:constraints on a class to make sure that classes meet the expected cardinalities and valueType constraints.
+If a model wants to use spl:defaultValue, then it should instantiate the spl:ConstructDefaultValues as a spin:constructor at some root class, such as rdfs:Resource.
+Template is ConstructTemplates------- with URI:http://spinrdf.org/spin#ConstructTemplates
+------- with comment:Suggested abstract base class for all ConstructTemplates.
+Template is AllArguments------- with URI:http://spinrdf.org/spl#AllArguments
+------- with comment:Gets a list of all spl:Arguments declared at a given class and its superclasses.
+Template is QueryWorkOrders------- with URI:http://ssp4t5.net/test/context_mimosa#QueryWorkOrders
+------- with comment:null
+Template is Argument------- with URI:http://spinrdf.org/spl#Argument
+------- with comment:Provides metadata about an argument of a SPIN Function or Template. Arguments wrap a given rdf:Property (predicate) and specify its value type and whether the argument is optional. When used as spin:constraint, the body of this template will verify that a non-optional value exists and that it has the specified value type. Arguments that have been declared spl:optional true become optional if the type of ?this is spl:UnionTemplate. 
+Template is AssetModelInfo------- with URI:http://ssp4t5.net/test/context_mimosa#AssetModelInfo
+------- with comment:null
+Template is NonExistencePropertyPairConstraint------- with URI:http://spinrdf.org/spl#NonExistencePropertyPairConstraint
+------- with comment:null
+Template is AskTemplates------- with URI:http://spinrdf.org/spin#AskTemplates
+------- with comment:Suggested abstract base class for all AskTemplates.
+Template is RangePropertyConstraint------- with URI:http://spinrdf.org/spl#RangePropertyConstraint
+------- with comment:Represents a constraint that narrows down a property by a minimum and maximum value compared by <= and >=.
+Template is ExistencePropertyPairConstraint------- with URI:http://spinrdf.org/spl#ExistencePropertyPairConstraint
+------- with comment:null
+Template is UpdateTemplates------- with URI:http://spinrdf.org/spin#UpdateTemplates
+------- with comment:Suggested abstract base class for all UpdateTemplates.
+Template is QueryModelEventTypeNames------- with URI:http://ssp4t5.net/test/context_mimosa#QueryModelEventTypeNames
+------- with comment:null
+Template is UntypedObjectPropertyConstraint------- with URI:http://spinrdf.org/spl#UntypedObjectPropertyConstraint
+------- with comment:A generic SPIN template that can be used to declare a constraint that all values of a given property must have an rdf:type.
+Template is CreateAssetRecommendationTemplate2------- with URI:http://ssp4t5.net/test/context_mimosa#CreateAssetRecommendationTemplate2
+------- with comment:null
+Template is RegexPropertyConstraint------- with URI:http://spinrdf.org/spl#RegexPropertyConstraint
+------- with comment:null
+Template is QueryModelEventCodes------- with URI:http://ssp4t5.net/test/context_mimosa#QueryModelEventCodes
+------- with comment:null
+Template is RunTestCases------- with URI:http://spinrdf.org/spl#RunTestCases
+------- with comment:Runs all spl:TestCases on the current model.
+Template is PropertyConstraintTemplates------- with URI:http://spinrdf.org/spl#PropertyConstraintTemplates
+------- with comment:Abstract superclass of constraint templates that constrain exactly one property.
+Template is QueryAgentInfo------- with URI:http://ssp4t5.net/test/context_mimosa#QueryAgentInfo
+------- with comment:null
+Template is SPINOverview------- with URI:http://spinrdf.org/spl#SPINOverview
+------- with comment:Finds all constraints and rules attached to classes in the current graph, using spin:constraint, spin:constructor, spin:rule or their sub-properties. The result set will contain the associated class, the predicate, and the SPIN rule.
+Template is InferDefaultValue------- with URI:http://spinrdf.org/spl#InferDefaultValue
+------- with comment:Can be used to infer default values for a given subject/predicate combination. This is typically assigned as spin:rule to a class. If ?this does not already have a value for a given property {?predicate}, then this will infer the value {?defaultValue}.
+Template is ObjectCountPropertyConstraint------- with URI:http://spinrdf.org/spl#ObjectCountPropertyConstraint
+------- with comment:Represents a constraint that can be attached to a class to specify that a given property must have between min and max values.
+Template is SelectTemplates------- with URI:http://spinrdf.org/spin#SelectTemplates
+------- with comment:Suggested abstract base class for all SelectTemplates.
+Template is Templates------- with URI:http://spinrdf.org/spin#Templates
+------- with comment:Suggested abstract base class for all Templates.
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+1
+A:1
+---
+---P1: Template localname?>
+ (Default:BicycleNameTemplate2)
+AssetModelInfo
+A:AssetModelInfo
+---
+---P2: Template query type?>
+ (Default:select)
+
+A:Default selected.
+---
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+2
+A:2
+---
+16:59:05 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: printTemplateInfo()
+16:59:05 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+Template is AssetModelInfo------- with URI:http://ssp4t5.net/test/context_mimosa#AssetModelInfo
+-------- with comment:null
+Template body SELECT ?tag ?model ?mid ?evtypecodetable
+WHERE {
+    BIND (:crismodelid(?tag) AS ?mid) .
+    ?model a regcore:Model .
+    ?model regcore:model_id ?mid .
+    ?model combined:hasEventTypeCodeTable ?evtypecodetable .
+}
+Template argument key: tag
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+3
+A:3
+---
+---P3: Argument name?>
+ (Default:wcount)
+tag
+A:tag
+---
+---P4: Argument type?>
+ (Default:integer)
+string
+A:string
+---
+---P5: Literal Argument value?>
+ (Default:1)
+SEG-101
+A:SEG-101
+---
+---P6: Object Argument uri?>
+ (Default:http://siima.net/dummy/)
+
+A:Default selected.
+---
+17:03:03 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+4
+A:4
+---
+---P7: Select template query variable?>
+ (Default:name)
+model
+A:model
+---
+17:03:51 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callTemplateByName()
+17:03:51 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+17:03:51 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callSelectTemplate()
+predicateName: tag
+============ MyTemplate Query Result ==============
+Template Query variable unifies to: http://ssp4t5.net/mimosa/combined#Model_101
+==================================================
+
+==================================================
+
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+1
+A:1
+---
+---P8: Template localname?>
+ (Default:BicycleNameTemplate2)
+QueryAgentInfo
+A:QueryAgentInfo
+---
+---P9: Template query type?>
+ (Default:select)
+
+A:Default selected.
+---
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+2
+A:2
+---
+17:19:15 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: printTemplateInfo()
+17:19:15 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+Template is QueryAgentInfo------- with URI:http://ssp4t5.net/test/context_mimosa#QueryAgentInfo
+-------- with comment:null
+Template body SELECT ?agid ?agent ?agname ?agtypename
+WHERE {
+    ?agtable a combined:AgentRegisterTable .
+    ?agtable regcore:registers ?agent .
+    ?agent regcore:agent_id ?agid .
+    ?agent combined:has_name ?agname .
+    ?agent combined:hasType ?agtype .
+    ?agtype combined:has_name ?agtypename .
+}
+Template argument key: agid
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+3
+A:3
+---
+---P10: Argument name?>
+ (Default:wcount)
+agid
+A:agid
+---
+---P11: Argument type?>
+ (Default:integer)
+
+A:Default selected.
+---
+---P12: Literal Argument value?>
+ (Default:1)
+
+A:Default selected.
+---
+---P13: Object Argument uri?>
+ (Default:http://siima.net/dummy/)
+
+A:Default selected.
+---
+17:20:10 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+4
+A:4
+---
+---P14: Select template query variable?>
+ (Default:name)
+agname
+A:agname
+---
+17:21:07 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callTemplateByName()
+17:21:07 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+17:21:07 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callSelectTemplate()
+predicateName: agid
+predicateName: tag
+============ MyTemplate Query Result ==============
+Template Query variable unifies to: John Smith^^http://www.w3.org/2001/XMLSchema#string
+==================================================
+
+==================================================
+
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+1
+A:1
+---
+---P15: Template localname?>
+ (Default:BicycleNameTemplate2)
+QueryModelEventCodes
+A:QueryModelEventCodes
+---
+---P16: Template query type?>
+ (Default:select)
+
+A:Default selected.
+---
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+2
+A:2
+---
+17:26:22 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: printTemplateInfo()
+17:26:22 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+Template is QueryModelEventCodes------- with URI:http://ssp4t5.net/test/context_mimosa#QueryModelEventCodes
+-------- with comment:null
+Template body SELECT ?mid ?model ?evtcode
+WHERE {
+    ?model a regcore:Model .
+    ?model regcore:model_id ?mid .
+    ?model combined:hasEventTypeCodeTable ?evtypecodetable .
+    ?evtypecodetable combined:has_event_type_code ?evtcode .
+}
+Template argument key: mid
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+3
+A:3
+---
+---P17: Argument name?>
+ (Default:wcount)
+mid
+A:mid
+---
+---P18: Argument type?>
+ (Default:integer)
+
+A:Default selected.
+---
+---P19: Literal Argument value?>
+ (Default:1)
+101
+A:101
+---
+---P20: Object Argument uri?>
+ (Default:http://siima.net/dummy/)
+
+A:Default selected.
+---
+17:27:45 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+4
+A:4
+---
+---P21: Select template query variable?>
+ (Default:name)
+evtcode
+A:evtcode
+---
+17:29:13 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callTemplateByName()
+17:29:13 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+17:29:13 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callSelectTemplate()
+predicateName: agid
+predicateName: tag
+predicateName: mid
+============ MyTemplate Query Result ==============
+Template Query variable unifies to: 2^^http://www.w3.org/2001/XMLSchema#integer
+Template Query variable unifies to: 1^^http://www.w3.org/2001/XMLSchema#integer
+Template Query variable unifies to: 0^^http://www.w3.org/2001/XMLSchema#integer
+==================================================
+
+==================================================
+
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+4
+A:4
+---
+---P22: Select template query variable?>
+ (Default:name)
+model
+A:model
+---
+17:30:52 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callTemplateByName()
+17:30:52 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+17:30:52 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callSelectTemplate()
+predicateName: agid
+predicateName: tag
+predicateName: mid
+============ MyTemplate Query Result ==============
+Template Query variable unifies to: http://ssp4t5.net/mimosa/combined#Model_101
+Template Query variable unifies to: http://ssp4t5.net/mimosa/combined#Model_101
+Template Query variable unifies to: http://ssp4t5.net/mimosa/combined#Model_101
+==================================================
+
+==================================================
+
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+1
+A:1
+---
+---P23: Template localname?>
+ (Default:BicycleNameTemplate2)
+QueryWorkOrders
+A:QueryWorkOrders
+---
+---P24: Template query type?>
+ (Default:select)
+
+A:Default selected.
+---
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+2
+A:2
+---
+17:41:36 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: printTemplateInfo()
+17:41:36 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+Template is QueryWorkOrders------- with URI:http://ssp4t5.net/test/context_mimosa#QueryWorkOrders
+-------- with comment:null
+Template body SELECT ?agentid ?agent ?worderid ?worder
+WHERE {
+    ?worder a workcoreplus:WorkOrder .
+    ?worder workcoreplus:work_order_id ?worderid .
+    ?worder workcoreplus:toAgent ?agent .
+    ?agent regcore:agent_id ?agentid .
+    FILTER NOT EXISTS {
+        {
+            ?waudit a workcoreplus:WorkOrderAudit .
+            ?atype a workcoreplus:WorkAuditType .
+            ?worder workcoreplus:hasStatusHistory ?waudit .
+            ?waudit combined:hasType ?atype .
+            ?atype combined:user_tag_ident "Closed"^^xsd:string .
+        }
+        UNION
+        {
+            ?waudit a workcoreplus:WorkOrderAudit .
+            ?atype a workcoreplus:WorkAuditType .
+            ?worder workcoreplus:hasStatusHistory ?waudit .
+            ?waudit combined:hasType ?atype .
+            ?atype combined:user_tag_ident "Completed"^^xsd:string .
+        } .
+    } .
+}
+Template argument key: agentid
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+3
+A:3
+---
+---P25: Argument name?>
+ (Default:wcount)
+agentid
+A:agentid
+---
+---P26: Argument type?>
+ (Default:integer)
+
+A:Default selected.
+---
+---P27: Literal Argument value?>
+ (Default:1)
+1
+A:1
+---
+---P28: Object Argument uri?>
+ (Default:http://siima.net/dummy/)
+
+A:Default selected.
+---
+17:43:15 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+4
+A:4
+---
+---P29: Select template query variable?>
+ (Default:name)
+agent
+A:agent
+---
+17:44:29 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callTemplateByName()
+17:44:29 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+17:44:29 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callSelectTemplate()
+predicateName: agid
+predicateName: tag
+predicateName: mid
+predicateName: agentid
+============ MyTemplate Query Result ==============
+Template Query variable unifies to: http://ssp4t5.net/mimosa/combined#Agent_1
+==================================================
+
+==================================================
+
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+4
+A:4
+---
+---P30: Select template query variable?>
+ (Default:name)
+worder
+A:worder
+---
+17:45:30 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callTemplateByName()
+17:45:30 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+17:45:30 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callSelectTemplate()
+predicateName: agid
+predicateName: tag
+predicateName: mid
+predicateName: agentid
+============ MyTemplate Query Result ==============
+Template Query variable unifies to: http://ssp4t5.net/mimosa/combined#WorkOrder_1
+==================================================
+
+==================================================
+
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+4
+A:4
+---
+---P31: Select template query variable?>
+ (Default:name)
+worderid
+A:worderid
+---
+17:46:18 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callTemplateByName()
+17:46:18 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+17:46:18 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callSelectTemplate()
+predicateName: agid
+predicateName: tag
+predicateName: mid
+predicateName: agentid
+============ MyTemplate Query Result ==============
+Template Query variable unifies to: 1^^http://www.w3.org/2001/XMLSchema#integer
+==================================================
+
+==================================================
+
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+1
+A:1
+---
+---P32: Template localname?>
+ (Default:BicycleNameTemplate2)
+CreateRecommendationTemplate
+A:CreateRecommendationTemplate
+---
+---P33: Template query type?>
+ (Default:select)
+construct
+A:construct
+---
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+2
+A:2
+---
+18:00:27 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: printTemplateInfo()
+18:00:27 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+Template is CreateRecommendationTemplate------- with URI:http://ssp4t5.net/test/context_mimosa#CreateRecommendationTemplate
+-------- with comment:null
+Template body CONSTRUCT {
+    ?this diagplus:utcRecommendation ?datetime .
+    ?this rdfs:comment ?arg1 .
+}
+WHERE {
+    OPTIONAL {
+        ?this diagplus:utcRecommendation ?olddate .
+    } .
+    FILTER (!bound(?olddate)) .
+    BIND (afn:now() AS ?datetime) .
+}
+Template argument key: arg1
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+3
+A:3
+---
+---P34: Argument name?>
+ (Default:wcount)
+arg1
+A:arg1
+---
+---P35: Argument type?>
+ (Default:integer)
+string
+A:string
+---
+---P36: Literal Argument value?>
+ (Default:1)
+NO COMMENT
+A:NO COMMENT
+---
+---P37: Object Argument uri?>
+ (Default:http://siima.net/dummy/)
+
+A:Default selected.
+---
+18:02:34 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+4
+A:4
+---
+---- Calling construct type template ----
+
+18:02:39 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callTemplateByName()
+18:02:39 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+18:02:39 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callConstructTemplate()
+=================CONSTRUCT TEMPLATE RESULTS===============
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" > 
+</rdf:RDF>
+==================================================
+
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+2
+A:2
+---
+18:03:28 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: printTemplateInfo()
+18:03:28 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+Template is CreateRecommendationTemplate------- with URI:http://ssp4t5.net/test/context_mimosa#CreateRecommendationTemplate
+-------- with comment:null
+Template body CONSTRUCT {
+    ?this diagplus:utcRecommendation ?datetime .
+    ?this rdfs:comment ?arg1 .
+}
+WHERE {
+    OPTIONAL {
+        ?this diagplus:utcRecommendation ?olddate .
+    } .
+    FILTER (!bound(?olddate)) .
+    BIND (afn:now() AS ?datetime) .
+}
+Template argument key: arg1
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+3
+A:3
+---
+---P38: Argument name?>
+ (Default:wcount)
+this
+A:this
+---
+---P39: Argument type?>
+ (Default:integer)
+resource
+A:resource
+---
+---P40: Literal Argument value?>
+ (Default:1)
+
+A:Default selected.
+---
+---P41: Object Argument uri?>
+ (Default:http://siima.net/dummy/)
+http://ssp4t5.net/mimosa/combined#AssetRecommendation_1
+A:http://ssp4t5.net/mimosa/combined#AssetRecommendation_1
+---
+18:04:56 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+4
+A:4
+---
+---- Calling construct type template ----
+
+18:05:01 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callTemplateByName()
+18:05:01 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+18:05:01 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callConstructTemplate()
+=================CONSTRUCT TEMPLATE RESULTS===============
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:j.0="http://ssp4t5.net/mimosa/diagplus#" > 
+  <rdf:Description rdf:about="http://ssp4t5.net/mimosa/combined#AssetRecommendation_1">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">NO COMMENT</rdfs:comment>
+    <j.0:utcRecommendation rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-01-15T18:05:01.018+02:00</j.0:utcRecommendation>
+  </rdf:Description>
+</rdf:RDF>
+==================================================
+
+
+
+-----------SUB-MENU----
+---OPERATION OPTIONS:
+---1. Give template name and type
+---2. Print template info
+---3. Add argument node to map
+---4. Run template
+---5. Skip
+--------SELECT 1-5  (integer assumed) (Default:5)
+

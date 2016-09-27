@@ -1,0 +1,35 @@
+<http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_201>
+        a       <http://ssp4t5.net/mimosa/workcoreplus#WorkOrder> ;
+        <http://ssp4t5.net/mimosa/combined#targetAsset_id>
+                101 ;
+        <http://ssp4t5.net/mimosa/combined#targetSegment_tag>
+                "SEG-101"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://ssp4t5.net/mimosa/workcoreplus#toAgent>
+                <http://ssp4t5.net/mimosa/combined#Agent_1> ;
+        <http://ssp4t5.net/mimosa/workcoreplus#work_order_id>
+                201 .
+
+<http://ssp4t5.net/context/mctxcore#SituationContext_2016-02-07T20:30:27.458+02:00>
+        a       <http://ssp4t5.net/context/mctxcore#SituationContext> ;
+        <http://ssp4t5.net/context/mctxcore#hasWorkOrder>
+                <http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_201> .
+
+<http://ssp4t5.net/context/mctxsimple#MaintPerson_2016-02-07T20:30:27.458+02:00>
+        a       <http://ssp4t5.net/context/mctxsimple#MaintPerson> .
+
+<http://ssp4t5.net/mimosa/combined#AssetRecommendation_1>
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "This is an AssetRecommendation comment line: ?"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://ssp4t5.net/mimosa/diagplus#utcRecommendation>
+                "2016-02-07T20:22:24.163+02:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
+<http://ssp4t5.net/mimosa/combined#SegmentRecommendation_1>
+        <http://www.w3.org/2000/01/rdf-schema#comment>
+                "This is a SegmentRecommendation comment line: ?"^^<http://www.w3.org/2001/XMLSchema#string> ;
+        <http://ssp4t5.net/mimosa/diagplus#utcRecommendation>
+                "2016-02-07T20:22:24.085+02:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
+<http://ssp4t5.net/context/mctxsimple#MaintTarget_2016-02-07T20:30:27.458+02:00>
+        a       <http://ssp4t5.net/context/mctxsimple#MaintTarget> ;
+        <http://ssp4t5.net/context/mctxcore#ref_tag_code>
+                "SEG-101"^^<http://www.w3.org/2001/XMLSchema#string> .

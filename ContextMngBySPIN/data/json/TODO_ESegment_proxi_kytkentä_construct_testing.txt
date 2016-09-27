@@ -1,0 +1,178 @@
+Temp forge file
+
+	  CLOONAUS ONNISTUU
+	  
+	  	  {
+        "index": 20,
+        "commandType": "sparqlQuery",
+        "stepnote": "CONSTRUCT_QUERY",
+        "query": {
+          "name": "NOTE: APPLY AFTER CONSTRUCTION OF EXTERNAL ISA-95 Class and Propertis and instances. Constructs PROXY objects of External ISA-95 Class instances with Property values",
+          "type": "construct",
+          "resultTriples": "add",
+          "preprefixes": "yes",
+		  "construct": "?proxyspec a <http://external.net/isa95/prosegmodel#EquipSegSpec> . ?proxyspec <http://external.net/isa95/prosegmodel#model_id> ?modelid . ?proxydoc a <http://external.net/isa95/prosegmodel#EquipDocumentation> . ?proxyspec <http://external.net/isa95/prosegmodel#hasDocumentation> ?proxydoc . ?proxydoc ?pred ?obj ."
+          "where": "BIND (101 AS ?modelid) . ?spec a <http://external.net/isa95/prosegmodel#EquipSegSpec> . ?spec <http://external.net/isa95/prosegmodel#model_id> ?modelid . ?doc a <http://external.net/isa95/prosegmodel#EquipDocumentation> . ?spec <http://external.net/isa95/prosegmodel#hasDocumentation> ?doc . ?doc ?pred ?obj . BIND (IRI(fn:concat('http://ssp4t5.net/external/proxy#','EquipSegSpec_101')) AS ?proxyspec) . BIND (IRI(fn:concat('http://ssp4t5.net/external/proxy#','EquipDocumentation_101')) AS ?proxydoc) ."
+        }
+      }
+	  
+	  
+	  TUOTTAA:
+	  extproseg:EquipSegSpec_101
+        a                           extproseg:EquipSegSpec ;
+        extproseg:hasDocumentation  extproseg:EquipDocumentation_101 ;
+        extproseg:model_id          101 .
+
+extproseg:EquipDocumentation_101
+        a                 extproseg:EquipDocumentation ;
+        extproseg:docUri  "MaintenanceGuide_101_uri" .
+
+proxy:EquipDocumentation_101
+        a                 extproseg:EquipDocumentation ;
+        extproseg:docUri  "MaintenanceGuide_101_uri" .
+
+proxy:EquipSegSpec_101
+        a                           extproseg:EquipSegSpec ;
+        extproseg:hasDocumentation  proxy:EquipDocumentation_101 ;
+        extproseg:model_id          101 .
+
+
+	  
+	  
+============================================================
+
+	  
+	  
+	  
+	  
+	  
+	 MUTTA LIITTÄMINEN SEGMENTTIIN KESKEN (Varmaankin pitäisi tehdä erillisellä constructilla)
+	 TÄMÄ OSIO EI TOIMI: ?esegment a mctxsimple:ESegment . ?esegment mctxcore:ref_tag_code ?modelid .
+	  
+	  {
+        "index": 20,
+        "commandType": "sparqlQuery",
+        "stepnote": "CONSTRUCT_QUERY",
+        "query": {
+          "name": "NOTE: APPLY AFTER CONSTRUCTION OF EXTERNAL ISA-95 Class and Propertis and instances. Constructs PROXY objects of External ISA-95 Class instances with Property values",
+          "type": "construct",
+          "resultTriples": "add",
+          "preprefixes": "yes",
+		  "construct": "?proxyspec a <http://external.net/isa95/prosegmodel#EquipSegSpec> . ?proxyspec <http://external.net/isa95/prosegmodel#model_id> ?modelid . ?proxydoc a <http://external.net/isa95/prosegmodel#EquipDocumentation> . ?proxyspec <http://external.net/isa95/prosegmodel#hasDocumentation> ?proxydoc . ?proxydoc ?pred ?obj ."
+          "where": "BIND (101 AS ?modelid) . ?esegment a mctxsimple:ESegment . ?esegment mctxcore:ref_tag_code ?modelid . ?spec a <http://external.net/isa95/prosegmodel#EquipSegSpec> . ?spec <http://external.net/isa95/prosegmodel#model_id> ?modelid . ?doc a <http://external.net/isa95/prosegmodel#EquipDocumentation> . ?spec <http://external.net/isa95/prosegmodel#hasDocumentation> ?doc . ?doc ?pred ?obj . BIND (IRI(fn:concat('http://ssp4t5.net/external/proxy#','EquipSegSpec_101')) AS ?proxyspec) . BIND (IRI(fn:concat('http://ssp4t5.net/external/proxy#','EquipDocumentation_101')) AS ?proxydoc) ."
+        }
+      }
+	  
+	  
+	  SELITYS: mctxcore:ref_tag_code = SEG-101 EIKÄ 101 
+	  (täytyy kutsua SPIN functiota: context_mimosa:crismodelid(?tag))
+	  -----------------------------------------------------------------
+	  
+	  "http://ssp4t5.net/context/mctxsimple#ESegment_2016-03-02T17:20:56.501+02:00" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://ssp4t5.net/context/mctxsimple#ESegment"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#created" : [ { 
+      "type" : "literal" ,
+      "value" : "2016-03-02T17:20:56.861+02:00" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    }
+     ] ,
+    "http://ssp4t5.net/context/mctxcore#ref_tag_code" : [ { 
+      "type" : "literal" ,
+      "value" : "SEG-101" ,
+      "datatype" : "http://www.w3.org/2001/XMLSchema#string"
+    }
+     ]
+  }
+  --------------------RATKAISU (OSITTAIN) ----------------------
+  SELECT_QUERY:TOIMII
+  
+       {
+        "index": null,
+        "commandType": "sparqlQuery",
+        "stepnote": "SELECT",
+        "query": {
+          "name": "TODO:Query Proxy object by ESegment tag",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": "*",
+          "where": "BIND ('SEG-101' AS ?tag) . BIND (context_mimosa:crismodelid(?tag) AS ?modelid) .
+		  ?proxyspec a <http://external.net/isa95/prosegmodel#EquipSegSpec> .  ?proxyspec <http://external.net/isa95/prosegmodel#model_id> ?modelid .
+		  ?proxyspec <http://external.net/isa95/prosegmodel#hasDocumentation> ?proxydoc . ?esegment a mctxsimple:ESegment . ?esegment mctxcore:ref_tag_code ?tag. ",
+          "limit": "100",
+          "queryVars": [
+            "?tag",
+            "?modelid",
+			"?proxyspec",
+            "?proxydoc"
+          ]
+        }
+      }
+  
+  
+  CONSTRUCT_QUERY for linking. TOIMII mutta luo linkin sekä proxyiin että alkuperäiseen docciin. Syynä se että molemmat spec instanssit kuuluvat samaan luokkaan EquipSegSpec 
+    {
+        "index": null,
+        "commandType": "sparqlQuery",
+        "stepnote": "CONSTRUCT_QUERY",
+        "query": {
+          "name": "Constructing a mctxsimple:hasDocumentation link from ESegment to proxydoc",
+          "type": "construct",
+          "resultTriples": "add",
+          "preprefixes": "yes",
+		  "construct": "?esegment <http://ssp4t5.net/context/mctxsimple#hasDocumentation> ?proxydoc . ",
+          "where": "BIND ('SEG-101' AS ?tag) . BIND (context_mimosa:crismodelid(?tag) AS ?modelid) . ?proxyspec a <http://external.net/isa95/prosegmodel#EquipSegSpec> .  ?proxyspec <http://external.net/isa95/prosegmodel#model_id> ?modelid . ?proxyspec <http://external.net/isa95/prosegmodel#hasDocumentation> ?proxydoc . ?esegment a mctxsimple:ESegment . ?esegment mctxcore:ref_tag_code ?tag. ",
+      }
+      }
+  
+  
+  
+  
+  
+  -------------------
+  TODO:
+  
+  Muutetaan ESegmentin constructoria
+  
+  
+      OPTIONAL {
+        ?this mctxcore:ref_tag_code ?tag .
+    } .
+	
+	
+	OLI:
+	CONSTRUCT {
+    ?this mctxcore:created ?datetime .
+}
+WHERE {
+    OPTIONAL {
+        ?this mctxcore:created ?olddate .
+    } .
+    FILTER (!bound(?olddate)) .
+    BIND (afn:now() AS ?datetime) .
+}
+==========>
+TODOOOOOOOOOO:
+
+MUTTA mctxsimple.ttl ei näe context_mimosa.ttl:n functiota???
+
+CONSTRUCT {
+    ?this mctxcore:created ?datetime .
+	?this mctxcore:cris_model_id ?modelid .
+}
+WHERE {
+ OPTIONAL {
+        ?this mctxcore:ref_tag_code ?tag .
+		BIND (context_mimosa:crismodelid(?tag) AS ?modelid) ????? EI TOIMI NÄIN
+    } .
+    OPTIONAL {
+        ?this mctxcore:created ?olddate .
+    } .
+    FILTER (!bound(?olddate)) .
+    BIND (afn:now() AS ?datetime) .
+}
+	
+  

@@ -1,0 +1,11 @@
+{
+    "blogURL": "http://crunchify.com",
+    "twitter": "http://twitter.com/Crunchify",
+    "social": {
+        "facebook": "http://facebook.com/Crunchify",
+        "pinterest": "https://www.pinterest.com/Crunchify/crunchify-articles",
+        "rss": "http://feeds.feedburner.com/Crunchify"
+    },
+	"cars": ["fiat","mazda","scoda"],
+	"numbers": [1,2,3]
+}

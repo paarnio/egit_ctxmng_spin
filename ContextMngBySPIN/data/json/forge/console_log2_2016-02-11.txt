@@ -1,0 +1,281 @@
+CommandFileSpinMng.java 
+========================
+2016-02-11
+
+"CSMHeader": {
+		"filename": "csmCommands.json",
+		"created": "2016-02-11",
+		"application": "CommandFileSpinMng.java",
+		"workflow": {
+		"name": "Testin workflow in different modes",
+		"comment": "Workflow  commands can be run in 'indexed' mode (type='indexed') or in 'all' mode (type='all').",
+		"type": "indexed",
+		"indexes": [0,4,1,2,4]
+		}
+	}
+
+	RUN TESTS:
+1. In all-mode
+2. In indexed-mode
+
+ALL-MODE:
+================ CommandFileSpinMng running... ===============
+
+--Reading commands from csm command file (json) ... 
+
+
+----+ Command type:loadKnowledgeBase
+----+ Command: loadKnowledgeBaseCommand
+----+----+ KB name:context_mimosa
+19:58:53 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: loadModelWithImports()
+---loadModelWithImports()
+loadModelWithImports: loaded basemodel + imports = #9
+19:58:55 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: createReasonerModel()
+
+----------- Knowledge Base Ready  ----------
+----+ Command type:runInferences
+----+ Command: runInferencesCommand
+----+----+ name:pre_inference
+
+---- OPERATION: Run Inferences ----
+
+19:58:55 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: createInferredModelAndRegister()
+---Creating inferred sub-model and registering locally defined functions
+19:58:55 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: runAllSpinInferences()
+---Inferred triples: 0
+
+---- --------- ----
+
+----+ Command type:templateCall
+----+ Command: templateCallCommand
+----+----+Template name:CreateWorkOrderTemplate and type:construct
+0:----+----+----+Argument name:woid
+0:----+----+----+Argument type:integer
+0:----+----+----+Argument value:201
+19:58:55 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+1:----+----+----+Argument name:agentid
+1:----+----+----+Argument type:integer
+1:----+----+----+Argument value:1
+19:58:55 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+2:----+----+----+Argument name:segtag
+2:----+----+----+Argument type:string
+2:----+----+----+Argument value:SEG-101
+19:58:55 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+19:58:55 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callTemplateByName()
+19:58:55 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+19:58:55 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callConstructTemplate()
+=================CONSTRUCT TEMPLATE RESULTS===============
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://ssp4t5.net/mimosa/combined#"
+    xmlns:j.1="http://ssp4t5.net/mimosa/workcoreplus#" > 
+  <rdf:Description rdf:about="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_201">
+    <j.0:targetAsset_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">101</j.0:targetAsset_id>
+    <j.0:targetSegment_tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SEG-101</j.0:targetSegment_tag>
+    <j.1:toAgent rdf:resource="http://ssp4t5.net/mimosa/combined#Agent_1"/>
+    <j.1:work_order_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">201</j.1:work_order_id>
+    <rdf:type rdf:resource="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder"/>
+  </rdf:Description>
+</rdf:RDF>
+==================================================
+
+----+ Command type:templateCall
+----+ Command: templateCallCommand
+----+----+Template name:CreateWorkOrderTemplate and type:construct
+0:----+----+----+Argument name:woid
+0:----+----+----+Argument type:integer
+0:----+----+----+Argument value:202
+19:58:56 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+1:----+----+----+Argument name:agentid
+1:----+----+----+Argument type:integer
+1:----+----+----+Argument value:1
+19:58:56 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+2:----+----+----+Argument name:segtag
+2:----+----+----+Argument type:string
+2:----+----+----+Argument value:SEG-101
+19:58:56 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+19:58:56 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callTemplateByName()
+19:58:56 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+19:58:56 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callConstructTemplate()
+=================CONSTRUCT TEMPLATE RESULTS===============
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://ssp4t5.net/mimosa/combined#"
+    xmlns:j.1="http://ssp4t5.net/mimosa/workcoreplus#" > 
+  <rdf:Description rdf:about="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_201">
+    <j.0:targetAsset_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">101</j.0:targetAsset_id>
+    <j.0:targetSegment_tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SEG-101</j.0:targetSegment_tag>
+    <j.1:toAgent rdf:resource="http://ssp4t5.net/mimosa/combined#Agent_1"/>
+    <j.1:work_order_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">201</j.1:work_order_id>
+    <rdf:type rdf:resource="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_202">
+    <j.0:targetAsset_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">101</j.0:targetAsset_id>
+    <j.0:targetSegment_tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SEG-101</j.0:targetSegment_tag>
+    <j.1:toAgent rdf:resource="http://ssp4t5.net/mimosa/combined#Agent_1"/>
+    <j.1:work_order_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">202</j.1:work_order_id>
+    <rdf:type rdf:resource="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder"/>
+  </rdf:Description>
+</rdf:RDF>
+==================================================
+
+----+ Command type:sparqlQuery
+----+ Command: sparqlQueryCommand
+----+----+ name:Query WorkOrders
+======= Query Results for : ?s ========
+19:58:56 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlQuery()
+---sparqlQuery()
+Query variable result: http://ssp4t5.net/mimosa/combined#WorkOrder_2
+Query variable result: http://ssp4t5.net/mimosa/combined#WorkOrder_1
+Query variable result: http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_202
+Query variable result: http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_201
+sparqlQuery: result rows #4
+======= Query Results for : ?woid ========
+19:58:56 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlQuery()
+---sparqlQuery()
+Query variable result: 2^^http://www.w3.org/2001/XMLSchema#integer
+Query variable result: 1^^http://www.w3.org/2001/XMLSchema#integer
+Query variable result: 202^^http://www.w3.org/2001/XMLSchema#integer
+Query variable result: 201^^http://www.w3.org/2001/XMLSchema#integer
+sparqlQuery: result rows #4
+----+ Command type:sparqlQuery
+----+ Command: sparqlQueryCommand
+----+----+ name:Construct WorkOrder_666
+----QueryString: PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sp: <http://spinrdf.org/sp#> PREFIX spif: <http://spinrdf.org/spif#> PREFIX spin: <http://spinrdf.org/spin#> PREFIX spl: <http://spinrdf.org/spl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> PREFIX arg: <http://spinrdf.org/arg#> PREFIX combined: <http://ssp4t5.net/mimosa/combined#> PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> PREFIX fn: <http://www.w3.org/2005/xpath-functions#> PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> PREFIX workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> PREFIX cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> PREFIX regasset: <http://ssp4t5.net/mimosa/regasset#> PREFIX regcore: <http://ssp4t5.net/mimosa/regcore#> PREFIX access: <http://siima.net/ont/accessories#> PREFIX bicycle: <http://siima.net/ont/bicycle#>  CONSTRUCT {?wouri a workcoreplus:WorkOrder . ?wouri workcoreplus:work_order_id 666 . } WHERE { BIND (IRI(fn:concat('http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_',str(666))) AS ?wouri) . }
+19:58:56 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlConstructQuery()
+---CONSTRUCT QUERY:
+ PREFIX owl: <http://www.w3.org/2002/07/owl#> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> PREFIX sp: <http://spinrdf.org/sp#> PREFIX spif: <http://spinrdf.org/spif#> PREFIX spin: <http://spinrdf.org/spin#> PREFIX spl: <http://spinrdf.org/spl#> PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> PREFIX ctxtop: <http://ssp4t5.net/test/context_mimosa#> PREFIX afn: <http://jena.hpl.hp.com/ARQ/function#> PREFIX arg: <http://spinrdf.org/arg#> PREFIX combined: <http://ssp4t5.net/mimosa/combined#> PREFIX diagplus: <http://ssp4t5.net/mimosa/diagplus#> PREFIX fn: <http://www.w3.org/2005/xpath-functions#> PREFIX mctxcore: <http://ssp4t5.net/context/mctxcore#> PREFIX mctxsimple: <http://ssp4t5.net/context/mctxsimple#> PREFIX workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> PREFIX cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> PREFIX regasset: <http://ssp4t5.net/mimosa/regasset#> PREFIX regcore: <http://ssp4t5.net/mimosa/regcore#> PREFIX access: <http://siima.net/ont/accessories#> PREFIX bicycle: <http://siima.net/ont/bicycle#>  CONSTRUCT {?wouri a workcoreplus:WorkOrder . ?wouri workcoreplus:work_order_id 666 . } WHERE { BIND (IRI(fn:concat('http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_',str(666))) AS ?wouri) . }
+@prefix afn:   <http://jena.hpl.hp.com/ARQ/function#> .
+@prefix :      <http://ssp4t5.net/test/context_mimosa#> .
+@prefix sp:    <http://spinrdf.org/sp#> .
+@prefix mctxsimple: <http://ssp4t5.net/context/mctxsimple#> .
+@prefix spif:  <http://spinrdf.org/spif#> .
+@prefix access: <http://siima.net/ont/accessories#> .
+@prefix mctxcore: <http://ssp4t5.net/context/mctxcore#> .
+@prefix combined: <http://ssp4t5.net/mimosa/combined#> .
+@prefix bicycle: <http://siima.net/ont/bicycle#> .
+@prefix arg:   <http://spinrdf.org/arg#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ctxtop: <http://ssp4t5.net/test/context_mimosa#> .
+@prefix cmcoreplus: <http://ssp4t5.net/mimosa/cmcoreplus#> .
+@prefix spl:   <http://spinrdf.org/spl#> .
+@prefix regasset: <http://ssp4t5.net/mimosa/regasset#> .
+@prefix diagplus: <http://ssp4t5.net/mimosa/diagplus#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix spin:  <http://spinrdf.org/spin#> .
+@prefix workcoreplus: <http://ssp4t5.net/mimosa/workcoreplus#> .
+@prefix fn:    <http://www.w3.org/2005/xpath-functions#> .
+@prefix regcore: <http://ssp4t5.net/mimosa/regcore#> .
+
+workcoreplus:WorkOrder_666
+        a                           workcoreplus:WorkOrder ;
+        workcoreplus:work_order_id  666 .
+----+ Command type:writeModel
+----+ Command: writeModelCommand
+----+----+ KB name:Write Inferred Triples to Console
+
+---- Printing Inferred Triples to File:data/inferences/inferred.ttl ----
+
+============================================
+
+INDEXED-MODE:
+
+================ CommandFileSpinMng running... ===============
+
+--Reading commands from csm command file (json) ... 
+
+
+========== Next Command Index:(0) =========== 
+----+ Command: loadKnowledgeBaseCommand
+----+----+ KB name:context_mimosa
+20:04:34 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: loadModelWithImports()
+---loadModelWithImports()
+loadModelWithImports: loaded basemodel + imports = #9
+20:04:36 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: createReasonerModel()
+
+----------- Knowledge Base Ready  ----------
+========== Next Command Index:(4) =========== 
+----+ Command: sparqlQueryCommand
+----+----+ name:Query WorkOrders
+======= Query Results for : ?s ========
+20:04:37 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlQuery()
+---sparqlQuery()
+Query variable result: http://ssp4t5.net/mimosa/combined#WorkOrder_2
+Query variable result: http://ssp4t5.net/mimosa/combined#WorkOrder_1
+sparqlQuery: result rows #2
+======= Query Results for : ?woid ========
+20:04:37 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlQuery()
+---sparqlQuery()
+Query variable result: 2^^http://www.w3.org/2001/XMLSchema#integer
+Query variable result: 1^^http://www.w3.org/2001/XMLSchema#integer
+sparqlQuery: result rows #2
+========== Next Command Index:(1) =========== 
+----+ Command: runInferencesCommand
+----+----+ name:pre_inference
+
+---- OPERATION: Run Inferences ----
+
+20:04:37 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: createInferredModelAndRegister()
+---Creating inferred sub-model and registering locally defined functions
+20:04:37 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: runAllSpinInferences()
+---Inferred triples: 0
+
+---- --------- ----
+
+========== Next Command Index:(2) =========== 
+----+ Command: templateCallCommand
+----+----+Template name:CreateWorkOrderTemplate and type:construct
+0:----+----+----+Argument name:woid
+0:----+----+----+Argument type:integer
+0:----+----+----+Argument value:201
+20:04:37 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+1:----+----+----+Argument name:agentid
+1:----+----+----+Argument type:integer
+1:----+----+----+Argument value:1
+20:04:37 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+2:----+----+----+Argument name:segtag
+2:----+----+----+Argument type:string
+2:----+----+----+Argument value:SEG-101
+20:04:37 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: addArgumentNodeToMap()
+20:04:37 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callTemplateByName()
+20:04:37 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: getTemplate()
+20:04:37 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: callConstructTemplate()
+=================CONSTRUCT TEMPLATE RESULTS===============
+
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://ssp4t5.net/mimosa/combined#"
+    xmlns:j.1="http://ssp4t5.net/mimosa/workcoreplus#" > 
+  <rdf:Description rdf:about="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_201">
+    <j.0:targetAsset_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">101</j.0:targetAsset_id>
+    <j.0:targetSegment_tag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SEG-101</j.0:targetSegment_tag>
+    <j.1:toAgent rdf:resource="http://ssp4t5.net/mimosa/combined#Agent_1"/>
+    <j.1:work_order_id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">201</j.1:work_order_id>
+    <rdf:type rdf:resource="http://ssp4t5.net/mimosa/workcoreplus#WorkOrder"/>
+  </rdf:Description>
+</rdf:RDF>
+==================================================
+
+========== Next Command Index:(4) =========== 
+----+ Command: sparqlQueryCommand
+----+----+ name:Query WorkOrders
+======= Query Results for : ?s ========
+20:04:37 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlQuery()
+---sparqlQuery()
+Query variable result: http://ssp4t5.net/mimosa/combined#WorkOrder_2
+Query variable result: http://ssp4t5.net/mimosa/combined#WorkOrder_1
+Query variable result: http://ssp4t5.net/mimosa/workcoreplus#WorkOrder_201
+sparqlQuery: result rows #3
+======= Query Results for : ?woid ========
+20:04:37 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlQuery()
+---sparqlQuery()
+Query variable result: 2^^http://www.w3.org/2001/XMLSchema#integer
+Query variable result: 1^^http://www.w3.org/2001/XMLSchema#integer
+Query variable result: 201^^http://www.w3.org/2001/XMLSchema#integer
+sparqlQuery: result rows #3
+
+
