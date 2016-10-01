@@ -16,7 +16,12 @@
         1,
         2,
 		3,
-		4
+		4,
+		5,
+		6,
+		7,
+		8,
+		9
       ]
     }
   },
@@ -53,7 +58,7 @@
         "type": "iterative"
       }
     },
-	     {
+	 {
         "index": 3,
         "commandType": "sparqlQuery",
         "stepnote": "SELECT",
@@ -71,8 +76,90 @@
           ]
         }
       },
-	    {
+      {
         "index": 4,
+        "commandType": "sparqlQuery",
+        "stepnote": "UPDATE",
+        "query": {
+          "name": "UPDATE bicycle name (TOIMII!!!)",
+          "type": "update",
+          "preprefixes": "yes",
+          "delete": "?bic bicycle:name ?oldname .",
+          "insert": "?bic bicycle:name 'UUSI_NIMI' .",
+          "where": "?bic rdf:type bicycle:Bicycle . ?bic bicycle:name ?oldname .",
+          "bind": null,
+          "filter": null
+        }
+      },
+      	 {
+        "index": 5,
+        "commandType": "sparqlQuery",
+        "stepnote": "SELECT",
+        "query": {
+          "name": "SELECT Query Bicycle wheel count",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": "?bic ?wcount ?name",
+          "where": "?bic a bicycle:Bicycle . ?bic bicycle:wheelcount ?wcount . ?bic bicycle:name ?name .",
+          "limit": "100",
+          "queryVars": [
+            "?bic",
+            "?wcount",
+            "?name"
+          ]
+        }
+      },
+       {
+        "index": 6,
+        "commandType": "sparqlQuery",
+        "stepnote": "SELECT",
+        "query": {
+          "name": "SELECT Query accessories Bell's",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": "?bell ?label",
+          "where": "?bell a access:Bell . ?bell rdfs:label ?label",
+          "limit": "100",
+          "queryVars": [
+            "?bell",
+            "?label"
+          ]
+        }
+      },
+           {
+        "index": 7,
+        "commandType": "sparqlQuery",
+        "stepnote": "UPDATE",
+        "query": {
+          "name": "UPDATE bell label in IMPORTED model  (TOIMIIko??) Insert toimii mutta delete EI?",
+          "type": "update",
+          "preprefixes": "yes",
+          "delete": "?bell rdfs:label ?label .",
+          "insert": "?bell rdfs:label 'UUSI LABELLI' .",
+          "where": "?bell a access:Bell . ?bell rdfs:label ?label .",
+          "bind": null,
+          "filter": null
+        }
+      },
+       {
+        "index": 8,
+        "commandType": "sparqlQuery",
+        "stepnote": "SELECT",
+        "query": {
+          "name": "SELECT Query accessories Bell's",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": "?bell ?label",
+          "where": "?bell a access:Bell . ?bell rdfs:label ?label",
+          "limit": "100",
+          "queryVars": [
+            "?bell",
+            "?label"
+          ]
+        }
+      },
+	    {
+        "index": 9,
         "commandType": "writeModel",
         "stepnote": "WRITE",
         "comment": "Write type can be 'file' or 'console'. Modelcat can be 'merged', 'inferred' or 'main'.",
