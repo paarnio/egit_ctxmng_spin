@@ -738,44 +738,69 @@ public class ModelSpinManager {
 	
 	public OntModel loadModelWithImports(List<String> urls, List<String> altlocs) {
 		
-		////(2016-10-03) uutta: owl:imports <http://siima.net/ont/accessories> lause poistettu bicycle.ttl:stä
-		//VPA: 2016-02-14 (Ei onnistunut->: Kokeile tehdä myös importatuista OntModel:ja)
+		/*
+		 * This method will load automatically also the ontology files to be imported,
+		 * IF these models have been defined as imported ontologies in the base ontology
+		 * file (e.g  owl:imports <http://siima.net/ont/accessories> ;) 
+		 * AND IF the alternative location in a local file system has been defined in
+		 * List<String> altlocs. 
+		 * (note: ontologies accessible from the URI location do not need the altloc path 
+		 * (eg. spin ontologies)
+		 * 
+		 * The two lists (List<String> urls, List<String> altlocs) must correspond to each other:
+		 * 0) urls(0) is the URI of the base ontology -> altlocs(0) is the file path to the base ontology file.
+		 * 1) urls(1) is the URI of the first imported ontology -> altlocs(1) is the file path to the first imported ontology file.
+		 * 2) continue same way to other models to be imported..
+		 * 
+		 * NOTE: VPA TESTED:
+		 * SPARQL DELETE/UPDATE queries do not delete statements in imported models or extra added submodels.
+		 */
+		
 		/* from MySpinInference.java */
 		logger.log(Level.INFO, "Entering: " + getClass().getName() + " method: loadModelWithImports()");
 		System.out.println("---loadModelWithImports()");
-		/* (2016-10-03) kun import poistettu tätä ei tarvita
+		System.out.println("loadModelWithImports: the count of subModel files to be imported = #"
+				+ (urls.size()-1));
+		/* loading uri's and file path locations to FileManager */
 		for (int i = 0; i < urls.size(); i++) {
-		//for (int i = 0; i < 1; i++) {
 			FileManager.get().getLocationMapper()
 					.addAltEntry(urls.get(i), altlocs.get(i));
-		}*/
+		}
 
-		// the first url is for the main base ontology
+		// the first url is for the main base ontology (TURTLE format assumed)
 		Model baseOntology = FileManager.get().loadModel(altlocs.get(0),urls.get(0), "TURTLE");
 		OntModel ontModel = JenaUtil.createOntologyModel(
 				OntModelSpec.OWL_DL_MEM, baseOntology);
-		System.out
-		.println("loadModelWithImports: Välissä 2016-10-03)");
 		
-		/* (WANHA VPA?: EIKÖ TÄTÄ TARVITAKAAN)  (COMmentti Poistettu 2016-10-03) */
-		Model tmpOntology;
-		OntModel tmpOntModel;
+		//System.out.println("loadModelWithImports: Check (2016-10-03)");
+		
+		int importedSubModelCnt = ontModel.countSubModels();
+		System.out.println("loadModelWithImports: imported subModel count: " + importedSubModelCnt);
+		
+		/* 
+		 * Loading SubModels separately (Do we need this) 
+		 * (TODO: This could be used, If you want to load extra sub models 
+		 * that are not automatically imported) 
+		 *
+		 *
+		Model tmpSubModel;
 		if (urls.size() > 1) {
-			for (int i = 1; i < urls.size(); i++) { // Note: start from index 1
+			for (int i = 1; i < urls.size(); i++) { // Note: start from index 1, because 0 is the base model
 				FileManager.get().getLocationMapper()
 				.addAltEntry(urls.get(i), altlocs.get(i));
-				tmpOntology = FileManager.get().loadModel(altlocs.get(i), urls.get(i), "TURTLE");
-				tmpOntModel = JenaUtil.createOntologyModel(
-						OntModelSpec.OWL_DL_MEM, tmpOntology); //(2016-10-03) uutta koemielessä
-				ontModel.addSubModel(tmpOntModel, true); // rebind true oli ontModel.addSubModel(tmpOntology);
+				tmpSubModel = FileManager.get().loadModel(altlocs.get(i), urls.get(i), "TURTLE");
+				//OntModel tmpOntModel = JenaUtil.createOntologyModel(OntModelSpec.OWL_DL_MEM, tmpOntology); 
+				ontModel.addSubModel(tmpSubModel, true); // rebind = true/false?
 			}
-		} 
+		}
 		
+		int finalsubcnt = ontModel.countSubModels();
+		System.out.println("loadModelWithImports: subModel count after adding extra submodels: " + finalsubcnt);
 		Model whatis = ontModel.getImportedModel(urls.get(1)); // NULL koska importtaus-rivi on poistettu bicycle mallista
-		if(whatis!=null)System.out.println("?????????????loadModelWithImports: imported model is: " + urls.get(1));
-		System.out
-				.println("loadModelWithImports: loaded basemodel + imports = #"
-						+ urls.size());
+		if(whatis!=null)System.out.println("??loadModelWithImports: imported model is: " + urls.get(1));
+		*/
+		
+		System.out.println("\n\n");
 		return ontModel;
 	}
 

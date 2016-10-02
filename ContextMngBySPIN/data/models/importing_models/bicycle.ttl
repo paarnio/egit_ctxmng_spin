@@ -1,5 +1,6 @@
 # baseURI: http://siima.net/ont/bicycle
 # imports: http://semwebquality.org/ontologies/dq-constraints#
+# imports: http://siima.net/ont/accessories
 # imports: http://spinrdf.org/spl
 @prefix : <http://siima.net/ont/bicycle#> .
 @prefix accessories: <http://siima.net/ont/accessories#> .
@@ -67,6 +68,7 @@ accessories:Bell
 <http://siima.net/ont/bicycle>
   rdf:type owl:Ontology ;
   owl:imports <http://semwebquality.org/ontologies/dq-constraints#> ;
+  owl:imports <http://siima.net/ont/accessories> ;
   owl:imports <http://spinrdf.org/spl> ;
   owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
 .
