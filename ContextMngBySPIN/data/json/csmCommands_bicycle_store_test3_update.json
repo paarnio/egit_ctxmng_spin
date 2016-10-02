@@ -118,7 +118,7 @@
           "type": "select",
           "preprefixes": "yes",
           "select": "?bell ?label",
-          "where": "?bell a access:Bell . ?bell rdfs:label ?label",
+          "where": "?bell a accessories:Bell . ?bell rdfs:label ?label",
           "limit": "100",
           "queryVars": [
             "?bell",
@@ -136,7 +136,7 @@
           "preprefixes": "yes",
           "delete": "?bell rdfs:label ?label .",
           "insert": "?bell rdfs:label 'UUSI LABELLI' .",
-          "where": "?bell a access:Bell . ?bell rdfs:label ?label .",
+          "where": "?bell a accessories:Bell . ?bell rdfs:label ?label .",
           "bind": null,
           "filter": null
         }
@@ -150,7 +150,7 @@
           "type": "select",
           "preprefixes": "yes",
           "select": "?bell ?label",
-          "where": "?bell a access:Bell . ?bell rdfs:label ?label",
+          "where": "?bell a accessories:Bell . ?bell rdfs:label ?label",
           "limit": "100",
           "queryVars": [
             "?bell",
@@ -167,7 +167,7 @@
           "name": "Write Inferred Triples to Console",
           "type": "console",
           "filePath": "data/inferences/inferred_bicycle_sat.ttl",
-          "modelcat": "inferred"
+          "modelcat": "main"
         }
       }
   ],

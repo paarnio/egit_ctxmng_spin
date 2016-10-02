@@ -736,7 +736,7 @@ public class CommandFileSpinMng {
 			this.prefixlines.add("PREFIX regcore: <http://ssp4t5.net/mimosa/regcore#> ");
 
 			// FOR bicycle ontologies
-			this.prefixlines.add("PREFIX access: <http://siima.net/ont/accessories#> ");
+			this.prefixlines.add("PREFIX accessories: <http://siima.net/ont/accessories#> ");
 			this.prefixlines.add("PREFIX bicycle: <http://siima.net/ont/bicycle#> ");
 			
 			// FOR "external isa-95 clone model

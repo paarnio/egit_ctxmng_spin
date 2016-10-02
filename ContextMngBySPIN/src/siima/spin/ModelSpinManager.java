@@ -737,16 +737,18 @@ public class ModelSpinManager {
 	*/	
 	
 	public OntModel loadModelWithImports(List<String> urls, List<String> altlocs) {
+		
+		////(2016-10-03) uutta: owl:imports <http://siima.net/ont/accessories> lause poistettu bicycle.ttl:stä
 		//VPA: 2016-02-14 (Ei onnistunut->: Kokeile tehdä myös importatuista OntModel:ja)
 		/* from MySpinInference.java */
 		logger.log(Level.INFO, "Entering: " + getClass().getName() + " method: loadModelWithImports()");
 		System.out.println("---loadModelWithImports()");
-		/* (2016-10-03)*/
+		/* (2016-10-03) kun import poistettu tätä ei tarvita
 		for (int i = 0; i < urls.size(); i++) {
 		//for (int i = 0; i < 1; i++) {
 			FileManager.get().getLocationMapper()
 					.addAltEntry(urls.get(i), altlocs.get(i));
-		}
+		}*/
 
 		// the first url is for the main base ontology
 		Model baseOntology = FileManager.get().loadModel(altlocs.get(0),urls.get(0), "TURTLE");
@@ -755,18 +757,22 @@ public class ModelSpinManager {
 		System.out
 		.println("loadModelWithImports: Välissä 2016-10-03)");
 		
-		/* VPA?: EIKÖ TÄTÄ TARVITAKAAN  (COMmentti Poistettu 2016-10-03) */
+		/* (WANHA VPA?: EIKÖ TÄTÄ TARVITAKAAN)  (COMmentti Poistettu 2016-10-03) */
 		Model tmpOntology;
+		OntModel tmpOntModel;
 		if (urls.size() > 1) {
 			for (int i = 1; i < urls.size(); i++) { // Note: start from index 1
-				//FileManager.get().getLocationMapper()
-				//.addAltEntry(urls.get(i), altlocs.get(i));
+				FileManager.get().getLocationMapper()
+				.addAltEntry(urls.get(i), altlocs.get(i));
 				tmpOntology = FileManager.get().loadModel(altlocs.get(i), urls.get(i), "TURTLE");
-				ontModel.addSubModel(tmpOntology);
+				tmpOntModel = JenaUtil.createOntologyModel(
+						OntModelSpec.OWL_DL_MEM, tmpOntology); //(2016-10-03) uutta koemielessä
+				ontModel.addSubModel(tmpOntModel, true); // rebind true oli ontModel.addSubModel(tmpOntology);
 			}
 		} 
 		
-		
+		Model whatis = ontModel.getImportedModel(urls.get(1)); // NULL koska importtaus-rivi on poistettu bicycle mallista
+		if(whatis!=null)System.out.println("?????????????loadModelWithImports: imported model is: " + urls.get(1));
 		System.out
 				.println("loadModelWithImports: loaded basemodel + imports = #"
 						+ urls.size());
