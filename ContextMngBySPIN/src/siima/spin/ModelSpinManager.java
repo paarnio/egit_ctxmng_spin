@@ -741,13 +741,13 @@ public class ModelSpinManager {
 		/* from MySpinInference.java */
 		logger.log(Level.INFO, "Entering: " + getClass().getName() + " method: loadModelWithImports()");
 		System.out.println("---loadModelWithImports()");
-		/* (2016-10-03) 
-		//for (int i = 0; i < urls.size(); i++) {
-		for (int i = 0; i < 1; i++) {
+		/* (2016-10-03)*/
+		for (int i = 0; i < urls.size(); i++) {
+		//for (int i = 0; i < 1; i++) {
 			FileManager.get().getLocationMapper()
 					.addAltEntry(urls.get(i), altlocs.get(i));
 		}
-*/
+
 		// the first url is for the main base ontology
 		Model baseOntology = FileManager.get().loadModel(altlocs.get(0),urls.get(0), "TURTLE");
 		OntModel ontModel = JenaUtil.createOntologyModel(
