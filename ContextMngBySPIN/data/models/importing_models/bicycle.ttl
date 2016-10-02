@@ -2,7 +2,6 @@
 # imports: http://semwebquality.org/ontologies/dq-constraints#
 # imports: http://siima.net/ont/accessories
 # imports: http://spinrdf.org/spl
-
 @prefix : <http://siima.net/ont/bicycle#> .
 @prefix accessories: <http://siima.net/ont/accessories#> .
 @prefix afn: <http://jena.hpl.hp.com/ARQ/function#> .

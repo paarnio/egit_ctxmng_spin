@@ -741,24 +741,30 @@ public class ModelSpinManager {
 		/* from MySpinInference.java */
 		logger.log(Level.INFO, "Entering: " + getClass().getName() + " method: loadModelWithImports()");
 		System.out.println("---loadModelWithImports()");
-
-		for (int i = 0; i < urls.size(); i++) {
+		/* (2016-10-03) 
+		//for (int i = 0; i < urls.size(); i++) {
+		for (int i = 0; i < 1; i++) {
 			FileManager.get().getLocationMapper()
 					.addAltEntry(urls.get(i), altlocs.get(i));
 		}
+*/
 		// the first url is for the main base ontology
-		Model baseOntology = FileManager.get().loadModel(urls.get(0));
+		Model baseOntology = FileManager.get().loadModel(altlocs.get(0),urls.get(0), "TURTLE");
 		OntModel ontModel = JenaUtil.createOntologyModel(
 				OntModelSpec.OWL_DL_MEM, baseOntology);
+		System.out
+		.println("loadModelWithImports: Välissä 2016-10-03)");
 		
-		/* VPA?: EIKÖ TÄTÄ TARVITAKAAN
+		/* VPA?: EIKÖ TÄTÄ TARVITAKAAN  (COMmentti Poistettu 2016-10-03) */
 		Model tmpOntology;
 		if (urls.size() > 1) {
 			for (int i = 1; i < urls.size(); i++) { // Note: start from index 1
-				tmpOntology = FileManager.get().loadModel(urls.get(i));
+				//FileManager.get().getLocationMapper()
+				//.addAltEntry(urls.get(i), altlocs.get(i));
+				tmpOntology = FileManager.get().loadModel(altlocs.get(i), urls.get(i), "TURTLE");
 				ontModel.addSubModel(tmpOntology);
 			}
-		} */
+		} 
 		
 		
 		System.out

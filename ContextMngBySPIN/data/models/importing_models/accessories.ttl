@@ -1,5 +1,4 @@
 # baseURI: http://siima.net/ont/accessories
-
 @prefix : <http://siima.net/ont/accessories#> .
 @prefix accessories: <http://siima.net/ont/accessories#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
