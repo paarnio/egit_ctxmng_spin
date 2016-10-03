@@ -304,16 +304,33 @@ public class CommandFileSpinMng {
 	}
 	
 	public void sparqlQueryCommand(JSONObject comobj) {
-		//VPA: reasoner option added
+		/*
+		 * (2016-10-03) 
+		 * Imported sub model can be specified as the target model of a query.
+		 * This is important for UPDATE and DELETE queries, which cannot delete triples
+		 * from imported sub models, if the target is the main model (Bug?)
+		 * The URI of the target imported model is given in json object "target_import_uri".
+		 * 
+		 * Boolean "reasoner" object should be true, if the model with reasoner 
+		 * should be used as the target model.
+		 */
+		//
+		//VPA: reasoner option added.
 		System.out.println("----+ Command: sparqlQueryCommand");
 		JSONObject subobj = (JSONObject) comobj.get("query");
 		String name = (String) subobj.get("name");
 		String type = (String) subobj.get("type");
 		Boolean reasoner=(Boolean)subobj.get("reasoner");
-		System.out.println("----+----+ name:" + name + "\n----+----+ reasoner:" + reasoner);
+		String target_import_uri =  (String) subobj.get("target_import_uri"); // e.g. "http://siima.net/ont/accessories"
+		System.out.println("----+----+ name:" + name + "\n"
+				+ "----+----+ reasoner:" + reasoner + "\n"
+						+ "----+----+ IF query target is imported model, its has URI:" + target_import_uri);
 		OntModel querymodel;
-		if((reasoner!=null)&&(reasoner)) querymodel = mng.getOntModelWithReasoner();
+		
+		if((target_import_uri!=null)&&(!"".equalsIgnoreCase(target_import_uri))) querymodel = mng.getMainOntModel().getImportedModel(target_import_uri); 
+		else if((reasoner!=null)&&(reasoner)) querymodel = mng.getOntModelWithReasoner();
 		else querymodel = mng.getMainOntModel();
+		
 		
 		StringBuffer queryStr = new StringBuffer();
 		String preprefixes = (String) subobj.get("preprefixes");

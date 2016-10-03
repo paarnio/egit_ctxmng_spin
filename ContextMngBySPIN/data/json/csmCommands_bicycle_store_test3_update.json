@@ -130,9 +130,13 @@
         "index": 7,
         "commandType": "sparqlQuery",
         "stepnote": "UPDATE",
+        "comment": "NEW Imported sub model can be specified as the target model of a query by 'target_import_uri' (2016-10-03) ",
+        "comment": "This is important for UPDATE and DELETE queries, which cannot delete triples, from imported sub models, if the target is the main model (Bug?)",
         "query": {
           "name": "UPDATE bell label in IMPORTED model  (TOIMIIko??) Insert toimii mutta delete EI?",
           "type": "update",
+          "reasoner": false,
+          "target_import_uri": "http://siima.net/ont/accessories",
           "preprefixes": "yes",
           "delete": "?bell rdfs:label ?label .",
           "insert": "?bell rdfs:label 'UUSI LABELLI' .",
