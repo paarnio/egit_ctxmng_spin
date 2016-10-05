@@ -16,7 +16,8 @@ import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
 
 import siima.spin.ModelSpinManager;
-import siima.utils.UIPrompt;
+//import siima.utils.UIPrompt;
+import siima.utils.*;
 
 
 
