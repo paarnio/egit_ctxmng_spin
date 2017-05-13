@@ -2939,3 +2939,8 @@ org.apache.jena.riot.RiotException: [line: 5, col: 9 ] {E201} Multiple children 
 20:09:51 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlQuery()
 20:09:51 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlUpdateQuery()
 20:09:51 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: sparqlQuery()
+13:32:08 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: loadModelWithImports()
+13:32:10 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: createReasonerModel()
+13:32:11 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: createInferredModelAndRegister()
+13:32:11 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: createInferredModelAndRegister()
+13:32:11 INFO  Logger               :: Entering: siima.spin.ModelSpinManager method: runAllSpinInferences()
