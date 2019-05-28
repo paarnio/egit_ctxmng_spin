@@ -1,0 +1,740 @@
+{
+  "CSMHeader": {
+    "filename": "data/json/csm_test_May2019.json",
+    "created": "2019-05-08",
+	"updated": "2019-05-28",
+    "validated": "http://www.jsoneditoronline.org/",
+    "application": "ContextMngBySPIN orig. from ERAamlHandler",
+    "history": "CSM version 3",
+	"comment": "TODO: Testing SPIN inference for partFeeding.ttl (contains attached construct rule. But tool implements only evaluation of attached select rules) created in TBC project CapaModelPartFeeding2019. CSMStore is a predefined command store with index=null (Copy & paste commands to the command list)",
+    "workflow": {
+      "name": "PRELOADED Capability Model partFeeding: workflow",
+      "processlog1": "(start)-->| LOAD_KB(0) |-->| INF_MODEL(1) |-->| INFER(2) |-->| PREFIX_ADD(3) |-->| SELECT(5) |-->(end)",
+      "comment": "Workflow commands can be run in 'indexed' mode (type='indexed') or in 'all' mode (type='all').",
+      "type": "indexed",
+      "indexes": [
+        0,
+		1,
+		2,
+		3,
+		4
+      ]
+    }
+  },
+  "CSMCommands": [
+    {
+      "index": 0,
+	  "idcode": "R1_T1_LKB_1",
+      "commandtype": "loadKnowledgeBase",
+      "stepnote": "LOAD_KB",
+      "comment": "REQUIRED AS THE FIRST COMMAND! (Types: 'predefined' | 'file&uri' | 'preloaded').",
+      "knowledgeBase": {
+          "name": "partfeeding_capability_model",
+          "type": "file&uri",
+          "ontology": {
+            "name": "partfeeding",
+            "folder": "data/models",
+            "file": "partFeeding.ttl",
+            "uri": "http://siima.net/2018/model/capability/partFeeding"
+          },
+          "imports": null
+      }
+    },
+    {
+      "index": 1,
+	  "idcode": "R1_T2_CIM_1",
+      "commandtype": "createInferenceModel",
+      "stepnote": "INF_MODEL",
+      "comment": "NOTE:OFTEN REQUIRED: This command creates the inference model and registers spin.",
+      "create": {
+        "name": "create inference model and spin registering",
+        "type": "create_and_register"
+      }
+    },
+    {
+      "index": 2,
+	  "idcode": "R1_T3_RI_1",
+      "commandtype": "runInferences",
+      "stepnote": "INFER",
+      "comment": "NOTE:OFTEN REQUIRED: This command runs all spin inferences: type options: 'singlepass' | 'iterative' (creates the inference model, if not yet created) .",
+      "inference": {
+        "name": "pre_inference",
+        "type": "iterative"
+      }
+    },
+	{
+        "index": 3,
+		"idcode": "R1_T66_QP1_1",
+        "commandtype": "addNsPrefixes",
+        "stepnote": "PREFIX_ADD",
+		"comment": "NOT IMPLEMENTED in ContextMngBySPIN app. Adding NS prefix declarations (separated by space or newline) in format: PREFIX owl: <http://www.w3.org/2002/07/owl#> Note: preprefixes field is currently ignored, i.e. hard coded preprefixes are always loaded also",
+        "prefix": {
+          "name": "NS PREFIX Addition ",
+          "type": "add",
+          "preprefixes": "default",
+          "prefixlist": "PREFIX feed: <http://siima.net/2018/model/capability/partFeeding#> PREFIX bar: <http://bar.net/ontology#> "
+        }
+     },
+	{
+        "index": 4,
+		"idcode": "R1_T11_SQ1_1",
+        "commandtype": "sparqlQuery",
+        "stepnote": "SELECT",
+        "query": {
+         "name": "SELECT Query InternalElement instances in siima caex model",
+          "type": "select",
+		  "reasoner": true,
+          "preprefixes": "yes",
+          "select": "?combcapa",
+          "where": "?combcapa a <http://siima.net/2018/model/capability/partFeeding#CombinedCapability> .",
+          "limit": "100",
+          "queryVars": [
+            "?combcapa"
+          ]
+        }
+      },
+	  {
+        "index": 5,
+		"idcode": "R1_T11_SQ1_1",
+        "commandtype": "sparqlQuery",
+        "stepnote": "SELECT",
+        "query": {
+         "name": "SELECT Query InternalElement instances in siima caex model",
+          "type": "select",
+		  "reasoner": true,
+          "preprefixes": "yes",
+          "select": "?combcapa ?payload",
+          "where": "?combcapa a feed:Transporting . ?combcapa feed:payload ?payload .",
+          "limit": "100",
+          "queryVars": [
+            "?combcapa",
+			"?payload"
+          ]
+        }
+      },
+	   {
+        "index": 6,
+		"idcode": "SR1_T",
+        "commandtype": "writeModel",
+        "stepnote": "WRITE",
+        "comment": "WRITE_MODEL_COMMANDS Write type can be 'file' or 'console'. Modelcat can be 'merged', 'inferred' or 'main'.",
+        "write": {
+          "name": "Write partFeeding model to File data/generated/partFeedingMain.ttl",
+          "type": "file",
+          "filePath": "data/generated/partFeedingMain.ttl",
+          "modelcat": "main"
+        }
+      },
+	  {
+        "index": 7,
+		"idcode": "R1_T6_",
+        "commandtype": "createNewTemplate",
+        "stepnote": "CREATE_TEMPLATE",
+        "comment": "(OLD for bicycle model) NOTE:testing select template creation.",
+        "template": {
+          "name": "BicycleByNameSWGTemplate",
+          "ns": "http://siima.net/ont/bicycle#",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": " ?bic ?name ",
+          "where": "?bic rdf:type bicycle:Bicycle . ?bic bicycle:name ?name .",
+          "limit": null,
+          "args": [
+            {
+              "name": "name",
+              "type": "XSD.string",
+              "argComment": "The name of the bicycle queried."
+            }
+          ]
+        }
+      },
+	  {
+        "index": 8,
+		"idcode": "R1_T20_SQET1_1",
+        "commandtype": "sparqlQuery",
+        "stepnote": "SELECT_EVAL",
+        "query": {
+          "name": "(OLD for bicycle model) SELECT Query Bicycle using EVAL(Template)",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": "?result",
+          "where": "bicycle:BicycleByNameSWGTemplate spin:body ?body . ?body rdf:type sp:Select . BIND (spin:eval(?body, arg:name, 'Miran_fillari') AS ?result)",
+          "limit": "10",
+          "queryVars": [
+            "?result"
+          ]
+        }
+      },
+	    {
+        "index": 9,
+		"idcode": "R1_T4_CC_1",
+        "commandtype": "checkConstraints",
+        "stepnote": "CONSTRAINTS",
+        "comment": "run 'all' (type 'all') Spin Constraints or only for one 'resource'. If 'addrdf': true, violations are added to the inferred model. ",
+        "constraints": {
+          "name": "Run Spin Constraints",
+          "type": "resource",
+          "uri": "http://siima.net/ont/bicycle#Bicycle_4",
+		  "addrdf": true
+        }
+      },
+	    {
+        "index": 10,
+		"idcode": "R1_T17_1",
+        "commandtype": "writeModel",
+        "stepnote": "WRITE",
+        "comment": "Write type can be 'file' or 'console'. Modelcat can be 'merged', 'inferred' or 'main'.",
+        "write": {
+          "name": "Write Inferred Triples to Console",
+          "type": "console",
+          "filePath": "data/inferences/inferred_bicycle_sat.ttl",
+          "modelcat": "inferred"
+        }
+      },
+	   {
+        "index": 11,
+		"idcode": "R1_T11_1",
+        "commandtype": "sparqlQuery",
+        "stepnote": "SELECT_VIOLATIONS",
+        "query": {
+          "name": "SELECT Query Constraint Violations (Bicycle wheel count)",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": "*",
+          "where": "?violation a <http://spinrdf.org/spin#ConstraintViolation> . ?violation <http://www.w3.org/2000/01/rdf-schema#label> ?label . ?violation <http://spinrdf.org/spin#violationRoot> ?root ",
+          "limit": "100",
+          "queryVars": [
+            "?violation",
+            "?label",
+            "?root"
+          ]
+        }
+      },
+	   {
+        "index": 12,
+		"idcode": "R1_T11_2",
+        "commandtype": "sparqlQuery",
+        "stepnote": "SELECT_SERVICE",
+        "comment": "Federated query to an external SPARQL endpoint SERVICE example: first start d2rq-0.8.1>d2r-server mapping-iswc_uri_pdf.ttl)",
+        "query": {
+          "name": "SERVICE query example",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": "?paper",
+          "where": " SERVICE <http://localhost:2020/sparql> { ?paper rdf:type <http://xmlns.com/foaf/0.1/Document> . }",
+          "limit": "100",
+          "queryVars": [
+            "?paper"
+          ]
+        }
+      },
+	   {
+        "index": 13,
+		"idcode": "R1_T11_3",
+        "commandtype": "sparqlQuery",
+        "stepnote": "SELECT_SERVICE",
+        "comment": "Federated query to an external SPARQL endpoint SERVICE example: first start d2rq-0.8.1>d2r-server mapping-iswc_uri_pdf.ttl)",
+        "query": {
+          "name": "FEDERATED SERVICE query example",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": "*",
+          "where": "?bicycle bicycle:name ?name1 . SERVICE <http://localhost:2020/sparql> { ?person rdf:type <http://xmlns.com/foaf/0.1/Person> .  ?person rdfs:label ?name2 . FILTER (str(?name1)=str(?name2)) . }",
+          "limit": "10",
+          "queryVars": [
+            "?bicycle",
+			"?name1",
+			"?person",
+			"?name2"
+          ]
+        }
+      },
+      {
+        "index": 14,
+		"idcode": "SR1_T3",
+        "commandtype": "listNsPrefixes",
+        "stepnote": "LIST",
+        "comment": "LIST_PREFIXES_COMMAND",
+        "listing": {
+          "name": "All Query prefixes",
+          "type": "sparqlprefixes"
+        }
+      }
+  ],
+  "CSMStore": [
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "loadKnowledgeBase",
+        "stepnote": "LOAD_KB",
+        "comment": "KB_COMMANDS:REQUIRED: ALLWAYS RUN THIS AS THE FIRST COMMAND! (Types: 'predefined' | 'file&uri')",
+        "knowledgeBase": {
+          "name": "bicycle",
+          "type": "predefined",
+          "ontology": null,
+          "imports": null
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "loadKnowledgeBase",
+        "stepnote": "LOAD_KB",
+        "comment": "KB_COMMANDS: REQUIRED: ALLWAYS RUN THIS AS THE FIRST COMMAND! (Types: 'predefined' | 'file&uri')",
+        "knowledgeBase": {
+          "name": "bicycle",
+          "type": "file&uri",
+          "ontology": {
+            "name": "bicycle",
+            "folder": "data/models/generated_models",
+            "file": "SWGBicycle.ttl",
+            "uri": "http://siima.net/ont/bicycle"
+          },
+          "imports": null,
+          "backup": [
+            {
+              "name": "bicycle",
+              "folder": "data/models/genereted_models",
+              "file": "SWGBicycle.ttl",
+              "uri": "http://siima.net/ont/bicycle"
+            },
+            {
+              "name": "bicycle",
+              "folder": "data/models/importing_models",
+              "file": "bicycle.ttl",
+              "uri": "http://siima.net/ont/bicycle"
+            },
+            {
+              "name": "accessories",
+              "folder": null,
+              "file": "accessories.ttl",
+              "uri": "http://siima.net/ont/accessories"
+            }
+          ]
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "createInferenceModel",
+        "stepnote": "INF_MODEL",
+        "comment": "INFERENCE_COMMANDS NOTE:OFTEN REQUIRED: This command creates the inference model and registers spin.",
+        "create": {
+          "name": "create inference model and spin registering",
+          "type": "create_and_register"
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "runInferences",
+        "stepnote": "INFER",
+        "comment": "INFERENCE_COMMANDS NOTE:OFTEN REQUIRED: This command runs all spin inferences: type options: 'singlepass' | 'iterative' (creates the inference model, if not yet created) .",
+        "inference": {
+          "name": "pre_inference",
+          "type": "iterative"
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "checkConstraints",
+        "stepnote": "CONSTRAINTS",
+        "comment": "SPIN_CONSTRAINT_CHECK_COMMANDS run 'all' (type 'all') Spin Constraints or only for one 'resource'",
+        "constraints": {
+          "name": "Run Spin Constraints",
+          "type": "all",
+          "uri": "http://siima.net/ont/bicycle#Bicycle_4"
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "runSpinConstructors",
+        "stepnote": "CONSTRUCT",
+        "comment": "SPIN_CONSTRUCTOR_COMMANDS run all Spin Constructors",
+        "constructors": {
+          "name": "Run Spin Constructors",
+          "type": "all"
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "createNewTemplate",
+        "stepnote": "CREATE_TEMPLATE",
+        "comment": "TEMPLATE_CREATE_COMMANDS NOTE:testing select template creation: based on BicycleNameTemplate2(TOIMII)",
+        "template": {
+          "name": "BicycleNameSWGTemplate1",
+          "ns": "http://siima.net/ont/bicycle#",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": " ?bic ?wcount ?name ",
+          "where": "?bic rdf:type bicycle:Bicycle .  ?bic bicycle:wheelcount ?wcount .  ?bic bicycle:name ?name .",
+          "limit": null,
+          "args": [
+            {
+              "name": "wcount",
+              "type": "XSD.integer",
+              "argComment": "The number of the wheels in the bicycle queried."
+            }
+          ]
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "createNewTemplate",
+        "stepnote": "CREATE_TEMPLATE",
+        "comment": "TEMPLATE_CREATE_COMMANDS NOTE:testing select template creation.",
+        "template": {
+          "name": "BicycleByNameSWGTemplate",
+          "ns": "http://siima.net/ont/bicycle#",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": " ?bic ?name ",
+          "where": "?bic rdf:type bicycle:Bicycle . ?bic bicycle:name ?name .",
+          "limit": null,
+          "args": [
+            {
+              "name": "name",
+              "type": "XSD.string",
+              "argComment": "The name of the bicycle queried."
+            }
+          ]
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "templateCall",
+        "stepnote": "CALL_TEMPLATE",
+        "comment": "TEMPLATE_CALL_COMMANDS NOTE:Only the first queryvariable used (TODO)",
+        "template": {
+          "name": "BicycleNameSWGTemplate1",
+          "type": "select",
+          "args": [
+            {
+              "name": "wcount",
+              "type": "integer",
+              "value": "2"
+            }
+          ],
+          "queryVars": [
+            "name",
+            "bic"
+          ]
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "templateCall",
+        "stepnote": "CALL_TEMPLATE",
+        "comment": "TEMPLATE_CALL_COMMANDS NOTE:TESTING UPDATE TEMPLATE: EI TOIMI?? MUTTA EI TOIMI TMCssäkään!!!!",
+        "template": {
+          "name": "UpdateBicycleName",
+          "type": "update",
+          "args": [
+            {
+              "name": "newname",
+              "type": "string",
+              "value": "JUKAN_UUSI_JUPITER"
+            },
+            {
+              "name": "model",
+              "type": "string",
+              "value": "Jupiter_1"
+            }
+          ],
+          "queryVars": null
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "templateCall",
+        "stepnote": "CALL_TEMPLATE",
+        "comment": "TEMPLATE_CALL_COMMANDS NOTE:TESTING UPDATE TEMPLATE (no arqs) TOIMI",
+        "template": {
+          "name": "UpdateBicycleNameTemplate2",
+          "type": "update",
+          "args": null,
+          "queryVars": null
+        }
+      },
+	  {
+        "index": null,
+		"idcode": "R1_T66_QP1_1",
+        "commandtype": "addNsPrefixes",
+        "stepnote": "PREFIX_ADD",
+		"comment": "Adding NS prefix declarations (separated by space or newline) in format: PREFIX owl: <http://www.w3.org/2002/07/owl#> ",
+		"comment": "Note: preprefixes field is currently ignored, i.e. hard coded preprefixes are always loaded also",
+        "prefix": {
+          "name": "NS PREFIX Addition ",
+          "type": "add",
+          "preprefixes": "default",
+          "prefixlist": "PREFIX caex: <http://data.ifs.tuwien.ac.at/aml/ontology#> PREFIX foo: <http://foo.net/ontology#>  PREFIX bar: <http://bar.net/ontology#> "
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "sparqlQuery",
+        "stepnote": "SELECT_EVAL",
+		"comment": "QUERY_WITH_EVAL_COMMANDS",
+        "query": {
+          "name": "SELECT Query Bicycle using EVAL(Template)",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": "?result",
+          "where": "bicycle:BicycleByNameSWGTemplate spin:body ?body . ?body rdf:type sp:Select . BIND (spin:eval(?body, arg:name, 'Jukan_fillari') AS ?result)",
+          "limit": "10",
+          "queryVars": [
+            "?result"
+          ]
+        }
+      },
+	  {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "sparqlQuery",
+        "stepnote": "SELECT_SERVICE",
+        "comment": "SERVICE_COMMANDS Federated query to an external SPARQL endpoint SERVICE example: first start d2rq-0.8.1>d2r-server mapping-iswc_uri_pdf.ttl)",
+        "query": {
+          "name": "FEDERATED SERVICE query example",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": "*",
+          "where": "?bicycle bicycle:name ?name1 . SERVICE <http://localhost:2020/sparql> { ?person rdf:type <http://xmlns.com/foaf/0.1/Person> .  ?person rdfs:label ?name2 . FILTER (str(?name1)=str(?name2)) . }",
+          "limit": "10",
+          "queryVars": [
+            "?bicycle",
+			"?name1",
+			"?person",
+			"?name2"
+          ]
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "sparqlQuery",
+        "stepnote": "SELECT_SERVICE",
+        "comment": "SERVICE_COMMANDS Federated query to an external SPARQL endpoint SERVICE example: first start d2rq-0.8.1>d2r-server mapping-iswc_uri_pdf.ttl)",
+        "query": {
+          "name": "SERVICE query example",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": "?paper",
+          "where": " SERVICE <http://localhost:2020/sparql> { ?paper rdf:type <http://xmlns.com/foaf/0.1/Document> . }",
+          "limit": "100",
+          "queryVars": [
+            "?paper"
+          ]
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "sparqlQuery",
+        "stepnote": "SELECT",
+        "comment": "SELECT_COMMANDS TODO: ?bell a access:Bell . ?bell rdfs:label ?label .",
+        "query": {
+          "name": "SELECT Query Bell label",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": "?bell ?label",
+          "where": "?bell a access:Bell .  ?bell rdfs:label ?label .",
+          "limit": "100",
+          "queryVars": [
+            "?label",
+            "?bell"
+          ]
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "sparqlQuery",
+        "stepnote": "SELECT",
+		"comment": "SELECT_COMMANDS.",
+        "query": {
+          "name": "SELECT Query Bicycle wheel count",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": "?bic ?wcount ?name",
+          "where": "?bic a bicycle:Bicycle . ?bic bicycle:wheelcount ?wcount . ?bic bicycle:name ?name .",
+          "limit": "100",
+          "queryVars": [
+            "?bic",
+            "?wcount",
+            "?name"
+          ]
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "sparqlQuery",
+        "stepnote": "SELECT",
+		"comment": "SELECT_COMMANDS.",
+        "query": {
+          "name": "SELECT Query Bicycle name",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": "?bic ?name",
+          "where": "?bic a bicycle:Bicycle . ?bic bicycle:name ?name .",
+          "limit": "100",
+          "queryVars": [
+            "?name"
+          ]
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "sparqlQuery",
+        "stepnote": "DESCRIBE",
+		"comment": "DESCRIBE_COMMANDS.",
+        "query": {
+          "name": "DESCRIBE Bicycles(TOIMII)",
+          "type": "describe",
+          "preprefixes": "yes",
+          "describe": " ?bic ",
+          "where": "?bic a bicycle:Bicycle . FILTER EXISTS { ?bic bicycle:hasModel ?model .} ",
+          "bind": null,
+          "filter": null
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "sparqlQuery",
+        "comment": "UPDATE_COMMANDS PROBLEM: Not working?",
+        "query": {
+          "name": "Update WorkOrder_666 ID",
+          "type": "update",
+          "preprefixes": "yes",
+          "delete": "workcoreplus:WorkOrder_666 workcoreplus:work_order_id 666 .",
+          "insert": "?wouri workcoreplus:work_order_id 777 .",
+          "where": "?wouri rdf:type workcoreplus:WorkOrder . ?wouri workcoreplus:work_order_id 666 .",
+          "bind": null,
+          "filter": null
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "sparqlQuery",
+        "stepnote": "UPDATE",
+		"comment": "UPDATE_COMMANDS",
+        "query": {
+          "name": "UPDATE bicycle name (TOIMII!!!)",
+          "type": "update",
+          "preprefixes": "yes",
+          "delete": "?bic bicycle:name ?oldname .",
+          "insert": "?bic bicycle:name 'UUSI_NIMI' .",
+          "where": "?bic rdf:type bicycle:Bicycle . ?bic bicycle:name ?oldname .",
+          "bind": null,
+          "filter": null
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "sparqlQuery",
+        "stepnote": "UPDATE",
+		"comment": "UPDATE_COMMANDS",
+        "query": {
+          "name": "UPDATE Bell rdfs:label (TOIMIIKO?)",
+          "type": "update",
+          "preprefixes": "yes",
+          "delete": " ?bell rdfs:label ?oldlabel .",
+          "insert": "?bell rdfs:label 'MODIFIED_BELL_label' .",
+          "where": "?bell a access:Bell . ?bell rdfs:label ?oldlabel .",
+          "bind": null,
+          "filter": null
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "listTemplates",
+        "stepnote": "LIST",
+        "comment": "LIST_TEMPLATES_COMMANDS Lists all templates and detailed info about templates in 'list.info' list",
+        "listing": {
+          "name": "All plus detailed info about some of them",
+          "type": "all&info",
+          "info": [
+            {
+              "localname": "BicycleByNameSWGTemplate",
+              "uri": null
+            },
+            {
+              "localname": null,
+              "uri": "http://siima.net/ont/bicycle#BicycleNameTemplate1"
+            },
+            {
+              "localname": "UpdateBicycleName",
+              "uri": null
+            },
+            {
+              "localname": "UpdateBicycleNameTemplate2",
+              "uri": null
+            }
+          ]
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "listFunctions",
+        "stepnote": "LIST",
+        "comment": "LIST_FUNCTION_COMMANDS Lists all SPIN Functions",
+        "listing": {
+          "name": "All SPIN Functions",
+          "type": "all"
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "writeModel",
+        "stepnote": "WRITE",
+        "comment": "WRITE_MODEL_COMMANDS Write type can be 'file' or 'console'. Modelcat can be 'merged', 'inferred' or 'main'.",
+        "write": {
+          "name": "Write Inferred Triples to Console",
+          "type": "console",
+          "filePath": "data/inferences/inferred_bicycle_sat.ttl",
+          "modelcat": "inferred"
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "writeModel",
+        "stepnote": "WRITE",
+        "comment": "WRITE_MODEL_COMMANDS Write type can be 'file' or 'console'. Modelcat can be one of 'inferred'/'main'/'mainall'?=?'merged'.",
+        "write": {
+          "name": "Write merged model to file",
+          "type": "file",
+          "filePath": "data/models/generated_models/inferred_bicycle_wed.ttl",
+          "modelcat": "inferred"
+        }
+      },
+      {
+        "index": null,
+		"idcode": "SR1_T",
+        "commandtype": "userinput",
+        "stepnote": "USER_INPUT",
+        "comment": "USER_INPUT_COMMANDS NOTE: Pause execution for user checks .",
+        "userprompt": {
+          "name": "user prompt",
+          "type": "check",
+          "prompt": "continue",
+          "default": "Y"
+        }
+      }
+    ]
+}

@@ -603,6 +603,8 @@ public class CommandFileSpinMng {
 
 	public void runCMSCommand(JSONObject comobj) {
 		String ctype = (String) comobj.get("commandType");
+		if(ctype==null) ctype  = (String) comobj.get("commandtype");
+		
 		switch (ctype) {
 		case "loadKnowledgeBase": {
 			if (!kb_loaded)

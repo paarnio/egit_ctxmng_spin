@@ -1,0 +1,663 @@
+# baseURI: http://siima.net/2018/model/capability/partFeeding
+# imports: http://spinrdf.org/spl
+
+@prefix arg: <http://spinrdf.org/arg#> .
+@prefix feed: <http://siima.net/2018/model/capability/partFeeding#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://siima.net/2018/model/capability/partFeeding>
+  rdf:type owl:Ontology ;
+  spin:imports <http://topbraid.org/spin/owlrl-all> ;
+  spin:imports <http://topbraid.org/spin/rdfsplus> ;
+  spin:imports <http://topbraid.org/spin/spinowl> ;
+  rdfs:comment "Hansson, Järvenpää. 2017. Modeling Capabilities for Functional Configuration of Part Feeding Equipment. Figures 3,4,5,6"^^xsd:string ;
+  owl:imports <http://spinrdf.org/spl> ;
+  owl:versionInfo "Created with TopBraid Composer"^^xsd:string ;
+.
+feed:BasicResourceInformation
+  rdf:type owl:Class ;
+  rdfs:label "Basic resource information"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+feed:Capability
+  rdf:type owl:Class ;
+  rdfs:comment "Hansson, Järvenpää. 2017. Modeling Capabilities for Functional Configuration of Part Feeding Equipment. See Figures 4,5,6"^^xsd:string ;
+  rdfs:label "Capability"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+feed:CapabilityAssociation
+  rdf:type owl:Class ;
+  rdfs:label "Capability association"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+feed:CombinedCapability
+  rdf:type owl:Class ;
+  rdfs:label "Combined capability"^^xsd:string ;
+  rdfs:subClassOf feed:Capability ;
+.
+feed:ConveyingAssociation
+  rdf:type feed:CapabilityAssociation ;
+  rdfs:label "Conveying association"^^xsd:string ;
+.
+feed:FingerGrasping
+  rdf:type owl:Class ;
+  rdfs:comment "See Figures 4 in Hansson, Järvenpää. 2017. Modeling Capabilities for Functional Configuration of Part Feeding Equipment."^^xsd:string ;
+  rdfs:label "Finger grasping"^^xsd:string ;
+  rdfs:subClassOf feed:SimpleCapability ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue feed:GraspingAssociation ;
+      owl:onProperty feed:providesCapabilityAssociation ;
+    ] ;
+.
+feed:FingerGrasping_1
+  rdf:type feed:FingerGrasping ;
+  feed:payload "0.3"^^xsd:float ;
+  feed:providesCapabilityAssociation feed:GraspingAssociation ;
+  rdfs:label "Finger grasping 1"^^xsd:string ;
+.
+feed:FingerGripper1_Info
+  rdf:type feed:BasicResourceInformation ;
+  feed:mass "1.2"^^xsd:float ;
+  rdfs:label "Finger gripper1 Info"^^xsd:string ;
+.
+feed:FingerGripper_1
+  rdf:type feed:Resource ;
+  feed:hasBasicResourceInformation feed:FingerGripper1_Info ;
+  feed:hasCapability feed:FingerGrasping_1 ;
+  feed:hasCapability feed:Releasing_1 ;
+  rdfs:label "Finger gripper 1"^^xsd:string ;
+.
+feed:GraspingAssociation
+  rdf:type feed:CapabilityAssociation ;
+  rdfs:label "Grasping association"^^xsd:string ;
+.
+feed:InformationalSingulation
+  rdf:type owl:Class ;
+  rdfs:label "Informational singulation"^^xsd:string ;
+  rdfs:subClassOf feed:CombinedCapability ;
+.
+feed:Moving
+  rdf:type owl:Class ;
+  rdfs:comment "See Figures 4 in Hansson, Järvenpää. 2017. Modeling Capabilities for Functional Configuration of Part Feeding Equipment."^^xsd:string ;
+  rdfs:label "Moving"^^xsd:string ;
+  rdfs:subClassOf feed:SimpleCapability ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue feed:MovingAssociation ;
+      owl:onProperty feed:providesCapabilityAssociation ;
+    ] ;
+.
+feed:MovingAssociation
+  rdf:type feed:CapabilityAssociation ;
+  rdfs:label "Moving association"^^xsd:string ;
+.
+feed:Moving_1
+  rdf:type feed:Moving ;
+  feed:payload "2.5"^^xsd:float ;
+  feed:providesCapabilityAssociation feed:MovingAssociation ;
+  rdfs:label "Moving 1"^^xsd:string ;
+.
+feed:OrientationRecognition
+  rdf:type owl:Class ;
+  rdfs:label "Orientation recognition"^^xsd:string ;
+  rdfs:subClassOf feed:SimpleCapability ;
+.
+feed:OrientingAssociation
+  rdf:type feed:CapabilityAssociation ;
+  rdfs:label "Orienting association"^^xsd:string ;
+.
+feed:PartFeeding
+  rdf:type owl:Class ;
+  rdfs:label "Part feeding"^^xsd:string ;
+  rdfs:subClassOf feed:CombinedCapability ;
+.
+feed:PartFeedingProcess
+  rdf:type feed:Process ;
+  rdfs:label "Part feeding process"^^xsd:string ;
+.
+feed:PartRecognition
+  rdf:type owl:Class ;
+  rdfs:label "Part recognition"^^xsd:string ;
+  rdfs:subClassOf feed:SimpleCapability ;
+.
+feed:PartRecognitionAssociation
+  rdf:type feed:CapabilityAssociation ;
+  rdfs:label "Part recognition association"^^xsd:string ;
+.
+feed:PhysicalOrientation
+  rdf:type owl:Class ;
+  rdfs:label "Physical orientation"^^xsd:string ;
+  rdfs:subClassOf feed:SimpleCapability ;
+.
+feed:PhysicalSingulation
+  rdf:type owl:Class ;
+  rdfs:label "Physical singulation"^^xsd:string ;
+  rdfs:subClassOf feed:SimpleCapability ;
+.
+feed:PickAndPlace
+  rdf:type owl:Class ;
+  rdfs:comment "See Figure 4 in Hansson, Järvenpää. 2017. Modeling Capabilities for Functional Configuration of Part Feeding Equipment."^^xsd:string ;
+  rdfs:label "Pick and place"^^xsd:string ;
+  rdfs:subClassOf feed:CombinedCapability ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue feed:PickingAssociation ;
+      owl:onProperty feed:requiresCapabilityAssociation ;
+    ] ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue feed:PlacingAssociation ;
+      owl:onProperty feed:requiresCapabilityAssociation ;
+    ] ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue feed:TransportingAssociation ;
+      owl:onProperty feed:requiresCapabilityAssociation ;
+    ] ;
+.
+feed:PickAndPlaceProcess
+  rdf:type feed:Process ;
+  rdfs:label "Pick and place process"^^xsd:string ;
+.
+feed:PickAndPlace_1
+  rdf:type feed:PickAndPlace ;
+  feed:enablesProcess feed:PickAndPlaceProcess ;
+  feed:requiresCapabilityAssociation feed:PickingAssociation ;
+  feed:requiresCapabilityAssociation feed:PlacingAssociation ;
+  feed:requiresCapabilityAssociation feed:TransportingAssociation ;
+  rdfs:label "Pick and place 1"^^xsd:string ;
+.
+feed:Picking
+  rdf:type owl:Class ;
+  rdfs:comment "See Figure 4 in Hansson, Järvenpää. 2017. Modeling Capabilities for Functional Configuration of Part Feeding Equipment."^^xsd:string ;
+  rdfs:label "Picking"^^xsd:string ;
+  rdfs:subClassOf feed:CombinedCapability ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue feed:GraspingAssociation ;
+      owl:onProperty feed:requiresCapabilityAssociation ;
+    ] ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue feed:MovingAssociation ;
+      owl:onProperty feed:requiresCapabilityAssociation ;
+    ] ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue feed:PickingAssociation ;
+      owl:onProperty feed:providesCapabilityAssociation ;
+    ] ;
+.
+feed:PickingAssociation
+  rdf:type feed:CapabilityAssociation ;
+  rdfs:label "Picking association"^^xsd:string ;
+.
+feed:Picking_1
+  rdf:type feed:Picking ;
+  feed:providesCapabilityAssociation feed:PickingAssociation ;
+  feed:requiresCapabilityAssociation feed:GraspingAssociation ;
+  feed:requiresCapabilityAssociation feed:MovingAssociation ;
+  rdfs:label "Picking 1"^^xsd:string ;
+.
+feed:Placing
+  rdf:type owl:Class ;
+  rdfs:comment "See Figure 4 in Hansson, Järvenpää. 2017. Modeling Capabilities for Functional Configuration of Part Feeding Equipment."^^xsd:string ;
+  rdfs:label "Placing"^^xsd:string ;
+  rdfs:subClassOf feed:CombinedCapability ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue feed:GraspingAssociation ;
+      owl:onProperty feed:requiresCapabilityAssociation ;
+    ] ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue feed:MovingAssociation ;
+      owl:onProperty feed:requiresCapabilityAssociation ;
+    ] ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue feed:PlacingAssociation ;
+      owl:onProperty feed:providesCapabilityAssociation ;
+    ] ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue feed:ReleasingAssociation ;
+      owl:onProperty feed:requiresCapabilityAssociation ;
+    ] ;
+.
+feed:PlacingAssociation
+  rdf:type feed:CapabilityAssociation ;
+  rdfs:label "Placing association"^^xsd:string ;
+.
+feed:Placing_1
+  rdf:type feed:Placing ;
+  feed:providesCapabilityAssociation feed:PlacingAssociation ;
+  feed:requiresCapabilityAssociation feed:GraspingAssociation ;
+  feed:requiresCapabilityAssociation feed:MovingAssociation ;
+  feed:requiresCapabilityAssociation feed:ReleasingAssociation ;
+  rdfs:label "Placing 1"^^xsd:string ;
+.
+feed:PositionRecognition
+  rdf:type owl:Class ;
+  rdfs:label "Position recognition"^^xsd:string ;
+  rdfs:subClassOf feed:SimpleCapability ;
+.
+feed:PositionRecognitionAssociation
+  rdf:type feed:CapabilityAssociation ;
+  rdfs:label "Position recognition association"^^xsd:string ;
+.
+feed:PresentationAssociation
+  rdf:type feed:CapabilityAssociation ;
+  rdfs:label "Presentation association"^^xsd:string ;
+.
+feed:Process
+  rdf:type owl:Class ;
+  rdfs:label "Process"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+feed:Releasing
+  rdf:type owl:Class ;
+  rdfs:comment "See Figures 4 in Hansson, Järvenpää. 2017. Modeling Capabilities for Functional Configuration of Part Feeding Equipment."^^xsd:string ;
+  rdfs:label "Releasing"^^xsd:string ;
+  rdfs:subClassOf feed:SimpleCapability ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue feed:ReleasingAssociation ;
+      owl:onProperty feed:providesCapabilityAssociation ;
+    ] ;
+.
+feed:ReleasingAssociation
+  rdf:type feed:CapabilityAssociation ;
+  rdfs:label "Releasing association"^^xsd:string ;
+.
+feed:Releasing_1
+  rdf:type feed:Releasing ;
+  feed:providesCapabilityAssociation feed:ReleasingAssociation ;
+  rdfs:label "Releasing 1"^^xsd:string ;
+.
+feed:Resource
+  rdf:type owl:Class ;
+  rdfs:label "Resource"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+feed:RoArm1wFiGripper1_combined_1
+  rdf:type feed:Resource ;
+  feed:hasCapability feed:Transporting_1 ;
+  feed:hasComponent feed:FingerGripper_1 ;
+  feed:hasComponent feed:RobotArm_1 ;
+  rdfs:label "Ro arm1w fi gripper1 combined 1"^^xsd:string ;
+.
+feed:RobotArm1_Info
+  rdf:type feed:BasicResourceInformation ;
+  feed:mass "2.0"^^xsd:float ;
+  rdfs:label "Robot arm1 Info"^^xsd:string ;
+.
+feed:RobotArm_1
+  rdf:type feed:Resource ;
+  feed:hasBasicResourceInformation feed:RobotArm1_Info ;
+  feed:hasCapability feed:Moving_1 ;
+  rdfs:label "Robot arm 1"^^xsd:string ;
+.
+feed:SimpleCapability
+  rdf:type owl:Class ;
+  rdfs:label "Simple capability"^^xsd:string ;
+  rdfs:subClassOf feed:Capability ;
+.
+feed:SingulatingAssociation
+  rdf:type feed:CapabilityAssociation ;
+  rdfs:label "Singulating association"^^xsd:string ;
+.
+feed:Storaging
+  rdf:type owl:Class ;
+  rdfs:label "Storaging"^^xsd:string ;
+  rdfs:subClassOf feed:SimpleCapability ;
+.
+feed:StoragingAssociation
+  rdf:type feed:CapabilityAssociation ;
+  rdfs:label "Storaging association"^^xsd:string ;
+.
+feed:Structuring
+  rdf:type owl:Class ;
+  rdfs:label "Structuring"^^xsd:string ;
+  rdfs:subClassOf feed:CombinedCapability ;
+.
+feed:StructuringAssociation
+  rdf:type feed:CapabilityAssociation ;
+  rdfs:label "Structuring association"^^xsd:string ;
+.
+feed:Transporting
+  rdf:type owl:Class ;
+  spin:rule [
+      rdf:type sp:Construct ;
+      sp:templates (
+          [
+            sp:object [
+                sp:varName "payload"^^xsd:string ;
+              ] ;
+            sp:predicate feed:payload ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type feed:getPartCapability2 ;
+                sp:arg1 spin:_this ;
+                sp:arg2 feed:FingerGrasping ;
+              ] ;
+            sp:variable [
+                sp:varName "fingerGrasping"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:bound ;
+                sp:arg1 [
+                    sp:varName "fingerGrasping"^^xsd:string ;
+                  ] ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "fingerGrasping"^^xsd:string ;
+              ] ;
+            sp:predicate feed:hasCapability ;
+            sp:subject [
+                sp:varName "graspingDevice"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "info"^^xsd:string ;
+              ] ;
+            sp:predicate feed:hasBasicResourceInformation ;
+            sp:subject [
+                sp:varName "graspingDevice"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "mass"^^xsd:string ;
+              ] ;
+            sp:predicate feed:mass ;
+            sp:subject [
+                sp:varName "info"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "gripperPayload"^^xsd:string ;
+              ] ;
+            sp:predicate feed:payload ;
+            sp:subject [
+                sp:varName "fingerGrasping"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type feed:getPartCapability2 ;
+                sp:arg1 spin:_this ;
+                sp:arg2 feed:Moving ;
+              ] ;
+            sp:variable [
+                sp:varName "moving"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:bound ;
+                sp:arg1 [
+                    sp:varName "moving"^^xsd:string ;
+                  ] ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "movingPayload"^^xsd:string ;
+              ] ;
+            sp:predicate feed:payload ;
+            sp:subject [
+                sp:varName "moving"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:sub ;
+                sp:arg1 [
+                    sp:varName "movingPayload"^^xsd:string ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "mass"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "alternative"^^xsd:string ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    rdf:type sp:gt ;
+                    sp:arg1 [
+                        sp:varName "alternative"^^xsd:string ;
+                      ] ;
+                    sp:arg2 [
+                        sp:varName "gripperPayload"^^xsd:string ;
+                      ] ;
+                  ] ;
+                sp:arg2 [
+                    sp:varName "gripperPayload"^^xsd:string ;
+                  ] ;
+                sp:arg3 [
+                    sp:varName "alternative"^^xsd:string ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "payload"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  rdfs:comment "See Figure 4 in Hansson, Järvenpää. 2017. Modeling Capabilities for Functional Configuration of Part Feeding Equipment."^^xsd:string ;
+  rdfs:label "Transporting"^^xsd:string ;
+  rdfs:subClassOf feed:CombinedCapability ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue feed:GraspingAssociation ;
+      owl:onProperty feed:requiresCapabilityAssociation ;
+    ] ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue feed:MovingAssociation ;
+      owl:onProperty feed:requiresCapabilityAssociation ;
+    ] ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue feed:TransportingAssociation ;
+      owl:onProperty feed:providesCapabilityAssociation ;
+    ] ;
+.
+feed:TransportingAssociation
+  rdf:type feed:CapabilityAssociation ;
+  rdfs:label "Transporting association"^^xsd:string ;
+.
+feed:Transporting_1
+  rdf:type feed:Transporting ;
+  feed:providesCapabilityAssociation feed:TransportingAssociation ;
+  feed:requiresCapabilityAssociation feed:GraspingAssociation ;
+  feed:requiresCapabilityAssociation feed:MovingAssociation ;
+  rdfs:label "Transporting 1"^^xsd:string ;
+.
+feed:VacuumGrasping
+  rdf:type owl:Class ;
+  rdfs:comment "See Figures 4 in Hansson, Järvenpää. 2017. Modeling Capabilities for Functional Configuration of Part Feeding Equipment."^^xsd:string ;
+  rdfs:label "Vacuum grasping"^^xsd:string ;
+  rdfs:subClassOf feed:SimpleCapability ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:hasValue feed:GraspingAssociation ;
+      owl:onProperty feed:providesCapabilityAssociation ;
+    ] ;
+.
+feed:VacuumGrasping_1
+  rdf:type feed:VacuumGrasping ;
+  feed:providesCapabilityAssociation feed:GraspingAssociation ;
+  rdfs:label "Vacuum grasping 1"^^xsd:string ;
+.
+feed:VacuumGripper1_Info
+  rdf:type feed:BasicResourceInformation ;
+  feed:mass "4.8"^^xsd:float ;
+  rdfs:label "Vacuum gripper1 Info"^^xsd:string ;
+.
+feed:VacuumGripper_1
+  rdf:type feed:Resource ;
+  feed:hasBasicResourceInformation feed:VacuumGripper1_Info ;
+  feed:hasCapability feed:Releasing_1 ;
+  feed:hasCapability feed:VacuumGrasping_1 ;
+  rdfs:label "Vacuum gripper"^^xsd:string ;
+.
+feed:Vibrating
+  rdf:type owl:Class ;
+  rdfs:label "Vibrating"^^xsd:string ;
+  rdfs:subClassOf feed:SimpleCapability ;
+.
+feed:VibratingAssociation
+  rdf:type feed:CapabilityAssociation ;
+  rdfs:label "Vibrating association"^^xsd:string ;
+.
+feed:VibrationTransferring
+  rdf:type owl:Class ;
+  rdfs:label "Vibration transferring"^^xsd:string ;
+  rdfs:subClassOf feed:SimpleCapability ;
+.
+feed:VibrationTransferringAssociation
+  rdf:type feed:CapabilityAssociation ;
+  rdfs:label "Vibration transferring association"^^xsd:string ;
+.
+feed:VibrationalConveying
+  rdf:type owl:Class ;
+  rdfs:label "Vibrational conveying"^^xsd:string ;
+  rdfs:subClassOf feed:CombinedCapability ;
+.
+feed:enablesProcess
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain feed:Capability ;
+  rdfs:label "enables process"^^xsd:string ;
+  rdfs:range feed:Process ;
+.
+feed:getPartCapability2
+  rdf:type spin:Function ;
+  spin:body [
+      rdf:type sp:Select ;
+      sp:resultVariables (
+          [
+            sp:varName "capability"^^xsd:string ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object spin:_arg1 ;
+            sp:predicate feed:hasCapability ;
+            sp:subject [
+                sp:varName "combRecourse"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "device1"^^xsd:string ;
+              ] ;
+            sp:predicate feed:hasComponent ;
+            sp:subject [
+                sp:varName "combRecourse"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object [
+                sp:varName "capability"^^xsd:string ;
+              ] ;
+            sp:predicate feed:hasCapability ;
+            sp:subject [
+                sp:varName "device1"^^xsd:string ;
+              ] ;
+          ]
+          [
+            sp:object spin:_arg2 ;
+            sp:predicate rdf:type ;
+            sp:subject [
+                sp:varName "capability"^^xsd:string ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate sp:arg1 ;
+      spl:valueType feed:CombinedCapability ;
+      rdfs:comment "An instance of a Combined Capability for which the child capabilities are looked for"^^xsd:string ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate sp:arg2 ;
+      spl:valueType owl:Class ;
+      rdfs:comment "The capability class of the child capability to be returned by this function"^^xsd:string ;
+    ] ;
+  rdfs:label "get part capability2"^^xsd:string ;
+  rdfs:subClassOf spin:Functions ;
+.
+feed:hasBasicResourceInformation
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain feed:Resource ;
+  rdfs:label "has basic resource information"^^xsd:string ;
+  rdfs:range feed:BasicResourceInformation ;
+.
+feed:hasCapability
+  rdf:type owl:ObjectProperty ;
+  rdfs:label "has capability"^^xsd:string ;
+  rdfs:range feed:Capability ;
+.
+feed:hasComponent
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain feed:Resource ;
+  rdfs:label "has component"^^xsd:string ;
+  rdfs:range feed:Resource ;
+.
+feed:mass
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "mass"^^xsd:string ;
+  rdfs:range xsd:float ;
+.
+feed:payload
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "payload"^^xsd:string ;
+  rdfs:range xsd:float ;
+.
+feed:providesCapabilityAssociation
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain feed:Capability ;
+  rdfs:label "provides capability association"^^xsd:string ;
+  rdfs:range feed:CapabilityAssociation ;
+.
+feed:requiresCapabilityAssociation
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain feed:Capability ;
+  rdfs:label "provides capability association"^^xsd:string ;
+  rdfs:range feed:CapabilityAssociation ;
+.
+arg:huu
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
