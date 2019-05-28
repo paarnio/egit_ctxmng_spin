@@ -781,6 +781,35 @@ public class CommandFileSpinMng {
 		altlocs.add(ont_folder + "/" + imp_ont_file);
 		urls.add(imp_ont_url);
 		
+		/* VPA2019 FOLLOWING ADDITIONS NEEDED because spin ontology web addresses have been changed 
+		 * Location is now https:// (earlier http://) but the URI is still with http://
+		 * 
+		 * NOW locations start with https:
+		 * https://spinrdf.org/spl
+		 * https://spinrdf.org/spin
+		 * https://spinrdf.org/sp
+		 * 
+		
+		
+		altlocs.add("etc/spl.spin.ttl");
+		urls.add("http://spinrdf.org/spl");
+		
+		altlocs.add("etc/spin.ttl");
+		urls.add("http://spinrdf.org/spin");
+		
+		altlocs.add("etc/sp.ttl");
+		urls.add("http://spinrdf.org/sp");
+		 */
+		
+		/* TESTING adding following to solve: PROBLEM: data/json/csmCommands_bicycle_store_test3_update.json 
+		 * command 9: name:SELECT Query SUPERCLASS Vehicles
+		 * NO RESULTS
+		 * Does not help
+		 * 
+		altlocs.add("etc/rdf-schema.rdf");
+		urls.add("http://www.w3.org/2000/01/rdf-schema#");
+		*/
+		
 		/* ----------- Build Models ----------*/
 		//VPA: 2016-02-15 Testing a new Model Build  methods
 		//now in dump.txt: OntModel baseont = mng.test();

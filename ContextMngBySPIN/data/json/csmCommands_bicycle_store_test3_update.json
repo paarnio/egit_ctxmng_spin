@@ -162,8 +162,24 @@
           ]
         }
       },
-	    {
+	  {
         "index": 9,
+        "commandType": "sparqlQuery",
+        "stepnote": "SELECT",
+        "query": {
+          "name": "SELECT Query SUPERCLASS Vehicles",
+          "type": "select",
+          "preprefixes": "yes",
+          "select": "?bic",
+          "where": "?bic a bicycle:Vehicle .",
+          "limit": "100",
+          "queryVars": [
+            "?bic"
+          ]
+        }
+      },
+	    {
+        "index": 10,
         "commandType": "writeModel",
         "stepnote": "WRITE",
         "comment": "Write type can be 'file' or 'console'. Modelcat can be 'merged', 'inferred' or 'main'.",

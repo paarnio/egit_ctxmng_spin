@@ -1,0 +1,85 @@
+
+PROBLEM 2: NO RDFS SubClassOf reasoning??? 
+No results for command 9: name:SELECT Query SUPERCLASS Vehicles
+
+
+PROBLEM 1: Spin ontology web address/location has been changed!!!!WHY
+FIXING MADE for only for method startPredefinedKB_Bicycle(): SPIN ontologies are now read from files in etc/ folder
+
+------------------
+/* VPA2019 FOLLOWING ADDITIONS NEEDED because spin ontology web addresses have been changed 
+* Location prefix is now https:// (earlier http://) but the URI is still with http://
+		 * 
+		 * NOW locations start with https:
+		 * https://spinrdf.org/spl
+		 * https://spinrdf.org/spin
+		 * https://spinrdf.org/sp
+		 * 
+		 */
+
+
+
+
+-------------
+public void startPredefinedKB_Bicycle(){
+		/* --- Main ontology --- */
+		String ont_folder = "data/models/importing_models"; 
+		
+		String main_ont_file= "bicycle.ttl"; 
+		String main_ont_url="http://siima.net/ont/bicycle"; 
+		
+		altlocs.add(ont_folder + "/" + main_ont_file);
+		urls.add(main_ont_url);
+		
+		/* --- Imported ontologies --- */		
+		String imp_ont_file="accessories.ttl"; 
+		String imp_ont_url= "http://siima.net/ont/accessories"; 
+		
+		altlocs.add(ont_folder + "/" + imp_ont_file);
+		urls.add(imp_ont_url);
+		
+		/* VPA2019 FOLLOWING ADDITIONS NEEDED because spin ontology web addresses have been changed 
+		 * Location is now https:// (earlier http://) but the URI is still with http://
+		 * 
+		 * NOW locations start with https:
+		 * https://spinrdf.org/spl
+		 * https://spinrdf.org/spin
+		 * https://spinrdf.org/sp
+		 * 
+		 */
+		
+		altlocs.add("etc/spl.spin.ttl");
+		urls.add("http://spinrdf.org/spl");
+		
+		altlocs.add("etc/spin.ttl");
+		urls.add("http://spinrdf.org/spin");
+		
+		altlocs.add("etc/sp.ttl");
+		urls.add("http://spinrdf.org/sp");
+		
+		/* TESTING adding following to solve: PROBLEM: data/json/csmCommands_bicycle_store_test3_update.json 
+		 * command 9: name:SELECT Query SUPERCLASS Vehicles
+		 * NO RESULTS
+		 * Does not help
+		 * 
+		altlocs.add("etc/rdf-schema.rdf");
+		urls.add("http://www.w3.org/2000/01/rdf-schema#");
+		*/
+		
+		/* ----------- Build Models ----------*/
+		//VPA: 2016-02-15 Testing a new Model Build  methods
+		//now in dump.txt: OntModel baseont = mng.test();
+		//now in dump.txt: OntModel baseont = mng.loadModelWithSubModels(urls, altlocs); //EI TOIMI
+		OntModel baseont = mng.loadModelWithImports(urls, altlocs);
+		// Set mainOntModel
+		mng.setMainOntModel(baseont);
+		// Set ntModelWithReasoner
+		
+		mng.setOntModelWithReasoner(mng.createReasonerModel(mng.getMainOntModel()));
+		
+		this.mainModelLocalName="bicycle"; 
+		System.out.println("\n----------- Knowledge Base Ready  ----------");
+		
+	}
+	
+	

@@ -21,6 +21,24 @@ import com.hp.hpl.jena.rdf.model.ResourceFactory;
  */
 public class SPL {
 
+	/* VPA 2019-05-15 Ontology Location has been changed
+	 * CURL CHECK
+	 *  C:\Users\vpa>curl "http://spinrdf.org/spl"
+		<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+		<html><head>
+		<title>301 Moved Permanently</title>
+		</head><body>
+		<h1>Moved Permanently</h1>
+		<p>The document has moved <a href="https://spinrdf.org/spl">here</a>.</p>
+		<hr>
+		<address>Apache/2.4.18 (Ubuntu) Server at spinrdf.org Port 80</address>
+		</body></html>
+	 * 
+	 * C:\Users\vpa>curl "https://spinrdf.org/spl" 
+	 * curl: (1) Protocol https not supported or disabled in libcurl
+	 */
+	
+	//VPA2019: change to https did not help
 	public final static String BASE_URI = "http://spinrdf.org/spl";
 	
 	public final static String NS = BASE_URI + "#";
@@ -81,12 +99,12 @@ public class SPL {
 	public static synchronized Model getModel() {
 		if(model == null) {
 			model = ModelFactory.createDefaultModel();
-			InputStream is = SPL.class.getResourceAsStream("/etc/spl.spin.rdf");
+			InputStream is = SPL.class.getResourceAsStream("/etc/spl.spin.ttl"); //VPA2019: po. /etc/spl.spin.ttl oli /etc/spl.spin.rdf 
 			if(is == null) {
 				model.read(SPL.BASE_URI);
 			}
 			else {
-				model.read(is, "http://dummy");
+				model.read(is, "http://spinrdf.org/spl", "TTL"); //VPA2019: lang "TTL" added
 			}
 		}
 		return model;
