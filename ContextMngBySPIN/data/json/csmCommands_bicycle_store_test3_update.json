@@ -2,10 +2,10 @@
   "CSMHeader": {
     "filename": "data/json/csmCommands_bicycle_store_test3_update.json",
     "created": "2016-10-01",
-	"updated": "2016-10-01",
+	"updated": "2019-05-28",
     "validated": "http://www.jsoneditoronline.org/",
     "application": "CommandFileSpinMng.java",
-    "history": "",
+    "history": "28May2019 'reasoner': true, added to query json objects",
     "workflow": {
       "name": "BICYCLE model workflow",
       "processlog1": "(start)",
@@ -65,6 +65,7 @@
         "query": {
           "name": "SELECT Query Bicycle wheel count",
           "type": "select",
+		  "reasoner": true,
           "preprefixes": "yes",
           "select": "?bic ?wcount ?name",
           "where": "?bic a bicycle:Bicycle . ?bic bicycle:wheelcount ?wcount . ?bic bicycle:name ?name .",
@@ -83,6 +84,7 @@
         "query": {
           "name": "UPDATE bicycle name (TOIMII!!!)",
           "type": "update",
+		  "reasoner": true,
           "preprefixes": "yes",
           "delete": "?bic bicycle:name ?oldname .",
           "insert": "?bic bicycle:name 'UUSI_NIMI' .",
@@ -98,6 +100,7 @@
         "query": {
           "name": "SELECT Query Bicycle wheel count",
           "type": "select",
+		  "reasoner": true,
           "preprefixes": "yes",
           "select": "?bic ?wcount ?name",
           "where": "?bic a bicycle:Bicycle . ?bic bicycle:wheelcount ?wcount . ?bic bicycle:name ?name .",
@@ -116,6 +119,7 @@
         "query": {
           "name": "SELECT Query accessories Bell's",
           "type": "select",
+		  "reasoner": true,
           "preprefixes": "yes",
           "select": "?bell ?label",
           "where": "?bell a accessories:Bell . ?bell rdfs:label ?label",
@@ -130,8 +134,7 @@
         "index": 7,
         "commandType": "sparqlQuery",
         "stepnote": "UPDATE",
-        "comment": "NEW Imported sub model can be specified as the target model of a query by 'target_import_uri' (2016-10-03) ",
-        "comment": "This is important for UPDATE and DELETE queries, which cannot delete triples, from imported sub models, if the target is the main model (Bug?)",
+        "comment": "NEW Imported sub model can be specified as the target model of a query by 'target_import_uri' (2016-10-03). This is important for UPDATE and DELETE queries, which cannot delete triples, from imported sub models, if the target is the main model (Bug?)",
         "query": {
           "name": "UPDATE bell label in IMPORTED model  (TOIMIIko??) Insert toimii mutta delete EI?",
           "type": "update",
@@ -152,6 +155,7 @@
         "query": {
           "name": "SELECT Query accessories Bell's",
           "type": "select",
+		  "reasoner": true,
           "preprefixes": "yes",
           "select": "?bell ?label",
           "where": "?bell a accessories:Bell . ?bell rdfs:label ?label",
@@ -169,6 +173,7 @@
         "query": {
           "name": "SELECT Query SUPERCLASS Vehicles",
           "type": "select",
+		  "reasoner": true,
           "preprefixes": "yes",
           "select": "?bic",
           "where": "?bic a bicycle:Vehicle .",
@@ -461,6 +466,7 @@
         "query": {
           "name": "SELECT Query Bell label",
           "type": "select",
+		  "reasoner": true,
           "preprefixes": "yes",
           "select": "?bell ?label",
           "where": "?bell a access:Bell .  ?bell rdfs:label ?label .",
@@ -478,6 +484,7 @@
         "query": {
           "name": "SELECT Query Bicycle wheel count",
           "type": "select",
+		  "reasoner": true,
           "preprefixes": "yes",
           "select": "?bic ?wcount ?name",
           "where": "?bic a bicycle:Bicycle . ?bic bicycle:wheelcount ?wcount . ?bic bicycle:name ?name .",
@@ -494,8 +501,9 @@
         "commandType": "sparqlQuery",
         "stepnote": "SELECT",
         "query": {
-          "name": "SELECT Query Bicycle name",
+          "name": "SELECT Query Bicycle name by SUPERCLASS Vehicle (note: reasoner=true)",
           "type": "select",
+		  "reasoner": true,
           "preprefixes": "yes",
           "select": "?bic ?name",
           "where": "?bic a bicycle:Bicycle . ?bic bicycle:name ?name .",
@@ -514,6 +522,7 @@
         "query": {
           "name": "DESCRIBE Bicycles(TOIMII)",
           "type": "describe",
+		  "reasoner": true,
           "preprefixes": "yes",
           "describe": " ?bic ",
           "where": "?bic a bicycle:Bicycle . FILTER EXISTS { ?bic bicycle:hasModel ?model .} ",
@@ -530,6 +539,7 @@
         "query": {
           "name": "Update WorkOrder_666 ID",
           "type": "update",
+		  "reasoner": true,
           "preprefixes": "yes",
           "delete": "workcoreplus:WorkOrder_666 workcoreplus:work_order_id 666 .",
           "insert": "?wouri workcoreplus:work_order_id 777 .",
@@ -545,6 +555,7 @@
         "query": {
           "name": "UPDATE bicycle name (TOIMII!!!)",
           "type": "update",
+		  "reasoner": true,
           "preprefixes": "yes",
           "delete": "?bic bicycle:name ?oldname .",
           "insert": "?bic bicycle:name 'UUSI_NIMI' .",
@@ -560,6 +571,7 @@
         "query": {
           "name": "UPDATE Bell rdfs:label (TOIMIIKO?)",
           "type": "update",
+		  "reasoner": true,
           "preprefixes": "yes",
           "delete": " ?bell rdfs:label ?oldlabel .",
           "insert": "?bell rdfs:label 'MODIFIED_BELL_label' .",

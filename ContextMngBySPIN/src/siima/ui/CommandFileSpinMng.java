@@ -768,7 +768,8 @@ public class CommandFileSpinMng {
 		/* --- Main ontology --- */
 		String ont_folder = "data/models/importing_models"; 
 		
-		String main_ont_file= "bicycle.ttl"; 
+		//VPA May2019 change:
+		String main_ont_file= "bicycle_may2019.ttl"; //bicycle.ttl
 		String main_ont_url="http://siima.net/ont/bicycle"; 
 		
 		altlocs.add(ont_folder + "/" + main_ont_file);
@@ -781,15 +782,20 @@ public class CommandFileSpinMng {
 		altlocs.add(ont_folder + "/" + imp_ont_file);
 		urls.add(imp_ont_url);
 		
-		/* VPA2019 FOLLOWING ADDITIONS NEEDED because spin ontology web addresses have been changed 
+		/* VPA May 2019 FOLLOWING ADDITIONS NEEDED because spin ontology web addresses have been changed 
 		 * Location is now https:// (earlier http://) but the URI is still with http://
+		 * TESTING with data/json/csmCommands_bicycle_store_test3_update.json
 		 * 
-		 * NOW locations start with https:
+		 * NOW web locations start with https (however uris are not changed):
 		 * https://spinrdf.org/spl
 		 * https://spinrdf.org/spin
 		 * https://spinrdf.org/sp
 		 * 
-		
+		 * ADDED also 28May2019
+		 * http://topbraid.org/spin/owlrl-all
+		 * http://topbraid.org/spin/rdfsplus
+		 * http://topbraid.org/spin/spinowl
+		*/
 		
 		altlocs.add("etc/spl.spin.ttl");
 		urls.add("http://spinrdf.org/spl");
@@ -799,12 +805,24 @@ public class CommandFileSpinMng {
 		
 		altlocs.add("etc/sp.ttl");
 		urls.add("http://spinrdf.org/sp");
-		 */
+		
+		
+		altlocs.add("siima/topbraid/ontologies/owlrl-all.ttl");
+		urls.add("http://topbraid.org/spin/owlrl-all");
+		
+		altlocs.add("siima/topbraid/ontologies/rdfsplus.ttl");
+		urls.add("http://topbraid.org/spin/rdfsplus");
+		
+		altlocs.add("siima/topbraid/ontologies/spinowl.ttl");
+		urls.add("http://topbraid.org/spin/spinowl");
+		
+		
+		 
 		
 		/* TESTING adding following to solve: PROBLEM: data/json/csmCommands_bicycle_store_test3_update.json 
 		 * command 9: name:SELECT Query SUPERCLASS Vehicles
-		 * NO RESULTS
-		 * Does not help
+		 * solution: set "reasoner": true in JSON query-object
+		 * 
 		 * 
 		altlocs.add("etc/rdf-schema.rdf");
 		urls.add("http://www.w3.org/2000/01/rdf-schema#");
